@@ -1,0 +1,438 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ARTIST
+  MANAGER
+  STAFF
+  ADMIN
+  LEGAL_REVIEWER
+  BOOKING_OPERATOR
+  RADIO_OPERATOR
+  CREATIVE_OPERATOR
+}
+
+model User {
+  id             String    @id @default(uuid())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  role           Role      @default(ARTIST)
+  phone          String?   @unique
+  email          String?   @unique
+  name           String?
+  
+  googleAccessToken  String?
+  googleRefreshToken String?
+  
+  artistProfile  ArtistProfile?
+  teamMember     TeamMember?
+  approvalsRequested ApprovalRequest[] @relation("ApprovalRequester")
+  auditLogs      AuditLog[]
+
+  @@map("users")
+}
+
+model ArtistProfile {
+  id             String    @id @default(uuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  stageName      String
+  bio            String?
+  genres         String[]
+  
+  tasks          Task[]
+  projects       Project[]
+  releases       Release[]
+  contacts       ContactRelationship[]
+  events         CalendarEvent[]
+  bookings       BookingOpportunity[]
+  travelPlans    TravelPlan[]
+  contracts      ContractRecord[]
+  rights         RightsChecklist?
+  scouting       ScoutingReport[]
+  readiness      ReadinessAssessment[]
+
+  @@map("artist_profiles")
+}
+
+model TeamMember {
+  id             String    @id @default(uuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title          String
+  
+  @@map("team_members")
+}
+
+// ==============
+// TASK & SCHEDULE
+// ==============
+
+model Task {
+  id             String    @id @default(uuid())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  title          String
+  description    String?
+  status         String    @default("TODO") // TODO, IN_PROGRESS, BLOCKED, DONE
+  dueDate        DateTime?
+  
+  isBlocked      Boolean   @default(false)
+  blockerReason  String?
+  sourceAgent    String?
+
+  dependencies   TaskDependency[] @relation("DependsOn")
+  dependents     TaskDependency[] @relation("DependentTask")
+
+  eventId        String?
+  event          CalendarEvent? @relation(fields: [eventId], references: [id])
+  
+  reminders      Reminder[]
+
+  @@map("tasks")
+}
+
+model TaskDependency {
+  id                String @id @default(uuid())
+  taskId            String
+  task              Task   @relation("DependentTask", fields: [taskId], references: [id])
+  dependsOnTaskId   String
+  dependsOnTask     Task   @relation("DependsOn", fields: [dependsOnTaskId], references: [id])
+
+  @@map("task_dependencies")
+}
+
+model Reminder {
+  id             String    @id @default(uuid())
+  taskId         String?
+  task           Task?     @relation(fields: [taskId], references: [id])
+  triggerTime    DateTime
+  message        String
+  fired          Boolean   @default(false)
+
+  @@map("reminders")
+}
+
+model CalendarEvent {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  externalId     String? // Integration with Google Calendar
+  title          String
+  description    String?
+  startTime      DateTime
+  endTime        DateTime
+  location       String?
+  tasks          Task[]
+
+  @@map("calendar_events")
+}
+
+// ==============
+// PROJECTS & CAMPAIGNS
+// ==============
+
+enum ProjectType {
+  SINGLE_RELEASE
+  EP_RELEASE
+  ALBUM_RELEASE
+  BRANDING_LAUNCH
+  TOUR_ROUTING
+}
+
+model Project {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  type           ProjectType
+  title          String
+  status         String    @default("ACTIVE")
+  
+  milestones     ProjectMilestone[]
+  campaigns      Campaign[]
+
+  @@map("projects")
+}
+
+model ProjectMilestone {
+  id             String    @id @default(uuid())
+  projectId      String
+  project        Project   @relation(fields: [projectId], references: [id])
+  title          String
+  dueDate        DateTime
+  status         String    @default("PENDING")
+
+  @@map("project_milestones")
+}
+
+model Campaign {
+  id             String    @id @default(uuid())
+  projectId      String
+  project        Project   @relation(fields: [projectId], references: [id])
+  type           String // RADIO, DJ, COLLEGE, SPONSORSHIP
+  status         String
+
+  @@map("campaigns")
+}
+
+// ==============
+// RELEASES & RIGHTS
+// ==============
+
+model Release {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  title          String
+  releaseDate    DateTime?
+  status         String
+  isrc           String?
+  upc            String?
+  
+  assets         ReleaseAsset[]
+
+  @@map("releases")
+}
+
+model ReleaseAsset {
+  id             String    @id @default(uuid())
+  releaseId      String
+  release        Release   @relation(fields: [releaseId], references: [id])
+  type           String // AUDIO, ARTWORK, EPK
+  url            String?
+  ready          Boolean   @default(false)
+
+  @@map("release_assets")
+}
+
+model RightsChecklist {
+  id                 String    @id @default(uuid())
+  artistId           String    @unique
+  artist             ArtistProfile @relation(fields: [artistId], references: [id])
+  bmiProStatus       String    @default("PENDING")
+  mlcStatus          String    @default("PENDING")
+  soundExchangeStatus String   @default("PENDING")
+  copyrightStatus    String    @default("PENDING")
+
+  registrationTasks  RegistrationTask[]
+
+  @@map("rights_checklists")
+}
+
+model RegistrationTask {
+  id                 String          @id @default(uuid())
+  rightsChecklistId  String
+  rightsChecklist    RightsChecklist @relation(fields: [rightsChecklistId], references: [id])
+  taskName           String
+  completed          Boolean         @default(false)
+
+  @@map("registration_tasks")
+}
+
+// ==============
+// CRM & CONTACTS
+// ==============
+
+model Contact {
+  id             String    @id @default(uuid())
+  name           String
+  roleType       String // DJ, PROMOTER, VENUE_BUYER, LAWYER
+  email          String?
+  phone          String?
+  
+  relationships  ContactRelationship[]
+
+  @@map("contacts")
+}
+
+model ContactRelationship {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  contactId      String
+  contact        Contact       @relation(fields: [contactId], references: [id])
+  status         String
+  notes          String?
+
+  @@map("contact_relationships")
+}
+
+// ==============
+// BOOKING & TRAVEL
+// ==============
+
+model BookingOpportunity {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  venueId        String?
+  venue          Venue?    @relation(fields: [venueId], references: [id])
+  schoolId       String?
+  school         School?   @relation(fields: [schoolId], references: [id])
+  date           DateTime?
+  status         String    @default("HOLD")
+  offerAmount    Float?
+
+  @@map("booking_opportunities")
+}
+
+model Venue {
+  id             String    @id @default(uuid())
+  name           String
+  location       String
+  capacity       Int?
+  bookings       BookingOpportunity[]
+
+  @@map("venues")
+}
+
+model School {
+  id             String    @id @default(uuid())
+  name           String
+  bookings       BookingOpportunity[]
+
+  @@map("schools")
+}
+
+model TravelPlan {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  title          String
+  status         String
+  
+  hotels         HotelBooking[]
+  flights        FlightBooking[]
+
+  @@map("travel_plans")
+}
+
+model HotelBooking {
+  id             String    @id @default(uuid())
+  travelPlanId   String
+  travelPlan     TravelPlan @relation(fields: [travelPlanId], references: [id])
+  hotelName      String
+  checkIn        DateTime
+  checkOut       DateTime
+
+  @@map("hotel_bookings")
+}
+
+model FlightBooking {
+  id             String    @id @default(uuid())
+  travelPlanId   String
+  travelPlan     TravelPlan @relation(fields: [travelPlanId], references: [id])
+  flightNumber   String
+  departure      DateTime
+  arrival        DateTime
+
+  @@map("flight_bookings")
+}
+
+// ==============
+// DOCUMENTS & CONTRACTS
+// ==============
+
+model ContractRecord {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  type           String // SPLIT_SHEET, MANAGEMENT, DISTRIBUTION
+  status         String    @default("PENDING_REVIEW")
+  
+  summaries      ContractSummary[]
+
+  @@map("contract_records")
+}
+
+model ContractSummary {
+  id               String         @id @default(uuid())
+  contractRecordId String
+  contractRecord   ContractRecord @relation(fields: [contractRecordId], references: [id])
+  summaryText      String
+  redFlags         String[]
+
+  @@map("contract_summaries")
+}
+
+model Document {
+  id             String    @id @default(uuid())
+  url            String
+  type           String
+  tags           String[]
+
+  @@map("documents")
+}
+
+// ==============
+// ESCALATION & ADMIN
+// ==============
+
+model ApprovalRequest {
+  id             String    @id @default(uuid())
+  requesterId    String
+  requester      User      @relation("ApprovalRequester", fields: [requesterId], references: [id])
+  type           String // ONBOARDING, CONTRACT_SIGN, FINANCIAL
+  payload        Json
+  status         String    @default("PENDING") // PENDING, APPROVED, DENIED
+  
+  createdAt      DateTime  @default(now())
+
+  @@map("approval_requests")
+}
+
+model AuditLog {
+  id             String    @id @default(uuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  action         String
+  entityType     String
+  entityId       String
+  payload        Json
+  timestamp      DateTime  @default(now())
+
+  @@map("audit_logs")
+}
+
+model RiskFlag {
+  id             String    @id @default(uuid())
+  severity       String // HIGH, MEDIUM, LOW
+  reason         String
+  recommendedFix String
+  resolved       Boolean   @default(false)
+
+  @@map("risk_flags")
+}
+
+// ==============
+// AGENT REPORTS
+// ==============
+
+model ScoutingReport {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  score          Int
+  notes          String
+
+  @@map("scouting_reports")
+}
+
+model ReadinessAssessment {
+  id             String    @id @default(uuid())
+  artistId       String
+  artist         ArtistProfile @relation(fields: [artistId], references: [id])
+  gapReport      String
+
+  @@map("readiness_assessments")
+}

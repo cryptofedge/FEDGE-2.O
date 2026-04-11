@@ -1,0 +1,9 @@
+{
+  "name": "@fedge/agents",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@fedge/database": "workspace:*",
+    "@anthropic-ai/sdk": "^0.20.0"
+  }
+}

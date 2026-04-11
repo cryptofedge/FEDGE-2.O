@@ -1,0 +1,16 @@
+{
+  "name": "@fedge/database",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "generate": "prisma generate",
+    "push": "prisma db push"
+  },
+  "dependencies": {
+    "@prisma/client": "latest"
+  },
+  "devDependencies": {
+    "prisma": "latest",
+    "typescript": "latest"
+  }
+}
