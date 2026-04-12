@@ -846,7 +846,7 @@
       <button class="audio-vol" onclick="toggleMute()">&#128266;</button>
     </div>
   </div>
-  <audio id="themeAudio" src="https://raw.githubusercontent.com/cryptofedge/FEDGE-2.O/main/theme.mp3"></audio>
+  <audio id="themeAudio" src="theme.mp3"></audio>
 </div>
 <script>
 const audio=document.getElementById("themeAudio");
@@ -859,6 +859,7 @@ function seekAudio(e){const r=e.currentTarget.getBoundingClientRect();audio.curr
 function toggleMute(){audio.muted=!audio.muted;document.querySelector(".audio-vol").innerHTML=audio.muted?"&#128264;":"&#128266;";}
 </script></body>
 </html>
+
 
 
 
