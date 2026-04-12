@@ -813,5 +813,50 @@
   }, {threshold:0.1});
   document.querySelectorAll('.cap-card,.step,.stat,.contact-item').forEach(el=>observer.observe(el));
 </script>
-</body>
+<style>
+.audio-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(0,0,0,0.95);border-top:1px solid rgba(255,122,0,0.3);backdrop-filter:blur(20px);padding:12px 40px;}
+.audio-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;gap:24px;}
+.audio-info{display:flex;align-items:center;gap:12px;min-width:200px;}
+.audio-dot{width:8px;height:8px;background:#FF7A00;border-radius:50%;animation:blink 1.5s ease-in-out infinite;flex-shrink:0;}
+.audio-title{font-family:"Bebas Neue",sans-serif;font-size:14px;letter-spacing:2px;color:#fff;}
+.audio-sub{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:1px;}
+.audio-controls{display:flex;align-items:center;gap:16px;flex:1;max-width:600px;}
+.audio-btn{background:#FF7A00;border:none;width:36px;height:36px;border-radius:50%;color:#000;font-size:14px;cursor:pointer;flex-shrink:0;transition:all 0.2s;}
+.audio-btn:hover{background:#ff9533;transform:scale(1.1);}
+.audio-progress-wrap{flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;cursor:pointer;}
+.audio-progress{height:100%;background:#FF7A00;border-radius:2px;width:0%;}
+.audio-time{font-size:11px;color:rgba(255,255,255,0.45);min-width:36px;}
+.audio-vol{background:none;border:none;color:rgba(255,255,255,0.45);font-size:16px;cursor:pointer;}
+</style>
+<div class="audio-bar">
+  <div class="audio-inner">
+    <div class="audio-info">
+      <div class="audio-dot"></div>
+      <div>
+        <div class="audio-title">FEDGE 2.O — Straight Street (Drill)</div>
+        <div class="audio-sub">Eclat Universe · Official Theme</div>
+      </div>
+    </div>
+    <div class="audio-controls">
+      <button class="audio-btn" id="playBtn" onclick="togglePlay()">&#9654;</button>
+      <div class="audio-progress-wrap" onclick="seekAudio(event)">
+        <div class="audio-progress" id="audioProgress"></div>
+      </div>
+      <div class="audio-time" id="audioTime">0:00</div>
+      <button class="audio-vol" onclick="toggleMute()">&#128266;</button>
+    </div>
+  </div>
+  <audio id="themeAudio" src="https://raw.githubusercontent.com/cryptofedge/FEDGE-2.O/main/theme.mp3"></audio>
+</div>
+<script>
+const audio=document.getElementById("themeAudio");
+const playBtn=document.getElementById("playBtn");
+const progress=document.getElementById("audioProgress");
+const timeEl=document.getElementById("audioTime");
+audio.addEventListener("timeupdate",()=>{const p=(audio.currentTime/audio.duration)*100;progress.style.width=p+"%";const m=Math.floor(audio.currentTime/60);const s=Math.floor(audio.currentTime%60).toString().padStart(2,"0");timeEl.textContent=m+":"+s;});
+function togglePlay(){if(audio.paused){audio.play();playBtn.innerHTML="&#9646;&#9646;";}else{audio.pause();playBtn.innerHTML="&#9654;";}}
+function seekAudio(e){const r=e.currentTarget.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;}
+function toggleMute(){audio.muted=!audio.muted;document.querySelector(".audio-vol").innerHTML=audio.muted?"&#128264;":"&#128266;";}
+</script></body>
 </html>
+
