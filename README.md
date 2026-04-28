@@ -37,3 +37,49 @@ FEDGE 2.O is an intelligent AI assistant built to genuinely serve the people who
 
 ## Repository Structure
 
+
+---
+
+## ðŸ“‹ License & Brand
+
+![FEDGE 2.O Logo](FEDGE-2O-Logo.png)
+
+### FEDGE 2.O | Powered by Rafael Fellito Rodriguez & Eclat Universe
+
+**Â© 2026 FEDGE 2.O. All rights reserved.**
+
+This project is part of the FEDGE 2.O ecosystem and is protected under full intellectual property rights reserved by Rafael Fellito Rodriguez and Eclat Universe.
+
+### License Details
+
+- **Type:** Proprietary - All Rights Reserved
+- **Owner:** Rafael Fellito Rodriguez & Eclat Universe
+- **Brand:** FEDGE 2.O
+- **Status:** Protected & Confidential
+
+### Key Rights
+
+âœ“ **All intellectual property retained**
+âœ“ **Reproduction prohibited without permission**
+âœ“ **Distribution rights reserved**
+âœ“ **Derivative works not permitted**
+âœ“ **Commercial use requires authorization**
+
+### Attribution
+
+When referencing this software, please include:
+- FEDGE 2.O
+- Rafael Fellito Rodriguez
+- Eclat Universe
+
+### Inquiries
+
+For licensing, partnerships, or usage permissions:
+ðŸ“§ **cryptofedge@gmail.com**
+
+---
+
+**Learn more:** [Full License](LICENSE)
+
+---
+
