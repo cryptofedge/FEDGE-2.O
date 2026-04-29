@@ -41,7 +41,7 @@ FEDGE 2.O is an intelligent AI assistant built to genuinely serve the people who
 
 ## License & Brand
 
-<img src="FEDGE-2O-Logo.png" alt="FEDGE 2.O Logo" width="120" height="120">
+<img src="https://raw.githubusercontent.com/cryptofedge/FEDGE2.O/main/FEDGE-2O-Logo.png" alt="FEDGE 2.O Logo" width="120" height="120">
 
 ### FEDGE 2.O | Powered by Rafael Fellito Rodriguez and Eclat Universe
 
