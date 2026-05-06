@@ -37,6 +37,17 @@
 - WhatsApp: +1 (718) 753-3362
 - **I (FEDGE 2.O) am Mando El Pelado's Digital Marketing Manager**
 
+## 💄 Sensual Make Up (Client)
+- Brand: Sensual Make Up
+- Founder: Maria Grafas aka "Corazon"
+- Website: https://www.sensualmakeup.beauty
+- Store: Shopify (sensual-makeup-shop-2.myshopify.com)
+- Products: Eyeshadows, foundations, lip colors, skincare
+- Services: Makeup workshops
+- Mission: Celebrate confidence & self-expression through beauty
+- IG: Active on Instagram
+- Status: Éclat Universe / FEDGE 2.O marketing client
+
 ## 🏢 Éclat Universe
 - The organization/brand behind FEDGE 2.O
 - Fellito is founder and operator
