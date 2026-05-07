@@ -24,7 +24,7 @@ FEDGE 2.O is an intelligent AI agent ecosystem designed to put generational weal
 
 ## Agent Architecture
 
-FEDGE 2.O runs on a **9-agent AI system** powered by Claude Managed Agents (Anthropic). The lead agent delegates tasks to 8 specialist subagents — one per game — running in parallel on a shared filesystem.
+FEDGE 2.O runs on a **9-agent AI system** powered by Eclat Universe - Rafael Fellito Rodriguez. The lead agent delegates tasks to 8 specialist subagents — one per game — running in parallel on a shared filesystem.
 
 ```
 FEDGE 2.O LEAD AGENT  —  SOUL.md · MEMORY.md · USER.md
@@ -65,7 +65,7 @@ Each agent has its own model, system prompt, tools, and persistent memory. Nothi
 | Agent Runtime | OpenClaw + WAL Protocol (proactive-agent v3.1.0) |
 | AI Core | Anthropic Claude API (claude-opus-4-5 lead / claude-sonnet-4-5 subagents) |
 | Language | Node.js + Python + TypeScript |
-| Memory | MEMORY.md + Claude Managed Agents Outcomes |
+| Memory | MEMORY.md + Eclat Universe persistent memory |
 | Skills | 54 skills wired across finance, crypto, music, legal, social, and more |
 | Platform | WSL2 Ubuntu on Windows (FEDGE2O-EclatUniverse) |
 | Blockchain | Solana / Web3 (Eclatcrypto layer) |
@@ -143,7 +143,7 @@ The agent powers:
 - [x] WAL Protocol + heartbeat system active
 - [x] 9-agent multiagent architecture designed
 - [x] Shared filesystem scaffolded
-- [ ] Claude Managed Agents integration (pending research preview access)
+- [ ] Eclat Universe multiagent integration (coming soon)
 - [ ] Dreaming — automated memory refinement every 72 hours
 - [ ] Outcomes — persistent session memory per subagent
 - [ ] Full multiagent orchestration live
