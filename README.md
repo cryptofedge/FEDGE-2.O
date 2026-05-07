@@ -152,7 +152,7 @@ The agent powers:
 
 ## License & Brand
 
-<img src=-FEDGE-2O-Logo.png- alt=-FEDGE 2.O Logo- width=-120- height=-120->
+<img src="FEDGE-2O-Logo.png" alt="FEDGE 2.O Logo" width="120" height="120">
 
 ### FEDGE 2.O | Powered by Rafael Fellito Rodriguez and Eclat Universe
 
@@ -190,6 +190,7 @@ Email: **cryptofedge@gmail.com**
 ---
 
 **Learn more:** [Full License](LICENSE)
+
 
 
 
