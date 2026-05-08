@@ -1,4 +1,4 @@
-﻿﻿# FEDGE 2.O -” Generational Wealth Ecosystem
+﻿﻿﻿# FEDGE 2.O -” Generational Wealth Ecosystem
 
 > **Built with purpose. Powered by NYC energy. Designed for the culture.**
 > The AI brain behind a full suite of financial education games and tools -” built by **Eclat Universe**, powered by **Rafael Fellito Rodriguez Jr.**
