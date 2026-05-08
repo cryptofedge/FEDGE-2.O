@@ -169,11 +169,11 @@ This project is part of the FEDGE 2.O ecosystem and is protected under full inte
 
 ### Key Rights
 
-âœ“ **All intellectual property retained**
-âœ“ **Reproduction prohibited without permission**
-âœ“ **Distribution rights reserved**
-âœ“ **Derivative works not permitted**
-âœ“ **Commercial use requires authorization**
+- **All intellectual property retained**
+- **Reproduction prohibited without permission**
+- **Distribution rights reserved**
+- **Derivative works not permitted**
+- **Commercial use requires authorization**
 
 ### Attribution
 
