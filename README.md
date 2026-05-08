@@ -27,7 +27,7 @@ FEDGE 2.O is an intelligent AI agent ecosystem designed to put generational weal
 FEDGE 2.O runs on a **9-agent AI system** powered by Eclat Universe - Rafael Fellito Rodriguez. The lead agent delegates tasks to 8 specialist subagents -” one per game -” running in parallel on a shared filesystem.
 
 ```
-FEDGE 2.O LEAD AGENT  -”  SOUL.md Â· MEMORY.md Â· USER.md
+FEDGE 2.O LEAD AGENT  -”  SOUL.md · MEMORY.md · USER.md
 |
 |-- credit-agent          ->  fedge-2-credit-game
 |-- trustfund-agent       ->  fedge2-trust-fund-game
@@ -156,7 +156,7 @@ The agent powers:
 
 ### FEDGE 2.O | Powered by Rafael Fellito Rodriguez and Eclat Universe
 
-**Â© 2026 FEDGE 2.O. All rights reserved.**
+**© 2026 FEDGE 2.O. All rights reserved.**
 
 This project is part of the FEDGE 2.O ecosystem and is protected under full intellectual property rights reserved by Rafael Fellito Rodriguez and Eclat Universe.
 
@@ -190,6 +190,7 @@ Email: **cryptofedge@gmail.com**
 ---
 
 **Learn more:** [Full License](LICENSE)
+
 
 
 
