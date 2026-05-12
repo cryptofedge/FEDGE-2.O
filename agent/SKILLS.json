@@ -1,0 +1,1570 @@
+{
+  "version": "2.0.0",
+  "agent": "FEDGE 2.O",
+  "generated": "2026-05-12",
+  "totalSkills": 108,
+  "skills": [
+    {
+      "slug": "ai-legal-standard-v2",
+      "emoji": "⚖️",
+      "source": "repo",
+      "description": "AI-powered legal standards and compliance guidance. Draft, review, and interpret legal documents, contracts, and compliance frameworks.",
+      "triggers": [
+        "legal standard",
+        "ai legal",
+        "compliance",
+        "legal review",
+        "contract review"
+      ]
+    },
+    {
+      "slug": "ai-podcast-creation",
+      "emoji": "🎙️",
+      "source": "repo",
+      "description": "End-to-end AI podcast creation — script writing, episode planning, show notes, intros/outros, and distribution strategy.",
+      "triggers": [
+        "podcast",
+        "create podcast",
+        "podcast script",
+        "episode",
+        "show notes",
+        "podcast strategy"
+      ]
+    },
+    {
+      "slug": "api-gateway",
+      "emoji": "🔌",
+      "source": "repo",
+      "description": "API gateway management — route requests, manage endpoints, handle auth, rate limiting, and integrate external APIs into FEDGE.",
+      "triggers": [
+        "api gateway",
+        "api route",
+        "endpoint",
+        "api integration",
+        "rest api",
+        "webhook"
+      ]
+    },
+    {
+      "slug": "betting",
+      "emoji": "🎲",
+      "source": "repo",
+      "description": "Sports betting analysis, odds comparison, bankroll management, and data-driven bet tracking.",
+      "triggers": [
+        "betting",
+        "odds",
+        "sports bet",
+        "wager",
+        "bankroll",
+        "parlay",
+        "moneyline"
+      ]
+    },
+    {
+      "slug": "business",
+      "emoji": "💼",
+      "source": "repo",
+      "description": "Core business operations support — strategy, operations, team management, KPIs, reporting, and general business advisory.",
+      "triggers": [
+        "business strategy",
+        "operations",
+        "KPI",
+        "business advice",
+        "company",
+        "startup",
+        "revenue"
+      ]
+    },
+    {
+      "slug": "business-model-canvas",
+      "emoji": "🖼️",
+      "source": "repo",
+      "description": "Build and iterate Business Model Canvas — value propositions, customer segments, channels, revenue streams, and cost structures.",
+      "triggers": [
+        "business model canvas",
+        "BMC",
+        "value proposition",
+        "customer segments",
+        "revenue streams",
+        "canvas"
+      ]
+    },
+    {
+      "slug": "business-plan",
+      "emoji": "📋",
+      "source": "repo",
+      "description": "Generate comprehensive business plans with executive summary, market analysis, financial projections, and go-to-market strategy.",
+      "triggers": [
+        "business plan",
+        "executive summary",
+        "financial projections",
+        "go-to-market",
+        "market analysis"
+      ]
+    },
+    {
+      "slug": "calendar-manager",
+      "emoji": "📅",
+      "source": "repo",
+      "description": "Calendar management — schedule events, set reminders, manage appointments, and coordinate availability across the FEDGE team.",
+      "triggers": [
+        "calendar",
+        "schedule",
+        "appointment",
+        "reminder",
+        "book meeting",
+        "set event",
+        "availability"
+      ]
+    },
+    {
+      "slug": "canva",
+      "emoji": "🎨",
+      "source": "repo",
+      "description": "Canva design workflow — graphics, social posts, presentations, flyers, and brand assets. Prompt generation for Canva AI.",
+      "triggers": [
+        "canva",
+        "design graphic",
+        "social media graphic",
+        "flyer",
+        "canva template",
+        "canva ai"
+      ]
+    },
+    {
+      "slug": "capcut",
+      "emoji": "🎬",
+      "source": "repo",
+      "description": "CapCut video editing — templates, transitions, effects, captions, and short-form video creation for TikTok and Instagram Reels.",
+      "triggers": [
+        "capcut",
+        "video edit",
+        "reels",
+        "tiktok video",
+        "short video",
+        "caption video",
+        "capcut effect"
+      ]
+    },
+    {
+      "slug": "card-optimizer",
+      "emoji": "💳",
+      "source": "repo",
+      "description": "Credit card rewards optimization — maximize cashback, points, and travel rewards. Compare cards per spend category.",
+      "triggers": [
+        "credit card rewards",
+        "card optimizer",
+        "cashback",
+        "travel points",
+        "best credit card",
+        "rewards points"
+      ]
+    },
+    {
+      "slug": "claude-code",
+      "emoji": "🤖",
+      "source": "repo",
+      "description": "Claude Code integration — agentic coding, terminal-based AI coding, file editing, repo management, and automated dev workflows.",
+      "triggers": [
+        "claude code",
+        "agentic coding",
+        "code agent",
+        "ai coding",
+        "claude terminal"
+      ]
+    },
+    {
+      "slug": "claude-cowork",
+      "emoji": "🧑‍💻",
+      "source": "repo",
+      "description": "Claude Cowork desktop — automate file and task management for non-developers. Streamline repetitive workflows using AI.",
+      "triggers": [
+        "cowork",
+        "claude cowork",
+        "desktop automation",
+        "file management",
+        "workflow automation"
+      ]
+    },
+    {
+      "slug": "claude-design",
+      "emoji": "✏️",
+      "source": "repo",
+      "description": "Claude Design — AI-assisted UI/UX design, wireframes, component specs, and design system guidance.",
+      "triggers": [
+        "claude design",
+        "ui design",
+        "ux design",
+        "wireframe",
+        "design system",
+        "ai design"
+      ]
+    },
+    {
+      "slug": "coding-agent",
+      "emoji": "💻",
+      "source": "repo",
+      "description": "Full-stack coding agent — write, debug, refactor, and deploy code across Node.js, TypeScript, Python, React Native, and Solana/Web3.",
+      "triggers": [
+        "write code",
+        "debug",
+        "refactor",
+        "build feature",
+        "fix bug",
+        "code review",
+        "typescript",
+        "nodejs",
+        "python"
+      ]
+    },
+    {
+      "slug": "creatify-ai",
+      "emoji": "📹",
+      "source": "repo",
+      "description": "Creatify AI video ads — product video ads from URLs, UGC-style videos, and ad creatives for e-commerce and brands.",
+      "triggers": [
+        "creatify",
+        "video ad",
+        "product video",
+        "ugc video",
+        "ai video ad",
+        "ad creative video"
+      ]
+    },
+    {
+      "slug": "credit",
+      "emoji": "📊",
+      "source": "repo",
+      "description": "Credit education and building — credit scores, tradelines, utilization, dispute processes, and credit-building roadmaps for FEDGE users.",
+      "triggers": [
+        "credit score",
+        "credit building",
+        "improve credit",
+        "credit education",
+        "tradelines",
+        "credit utilization"
+      ]
+    },
+    {
+      "slug": "credit-repair-skill",
+      "emoji": "🔧",
+      "source": "repo",
+      "description": "Step-by-step credit repair — dispute inaccurate items, write dispute letters, negotiate with creditors, and rebuild credit history.",
+      "triggers": [
+        "credit repair",
+        "dispute letter",
+        "fix credit",
+        "remove negative items",
+        "credit bureau dispute"
+      ]
+    },
+    {
+      "slug": "cross-session-tasks",
+      "emoji": "🔄",
+      "source": "repo",
+      "description": "Persistent cross-session task tracking — maintain context, goals, and progress across multiple chat sessions.",
+      "triggers": [
+        "cross session",
+        "remember this",
+        "persist task",
+        "continue last session",
+        "session memory",
+        "ongoing task"
+      ]
+    },
+    {
+      "slug": "cybersecurity",
+      "emoji": "🔒",
+      "source": "repo",
+      "description": "Cybersecurity guidance — threat analysis, API key security, password hygiene, secure coding, and incident response for FEDGE.",
+      "triggers": [
+        "cybersecurity",
+        "security",
+        "api key exposed",
+        "password",
+        "threat",
+        "secure code",
+        "vulnerability",
+        "2fa"
+      ]
+    },
+    {
+      "slug": "discord",
+      "emoji": "💬",
+      "source": "repo",
+      "description": "Discord server management — bot setup, community management, channel organization, role management, and Discord growth.",
+      "triggers": [
+        "discord",
+        "discord server",
+        "discord bot",
+        "discord community",
+        "discord roles"
+      ]
+    },
+    {
+      "slug": "distrokid",
+      "emoji": "🎵",
+      "source": "repo",
+      "description": "DistroKid music distribution — upload releases, manage royalties, set up splits, pitch to playlists, distribute to streaming platforms.",
+      "triggers": [
+        "distrokid",
+        "music distribution",
+        "upload music",
+        "streaming platforms",
+        "royalty splits",
+        "release music"
+      ]
+    },
+    {
+      "slug": "document-reader",
+      "emoji": "📄",
+      "source": "repo",
+      "description": "Read, extract, and summarize content from documents (PDF, DOCX, TXT). Answer questions about document contents.",
+      "triggers": [
+        "read document",
+        "extract from pdf",
+        "summarize document",
+        "document reader",
+        "analyze document"
+      ]
+    },
+    {
+      "slug": "elevenlabs",
+      "emoji": "🔊",
+      "source": "repo",
+      "description": "ElevenLabs AI voice generation — realistic voiceovers, voice cloning, and professional audio narration.",
+      "triggers": [
+        "elevenlabs",
+        "voice generation",
+        "ai voiceover",
+        "voice clone",
+        "text to speech elevenlabs",
+        "ai voice"
+      ]
+    },
+    {
+      "slug": "event-management",
+      "emoji": "🎪",
+      "source": "repo",
+      "description": "Event planning and management — concerts, pop-ups, launches, and community events for Mando, Sensual Make Up, and FEDGE.",
+      "triggers": [
+        "event",
+        "concert",
+        "show",
+        "event planning",
+        "venue",
+        "popup",
+        "launch event",
+        "ticket sales"
+      ]
+    },
+    {
+      "slug": "fiverr",
+      "emoji": "💚",
+      "source": "repo",
+      "description": "Fiverr freelance strategy — winning gig listings, optimized descriptions, pricing tiers, and growing a Fiverr business.",
+      "triggers": [
+        "fiverr",
+        "gig",
+        "freelance",
+        "fiverr listing",
+        "fiverr gig",
+        "fiverr profile"
+      ]
+    },
+    {
+      "slug": "gamma-ai",
+      "emoji": "⚡",
+      "source": "repo",
+      "description": "Gamma AI — beautiful decks, one-pagers, and websites in minutes using AI-powered Gamma.",
+      "triggers": [
+        "gamma",
+        "gamma ai",
+        "gamma presentation",
+        "ai presentation",
+        "gamma deck",
+        "gamma website"
+      ]
+    },
+    {
+      "slug": "genviral-social-media",
+      "emoji": "🚀",
+      "source": "repo",
+      "description": "GenViral content engine — viral hooks, captions, carousel scripts, and content calendars for maximum reach.",
+      "triggers": [
+        "genviral",
+        "viral content",
+        "viral hook",
+        "viral post",
+        "go viral",
+        "viral caption"
+      ]
+    },
+    {
+      "slug": "gh-issues",
+      "emoji": "🐛",
+      "source": "repo",
+      "description": "GitHub Issues management — create, update, label, assign, and triage issues across FEDGE repos. Bug tracking and sprint planning.",
+      "triggers": [
+        "github issue",
+        "create issue",
+        "bug report",
+        "gh issue",
+        "triage",
+        "open issue",
+        "issue label"
+      ]
+    },
+    {
+      "slug": "github",
+      "emoji": "🐙",
+      "source": "repo",
+      "description": "GitHub repo management — commits, branches, PRs, actions, secrets, and full workflow for all @cryptofedge repositories.",
+      "triggers": [
+        "github",
+        "git",
+        "commit",
+        "push",
+        "pull request",
+        "branch",
+        "merge",
+        "repo",
+        "git status"
+      ]
+    },
+    {
+      "slug": "google-ads",
+      "emoji": "🔍",
+      "source": "repo",
+      "description": "Google Ads campaign management — search ads, display ads, keyword research, bidding strategy, ad copy, and optimization.",
+      "triggers": [
+        "google ads",
+        "search ads",
+        "keyword research",
+        "google campaign",
+        "ppc",
+        "adwords",
+        "ad copy"
+      ]
+    },
+    {
+      "slug": "google-analytics",
+      "emoji": "📈",
+      "source": "repo",
+      "description": "Google Analytics 4 — track traffic, conversions, user behavior, and campaign performance across FEDGE web properties.",
+      "triggers": [
+        "google analytics",
+        "GA4",
+        "analytics",
+        "traffic report",
+        "conversion tracking",
+        "website analytics"
+      ]
+    },
+    {
+      "slug": "grant",
+      "emoji": "💰",
+      "source": "repo",
+      "description": "Grant research and discovery — federal, state, private, and nonprofit grants for FEDGE 2.O and community development.",
+      "triggers": [
+        "grant",
+        "find grants",
+        "grant research",
+        "funding",
+        "grant opportunity",
+        "apply for grant"
+      ]
+    },
+    {
+      "slug": "grant-writing-framework",
+      "emoji": "✍️",
+      "source": "repo",
+      "description": "Professional grant writing — compelling proposals, narratives, budgets, and maximizing funding application success.",
+      "triggers": [
+        "grant writing",
+        "grant proposal",
+        "grant application",
+        "grant narrative",
+        "write grant",
+        "grant budget"
+      ]
+    },
+    {
+      "slug": "graphic-design-mastery",
+      "emoji": "🖌️",
+      "source": "repo",
+      "description": "Graphic design principles — typography, color theory, layout, brand identity, and production-ready design for digital and print.",
+      "triggers": [
+        "graphic design",
+        "typography",
+        "color palette",
+        "brand identity",
+        "logo design",
+        "layout",
+        "visual design"
+      ]
+    },
+    {
+      "slug": "healthcheck",
+      "emoji": "🏥",
+      "source": "repo",
+      "description": "System healthcheck — monitor bot uptime, skill load status, API connections, memory usage, and FEDGE 2.O ecosystem health.",
+      "triggers": [
+        "healthcheck",
+        "system status",
+        "bot health",
+        "check status",
+        "is bot running",
+        "ping",
+        "uptime"
+      ]
+    },
+    {
+      "slug": "heygen-ai",
+      "emoji": "🎭",
+      "source": "repo",
+      "description": "HeyGen AI avatar videos — talking-head videos, lip-sync translations, and spokesperson videos for marketing.",
+      "triggers": [
+        "heygen",
+        "ai avatar",
+        "talking head video",
+        "heygen video",
+        "ai spokesperson",
+        "lip sync video"
+      ]
+    },
+    {
+      "slug": "higgsfield-ai",
+      "emoji": "🎥",
+      "source": "repo",
+      "description": "Higgsfield AI cinematic video generation — stunning short-form cinematic videos, social content, and brand films.",
+      "triggers": [
+        "higgsfield",
+        "higgsfield ai",
+        "cinematic video",
+        "ai film",
+        "cinematic ai",
+        "video generation"
+      ]
+    },
+    {
+      "slug": "hyperframes",
+      "emoji": "🖼️",
+      "source": "repo",
+      "description": "Hyperframes content strategy — structured content frames, story arcs, and narrative frameworks for high-converting content.",
+      "triggers": [
+        "hyperframes",
+        "content frame",
+        "story arc",
+        "content structure",
+        "narrative framework"
+      ]
+    },
+    {
+      "slug": "image-generation",
+      "emoji": "🎨",
+      "source": "repo",
+      "description": "AI image generation — DALL-E, Midjourney, Stable Diffusion, and Flux. Prompt engineering for consistent brand imagery.",
+      "triggers": [
+        "generate image",
+        "create image",
+        "ai image",
+        "dall-e",
+        "midjourney",
+        "image prompt",
+        "flux",
+        "make a picture"
+      ]
+    },
+    {
+      "slug": "influencer-marketing",
+      "emoji": "📱",
+      "source": "repo",
+      "description": "Influencer marketing — identify creators, outreach scripts, campaign briefs, rate negotiation, and ROI tracking for brand collabs.",
+      "triggers": [
+        "influencer",
+        "creator marketing",
+        "influencer outreach",
+        "brand deal",
+        "collab",
+        "ugc creator"
+      ]
+    },
+    {
+      "slug": "investing-analyst",
+      "emoji": "📊",
+      "source": "repo",
+      "description": "Investment analysis — stocks, crypto, real estate, and alternatives. Portfolio strategy, risk assessment, and generational wealth.",
+      "triggers": [
+        "investing",
+        "investment analysis",
+        "portfolio",
+        "asset allocation",
+        "wealth building",
+        "investment strategy",
+        "ROI"
+      ]
+    },
+    {
+      "slug": "klaviyo",
+      "emoji": "📧",
+      "source": "repo",
+      "description": "Klaviyo email marketing — flows, segments, campaigns, and automations for Sensual Make Up and FEDGE e-commerce.",
+      "triggers": [
+        "klaviyo",
+        "email marketing",
+        "email flow",
+        "email automation",
+        "email campaign",
+        "abandoned cart email"
+      ]
+    },
+    {
+      "slug": "legal-ai-counsel",
+      "emoji": "👨‍⚖️",
+      "source": "repo",
+      "description": "AI legal counsel — contract drafting, terms of service, privacy policies, business formation, and legal risk assessment.",
+      "triggers": [
+        "legal counsel",
+        "contract",
+        "terms of service",
+        "privacy policy",
+        "llc",
+        "legal advice",
+        "legal document",
+        "NDA"
+      ]
+    },
+    {
+      "slug": "linktree",
+      "emoji": "🌳",
+      "source": "repo",
+      "description": "Linktree and link-in-bio optimization — structure, design, and strategy for bio link pages across all FEDGE and Eclat Universe brands.",
+      "triggers": [
+        "linktree",
+        "link in bio",
+        "bio link",
+        "link page",
+        "bio page",
+        "link hub"
+      ]
+    },
+    {
+      "slug": "market-sentiment-pulse",
+      "emoji": "📡",
+      "source": "repo",
+      "description": "Real-time market sentiment — crypto and stock mood indicators, fear and greed index, social sentiment, and trend signals.",
+      "triggers": [
+        "market sentiment",
+        "fear greed",
+        "market mood",
+        "crypto sentiment",
+        "bullish",
+        "bearish",
+        "market pulse"
+      ]
+    },
+    {
+      "slug": "mens-mental-health",
+      "emoji": "🧠",
+      "source": "repo",
+      "description": "Men's mental health support — stress management, emotional intelligence, mindset coaching, and wellness resources for men.",
+      "triggers": [
+        "men's mental health",
+        "stress",
+        "mindset",
+        "emotional health",
+        "men's wellness",
+        "anxiety men"
+      ]
+    },
+    {
+      "slug": "meta-ads",
+      "emoji": "📘",
+      "source": "repo",
+      "description": "Meta (Facebook/Instagram) ads — campaign setup, audience targeting, creative strategy, pixel tracking, and ad optimization.",
+      "triggers": [
+        "meta ads",
+        "facebook ads",
+        "instagram ads",
+        "meta campaign",
+        "ad targeting",
+        "facebook pixel",
+        "ad creative"
+      ]
+    },
+    {
+      "slug": "music-industry-manager",
+      "emoji": "🎸",
+      "source": "repo",
+      "description": "Music industry management — artist development, release strategy, label relations, sync licensing, royalties, and music biz ops for Mando.",
+      "triggers": [
+        "music industry",
+        "artist manager",
+        "release strategy",
+        "music business",
+        "label",
+        "sync license",
+        "artist development"
+      ]
+    },
+    {
+      "slug": "music-manager-pro",
+      "emoji": "🎤",
+      "source": "repo",
+      "description": "Pro music management — booking, tour management, press kit creation, media outreach, brand partnerships, and artist career roadmapping.",
+      "triggers": [
+        "music manager",
+        "booking",
+        "tour",
+        "press kit",
+        "media outreach",
+        "artist brand",
+        "music career"
+      ]
+    },
+    {
+      "slug": "node-connect",
+      "emoji": "🔗",
+      "source": "repo",
+      "description": "Node.js connection utilities — DB connections, API clients, WebSocket connections, and service integrations across FEDGE stack.",
+      "triggers": [
+        "node connect",
+        "database connection",
+        "websocket",
+        "api client",
+        "node integration"
+      ]
+    },
+    {
+      "slug": "normieclaw-legal-docs-pro",
+      "emoji": "📝",
+      "source": "repo",
+      "description": "NormieClaw legal docs pro — plain-English legal document generation, contracts, agreements, and waivers for everyday business use.",
+      "triggers": [
+        "legal doc",
+        "contract template",
+        "agreement",
+        "waiver",
+        "normieclaw",
+        "simple contract"
+      ]
+    },
+    {
+      "slug": "notion",
+      "emoji": "📓",
+      "source": "repo",
+      "description": "Notion workspace management — pages, databases, templates, and knowledge bases for FEDGE project management.",
+      "triggers": [
+        "notion",
+        "notion page",
+        "notion database",
+        "notion template",
+        "knowledge base",
+        "notion workspace"
+      ]
+    },
+    {
+      "slug": "nutritionist",
+      "emoji": "🥗",
+      "source": "repo",
+      "description": "Personalized nutrition guidance — meal plans, macro calculations, supplement recommendations, and dietary strategies.",
+      "triggers": [
+        "nutritionist",
+        "meal plan",
+        "nutrition advice",
+        "macros",
+        "diet",
+        "supplements",
+        "healthy eating",
+        "calories"
+      ]
+    },
+    {
+      "slug": "nyc-funds-finder",
+      "emoji": "🗽",
+      "source": "repo",
+      "description": "NYC-specific funding research — city grants, small business loans, MWBE programs, and government resources for New York ventures.",
+      "triggers": [
+        "nyc funds",
+        "new york grant",
+        "nyc funding",
+        "nyc small business",
+        "MWBE",
+        "nyc loan",
+        "new york funding"
+      ]
+    },
+    {
+      "slug": "openai-api",
+      "emoji": "🤖",
+      "source": "repo",
+      "description": "OpenAI API integration — GPT models, DALL-E, Whisper, embeddings, fine-tuning, and best practices for AI-powered features.",
+      "triggers": [
+        "openai",
+        "gpt",
+        "chatgpt api",
+        "openai api",
+        "dall-e api",
+        "whisper",
+        "embeddings",
+        "openai integration"
+      ]
+    },
+    {
+      "slug": "pr-press-outreach",
+      "emoji": "📰",
+      "source": "repo",
+      "description": "PR and press outreach — press releases, journalist pitching, media lists, and press campaigns for FEDGE and Eclat Universe.",
+      "triggers": [
+        "press release",
+        "PR",
+        "media outreach",
+        "journalist pitch",
+        "media coverage",
+        "press campaign",
+        "publicity"
+      ]
+    },
+    {
+      "slug": "proactive-agent",
+      "emoji": "⚡",
+      "source": "repo",
+      "description": "Proactive agent v3.1.0 (WAL Protocol) — core FEDGE 2.O agent runtime. Skill loading, memory, proactive task execution, and coordination.",
+      "triggers": [
+        "proactive agent",
+        "WAL protocol",
+        "agent runtime",
+        "skill load",
+        "fedge agent",
+        "openclaw"
+      ]
+    },
+    {
+      "slug": "proposal-writer",
+      "emoji": "📜",
+      "source": "repo",
+      "description": "Professional proposal writing — business proposals, partnership decks, sponsorship proposals, and client-facing docs for closing deals.",
+      "triggers": [
+        "proposal",
+        "write proposal",
+        "business proposal",
+        "partnership proposal",
+        "sponsorship proposal",
+        "client proposal"
+      ]
+    },
+    {
+      "slug": "real-estate-investing",
+      "emoji": "🏠",
+      "source": "repo",
+      "description": "Real estate investing strategy — deal analysis, ROI calculations, rental property evaluation, market research, and generational wealth.",
+      "triggers": [
+        "real estate investing",
+        "rental property",
+        "deal analysis",
+        "cap rate",
+        "real estate ROI",
+        "investment property"
+      ]
+    },
+    {
+      "slug": "real-estate-skill",
+      "emoji": "🏡",
+      "source": "repo",
+      "description": "Real estate toolkit — property search, market comps, listing analysis, mortgage estimates, and transaction guidance.",
+      "triggers": [
+        "real estate",
+        "property",
+        "home buying",
+        "listing",
+        "mortgage",
+        "real estate market",
+        "comps",
+        "property value"
+      ]
+    },
+    {
+      "slug": "rocket-lawyer",
+      "emoji": "🚀",
+      "source": "repo",
+      "description": "Rocket Lawyer legal services — legal document templates, attorney consultations, and business legal tools.",
+      "triggers": [
+        "rocket lawyer",
+        "legal template",
+        "attorney",
+        "legal service",
+        "business legal"
+      ]
+    },
+    {
+      "slug": "rollhub-analyst",
+      "emoji": "🎯",
+      "source": "repo",
+      "description": "Rollhub analyst — performance analytics, data modeling, and strategic insights across FEDGE business and content operations.",
+      "triggers": [
+        "rollhub",
+        "rollhub analyst",
+        "performance analytics",
+        "data modeling",
+        "business analytics"
+      ]
+    },
+    {
+      "slug": "self-improving-agent",
+      "emoji": "🧬",
+      "source": "repo",
+      "description": "Self-improving agent framework — monitors performance, identifies skill gaps, and iteratively upgrades FEDGE 2.O capabilities.",
+      "triggers": [
+        "self improving",
+        "agent upgrade",
+        "improve skills",
+        "skill gap",
+        "agent performance",
+        "self optimize"
+      ]
+    },
+    {
+      "slug": "sensual-makeup",
+      "emoji": "💄",
+      "source": "repo",
+      "description": "Sensual Make Up brand ops — product launches, content strategy, Shopify management, customer service, and beauty brand growth.",
+      "triggers": [
+        "sensual makeup",
+        "sensual make up",
+        "makeup brand",
+        "beauty brand",
+        "makeup product",
+        "cosmetics",
+        "beauty content"
+      ]
+    },
+    {
+      "slug": "session-logs",
+      "emoji": "📋",
+      "source": "repo",
+      "description": "Session logging — record, retrieve, and search conversation logs and agent activity across FEDGE 2.O sessions.",
+      "triggers": [
+        "session log",
+        "log session",
+        "activity log",
+        "conversation history",
+        "session history",
+        "log this"
+      ]
+    },
+    {
+      "slug": "shopify",
+      "emoji": "🛍️",
+      "source": "repo",
+      "description": "Shopify store management — products, inventory, orders, collections, discounts, and store optimization for FEDGE commerce.",
+      "triggers": [
+        "shopify",
+        "online store",
+        "product listing",
+        "inventory",
+        "shopify order",
+        "shopify collection",
+        "ecommerce"
+      ]
+    },
+    {
+      "slug": "shopify-ad-apps",
+      "emoji": "📲",
+      "source": "repo",
+      "description": "Shopify advertising apps — Klaviyo, Facebook Pixel, Google Shopping integrations to drive traffic and conversions.",
+      "triggers": [
+        "shopify ads",
+        "shopify marketing",
+        "shopify app",
+        "google shopping",
+        "shopify facebook",
+        "shopify pixel"
+      ]
+    },
+    {
+      "slug": "simplified-social-media",
+      "emoji": "📱",
+      "source": "repo",
+      "description": "Simplified social media — streamlined content creation, posting schedules, caption writing, and engagement for all platforms.",
+      "triggers": [
+        "social media",
+        "content creation",
+        "caption",
+        "instagram",
+        "tiktok post",
+        "twitter",
+        "social post",
+        "content calendar"
+      ]
+    },
+    {
+      "slug": "skill-creator",
+      "emoji": "🔨",
+      "source": "repo",
+      "description": "Create, modify, and optimize OpenClaw skills — build SKILL.md files, edit triggers, run evals, and benchmark FEDGE 2.O skills.",
+      "triggers": [
+        "create skill",
+        "new skill",
+        "skill creator",
+        "skill builder",
+        "modify skill",
+        "openclaw skill",
+        "SKILL.md"
+      ]
+    },
+    {
+      "slug": "slack",
+      "emoji": "💬",
+      "source": "repo",
+      "description": "Slack workspace management — send messages, manage channels, set up workflows, and integrate Slack into FEDGE team operations.",
+      "triggers": [
+        "slack",
+        "slack message",
+        "slack channel",
+        "slack notification",
+        "slack workflow",
+        "send slack"
+      ]
+    },
+    {
+      "slug": "social-media-scheduler",
+      "emoji": "🗓️",
+      "source": "repo",
+      "description": "Social media scheduling — plan, queue, and schedule posts across Instagram, TikTok, Twitter/X, Facebook, and YouTube for all FEDGE brands.",
+      "triggers": [
+        "schedule post",
+        "social scheduler",
+        "content queue",
+        "schedule content",
+        "auto post",
+        "social media schedule"
+      ]
+    },
+    {
+      "slug": "spotify-for-artists",
+      "emoji": "🎧",
+      "source": "repo",
+      "description": "Spotify for Artists — pitch songs to editorial playlists, analyze streams, manage artist profile, and grow Spotify audience for Mando.",
+      "triggers": [
+        "spotify",
+        "spotify for artists",
+        "playlist pitch",
+        "spotify streams",
+        "spotify profile",
+        "spotify marketing"
+      ]
+    },
+    {
+      "slug": "stock-strategy-backtester",
+      "emoji": "📉",
+      "source": "repo",
+      "description": "Stock strategy backtesting — Python backtests on historical data, evaluate entry/exit rules, and report strategy performance metrics.",
+      "triggers": [
+        "backtest",
+        "stock backtest",
+        "strategy backtest",
+        "historical data",
+        "trading strategy test"
+      ]
+    },
+    {
+      "slug": "stock-study",
+      "emoji": "📚",
+      "source": "repo",
+      "description": "Stock market education — fundamental and technical analysis concepts, market terminology, and investing frameworks for financial literacy.",
+      "triggers": [
+        "stock study",
+        "learn stocks",
+        "stock education",
+        "stock market basics",
+        "investing education",
+        "financial literacy"
+      ]
+    },
+    {
+      "slug": "storyclaw-alpaca-trading",
+      "emoji": "📈",
+      "source": "clawhub",
+      "description": "US stock and crypto trading via Alpaca API — paper and real trading, real-time quotes, market orders, positions, RSI strategy.",
+      "triggers": [
+        "alpaca",
+        "trade stock",
+        "buy stock",
+        "paper trading",
+        "portfolio positions",
+        "RSI trade",
+        "stock order"
+      ]
+    },
+    {
+      "slug": "stripe-payments",
+      "emoji": "💳",
+      "source": "local",
+      "description": "Payment processing via Stripe — payment links, invoicing, subscriptions, and transaction management for Eclat Universe services.",
+      "triggers": [
+        "stripe",
+        "payment link",
+        "invoice",
+        "charge client",
+        "subscription billing",
+        "get paid",
+        "payment processing"
+      ]
+    },
+    {
+      "slug": "summarize",
+      "emoji": "🧾",
+      "source": "clawhub",
+      "description": "Summarize URLs, YouTube videos, podcasts, and local files using summarize.sh CLI. Best-effort YouTube transcript extraction.",
+      "triggers": [
+        "summarize",
+        "what's this link",
+        "summarize video",
+        "transcribe youtube",
+        "summarize article"
+      ]
+    },
+    {
+      "slug": "suno-ai",
+      "emoji": "🎵",
+      "source": "local",
+      "description": "AI music generation via Suno — songs, beats, jingles, and instrumentals from text prompts. Demos, background music, branded audio.",
+      "triggers": [
+        "suno",
+        "generate music",
+        "create song",
+        "make beat",
+        "ai music",
+        "jingle",
+        "demo track"
+      ]
+    },
+    {
+      "slug": "task-manager",
+      "emoji": "📋",
+      "source": "clawhub",
+      "description": "SQLite task management — add, list, update, complete, and archive tasks with priorities P0-P3, tags, due dates, and stats.",
+      "triggers": [
+        "task",
+        "add task",
+        "list tasks",
+        "create task",
+        "task priority",
+        "complete task",
+        "todo"
+      ]
+    },
+    {
+      "slug": "therapy",
+      "emoji": "🧠",
+      "source": "clawhub",
+      "description": "Mental health awareness companion — explore emotions, therapy prep, mood tracking, and coping strategies. Not a therapist.",
+      "triggers": [
+        "therapy",
+        "mental health",
+        "emotions",
+        "mood",
+        "coping strategies",
+        "therapy prep",
+        "anxiety",
+        "stress relief"
+      ]
+    },
+    {
+      "slug": "tiktok-ads",
+      "emoji": "🎯",
+      "source": "local",
+      "description": "TikTok advertising — In-Feed Ads, Spark Ads, Branded Hashtag Challenges, TopView. Campaign setup, targeting, and music promo.",
+      "triggers": [
+        "tiktok ads",
+        "tiktok campaign",
+        "spark ads",
+        "tiktok promo",
+        "boost tiktok",
+        "tiktok marketing"
+      ]
+    },
+    {
+      "slug": "trading-devbox",
+      "emoji": "⚗️",
+      "source": "clawhub",
+      "description": "Trading strategy dev sandbox — describe an idea in plain language, get a Python backtest strategy generated and executed.",
+      "triggers": [
+        "trading devbox",
+        "backtest idea",
+        "strategy sandbox",
+        "backtrader",
+        "entry condition",
+        "take profit stop loss"
+      ]
+    },
+    {
+      "slug": "training-and-nutrition-coach",
+      "emoji": "💪",
+      "source": "clawhub",
+      "description": "Fitness coaching — workout plans, calorie/macro targets, meal plans, and recipes for fat loss, muscle gain, and recomposition.",
+      "triggers": [
+        "workout",
+        "fitness plan",
+        "calories",
+        "macros",
+        "meal plan",
+        "fat loss",
+        "muscle gain",
+        "nutrition coach"
+      ]
+    },
+    {
+      "slug": "us-stock-analysis",
+      "emoji": "📊",
+      "source": "clawhub",
+      "description": "Comprehensive US stock analysis — fundamental, technical, peer comparisons, and full investment reports with buy/hold/sell recommendations.",
+      "triggers": [
+        "analyze stock",
+        "stock report",
+        "AAPL analysis",
+        "compare stocks",
+        "is overvalued",
+        "stock recommendation"
+      ]
+    },
+    {
+      "slug": "voice-message",
+      "emoji": "🎤",
+      "source": "clawhub",
+      "description": "Voice messages via edge-tts and ffmpeg across WhatsApp, Telegram, Discord, Feishu, and Signal. Supports 15+ languages.",
+      "triggers": [
+        "voice message",
+        "send voice",
+        "text to speech",
+        "voice note",
+        "read aloud",
+        "audio message"
+      ]
+    },
+    {
+      "slug": "weather",
+      "emoji": "☔",
+      "source": "clawhub",
+      "description": "Current weather and forecasts via wttr.in — no API key needed. Conditions, 3-day forecast, rain probability for any city.",
+      "triggers": [
+        "weather",
+        "temperature",
+        "forecast",
+        "rain today",
+        "weather in",
+        "will it rain"
+      ]
+    },
+    {
+      "slug": "wix",
+      "emoji": "🌐",
+      "source": "local",
+      "description": "Wix website management — artist sites, e-commerce, booking pages, landing pages, AI builder, and SEO optimization.",
+      "triggers": [
+        "wix",
+        "build website",
+        "wix site",
+        "artist website",
+        "landing page",
+        "wix store",
+        "wix booking"
+      ]
+    },
+    {
+      "slug": "docx",
+      "emoji": "📝",
+      "source": "claude-public",
+      "description": "Create, read, edit, and export Word documents (.docx) — reports, memos, letters, templates with professional formatting.",
+      "triggers": [
+        "word doc",
+        "docx",
+        "word document",
+        "create report",
+        "write memo",
+        "letter template",
+        "word file"
+      ]
+    },
+    {
+      "slug": "pdf",
+      "emoji": "📑",
+      "source": "claude-public",
+      "description": "Full PDF toolkit — read, extract, merge, split, rotate, watermark, create, fill forms, encrypt, and OCR scanned PDFs.",
+      "triggers": [
+        "pdf",
+        "merge pdf",
+        "split pdf",
+        "fill pdf form",
+        "pdf extract",
+        "create pdf",
+        "watermark pdf",
+        "ocr pdf"
+      ]
+    },
+    {
+      "slug": "pptx",
+      "emoji": "🖼️",
+      "source": "claude-public",
+      "description": "PowerPoint creation and editing — pitch decks, presentations, and slide files with layouts, speaker notes, and brand templates.",
+      "triggers": [
+        "powerpoint",
+        "pptx",
+        "slide deck",
+        "presentation",
+        "pitch deck",
+        "slides",
+        "make a deck"
+      ]
+    },
+    {
+      "slug": "xlsx",
+      "emoji": "📊",
+      "source": "claude-public",
+      "description": "Excel/spreadsheet work — create, read, edit .xlsx files, financial models, charts, and clean messy tabular data.",
+      "triggers": [
+        "excel",
+        "xlsx",
+        "spreadsheet",
+        "financial model",
+        "csv",
+        "tabular data"
+      ]
+    },
+    {
+      "slug": "frontend-design",
+      "emoji": "🎨",
+      "source": "claude-public",
+      "description": "Production-grade frontend UI — React components, HTML/CSS layouts, dashboards, landing pages, and web apps with high design quality.",
+      "triggers": [
+        "build UI",
+        "react component",
+        "frontend",
+        "landing page",
+        "dashboard UI",
+        "web component",
+        "html layout"
+      ]
+    },
+    {
+      "slug": "gamified-learning",
+      "emoji": "🎮",
+      "source": "claude-user",
+      "description": "Gamified learning — XP systems, quests, leaderboards, badges, shard economies, and narrative curricula for FEDGE learning games.",
+      "triggers": [
+        "gamified learning",
+        "xp system",
+        "quest",
+        "leaderboard",
+        "badge",
+        "trust fund game",
+        "credit game",
+        "mental health game"
+      ]
+    },
+    {
+      "slug": "fedge-command-center",
+      "emoji": "🏛️",
+      "source": "claude-user",
+      "description": "Build and upgrade the FEDGE 2.O Command Center — Neo-Industrial HQ dashboard with command wheel, mission control, intel feed, and agent roster.",
+      "triggers": [
+        "command center",
+        "HQ dashboard",
+        "fedge HQ",
+        "command wheel",
+        "mission control",
+        "intel feed",
+        "fedge dashboard"
+      ]
+    },
+    {
+      "slug": "humanizer",
+      "emoji": "✍️",
+      "source": "claude-user",
+      "description": "Remove AI writing patterns — fix inflated language, em dashes, AI vocabulary, and make content sound naturally human.",
+      "triggers": [
+        "humanize",
+        "remove ai writing",
+        "make it sound human",
+        "ai detection",
+        "rewrite naturally",
+        "fix ai text"
+      ]
+    },
+    {
+      "slug": "mcp-builder",
+      "emoji": "🔧",
+      "source": "claude-examples",
+      "description": "Build MCP (Model Context Protocol) servers — integrate external APIs as tools for Claude and other AI agents using FastMCP or MCP SDK.",
+      "triggers": [
+        "mcp server",
+        "mcp builder",
+        "model context protocol",
+        "build mcp",
+        "mcp tool",
+        "mcp integration"
+      ]
+    },
+    {
+      "slug": "canvas-design",
+      "emoji": "🖼️",
+      "source": "claude-examples",
+      "description": "Create visual art, posters, and designs as PNG/PDF — illustrations, event flyers, brand assets, and print materials.",
+      "triggers": [
+        "create poster",
+        "design art",
+        "make flyer",
+        "visual design",
+        "brand asset",
+        "create graphic",
+        "design poster"
+      ]
+    },
+    {
+      "slug": "algorithmic-art",
+      "emoji": "🎨",
+      "source": "claude-examples",
+      "description": "Generative algorithmic art using p5.js — flow fields, particle systems, fractal patterns, and interactive visual art.",
+      "triggers": [
+        "generative art",
+        "algorithmic art",
+        "p5js",
+        "flow field",
+        "particle system",
+        "fractal",
+        "creative coding"
+      ]
+    },
+    {
+      "slug": "theme-factory",
+      "emoji": "🎭",
+      "source": "claude-examples",
+      "description": "Style artifacts with 10 pre-set themes or custom themes — consistent colors, fonts, and tokens across slides, docs, and HTML.",
+      "triggers": [
+        "theme",
+        "apply theme",
+        "color theme",
+        "style artifact",
+        "theme factory",
+        "design theme",
+        "brand theme"
+      ]
+    },
+    {
+      "slug": "web-artifacts-builder",
+      "emoji": "🏗️",
+      "source": "claude-examples",
+      "description": "Complex multi-component web artifacts using React, Tailwind CSS, and shadcn/ui — state management, routing, production-grade UIs.",
+      "triggers": [
+        "complex artifact",
+        "multi-component",
+        "react app",
+        "tailwind",
+        "shadcn",
+        "web artifact",
+        "build app artifact"
+      ]
+    },
+    {
+      "slug": "internal-comms",
+      "emoji": "📣",
+      "source": "claude-examples",
+      "description": "Internal communications — status reports, leadership updates, company newsletters, FAQs, incident reports, and project updates.",
+      "triggers": [
+        "internal comms",
+        "status report",
+        "leadership update",
+        "company newsletter",
+        "incident report",
+        "project update"
+      ]
+    },
+    {
+      "slug": "brand-guidelines",
+      "emoji": "🏷️",
+      "source": "claude-examples",
+      "description": "Apply brand colors, typography, and design standards to artifacts. Consistent visual identity across all FEDGE and Eclat Universe materials.",
+      "triggers": [
+        "brand guidelines",
+        "brand colors",
+        "brand identity",
+        "brand standards",
+        "apply branding",
+        "brand style"
+      ]
+    },
+    {
+      "slug": "slack-gif-creator",
+      "emoji": "🎞️",
+      "source": "claude-examples",
+      "description": "Animated GIF creation optimized for Slack — constraints, validation, and animation concepts for workplace communication.",
+      "triggers": [
+        "slack gif",
+        "animated gif",
+        "create gif",
+        "gif for slack",
+        "make gif",
+        "gif animation"
+      ]
+    },
+    {
+      "slug": "doc-coauthoring",
+      "emoji": "📖",
+      "source": "claude-examples",
+      "description": "Structured co-authoring workflow — documentation, proposals, technical specs, and decision docs built collaboratively with context transfer.",
+      "triggers": [
+        "coauthor",
+        "write docs",
+        "documentation",
+        "technical spec",
+        "proposal doc",
+        "decision doc",
+        "collaborative writing"
+      ]
+    },
+    {
+      "slug": "file-reading",
+      "emoji": "📂",
+      "source": "claude-public",
+      "description": "File reading router — reads uploads from /mnt/user-data/uploads/ and picks the right extraction method per file type (PDF, DOCX, XLSX, CSV, images).",
+      "triggers": [
+        "read file",
+        "open file",
+        "uploaded file",
+        "file contents",
+        "read this file",
+        "extract from file"
+      ]
+    },
+    {
+      "slug": "pdf-reading",
+      "emoji": "🔍",
+      "source": "claude-public",
+      "description": "PDF content extraction — read, inspect, extract text, rasterize pages, pull images/tables/forms from PDFs without modifying them.",
+      "triggers": [
+        "read pdf",
+        "extract pdf",
+        "pdf contents",
+        "what does pdf say",
+        "pdf text extraction",
+        "inspect pdf"
+      ]
+    },
+    {
+      "slug": "product-self-knowledge",
+      "emoji": "🤖",
+      "source": "claude-public",
+      "description": "Anthropic product facts — Claude API pricing, models, rate limits, SDK usage, Claude Code installation, and claude.ai plan details.",
+      "triggers": [
+        "claude pricing",
+        "anthropic api",
+        "claude model",
+        "claude api",
+        "rate limit",
+        "claude plans",
+        "claude code install"
+      ]
+    }
+  ]
+}
