@@ -7,7 +7,47 @@ const { Boom } = require("@hapi/boom");
 
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 
-const FEDGE_SOUL = `You are FEDGE 2.O, an AI agent built to generate generational wealth for underserved communities. You speak like a financial coach from the hood who reads Bloomberg. Direct, confident, warm, no corporate speak. Always connect money moves to real life. Keep responses under 3 sentences for WhatsApp.`;
+const path = require('path');
+const skills = [];
+const skillsDir = './skills';
+for (const folder of fs.readdirSync(skillsDir)) {
+  try {
+    const metaPath = fs.existsSync(path.join(skillsDir, folder, 'skill.json'))
+      ? path.join(skillsDir, folder, 'skill.json')
+      : path.join(skillsDir, folder, '_meta.json');
+    const contentPath = fs.existsSync(path.join(skillsDir, folder, 'SKILL.md')) 
+      ? path.join(skillsDir, folder, 'SKILL.md') 
+      : path.join(skillsDir, folder, 'skill.md');
+    if (fs.existsSync(contentPath)) {
+      const content = fs.readFileSync(contentPath, 'utf8');
+      let name = folder;
+      let triggers = [];
+      if (fs.existsSync(metaPath)) {
+        try {
+          const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+          name = meta.name || folder;
+          triggers = meta.triggers || [];
+        } catch(e) {}
+      }
+      skills.push({ name, triggers, content });
+    }
+  } catch (e) {}
+}
+console.log('✅ Loaded ' + skills.length + ' skills into FEDGE 2.O brain');
+
+function matchSkill(text) {
+  const lower = text.toLowerCase();
+  for (const skill of skills) {
+    if (skill.triggers.some(t => lower.includes(t.toLowerCase()))) {
+      return skill;
+    }
+  }
+  return null;
+}
+
+
+const FEDGE_SOUL = fs.readFileSync('./SOUL.md', 'utf8');
+const MELAO_SOUL = fs.existsSync('./skills/suno-ai/skill.md') ? fs.readFileSync('./skills/suno-ai/skill.md', 'utf8') : 'You are FEDGE 2.O in Melao Studio mode.';
 
 async function generateVoice(text) {
   const mp3Path = "C:\\Users\\Fellito Rodriguez\\test_output.mp3";
@@ -16,7 +56,7 @@ async function generateVoice(text) {
   return fs.readFileSync(mp3Path);
 }
 
-async function askFEDGE(userMessage) {
+async function askFEDGE(userMessage, systemPrompt = FEDGE_SOUL) {
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -26,9 +66,9 @@ async function askFEDGE(userMessage) {
         "anthropic-version": "2023-06-01"
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 200,
-        system: FEDGE_SOUL,
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1024,
+        system: systemPrompt,
         messages: [{ role: "user", content: userMessage }]
       })
     });
@@ -69,7 +109,16 @@ async function startBot() {
     if (!text) return;
     console.log(`[${from}]: ${text}`);
     try {
-      const reply = await askFEDGE(text);
+      const lowerText = text.toLowerCase();
+    const isStudioTrigger = lowerText.includes("melao") || lowerText.includes("studio") || lowerText.includes("!studio") || lowerText.includes("suno");
+    const matched = matchSkill(text);
+    const systemPrompt = isStudioTrigger 
+      ? MELAO_SOUL 
+      : matched 
+        ? FEDGE_SOUL + '\n\n---\n## ACTIVE SKILL: ' + matched.name.toUpperCase() + '\n' + matched.content
+        : FEDGE_SOUL;
+    if (matched) console.log('🎯 Skill matched: ' + matched.name);
+      const reply = await askFEDGE(text, systemPrompt);
       console.log(`FEDGE: ${reply}`);
       await sock.sendMessage(from, { text: reply });
     } catch (err) {

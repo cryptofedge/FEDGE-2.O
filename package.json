@@ -1,1 +1,1 @@
-{"name":"fedge-2o","version":"1.0.0","main":"index.js","scripts":{"start":"node index.js"},"dependencies":{"@hapi/boom":"^10.0.1","@whiskeysockets/baileys":"7.0.0-rc.9","dotenv":"^17.4.2"}}
+{"name":"fedge-2o","version":"1.0.0","main":"index.js","scripts":{"start":"node index.js"},"dependencies":{"@anthropic-ai/sdk":"^0.95.1","@hapi/boom":"^10.0.1","@supabase/supabase-js":"^2.105.4","axios":"^1.16.0","baileys":"^7.0.0-rc10","dotenv":"^17.4.2","playwright":"^1.59.1","qrcode-terminal":"^0.12.0"}}
