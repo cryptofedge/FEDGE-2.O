@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#03030a"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<title>FEDGE 2.O — Personal AI Command System | Eclat Universe</title>
+<meta name="description" content="FEDGE 2.O is a personal AI command system built by Fellito R. Rodriguez. 6 live games, autonomous agents, persistent memory, and the full Eclat Universe ecosystem."/>
+<style>
+:root{
+  --gold:#f5c842;--gold-dim:rgba(245,200,66,.12);--gold-glow:rgba(245,200,66,.3);
+  --purple:#a78bfa;--purple-dim:rgba(167,139,250,.12);--purple-glow:rgba(167,139,250,.25);
+  --cyan:#22d3ee;--green:#4ade80;
+  --bg:#03030a;--bg1:#07071a;--bg2:#0c0c22;--bg3:#11112a;
+  --border:rgba(245,200,66,.15);--border2:rgba(167,139,250,.2);
+  --txt:#f0f0ff;--muted:#8080a0;--sub:#303050;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+  --safe-l:env(safe-area-inset-left,0px);
+  --safe-r:env(safe-area-inset-right,0px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── CANVAS ── */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;padding-left:max(20px,var(--safe-l));padding-right:max(20px,var(--safe-r));
+  height:60px;
+  background:rgba(3,3,10,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-logo-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),#e8a000);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#000;letter-spacing:-.5px;flex-shrink:0}
+.nav-logo-text{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--gold)}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:#000!important;padding:7px 16px;border-radius:6px;font-weight:700!important}
+/* hamburger */
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.ham span{display:block;width:22px;height:2px;background:var(--gold);border-radius:2px;transition:all .3s}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+/* mobile nav drawer */
+.nav-drawer{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(7,7,26,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:190;padding:16px 0;flex-direction:column}
+.nav-drawer.open{display:flex}
+.nav-drawer a{display:block;padding:14px 24px;color:var(--muted);text-decoration:none;font-size:15px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--sub);transition:color .2s}
+.nav-drawer a:last-child{border-bottom:none;color:#000;background:var(--gold);font-weight:700;margin:12px 24px;border-radius:8px;text-align:center;padding:14px}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:64px 20px;padding-left:max(20px,var(--safe-l));padding-right:max(20px,var(--safe-r))}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:11px;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(26px,6vw,48px);font-weight:800;line-height:1.1;margin-bottom:14px}
+.section-title em{color:var(--gold);font-style:normal}
+.section-desc{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:40px;max-width:580px}
+
+/* ── HERO ── */
+#hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:80px;padding-bottom:60px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--border);border-radius:20px;padding:6px 16px;font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--gold-glow)}50%{box-shadow:0 0 0 8px transparent}}
+.hero-title{font-size:clamp(52px,14vw,96px);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:12px}
+.hero-title .f{color:var(--gold);text-shadow:0 0 40px var(--gold-glow)}
+.hero-title .v{color:var(--purple);text-shadow:0 0 40px var(--purple-glow)}
+.hero-sub{font-size:clamp(14px,3.5vw,18px);color:var(--muted);max-width:520px;margin:0 auto 12px;line-height:1.6;padding:0 4px}
+.hero-by{font-size:12px;color:var(--sub);letter-spacing:.08em;margin-bottom:40px;color:var(--muted)}
+.hero-by span{color:var(--gold)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:52px}
+.btn-primary{background:var(--gold);color:#000;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;min-height:48px;display:inline-flex;align-items:center}
+.btn-primary:hover,.btn-primary:active{background:#f0d060;transform:translateY(-2px);box-shadow:0 8px 24px var(--gold-glow)}
+.btn-secondary{background:transparent;color:var(--purple);padding:14px 28px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--border2);transition:all .2s;min-height:48px;display:inline-flex;align-items:center}
+.btn-secondary:hover,.btn-secondary:active{background:var(--purple-dim)}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
+.stat{text-align:center}
+.stat-num{font-size:clamp(28px,8vw,40px);font-weight:900;color:var(--gold);line-height:1}
+.stat-lbl{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+
+/* ── HOW IT WORKS ── */
+.arch-flow{display:flex;flex-direction:column;gap:0;margin-bottom:48px}
+.arch-row{display:flex;align-items:center;gap:12px}
+.arch-node{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px 16px;text-align:center}
+.arch-node.center{border-color:var(--gold);box-shadow:0 0 20px rgba(245,200,66,.1)}
+.arch-node-icon{font-size:28px;margin-bottom:10px}
+.arch-node-title{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:6px}
+.arch-node-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.arch-arrow-v{text-align:center;color:var(--gold);font-size:18px;opacity:.5;padding:4px 0;writing-mode:initial}
+.arch-arrow-h{color:var(--gold);font-size:18px;opacity:.5;flex-shrink:0}
+.memory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.mem-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 16px;transition:all .2s}
+.mem-card:hover,.mem-card:active{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 20px rgba(245,200,66,.1)}
+.mem-card-icon{font-size:22px;margin-bottom:8px}
+.mem-card-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.mem-card-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ── GAMES ── */
+#ecosystem{background:linear-gradient(180deg,transparent,rgba(167,139,250,.03),transparent)}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.game-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:all .3s}
+.game-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--card-glow,rgba(245,200,66,.05)),transparent 70%);pointer-events:none}
+.game-card:hover,.game-card:active{transform:translateY(-4px);border-color:var(--card-color,var(--gold));box-shadow:0 10px 28px var(--card-glow,rgba(245,200,66,.12))}
+.game-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 10px;border-radius:12px;margin-bottom:12px;font-weight:600;letter-spacing:.06em}
+.badge-live{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25)}
+.badge-dev{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)}
+.badge-live::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse2 2s infinite;flex-shrink:0}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
+.game-avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;margin-bottom:12px;color:#000;flex-shrink:0}
+.game-title{font-size:17px;font-weight:700;margin-bottom:6px}
+.game-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.game-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tech-chip{background:var(--bg3);border:1px solid var(--sub);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--muted)}
+.game-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gold);text-decoration:none;font-weight:600;min-height:40px;padding:4px 0}
+
+/* ── AGENTS ── */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px}
+.agent-card{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:all .2s}
+.agent-card:hover,.agent-card:active{border-color:var(--purple);box-shadow:0 4px 16px rgba(167,139,250,.15)}
+.agent-icon{font-size:26px;margin-bottom:8px}
+.agent-name{font-size:14px;font-weight:700;color:var(--purple);margin-bottom:6px}
+.agent-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ── TECH ── */
+.tech-orbit{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px;margin:0 auto}
+.orbit-chip{background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-size:13px;color:var(--txt);transition:all .2s;min-height:40px;display:flex;align-items:center}
+.orbit-chip:hover,.orbit-chip:active{border-color:var(--gold);color:var(--gold);box-shadow:0 0 10px var(--gold-glow)}
+
+/* ── TIMELINE ── */
+.timeline{max-width:640px;margin:0 auto;position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--purple),transparent)}
+.tl-item{position:relative;padding:0 0 36px 20px}
+.tl-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold-glow);flex-shrink:0}
+.tl-date{font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.tl-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── CREATOR ── */
+#creator{background:var(--bg1)}
+.creator-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:center;max-width:1000px;margin:0 auto}
+.creator-visual{aspect-ratio:1;background:var(--bg2);border:1px solid var(--border);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden}
+.creator-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(245,200,66,.08),transparent 70%)}
+.creator-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.cr-badge{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--muted)}
+.cr-badge strong{color:var(--gold)}
+
+/* ── CTA ── */
+#cta{text-align:center;padding:80px 20px;background:linear-gradient(180deg,transparent,rgba(245,200,66,.04),transparent)}
+.cta-title{font-size:clamp(28px,7vw,52px);font-weight:900;margin-bottom:14px}
+.cta-sub{color:var(--muted);font-size:15px;max-width:440px;margin:0 auto 36px;line-height:1.6}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:32px 20px;padding-bottom:max(32px,calc(var(--safe-bot) + 16px));text-align:center;color:var(--muted);font-size:13px;position:relative;z-index:1}
+footer a{color:var(--gold);text-decoration:none}
+.footer-logo{font-size:16px;font-weight:900;letter-spacing:.1em;color:var(--gold);margin-bottom:8px}
+
+/* ── FADE IN ── */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ════════════════════════════════════════
+   MOBILE — ≤ 768px (iPhone / Android)
+════════════════════════════════════════ */
+@media(max-width:768px){
+  /* Nav */
+  .nav-links{display:none}
+  .ham{display:flex}
+
+  /* Hero */
+  #hero{padding-top:72px;min-height:100svh}
+  .hero-stats{gap:20px}
+  .stat{flex:1 0 calc(50% - 20px)}
+
+  /* Arch: vertical stack on mobile */
+  .arch-flow{gap:0}
+  .arch-row{flex-direction:column;gap:8px}
+  .arch-arrow-h{display:none}
+  .arch-node{width:100%}
+
+  /* 2-col game grid on wide phones, 1-col on narrow */
+  .games-grid{grid-template-columns:1fr}
+  .agents-grid{grid-template-columns:1fr 1fr}
+  .memory-grid{grid-template-columns:1fr 1fr}
+
+  /* Creator: hide visual on mobile */
+  .creator-inner{grid-template-columns:1fr}
+  .creator-visual{display:none}
+
+  /* Timeline */
+  .timeline{padding-left:28px}
+
+  /* Buttons */
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;max-width:320px;justify-content:center;font-size:16px}
+
+  section{padding:56px 16px}
+  section:first-of-type{padding-top:80px}
+}
+
+/* ════════════════════════════════════════
+   SMALL — ≤ 390px (iPhone SE, mini)
+════════════════════════════════════════ */
+@media(max-width:390px){
+  .agents-grid{grid-template-columns:1fr}
+  .memory-grid{grid-template-columns:1fr}
+  .hero-stats{gap:14px}
+  .stat{flex:1 0 calc(50% - 10px)}
+}
+
+/* ════════════════════════════════════════
+   TABLET — 769px–1024px
+════════════════════════════════════════ */
+@media(min-width:769px) and (max-width:1024px){
+  .arch-row{flex-direction:row}
+  .creator-inner{grid-template-columns:1fr 1.2fr;gap:32px}
+  .games-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">F2</div>
+    <span class="nav-logo-text">FEDGE 2.O</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#ecosystem">Games</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#creator">Creator</a></li>
+    <li><a href="https://github.com/cryptofedge/FEDGE-2.O" target="_blank" rel="noreferrer" class="nav-cta">GitHub</a></li>
+  </ul>
+  <button class="ham" id="ham-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="nav-drawer">
+  <a href="#how" onclick="closeMenu()">How It Works</a>
+  <a href="#ecosystem" onclick="closeMenu()">Games</a>
+  <a href="#agents" onclick="closeMenu()">Agents</a>
+  <a href="#creator" onclick="closeMenu()">Creator</a>
+  <a href="https://github.com/cryptofedge/FEDGE-2.O" target="_blank" rel="noreferrer" onclick="closeMenu()">GitHub →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow"><span></span>Eclat Universe — Personal AI OS</div>
+  <h1 class="hero-title"><span class="f">FEDGE</span><br><span class="v">2.O</span></h1>
+  <p class="hero-sub">A personal AI command system built for Fellito R. Rodriguez. Six live games, autonomous agents, persistent memory — all powered by Claude Sonnet 4.6.</p>
+  <p class="hero-by">By <span>Fellito R. Rodriguez</span> · Founder, Eclat Universe · NYC / Nigerian</p>
+  <div class="hero-btns">
+    <a href="#ecosystem" class="btn-primary">Explore the Ecosystem →</a>
+    <a href="https://cryptofedge.github.io/fedge-hq-command-game/f2cc.html" target="_blank" rel="noreferrer" class="btn-secondary">Command Center</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" data-count="6">0</div><div class="stat-lbl">Live Games</div></div>
+    <div class="stat"><div class="stat-num" data-count="11">0</div><div class="stat-lbl">Total Repos</div></div>
+    <div class="stat"><div class="stat-num" data-count="9">0</div><div class="stat-lbl">AI Agents</div></div>
+    <div class="stat"><div class="stat-num" data-count="13">0</div><div class="stat-lbl">Yrs Epic XP</div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Architecture</p>
+    <h2 class="section-title fade-in">How <em>FEDGE 2.O</em> Works</h2>
+    <p class="section-desc fade-in">Fellito sends a message → the brain agent routes it → specialized agents handle the task → memory persists forever.</p>
+
+    <div class="arch-flow fade-in" style="margin-bottom:48px">
+      <div class="arch-row">
+        <div class="arch-node">
+          <div class="arch-node-icon">📱</div>
+          <div class="arch-node-title">Input Layer</div>
+          <div class="arch-node-desc">WhatsApp or web portal — natural language, any format</div>
+        </div>
+        <div class="arch-arrow-h">→</div>
+        <div class="arch-node center">
+          <div class="arch-node-icon">🧠</div>
+          <div class="arch-node-title">FEDGE Brain</div>
+          <div class="arch-node-desc">Routes to the right agent via skill registry + intent classification</div>
+        </div>
+        <div class="arch-arrow-h">→</div>
+        <div class="arch-node">
+          <div class="arch-node-icon">⚡</div>
+          <div class="arch-node-title">Skill Agents</div>
+          <div class="arch-node-desc">9 experts handle code, trading, health, music, legal, and more</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-tag fade-in">Memory System</p>
+    <h3 class="section-title fade-in" style="font-size:clamp(22px,5vw,34px)">The <em>Brain Files</em></h3>
+    <div class="memory-grid fade-in">
+      <div class="mem-card"><div class="mem-card-icon">🔮</div><div class="mem-card-title">SOUL.md</div><div class="mem-card-desc">Core identity and values. The essence of FEDGE 2.O — never changes.</div></div>
+      <div class="mem-card"><div class="mem-card-icon">🧠</div><div class="mem-card-title">MEMORY.md</div><div class="mem-card-desc">Accumulated knowledge and session recaps. Grows with every conversation.</div></div>
+      <div class="mem-card"><div class="mem-card-icon">👥</div><div class="mem-card-title">AGENTS.md</div><div class="mem-card-desc">Catalog of all 9 specialized agents with capabilities and triggers.</div></div>
+      <div class="mem-card"><div class="mem-card-icon">👤</div><div class="mem-card-title">USER.md</div><div class="mem-card-desc">Fellito's profile — preferences, goals, active projects, communication style.</div></div>
+      <div class="mem-card"><div class="mem-card-icon">📝</div><div class="mem-card-title">WAL Protocol</div><div class="mem-card-desc">Write-Ahead Log — every memory update recorded before applying. Zero data loss.</div></div>
+      <div class="mem-card"><div class="mem-card-icon">📅</div><div class="mem-card-title">Daily Logs</div><div class="mem-card-desc">memory/YYYY-MM-DD.md — granular per-session logs feeding long-term memory.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Eclat Universe</p>
+    <h2 class="section-title fade-in">The <em>Ecosystem</em></h2>
+    <p class="section-desc fade-in">Six live games on GitHub Pages. Every project teaches a real financial or life skill — wrapped in a game you can actually play.</p>
+    <div class="games-grid">
+
+      <div class="game-card fade-in" style="--card-color:#f5c842;--card-glow:rgba(245,200,66,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar" style="background:#f5c842">TF</div>
+        <div class="game-title">Trust Fund Tycoon</div>
+        <div class="game-desc">Inherit $100K and navigate 10 market events with Marcus Wells as your NPC advisor. 4 investment styles, grade S+ to D.</div>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/fedge2-trust-fund-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#a78bfa;--card-glow:rgba(167,139,250,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar" style="background:#a78bfa">CG</div>
+        <div class="game-title">FEDGE Credit Game</div>
+        <div class="game-desc">FICO education across 3 credit tiers — personal, business, corporate. Three.js score visuals + Phaser payment mini-games.</div>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/fedge-2-credit-game/demo.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#2dd4bf;--card-glow:rgba(45,212,191,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar" style="background:#2dd4bf">LI</div>
+        <div class="game-title">Lock In</div>
+        <div class="game-desc">Mental health RPG. 8 real-life scenarios, OG Ray NPC advisor, vibe meter 0–100. Three.js neural mindscape.</div>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/lock-in-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#4ade80;--card-glow:rgba(74,222,128,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar" style="background:#4ade80">GW</div>
+        <div class="game-title">Generational Wealth</div>
+        <div class="game-desc">IBC Infinite Banking simulator. Ages 22–65. Build whole life policy, invest surplus, pass it down.</div>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/generational-wealth-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#f472b6;--card-glow:rgba(244,114,182,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar" style="background:#f472b6">WS</div>
+        <div class="game-title">World Stage</div>
+        <div class="game-desc">Music industry RPG. 4 NPCs, 10 industry events, album drops, PRO registration (ASCAP/BMI/SESAC). Zero to global.</div>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/world-stage/world-stage-v2.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#3b82f6;--card-glow:rgba(59,130,246,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar" style="background:#3b82f6">TS</div>
+        <div class="game-title">TradeStreet</div>
+        <div class="game-desc">$10K paper trading sim. AAPL/NVDA/BTC/ETH + more. Live price ticks every 4s, FEDGE advisor, daily missions, XP.</div>
+        <div class="game-tech"><span class="tech-chip">Vanilla JS</span><span class="tech-chip">GitHub Pages</span></div>
+        <a href="https://cryptofedge.github.io/tradestreet-fedge/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#db2777;--card-glow:rgba(219,39,119,.1)">
+        <div class="game-badge badge-dev">70% — In Dev</div>
+        <div class="game-avatar" style="background:#db2777">FE</div>
+        <div class="game-title">FELLITO Agent</div>
+        <div class="game-desc">AI clone of Fellito R. Rodriguez. Epic EHR Go-Live support. React Native + Claude + ElevenLabs voice. PHI guardrail.</div>
+        <div class="game-tech"><span class="tech-chip">React Native</span><span class="tech-chip">Claude API</span></div>
+        <a href="https://cryptofedge.github.io/fellito-epic-ate-agent/" target="_blank" rel="noreferrer" class="game-link">Landing Page →</a>
+      </div>
+
+      <div class="game-card fade-in" style="--card-color:#059669;--card-glow:rgba(5,150,105,.1)">
+        <div class="game-badge badge-dev">30% — In Dev</div>
+        <div class="game-avatar" style="background:#059669">EC</div>
+        <div class="game-title">Eclatcrypto</div>
+        <div class="game-desc">Solana DeFi layer. FDG token earned through all 6 games. Wallet connect, on-chain scores, staking.</div>
+        <div class="game-tech"><span class="tech-chip">Solana</span><span class="tech-chip">Web3.js</span></div>
+        <a href="https://github.com/cryptofedge/Eclatcrypto" target="_blank" rel="noreferrer" class="game-link">GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section id="agents" style="background:var(--bg1)">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Intelligence Layer</p>
+    <h2 class="section-title fade-in">The <em>9 Agents</em></h2>
+    <p class="section-desc fade-in">Each agent is a specialized expert loaded via the skill registry. FEDGE brain routes every request automatically.</p>
+    <div class="agents-grid">
+      <div class="agent-card fade-in"><div class="agent-icon">🧠</div><div class="agent-name">FEDGE Brain</div><div class="agent-desc">Core orchestrator. Routes all requests, manages memory, owns WAL protocol.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">📈</div><div class="agent-name">Trading Agent</div><div class="agent-desc">Stock analysis, market sentiment, Alpaca trading execution, portfolio tracking.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">💳</div><div class="agent-name">Credit Agent</div><div class="agent-desc">Credit score strategy, card optimization, debt payoff, FICO deep dives.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">🏥</div><div class="agent-name">FELLITO Agent</div><div class="agent-desc">Epic EHR Go-Live support. 13+ years of clinical IT compressed into AI.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">🎵</div><div class="agent-name">Melao Studio</div><div class="agent-desc">Music pipeline. Suno AI prompts, track catalog, EP release strategy.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">⚖️</div><div class="agent-name">Legal Agent</div><div class="agent-desc">IP strategy, LLC formation, FEDGE license, contract review.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">📱</div><div class="agent-name">Social Agent</div><div class="agent-desc">Content scheduling, viral post strategy, audience growth for all Eclat brands.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">🏠</div><div class="agent-name">Real Estate Agent</div><div class="agent-desc">Deal analysis, rental projections, generational wealth plays.</div></div>
+      <div class="agent-card fade-in"><div class="agent-icon">🛡️</div><div class="agent-name">Security Agent</div><div class="agent-desc">Threat analysis, API key hygiene, PHI compliance, secure build patterns.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Build Log</p>
+    <h2 class="section-title fade-in"><em>How We Got Here</em></h2>
+    <div class="timeline">
+      <div class="tl-item fade-in">
+        <div class="tl-dot"></div>
+        <div class="tl-date">May 2026</div>
+        <div class="tl-title">FEDGE 2.O Goes Online</div>
+        <div class="tl-desc">First session. SOUL.md, MEMORY.md, AGENTS.md, USER.md established. Identity confirmed. OpenClaw runtime active.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot"></div>
+        <div class="tl-date">May–Jun 2026</div>
+        <div class="tl-title">5 Games Ship to GitHub Pages</div>
+        <div class="tl-desc">Trust Fund Tycoon, FEDGE Credit Game, Lock In, Generational Wealth, and World Stage — all live. Three.js + Phaser architecture locked in.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jun 2026</div>
+        <div class="tl-title">FEDGE HQ Command Center</div>
+        <div class="tl-desc">Prompt-generator dashboard for all 11 repos. High-res logo. One-click context loading. 441K single-file HTML.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot" style="background:var(--purple)"></div>
+        <div class="tl-date">Jun 24, 2026</div>
+        <div class="tl-title">TradeStreet — 6th Live Game</div>
+        <div class="tl-desc">Converted from React Native stub to fully playable trading sim. $10K paper portfolio, live ticks, FEDGE advisor, XP. Zero dependencies.</div>
+      </div>
+      <div class="tl-item fade-in">
+        <div class="tl-dot" style="background:var(--sub)"></div>
+        <div class="tl-date">Coming Next</div>
+        <div class="tl-title">FELLITO Agent + FDG Token</div>
+        <div class="tl-desc">FELLITO goes live as a web agent. Eclatcrypto connects all games to Solana. FDG token gives real utility to XP earned across the universe.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATOR -->
+<section id="creator">
+  <div class="creator-inner">
+    <div class="creator-left fade-in">
+      <div class="creator-visual">⚡</div>
+    </div>
+    <div class="creator-right fade-in">
+      <p class="section-tag">The Builder</p>
+      <h2 class="section-title">Fellito R. <em>Rodriguez</em></h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:24px">New York born. Nigerian roots. 13+ year Epic/Cerner ATE consultant who has trained 250+ physicians and 300+ nurses across 30+ health systems. Now building Eclat Universe — AI games, agents, and financial tools that teach real wealth-building skills.</p>
+      <div class="creator-badges">
+        <div class="cr-badge"><strong>Epic</strong> Credentialed Trainer</div>
+        <div class="cr-badge"><strong>Cerner</strong> Certified</div>
+        <div class="cr-badge">MSK Cancer Center</div>
+        <div class="cr-badge">Northwell Health</div>
+        <div class="cr-badge">NY Presbyterian</div>
+        <div class="cr-badge">Advent Health</div>
+        <div class="cr-badge">Eclat Universe — Founder</div>
+      </div>
+      <a href="mailto:cryptofedge@gmail.com" class="btn-primary" style="text-decoration:none">Get In Touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech">
+  <div class="section-inner" style="text-align:center">
+    <p class="section-tag fade-in">Under the Hood</p>
+    <h2 class="section-title fade-in">Built With</h2>
+    <div class="tech-orbit fade-in">
+      <span class="orbit-chip">Claude Sonnet 4.6</span>
+      <span class="orbit-chip">Three.js r165</span>
+      <span class="orbit-chip">Phaser 3.80.1</span>
+      <span class="orbit-chip">Vanilla JS</span>
+      <span class="orbit-chip">React Native</span>
+      <span class="orbit-chip">GitHub Pages</span>
+      <span class="orbit-chip">ElevenLabs</span>
+      <span class="orbit-chip">Solana</span>
+      <span class="orbit-chip">Node.js</span>
+      <span class="orbit-chip">OpenClaw</span>
+      <span class="orbit-chip">WhatsApp API</span>
+      <span class="orbit-chip">Claude Code</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <h2 class="cta-title fade-in">This is just <em style="color:var(--gold)">Version 2</em></h2>
+    <p class="cta-sub fade-in">FEDGE 3.0 is coming — autonomous agents that ship code, the FDG token giving real value to every game you play, and a unified API connecting the entire universe.</p>
+    <div class="hero-btns">
+      <a href="https://github.com/cryptofedge" target="_blank" rel="noreferrer" class="btn-primary">Follow on GitHub →</a>
+      <a href="https://cryptofedge.github.io/fedge-hq-command-game/f2cc.html" target="_blank" rel="noreferrer" class="btn-secondary">Open Command Center</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">FEDGE 2.O ⚡</div>
+  <p>Powered by <a href="#">Eclat Universe</a> · Built by <a href="mailto:cryptofedge@gmail.com">Fellito R. Rodriguez</a></p>
+  <p style="margin-top:8px;font-size:11px;color:var(--sub)">© 2026 Eclat Universe · FEDGE 2.O License · All Rights Reserved</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ── HAMBURGER ── */
+const hamBtn=document.getElementById('ham-btn');
+const drawer=document.getElementById('nav-drawer');
+function closeMenu(){hamBtn.classList.remove('open');drawer.classList.remove('open')}
+hamBtn.addEventListener('click',()=>{hamBtn.classList.toggle('open');drawer.classList.toggle('open')});
+document.addEventListener('click',e=>{if(!e.target.closest('#main-nav')&&!e.target.closest('#nav-drawer'))closeMenu()});
+
+/* ── THREE.JS — adaptive particle count ── */
+(function(){
+  const mobile=window.innerWidth<=768;
+  const canvas=document.getElementById('bg-canvas');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:!mobile,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,mobile?1.5:2));
+  renderer.setSize(window.innerWidth,window.innerHeight);
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,.1,1000);
+  camera.position.z=80;
+
+  const count=mobile?80:180;
+  const positions=new Float32Array(count*3);
+  const colors=new Float32Array(count*3);
+  const nodes=[];
+
+  for(let i=0;i<count;i++){
+    const x=(Math.random()-.5)*200,y=(Math.random()-.5)*200,z=(Math.random()-.5)*60;
+    positions[i*3]=x;positions[i*3+1]=y;positions[i*3+2]=z;
+    nodes.push({x,y,z,vx:(Math.random()-.5)*.06,vy:(Math.random()-.5)*.06});
+    if(Math.random()<.6){colors[i*3]=.96;colors[i*3+1]=.78;colors[i*3+2]=.26;}
+    else{colors[i*3]=.65;colors[i*3+1]=.55;colors[i*3+2]=.98;}
+  }
+
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
+  const mat=new THREE.PointsMaterial({size:mobile?2.2:1.8,vertexColors:true,transparent:true,opacity:.65,sizeAttenuation:true});
+  const pts=new THREE.Points(geo,mat);
+  scene.add(pts);
+
+  const lineMat=new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.15});
+  let linesMesh=null;
+  const LINE_DIST=mobile?35:42;
+
+  function buildLines(){
+    if(linesMesh)scene.remove(linesMesh);
+    const lp=[],lc=[];
+    for(let i=0;i<count;i++)for(let j=i+1;j<count;j++){
+      const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,dz=nodes[i].z-nodes[j].z;
+      if(dx*dx+dy*dy+dz*dz<LINE_DIST*LINE_DIST){
+        lp.push(nodes[i].x,nodes[i].y,nodes[i].z,nodes[j].x,nodes[j].y,nodes[j].z);
+        lc.push(.96,.78,.26,.65,.55,.98);
+      }
+    }
+    const lg=new THREE.BufferGeometry();
+    lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+    lg.setAttribute('color',new THREE.Float32BufferAttribute(lc,3));
+    linesMesh=new THREE.LineSegments(lg,lineMat);
+    scene.add(linesMesh);
+  }
+
+  let mx=0,my=0;
+  if(!mobile){
+    document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=-(e.clientY/window.innerHeight-.5)*2;});
+  } else {
+    document.addEventListener('touchmove',e=>{
+      const t=e.touches[0];
+      mx=(t.clientX/window.innerWidth-.5)*2;my=-(t.clientY/window.innerHeight-.5)*2;
+    },{passive:true});
+  }
+
+  let frame=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    frame++;
+    for(let i=0;i<count;i++){
+      nodes[i].x+=nodes[i].vx;nodes[i].y+=nodes[i].vy;
+      if(Math.abs(nodes[i].x)>100)nodes[i].vx*=-1;
+      if(Math.abs(nodes[i].y)>100)nodes[i].vy*=-1;
+      positions[i*3]=nodes[i].x;positions[i*3+1]=nodes[i].y;
+    }
+    geo.attributes.position.needsUpdate=true;
+    if(frame%(mobile?8:4)===0)buildLines();
+    camera.position.x+=(mx*6-camera.position.x)*.025;
+    camera.position.y+=(my*6-camera.position.y)*.025;
+    camera.lookAt(scene.position);
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  });
+})();
+
+/* ── COUNTERS ── */
+let counted=false;
+function animateCounters(){
+  if(counted)return;counted=true;
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target=+el.dataset.count;let cur=0;
+    const step=()=>{cur=Math.min(cur+1,target);el.textContent=cur;if(cur<target)setTimeout(step,70);};
+    step();
+  });
+}
+
+/* ── INTERSECTION OBSERVER ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+setTimeout(animateCounters,600);
+
+/* ── NAV SCROLL ── */
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  nav.style.background=window.scrollY>20?'rgba(3,3,10,.97)':'rgba(3,3,10,.9)';
+},{passive:true});
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href').slice(1);
+    const el=document.getElementById(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
