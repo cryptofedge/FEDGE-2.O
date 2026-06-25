@@ -1,1 +1,11 @@
-﻿{"agent":"tradestreet-agent","repo":"cryptofedge/tradestreet-fedge","last_active":null,"notes":""}
+{
+  "agent": "tradestreet-agent",
+  "repo": "cryptofedge/tradestreet-fedge",
+  "last_active": "2026-06-24",
+  "status": "live",
+  "progress": 100,
+  "live_url": "https://cryptofedge.github.io/tradestreet-fedge/",
+  "file": "tradestreet-demo.html",
+  "tech": "Vanilla JS, single-file HTML, GitHub Pages",
+  "notes": "Converted from React Native stub to full trading sim. 8 assets, live prices, buy/sell, portfolio P&L, daily missions, XP, FEDGE advisor chat."
+}
