@@ -125,7 +125,7 @@
 ### Eclat Universe Full Repo Status (as of 2026-06-24)
 LIVE GAMES (6):
 1. Trust Fund Tycoon — fedge2-trust-fund-game | https://cryptofedge.github.io/fedge2-trust-fund-game/
-2. FEDGE Credit Game — fedge-2-credit-game | https://cryptofedge.github.io/fedge-2-credit-game/demo.html
+2. FEDGE Credit Game — fedge-2-credit-game | https://cryptofedge.github.io/fedge-2-credit-game/ (Expo web app at root URL — demo.html is NOT deployed, it only exists in the repo; CI publishes dist/ from the React Native app in src/)
 3. Lock In — lock-in-game | https://cryptofedge.github.io/lock-in-game/
 4. Generational Wealth — generational-wealth-game | https://cryptofedge.github.io/generational-wealth-game/
 5. World Stage — world-stage | https://cryptofedge.github.io/world-stage/world-stage-v2.html
@@ -136,9 +136,9 @@ IN DEVELOPMENT (3):
 - Eclatcrypto — Eclatcrypto | Solana, FDG token | Dev
 - Melao Studio — melaos-studio | Suno AI, 47 tracks | Dev
 
-PRIVATE (2):
-- FEDGE-2.O — this repo | Agent memory: SOUL/MEMORY/AGENTS/USER, WAL protocol
-- FEDGE-License — IP
+REPO VISIBILITY (corrected 2026-07-01):
+- FEDGE-2.O — this repo is PUBLIC (not private as previously recorded). Do NOT store personal data, phone numbers, or credentials here until visibility is changed.
+- FEDGE-License — IP (private)
 
 COMMAND CENTER:
 - fedge-hq-command-game | https://cryptofedge.github.io/fedge-hq-command-game/f2cc.html
@@ -151,3 +151,9 @@ COMMAND CENTER:
 - Logo: world-stage repo has FEDGE-2O-Logo.png (1024x1024, 289KB) — highest quality
 - Game engine pattern: inject JS at end of </body>, patch static HTML with dynamic containers
 - Build scripts: C:/Users/Fellito Rodriguez/Grahpics/ — _build_f2cc.py, _build_ts.py
+
+
+## 2026-07-01 — Security & Memory Correction (Claude Code audit)
+- REMOVED from repo: skills/storyclaw-alpaca-trading/credentials/13473955298.json (live Alpaca paper keys were public). Keys remain in git history — Fellito must rotate them in the Alpaca dashboard.
+- CORRECTED: credit game live URL is the root URL (Expo app), NOT demo.html. demo.html never deploys — GitHub Pages publishes dist/ built from src/ only. Stop pointing sessions at demo.html.
+- WARNING: this repo is PUBLIC and MEMORY.md contains personal phone numbers (Fellito, Rafael, Mando). Either make repo private or scrub contact info.
