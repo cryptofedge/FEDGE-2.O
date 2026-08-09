@@ -1,3 +1,19 @@
+const { textToSpeech, saveTempAudio, cleanupTempAudio } = require('./elevenlabs');
+
+async function sendVoiceReply(sock, jid, text) {
+  await sock.sendMessage(jid, { text });
+  let tmpPath;
+  try {
+    const buf = await textToSpeech(text);
+    const fs = require('fs'), os = require('os'), path = require('path');
+    tmpPath = path.join(os.tmpdir(), `fedge_voice_${Date.now()}.mp3`);
+    fs.writeFileSync(tmpPath, buf);
+    await sock.sendMessage(jid, { audio: { url: tmpPath }, mimetype: 'audio/mpeg', ptt: true });
+    console.log('[FEDGE VOICE] Voice note sent');
+  } catch (e) { console.error('[FEDGE VOICE] TTS failed:', e.message); }
+  finally { if (tmpPath) try { require('fs').unlinkSync(tmpPath); } catch(_) {} }
+}
+
 require('dotenv').config();
 const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } = require("baileys");
 const qrcode = require("qrcode-terminal");
@@ -120,7 +136,7 @@ async function startBot() {
     if (matched) console.log('🎯 Skill matched: ' + matched.name);
       const reply = await askFEDGE(text, systemPrompt);
       console.log(`FEDGE: ${reply}`);
-      await sock.sendMessage(from, { text: reply });
+      await sendVoiceReply(sock, from, reply);
     } catch (err) {
       console.log("Error:", err.message);
     }

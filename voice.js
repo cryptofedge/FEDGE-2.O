@@ -1,4 +1,5 @@
-﻿const axios = require("axios");
+﻿require("dotenv").config();
+const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 
@@ -7,7 +8,7 @@ async function test() {
     method: "post",
     url: "https://api.elevenlabs.io/v1/text-to-speech/OhcAdN25ThAFnC904VSS",
     headers: {
-      "xi-api-key": "sk_eb78404c57f278c8c2b485274ddd60377bfea934025cca0e",
+      "xi-api-key": process.env.ELEVEN_API_KEY,
       "Content-Type": "application/json",
       "Accept": "audio/mpeg",
     },
