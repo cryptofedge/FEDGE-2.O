@@ -289,6 +289,31 @@ a.store-btn svg{fill:var(--orange)}
   font-size:11px;line-height:1.8;color:#6a6a80;
 }
 
+/* ── ECLT ACTIONS & DONATIONS ── */
+.earn-actions{margin-top:24px;display:flex;gap:16px}
+.btn-buy-eclt{
+  background:#14F195;color:#06060F;padding:12px 24px;text-decoration:none;
+  font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;
+  letter-spacing:2px;text-transform:uppercase;transition:.3s;
+  clip-path:polygon(10% 0,100% 0,100% 70%,90% 100%,0 100%,0 30%);
+}
+.btn-buy-eclt:hover{transform:scale(1.05);filter:brightness(1.1);box-shadow:0 0 15px rgba(20,241,149,.4)}
+
+.donation-section{
+  margin-top:24px;border-top:1px solid var(--border);padding-top:24px;
+}
+.donation-title{
+  color:var(--gold);font-family:'Orbitron',sans-serif;font-size:14px;
+  font-weight:900;letter-spacing:3px;margin-bottom:12px;text-transform:uppercase;
+}
+.donation-desc{color:#7a7a90;font-size:12px;line-height:1.85;margin-bottom:20px;max-width:600px}
+.btn-donate{
+  display:inline-block;border:1px solid var(--gold);color:var(--gold);
+  padding:12px 28px;text-decoration:none;font-family:'Orbitron',sans-serif;
+  font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;transition:.3s;
+}
+.btn-donate:hover{background:rgba(245,200,66,.1);letter-spacing:3.5px}
+
 /* ── FOOTER ── */
 footer{
   position:relative;z-index:20;border-top:1px solid var(--border);
@@ -552,6 +577,9 @@ footer{
           <span class="earn-tag">// Play to Earn</span>
           <h3 class="earn-title">Your Progress Pays in $ECLT</h3>
           <p class="earn-desc">Every game in the ecosystem rewards you in <strong>$ECLT</strong> — the Eclat Universe token on Solana. Clear missions, hold streaks, finish a run with a high grade, and the tokens land in your connected wallet. They stay yours. The plan is for them to be redeemable down the line, so the hours you put into learning aren't just XP on a screen.</p>
+          <div class="earn-actions">
+            <a href="https://jup.ag/swap/SOL-ECLT" target="_blank" rel="noreferrer" class="btn-buy-eclt">Buy $ECLT</a>
+          </div>
         </div>
         <div class="earn-steps">
           <div class="earn-step"><b>01</b><span>Play any game in the app and complete missions</span></div>
@@ -560,6 +588,12 @@ footer{
         </div>
       </div>
       <p class="earn-note">$ECLT is still in development and is <strong>not yet tradeable</strong>. It has no market value today, and no future value is promised or guaranteed. Rewards are earned through gameplay and would only be redeemable if and when the token launches and establishes a market. Nothing here is investment advice.</p>
+
+      <div class="donation-section" style="padding: 0 34px 38px;">
+        <h4 class="donation-title">Support The Youth</h4>
+        <p class="donation-desc">Help us reach the youth in areas where this information is hidden. Every donation powers our community outreach missions, continues our work in financial education for underserved neighborhoods, and helps us promote FEDGE 2.O to expand the word as much as we can.</p>
+        <a href="https://www.gofundme.com/f/help-fellito-expand-fedge-2o" target="_blank" rel="noreferrer" class="btn-donate">GoFundMe Donation</a>
+      </div>
     </div>
   </div>
 </section>
