@@ -32,18 +32,25 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:#f0f0ff;font-family:'IBM Plex Mono',monospace;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ── DEEP SPACE BACKDROP ── */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
-/* kept deliberately faint so the starfield stays sharp instead of hazy */
-.nebula{
-  position:fixed;inset:0;z-index:2;pointer-events:none;
+/* ── DEEP SPACE BACKDROP ──
+   The looping footage is the universe. Layer order, bottom up:
+   video → scrim → vignette. */
+#bg-video{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(1.05) contrast(1.04);
+}
+/* scrim keeps body copy legible over whatever frame is playing —
+   heaviest at the edges where the cards sit, lightest through the middle */
+.video-scrim{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(ellipse 60% 42% at 12% 18%, rgba(167,139,250,.09), transparent 62%),
-    radial-gradient(ellipse 52% 38% at 88% 78%, rgba(232,112,18,.07), transparent 64%);
+    linear-gradient(to bottom, rgba(3,3,10,.62) 0%, rgba(3,3,10,.42) 42%, rgba(3,3,10,.66) 100%),
+    radial-gradient(ellipse 90% 70% at 50% 45%, rgba(3,3,10,0) 30%, rgba(3,3,10,.5) 100%);
 }
 .vignette{
-  position:fixed;inset:0;z-index:3;pointer-events:none;
-  background:radial-gradient(ellipse at center, transparent 58%, rgba(3,3,10,.6) 100%);
+  position:fixed;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(ellipse at center, transparent 62%, rgba(3,3,10,.55) 100%);
 }
 .scanner{
   position:fixed;top:0;left:0;width:100%;height:2px;
@@ -276,8 +283,10 @@ footer{
 </head>
 <body class="scanlines">
 
-<canvas id="bg-canvas"></canvas>
-<div class="nebula"></div>
+<video id="bg-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1">
+  <source src="assets/fedge-bg.mp4" type="video/mp4">
+</video>
+<div class="video-scrim"></div>
 <div class="vignette"></div>
 <div class="scanner"></div>
 
@@ -298,8 +307,8 @@ footer{
   <div class="hero-inner">
     <div class="hero-copy">
       <div class="powered-by-eclat">
-        <img src="assets/e-logo.png" alt="Eclat Universe">
-        <span>Eclat Universe System</span>
+        <img src="assets/e-logo.png" alt="E">
+        <span>Eclat Universe Protocol</span>
       </div>
 
       <h1 class="glitch" data-text="FEDGE 2.O">FEDGE 2.O</h1>
@@ -485,7 +494,7 @@ footer{
 </section>
 
 <footer>
-  <img src="assets/e-logo.png" class="footer-e" alt="Eclat Universe">
+  <img src="assets/e-logo.png" class="footer-e" alt="E">
   <div class="footer-title">FEDGE 2.O</div>
   <div class="footer-by">Built by Rafael Fellito Rodriguez Jr.</div>
 
@@ -503,356 +512,42 @@ footer{
   <p class="copyright">© 2026 Eclat Universe · All Rights Reserved</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* ── LIVING UNIVERSE BACKDROP ──
-   Sharp starfields, a spiral galaxy, textured planets lit by a single sun,
-   and small tumbling space rocks. */
+/* ── BACKGROUND VIDEO ──
+   Silent and looping. The muted property is set in JS as well as in markup —
+   some browsers only honour the autoplay policy when the property is set
+   before play() is called. */
 (function(){
-  var canvas = document.getElementById('bg-canvas');
-  if (!canvas || typeof THREE === 'undefined') return;
+  var v = document.getElementById('bg-video');
+  if (!v) return;
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var lowPower = window.innerWidth < 768;
+  v.muted = true;
+  v.defaultMuted = true;
+  v.volume = 0;
 
-  var renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.outputEncoding = THREE.sRGBEncoding;
-
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, .1, 4000);
-  camera.position.set(0, 0, 140);
-
-  /* Tight sprite: bright pinpoint core, fast falloff. A wide soft gradient here
-     is what makes a starfield read as "blurry", so the stops stay aggressive. */
-  var starTex = (function(){
-    var c = document.createElement('canvas'); c.width = c.height = 64;
-    var x = c.getContext('2d');
-    var g = x.createRadialGradient(32,32,0,32,32,32);
-    g.addColorStop(0,   'rgba(255,255,255,1)');
-    g.addColorStop(.10, 'rgba(255,255,255,.95)');
-    g.addColorStop(.22, 'rgba(255,255,255,.42)');
-    g.addColorStop(.45, 'rgba(255,255,255,.08)');
-    g.addColorStop(1,   'rgba(255,255,255,0)');
-    x.fillStyle = g; x.fillRect(0,0,64,64);
-    var t = new THREE.CanvasTexture(c);
-    t.minFilter = THREE.LinearFilter;
-    return t;
-  })();
-
-  /* ── starfields (three parallax layers) ── */
-  function makeStars(count, spread, depth, size, opacity, tint){
-    var pos = new Float32Array(count*3);
-    var col = new Float32Array(count*3);
-    var base = new THREE.Color();
-    for (var i=0;i<count;i++){
-      pos[i*3]   = (Math.random()-.5)*spread;
-      pos[i*3+1] = (Math.random()-.5)*spread;
-      pos[i*3+2] = -Math.random()*depth;
-      base.setHSL(Math.random() < .8 ? 0.6 : tint, Math.random()*.4+.1, Math.random()*.3+.68);
-      col[i*3] = base.r; col[i*3+1] = base.g; col[i*3+2] = base.b;
-    }
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
-    geo.setAttribute('color',    new THREE.BufferAttribute(col,3));
-    var mat = new THREE.PointsMaterial({
-      size:size, map:starTex, vertexColors:true, transparent:true,
-      opacity:opacity, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true
-    });
-    var p = new THREE.Points(geo, mat);
-    scene.add(p);
-    return p;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    v.removeAttribute('autoplay');
+    v.pause();
+    return;
   }
 
-  var starsFar  = makeStars(lowPower?1400:3200, 1700, 950, 1.15, .95, .08);
-  var starsMid  = makeStars(lowPower?520:1000,  950,  440, 1.9,  .9,  .55);
-  var starsNear = makeStars(lowPower?150:300,   540,  210, 3.0,  .8,  .1);
-
-  /* ── spiral galaxy ── */
-  var galaxy = (function(){
-    var count = lowPower ? 4500 : 10000;
-    var branches = 4, radius = 260, spin = 1.15, randomness = .42;
-    var pos = new Float32Array(count*3);
-    var col = new Float32Array(count*3);
-    var inner = new THREE.Color('#ffd9a0');
-    var outer = new THREE.Color('#7b4bd8');
-    var c = new THREE.Color();
-    for (var i=0;i<count;i++){
-      var r = Math.pow(Math.random(), .55) * radius;
-      var branchAngle = ((i % branches) / branches) * Math.PI * 2;
-      var spinAngle = r * spin / radius * Math.PI;
-      var scatter = Math.pow(Math.random(), 3) * (Math.random()<.5?1:-1) * randomness * r * .35;
-      pos[i*3]   = Math.cos(branchAngle + spinAngle) * r + scatter;
-      pos[i*3+1] = (Math.pow(Math.random(),3) * (Math.random()<.5?1:-1)) * r * .05;
-      pos[i*3+2] = Math.sin(branchAngle + spinAngle) * r + scatter;
-      c.copy(inner).lerp(outer, Math.min(r/radius, 1));
-      col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
-    }
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
-    geo.setAttribute('color',    new THREE.BufferAttribute(col,3));
-    var mat = new THREE.PointsMaterial({
-      size:1.35, map:starTex, vertexColors:true, transparent:true,
-      opacity:.55, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true
-    });
-    var g = new THREE.Points(geo, mat);
-    g.position.set(-360, 185, -640);
-    g.rotation.set(-1.05, .35, .28);
-    scene.add(g);
-    return g;
-  })();
-
-  /* ── procedural planet surfaces ──
-     Each planet gets a real diffuse map plus the same canvas as a bump map, so
-     the terminator and surface detail hold up instead of reading as flat balls. */
-  function surface(kind){
-    var W = 1024, H = 512;
-    var c = document.createElement('canvas'); c.width = W; c.height = H;
-    var x = c.getContext('2d');
-
-    function blob(cx, cy, r, color, alpha){
-      // drawn three times so features wrap across the seam
-      for (var k=-1;k<=1;k++){
-        var g = x.createRadialGradient(cx+k*W, cy, 0, cx+k*W, cy, r);
-        g.addColorStop(0, color.replace('ALPHA', alpha));
-        g.addColorStop(1, color.replace('ALPHA', 0));
-        x.fillStyle = g;
-        x.fillRect(cx+k*W-r, cy-r, r*2, r*2);
-      }
-    }
-
-    if (kind === 'gas'){
-      x.fillStyle = '#c9a06b'; x.fillRect(0,0,W,H);
-      // latitude bands
-      for (var y=0;y<H;y+=2){
-        var n = Math.sin(y*.055) * .5 + Math.sin(y*.017+1.3) * .35 + Math.sin(y*.13+2.1) * .15;
-        var l = 148 + n*62;
-        var sat = 30 + Math.abs(n)*26;
-        x.fillStyle = 'hsl(' + (32 + n*10) + ',' + sat + '%,' + (l/255*100) + '%)';
-        x.fillRect(0, y, W, 2);
-      }
-      // turbulence stretched along the bands
-      for (var i=0;i<260;i++){
-        var by = Math.random()*H;
-        var bh = 3 + Math.random()*9;
-        var bw = 40 + Math.random()*220;
-        x.save();
-        x.globalAlpha = .05 + Math.random()*.12;
-        x.fillStyle = Math.random() < .5 ? '#f0dcc0' : '#8a6034';
-        x.beginPath();
-        x.ellipse(Math.random()*W, by, bw, bh, 0, 0, 6.283);
-        x.fill();
-        x.restore();
-      }
-      // great spot
-      x.save(); x.globalAlpha = .5; x.fillStyle = '#b4462a';
-      x.beginPath(); x.ellipse(W*.68, H*.61, 82, 34, 0, 0, 6.283); x.fill();
-      x.globalAlpha = .3; x.fillStyle = '#e07a52';
-      x.beginPath(); x.ellipse(W*.68, H*.61, 52, 20, 0, 0, 6.283); x.fill();
-      x.restore();
-    }
-
-    else if (kind === 'terran'){
-      x.fillStyle = '#12395f'; x.fillRect(0,0,W,H);
-      blob(W*.2, H*.5, 260, 'rgba(20,70,110,ALPHA)', .8);
-      // landmasses
-      for (var j=0;j<70;j++){
-        var lx = Math.random()*W, ly = 60 + Math.random()*(H-120);
-        var lr = 26 + Math.random()*95;
-        var green = Math.random() < .62;
-        blob(lx, ly, lr, green ? 'rgba(46,104,52,ALPHA)' : 'rgba(122,104,64,ALPHA)', .55 + Math.random()*.35);
-      }
-      // polar caps
-      var pg = x.createLinearGradient(0,0,0,H*.14);
-      pg.addColorStop(0,'rgba(255,255,255,.92)'); pg.addColorStop(1,'rgba(255,255,255,0)');
-      x.fillStyle = pg; x.fillRect(0,0,W,H*.14);
-      var pg2 = x.createLinearGradient(0,H,0,H*.86);
-      pg2.addColorStop(0,'rgba(255,255,255,.92)'); pg2.addColorStop(1,'rgba(255,255,255,0)');
-      x.fillStyle = pg2; x.fillRect(0,H*.86,W,H*.14);
-    }
-
-    else if (kind === 'clouds'){
-      x.clearRect(0,0,W,H);
-      for (var k2=0;k2<150;k2++){
-        blob(Math.random()*W, 30 + Math.random()*(H-60), 22 + Math.random()*70, 'rgba(255,255,255,ALPHA)', .18 + Math.random()*.3);
-      }
-    }
-
-    else { // rocky / moon
-      var baseCol = kind === 'mars' ? '#8d4522' : '#6e6a66';
-      x.fillStyle = baseCol; x.fillRect(0,0,W,H);
-      // regolith mottling
-      for (var m=0;m<420;m++){
-        blob(Math.random()*W, Math.random()*H, 14 + Math.random()*80,
-             Math.random() < .5 ? 'rgba(255,255,255,ALPHA)' : 'rgba(0,0,0,ALPHA)',
-             .04 + Math.random()*.09);
-      }
-      // craters: dark floor with a bright raised rim
-      var craters = kind === 'mars' ? 90 : 190;
-      for (var q=0;q<craters;q++){
-        var ccx = Math.random()*W, ccy = Math.random()*H, cr = 3 + Math.random()*22;
-        x.save();
-        x.globalAlpha = .3 + Math.random()*.35;
-        x.strokeStyle = 'rgba(255,255,255,.55)'; x.lineWidth = Math.max(1, cr*.16);
-        x.beginPath(); x.arc(ccx, ccy, cr, 0, 6.283); x.stroke();
-        x.globalAlpha = .28 + Math.random()*.3;
-        x.fillStyle = 'rgba(0,0,0,.8)';
-        x.beginPath(); x.arc(ccx, ccy - cr*.1, cr*.82, 0, 6.283); x.fill();
-        x.restore();
-      }
-      if (kind === 'mars'){
-        var mg = x.createLinearGradient(0,0,0,H*.1);
-        mg.addColorStop(0,'rgba(255,255,255,.75)'); mg.addColorStop(1,'rgba(255,255,255,0)');
-        x.fillStyle = mg; x.fillRect(0,0,W,H*.1);
-      }
-    }
-
-    var tex = new THREE.CanvasTexture(c);
-    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-    return tex;
+  function start(){
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){ /* blocked; the listeners below retry */ });
   }
+  start();
 
-  /* ── lighting: one sun, so planets get a real day/night terminator ── */
-  scene.add(new THREE.AmbientLight(0x2a2a44, .55));
-  var sun = new THREE.DirectionalLight(0xfff2e0, 2.5);
-  sun.position.set(340, 210, 260);
-  scene.add(sun);
-  var bounce = new THREE.DirectionalLight(0x3a5a8a, .35);   // faint fill from the galaxy side
-  bounce.position.set(-320, -160, 90);
-  scene.add(bounce);
+  // if the browser still blocks it, kick off on the first interaction
+  ['pointerdown','touchstart','keydown'].forEach(function(evt){
+    window.addEventListener(evt, function once(){
+      if (v.paused) start();
+      window.removeEventListener(evt, once);
+    }, {passive:true});
+  });
 
-  /* ── planets ── */
-  var planets = [];
-  function addPlanet(o){
-    var seg = lowPower ? 32 : 64;
-    var map = surface(o.kind);
-    var mesh = new THREE.Mesh(
-      new THREE.SphereGeometry(o.r, seg, seg),
-      new THREE.MeshStandardMaterial({
-        map:map, bumpMap:map, bumpScale:o.bump,
-        roughness:o.kind === 'gas' ? .95 : .88,
-        metalness:0
-      })
-    );
-    mesh.position.set(o.x, o.y, o.z);
-    mesh.rotation.z = o.tilt || 0;
-    scene.add(mesh);
-
-    // separate cloud shell for the terran world
-    var clouds = null;
-    if (o.clouds){
-      clouds = new THREE.Mesh(
-        new THREE.SphereGeometry(o.r*1.015, seg, seg),
-        new THREE.MeshStandardMaterial({map:surface('clouds'), transparent:true, opacity:.75, roughness:1, metalness:0, depthWrite:false})
-      );
-      mesh.add(clouds);
-    }
-
-    // thin atmosphere rim — backside shell lit only at the edge
-    if (o.atmo){
-      var atmo = new THREE.Mesh(
-        new THREE.SphereGeometry(o.r*1.09, seg, seg),
-        new THREE.MeshBasicMaterial({color:o.atmo, transparent:true, opacity:.11, side:THREE.BackSide, blending:THREE.AdditiveBlending, depthWrite:false})
-      );
-      mesh.add(atmo);
-    }
-
-    if (o.ring){
-      var ringGeo = new THREE.RingGeometry(o.r*1.42, o.r*2.2, 96);
-      var ring = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({
-        color:o.ring, side:THREE.DoubleSide, transparent:true, opacity:.3, depthWrite:false
-      }));
-      ring.rotation.x = Math.PI*0.46;
-      ring.rotation.y = .22;
-      mesh.add(ring);
-    }
-
-    planets.push({mesh:mesh, clouds:clouds, spin:o.spin, bob:o.bob, phase:Math.random()*Math.PI*2, baseY:o.y});
-  }
-
-  addPlanet({kind:'gas',    r:30, x:262,  y:-95,  z:-280, spin:.0013, bob:8,  bump:.5,  tilt:.06, ring:0xd9c39a, atmo:0xffcf9a});
-  addPlanet({kind:'terran', r:19, x:-300, y:118,  z:-345, spin:.0018, bob:6,  bump:.35, tilt:-.4, clouds:true, atmo:0x6fb8ff});
-  addPlanet({kind:'moon',   r:9,  x:176,  y:196,  z:-200, spin:.0024, bob:5,  bump:.6,  tilt:.15});
-  addPlanet({kind:'mars',   r:23, x:-150, y:-215, z:-460, spin:.0010, bob:9,  bump:.55, tilt:.3,  atmo:0xff9a6a});
-
-  /* ── space rocks: small, plentiful, tumbling ── */
-  var rockCount = lowPower ? 26 : 52;
-  var rocks = [];
-  var rockGeos = [
-    new THREE.IcosahedronGeometry(1, 0),
-    new THREE.DodecahedronGeometry(1, 0),
-    new THREE.TetrahedronGeometry(1, 0)
-  ];
-  var rockMat = new THREE.MeshStandardMaterial({color:0x8f857b, roughness:1, metalness:.04, flatShading:true});
-  for (var i=0;i<rockCount;i++){
-    var m = new THREE.Mesh(rockGeos[i % rockGeos.length], rockMat);
-    var s = 0.5 + Math.random()*1.5;                 // deliberately small
-    m.scale.set(s*(.7+Math.random()*.6), s*(.7+Math.random()*.6), s*(.7+Math.random()*.6));
-    m.position.set((Math.random()-.5)*620, (Math.random()-.5)*420, -40 - Math.random()*440);
-    m.rotation.set(Math.random()*6.28, Math.random()*6.28, Math.random()*6.28);
-    scene.add(m);
-    rocks.push({
-      mesh:m,
-      rx:(Math.random()-.5)*.006, ry:(Math.random()-.5)*.006, rz:(Math.random()-.5)*.006,
-      vx:(Math.random()-.5)*.10,  vy:(Math.random()-.5)*.07
-    });
-  }
-
-  /* ── parallax from pointer + scroll ── */
-  var targetX = 0, targetY = 0, curX = 0, curY = 0, scrollY = 0;
-  window.addEventListener('pointermove', function(e){
-    targetX = (e.clientX/window.innerWidth  - .5) * 26;
-    targetY = (e.clientY/window.innerHeight - .5) * 16;
-  }, {passive:true});
-  window.addEventListener('scroll', function(){ scrollY = window.scrollY || 0; }, {passive:true});
-
-  var t = 0;
-  function render(){
-    t += 1;
-
-    starsFar.rotation.z  += .00006;
-    starsMid.rotation.z  += .00014;
-    starsNear.rotation.z += .00026;
-
-    galaxy.rotation.y += .00045;
-    galaxy.rotation.z += .00012;
-
-    for (var i=0;i<planets.length;i++){
-      var p = planets[i];
-      p.mesh.rotation.y += p.spin;
-      if (p.clouds) p.clouds.rotation.y += p.spin*.35;   // clouds drift over the surface
-      p.mesh.position.y = p.baseY + Math.sin(t*.0035 + p.phase) * p.bob;
-    }
-
-    for (var j=0;j<rocks.length;j++){
-      var r = rocks[j];
-      r.mesh.rotation.x += r.rx; r.mesh.rotation.y += r.ry; r.mesh.rotation.z += r.rz;
-      r.mesh.position.x += r.vx; r.mesh.position.y += r.vy;
-      if (r.mesh.position.x >  330) r.mesh.position.x = -330;
-      if (r.mesh.position.x < -330) r.mesh.position.x =  330;
-      if (r.mesh.position.y >  230) r.mesh.position.y = -230;
-      if (r.mesh.position.y < -230) r.mesh.position.y =  230;
-    }
-
-    curX += (targetX - curX) * .04;
-    curY += (targetY - curY) * .04;
-    camera.position.x = curX;
-    camera.position.y = -curY - scrollY * .012;
-    camera.position.z = 140 - scrollY * .022;
-    camera.lookAt(0, camera.position.y * .35, -200);
-
-    renderer.render(scene, camera);
-  }
-
-  function loop(){ render(); requestAnimationFrame(loop); }
-  if (reduced) { render(); } else { loop(); }
-
-  window.addEventListener('resize', function(){
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  // some mobile browsers halt playback on tab restore
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden && v.paused) start();
   });
 })();
 </script>
