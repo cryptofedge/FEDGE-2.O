@@ -6,391 +6,432 @@
 <meta name="theme-color" content="#03030a"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<title>FEDGE 2.O — Personal AI Command System | Eclat Universe</title>
-<meta name="description" content="FEDGE 2.O is a personal AI command system built by Fellito R. Rodriguez. 6 live games, autonomous agents, persistent memory, and the full Eclat Universe ecosystem."/>
+<title>FEDGE 2.O — AI Command OS | Built by Rafael Fellito Rodriguez Jr.</title>
+<meta name="description" content="The definitive AI command ecosystem for the culture. Six live games that teach real financial skills, run by a 9-agent command center. An Eclat Universe production."/>
+<link rel="canonical" href="https://fedge2o.com/"/>
+<link rel="icon" href="assets/logo.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://fedge2o.com/"/>
+<meta property="og:title" content="FEDGE 2.O — AI Command OS"/>
+<meta property="og:description" content="Elite financial intelligence, translated into hood-native toolkits. Six live games. One command center."/>
+<meta property="og:image" content="https://fedge2o.com/assets/logo.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#f5c842;--gold-dim:rgba(245,200,66,.12);--gold-glow:rgba(245,200,66,.3);
-  --purple:#a78bfa;--purple-dim:rgba(167,139,250,.12);--purple-glow:rgba(167,139,250,.25);
-  --cyan:#22d3ee;--green:#4ade80;
-  --bg:#03030a;--bg1:#07071a;--bg2:#0c0c22;--bg3:#11112a;
-  --border:rgba(245,200,66,.15);--border2:rgba(167,139,250,.2);
-  --txt:#f0f0ff;--muted:#8080a0;--sub:#303050;
-  --safe-top:env(safe-area-inset-top,0px);
-  --safe-bot:env(safe-area-inset-bottom,0px);
-  --safe-l:env(safe-area-inset-left,0px);
-  --safe-r:env(safe-area-inset-right,0px);
+  --gold:#f5c842;--gold-dim:rgba(245,200,66,.12);--gold-glow:rgba(245,200,66,.6);
+  --orange:#e87012;--orange-glow:rgba(232,112,18,.5);
+  --purple:#a78bfa;--purple-glow:rgba(167,139,250,.4);
+  --cyan:#00fff9;--magenta:#ff00c1;
+  --bg:#03030a;--bg-card:rgba(10,10,20,0.72);
+  --border:rgba(255,255,255,.08);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#f0f0ff;font-family:'IBM Plex Mono',monospace;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ── CANVAS ── */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
+/* ── DEEP SPACE BACKDROP ── */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
+/* kept deliberately faint so the starfield stays sharp instead of hazy */
+.nebula{
+  position:fixed;inset:0;z-index:2;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 42% at 12% 18%, rgba(167,139,250,.09), transparent 62%),
+    radial-gradient(ellipse 52% 38% at 88% 78%, rgba(232,112,18,.07), transparent 64%);
+}
+.vignette{
+  position:fixed;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(ellipse at center, transparent 58%, rgba(3,3,10,.6) 100%);
+}
+.scanner{
+  position:fixed;top:0;left:0;width:100%;height:2px;
+  background:var(--orange);opacity:.07;
+  z-index:100;animation:scan 8s linear infinite;
+}
+@keyframes scan{from{top:0}to{top:100%}}
+.scanlines::after{
+  content:'';position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.16;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.02) 0 1px, transparent 1px 3px);
+}
 
 /* ── NAV ── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
+  position:fixed;top:0;left:0;right:0;z-index:500;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 20px;padding-left:max(20px,var(--safe-l));padding-right:max(20px,var(--safe-r));
-  height:60px;
-  background:rgba(3,3,10,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:0 40px; height:92px;
+  background:rgba(2,2,5,.72);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-logo-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),#e8a000);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#000;letter-spacing:-.5px;flex-shrink:0}
-.nav-logo-text{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--gold)}
-.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold)!important;color:#000!important;padding:7px 16px;border-radius:6px;font-weight:700!important}
-/* hamburger */
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;-webkit-tap-highlight-color:transparent}
-.ham span{display:block;width:22px;height:2px;background:var(--gold);border-radius:2px;transition:all .3s}
-.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.ham.open span:nth-child(2){opacity:0}
-.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-/* mobile nav drawer */
-.nav-drawer{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(7,7,26,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:190;padding:16px 0;flex-direction:column}
-.nav-drawer.open{display:flex}
-.nav-drawer a{display:block;padding:14px 24px;color:var(--muted);text-decoration:none;font-size:15px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--sub);transition:color .2s}
-.nav-drawer a:last-child{border-bottom:none;color:#000;background:var(--gold);font-weight:700;margin:12px 24px;border-radius:8px;text-align:center;padding:14px}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo img{width:44px;height:44px;filter:drop-shadow(0 0 15px var(--orange-glow))}
+.nav-logo-text{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;letter-spacing:.16em;color:#fff;text-transform:uppercase}
+
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:#888;text-decoration:none;font-size:11px;letter-spacing:.3em;text-transform:uppercase;transition:.3s;font-weight:700}
+.nav-links a:hover{color:var(--orange);letter-spacing:.4em}
+
+.nav-cta{
+  color:var(--orange);text-decoration:none;font-size:11px;font-weight:900;
+  letter-spacing:.3em;text-transform:uppercase;
+  border:1px solid var(--orange);padding:12px 22px;transition:.3s;
+  clip-path:polygon(10% 0,100% 0,100% 70%,90% 100%,0 100%,0 30%);
+}
+.nav-cta:hover{background:var(--orange);color:#000;box-shadow:0 0 20px var(--orange-glow)}
+
+/* ── HERO — wordmark anchored top-left ── */
+#hero{min-height:100svh;display:flex;align-items:center;position:relative;z-index:20;padding:140px 40px 90px}
+.hero-inner{
+  width:100%;max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:60px;align-items:center;
+}
+.hero-copy{text-align:left}
+
+.powered-by-eclat{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  padding:9px 18px;border-radius:4px;margin-bottom:26px;
+}
+.powered-by-eclat img{width:26px;height:26px}
+.powered-by-eclat span{font-size:10px;letter-spacing:4px;color:var(--orange);text-transform:uppercase;font-weight:700}
+
+/* the FEDGE 2.O signature — this font stays */
+.glitch{
+  font-family:'Orbitron',sans-serif;position:relative;color:#fff;
+  font-size:clamp(46px,9.5vw,118px);font-weight:900;letter-spacing:-.04em;
+  line-height:.88;margin-bottom:18px;text-transform:uppercase;
+  max-width:100%;
+}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
+.glitch::before{left:4px;text-shadow:-3px 0 var(--magenta);clip:rect(44px,450px,56px,0);animation:glitch-anim 5s infinite linear alternate-reverse}
+.glitch::after{left:-4px;text-shadow:-3px 0 var(--cyan);animation:glitch-anim2 1s infinite linear alternate-reverse}
+@keyframes glitch-anim{0%{clip:rect(31px,9999px,94px,0)}20%{clip:rect(62px,9999px,42px,0)}40%{clip:rect(16px,9999px,78px,0)}60%{clip:rect(1px,9999px,13px,0)}80%{clip:rect(53px,9999px,86px,0)}100%{clip:rect(91px,9999px,98px,0)}}
+@keyframes glitch-anim2{0%{clip:rect(65px,9999px,100px,0)}20%{clip:rect(25px,9999px,34px,0)}40%{clip:rect(2px,9999px,26px,0)}60%{clip:rect(56px,9999px,39px,0)}80%{clip:rect(85px,9999px,66px,0)}100%{clip:rect(18px,9999px,98px,0)}}
+
+.hero-by{font-family:'Orbitron',sans-serif;font-size:clamp(11px,2.2vw,14px);color:#fff;letter-spacing:.42em;margin-bottom:26px;text-transform:uppercase}
+.hero-sub{max-width:560px;color:#9a9ab0;font-size:15px;line-height:1.9}
+.hero-domain{margin-top:24px;font-size:11px;letter-spacing:.35em;color:var(--cyan);text-transform:uppercase}
+
+.cta-box{display:flex;gap:18px;margin-top:34px;flex-wrap:wrap}
+.btn-cyber{
+  background:var(--orange);color:#000;padding:18px 38px;font-weight:900;
+  text-transform:uppercase;letter-spacing:2px;text-decoration:none;
+  clip-path:polygon(10% 0,100% 0,100% 70%,90% 100%,0 100%,0 30%);
+  transition:.3s;box-shadow:0 0 20px var(--orange-glow);
+}
+.btn-cyber:hover{transform:scale(1.05);filter:brightness(1.2)}
+.btn-ghost{
+  border:1px solid var(--border);color:#fff;padding:18px 38px;font-weight:700;
+  text-transform:uppercase;letter-spacing:2px;text-decoration:none;transition:.3s;
+}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1;max-width:440px;justify-self:end;width:100%}
+.main-f-logo{width:70%;height:auto;z-index:5;filter:drop-shadow(0 0 50px var(--orange-glow));animation:pulse-main 4s ease-in-out infinite}
+@keyframes pulse-main{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.orbit-ring{position:absolute;border-radius:50%;border:1px solid var(--orange);opacity:.2}
+.ring-1{width:96%;height:96%;animation:rotate 30s linear infinite}
+.ring-2{width:80%;height:80%;border-style:dashed;animation:rotate 20s linear infinite reverse}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
 /* ── SECTIONS ── */
-section{position:relative;z-index:1;padding:64px 20px;padding-left:max(20px,var(--safe-l));padding-right:max(20px,var(--safe-r))}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-tag{font-size:11px;color:var(--purple);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
-.section-title{font-size:clamp(26px,6vw,48px);font-weight:800;line-height:1.1;margin-bottom:14px}
-.section-title em{color:var(--gold);font-style:normal}
-.section-desc{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:40px;max-width:580px}
+section{position:relative;z-index:20;padding:140px 40px}
+.section-inner{max-width:1400px;margin:0 auto}
+.label-cyan{color:var(--cyan);font-size:11px;letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;display:block}
+.title-main{font-family:'Orbitron',sans-serif;font-size:clamp(38px,8vw,80px);font-weight:900;line-height:.9;margin-bottom:24px}
+.title-main em{font-style:normal;color:var(--orange)}
+.section-desc{max-width:680px;color:#9a9ab0;font-size:15px;line-height:1.9;margin-bottom:60px}
 
-/* ── HERO ── */
-#hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:80px;padding-bottom:60px}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--border);border-radius:20px;padding:6px 16px;font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
-.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--gold-glow)}50%{box-shadow:0 0 0 8px transparent}}
-.hero-title{font-size:clamp(52px,14vw,96px);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:12px}
-.hero-title .f{color:var(--gold);text-shadow:0 0 40px var(--gold-glow)}
-.hero-title .v{color:var(--purple);text-shadow:0 0 40px var(--purple-glow)}
-.hero-sub{font-size:clamp(14px,3.5vw,18px);color:var(--muted);max-width:520px;margin:0 auto 12px;line-height:1.6;padding:0 4px}
-.hero-by{font-size:12px;color:var(--sub);letter-spacing:.08em;margin-bottom:40px;color:var(--muted)}
-.hero-by span{color:var(--gold)}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:52px}
-.btn-primary{background:var(--gold);color:#000;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;min-height:48px;display:inline-flex;align-items:center}
-.btn-primary:hover,.btn-primary:active{background:#f0d060;transform:translateY(-2px);box-shadow:0 8px 24px var(--gold-glow)}
-.btn-secondary{background:transparent;color:var(--purple);padding:14px 28px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--border2);transition:all .2s;min-height:48px;display:inline-flex;align-items:center}
-.btn-secondary:hover,.btn-secondary:active{background:var(--purple-dim)}
-.hero-stats{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
-.stat{text-align:center}
-.stat-num{font-size:clamp(28px,8vw,40px);font-weight:900;color:var(--gold);line-height:1}
-.stat-lbl{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+/* ── WHAT IT IS ── */
+.about-lead{
+  max-width:860px;color:#c8c8dc;font-size:17px;line-height:2;margin-bottom:16px;
+  border-left:2px solid var(--orange);padding-left:26px;
+}
+.about-lead strong{color:#fff}
+.about-note{max-width:860px;color:#9a9ab0;font-size:14px;line-height:1.95;margin-bottom:64px;padding-left:28px}
 
-/* ── HOW IT WORKS ── */
-.arch-flow{display:flex;flex-direction:column;gap:0;margin-bottom:48px}
-.arch-row{display:flex;align-items:center;gap:12px}
-.arch-node{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px 16px;text-align:center}
-.arch-node.center{border-color:var(--gold);box-shadow:0 0 20px rgba(245,200,66,.1)}
-.arch-node-icon{font-size:28px;margin-bottom:10px}
-.arch-node-title{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:6px}
-.arch-node-desc{font-size:12px;color:var(--muted);line-height:1.5}
-.arch-arrow-v{text-align:center;color:var(--gold);font-size:18px;opacity:.5;padding:4px 0;writing-mode:initial}
-.arch-arrow-h{color:var(--gold);font-size:18px;opacity:.5;flex-shrink:0}
-.memory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-.mem-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 16px;transition:all .2s}
-.mem-card:hover,.mem-card:active{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 20px rgba(245,200,66,.1)}
-.mem-card-icon{font-size:22px;margin-bottom:8px}
-.mem-card-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px}
-.mem-card-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:70px}
+.pillar{
+  position:relative;background:var(--bg-card);border:1px solid var(--border);
+  padding:36px 30px;backdrop-filter:blur(6px);transition:.35s;
+}
+.pillar:hover{border-color:var(--pillar-color);transform:translateY(-6px)}
+.pillar-num{
+  font-family:'Orbitron',sans-serif;font-size:12px;font-weight:900;color:var(--pillar-color);
+  letter-spacing:3px;display:block;margin-bottom:18px;
+}
+.pillar-title{font-family:'Orbitron',sans-serif;font-size:21px;font-weight:900;color:#fff;margin-bottom:14px}
+.pillar-desc{color:#9a9ab0;font-size:13px;line-height:1.9}
+.pillar-desc code{color:var(--cyan);font-size:12px}
 
-/* ── GAMES ── */
-#ecosystem{background:linear-gradient(180deg,transparent,rgba(167,139,250,.03),transparent)}
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
-.game-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:all .3s}
-.game-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--card-glow,rgba(245,200,66,.05)),transparent 70%);pointer-events:none}
-.game-card:hover,.game-card:active{transform:translateY(-4px);border-color:var(--card-color,var(--gold));box-shadow:0 10px 28px var(--card-glow,rgba(245,200,66,.12))}
-.game-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 10px;border-radius:12px;margin-bottom:12px;font-weight:600;letter-spacing:.06em}
-.badge-live{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.25)}
-.badge-dev{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)}
-.badge-live::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse2 2s infinite;flex-shrink:0}
-@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
-.game-avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;margin-bottom:12px;color:#000;flex-shrink:0}
-.game-title{font-size:17px;font-weight:700;margin-bottom:6px}
-.game-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
-.game-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.tech-chip{background:var(--bg3);border:1px solid var(--sub);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--muted)}
-.game-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--gold);text-decoration:none;font-weight:600;min-height:40px;padding:4px 0}
+.domains-head{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#7a7a90;margin-bottom:22px}
+.domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:60px}
+.domain{background:rgba(6,6,14,.8);padding:24px 22px}
+.domain-name{font-size:12px;font-weight:700;color:#e6e6f5;letter-spacing:1px;margin-bottom:8px}
+.domain-desc{font-size:12px;color:#7a7a90;line-height:1.8}
 
-/* ── AGENTS ── */
-.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px}
-.agent-card{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:all .2s}
-.agent-card:hover,.agent-card:active{border-color:var(--purple);box-shadow:0 4px 16px rgba(167,139,250,.15)}
-.agent-icon{font-size:26px;margin-bottom:8px}
-.agent-name{font-size:14px;font-weight:700;color:var(--purple);margin-bottom:6px}
-.agent-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.access-strip{
+  display:flex;flex-wrap:wrap;align-items:center;gap:34px;
+  border:1px solid var(--border);background:rgba(6,6,14,.8);padding:30px 34px;
+}
+.access-item{display:flex;flex-direction:column;gap:7px}
+.access-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6a6a80}
+.access-value{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:900;color:#fff}
+.access-value em{font-style:normal;color:var(--orange)}
 
-/* ── TECH ── */
-.tech-orbit{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px;margin:0 auto}
-.orbit-chip{background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-size:13px;color:var(--txt);transition:all .2s;min-height:40px;display:flex;align-items:center}
-.orbit-chip:hover,.orbit-chip:active{border-color:var(--gold);color:var(--gold);box-shadow:0 0 10px var(--gold-glow)}
-
-/* ── TIMELINE ── */
-.timeline{max-width:640px;margin:0 auto;position:relative;padding-left:32px}
-.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--purple),transparent)}
-.tl-item{position:relative;padding:0 0 36px 20px}
-.tl-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold-glow);flex-shrink:0}
-.tl-date{font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
-.tl-title{font-size:15px;font-weight:700;margin-bottom:6px}
-.tl-desc{font-size:13px;color:var(--muted);line-height:1.6}
-
-/* ── CREATOR ── */
-#creator{background:var(--bg1)}
-.creator-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:center;max-width:1000px;margin:0 auto}
-.creator-visual{aspect-ratio:1;background:var(--bg2);border:1px solid var(--border);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden}
-.creator-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(245,200,66,.08),transparent 70%)}
-.creator-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.cr-badge{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--muted)}
-.cr-badge strong{color:var(--gold)}
-
-/* ── CTA ── */
-#cta{text-align:center;padding:80px 20px;background:linear-gradient(180deg,transparent,rgba(245,200,66,.04),transparent)}
-.cta-title{font-size:clamp(28px,7vw,52px);font-weight:900;margin-bottom:14px}
-.cta-sub{color:var(--muted);font-size:15px;max-width:440px;margin:0 auto 36px;line-height:1.6}
+/* ── ECOSYSTEM / GAMES ── */
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px}
+.game-card{
+  position:relative;background:var(--bg-card);border:1px solid var(--border);
+  padding:36px 32px 32px;backdrop-filter:blur(6px);transition:.35s;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.game-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--card-color);opacity:.6}
+.game-card::after{content:'';position:absolute;bottom:0;right:0;width:36px;height:36px;border-bottom:2px solid var(--card-color);border-right:2px solid var(--card-color);opacity:.35}
+.game-card:hover{transform:translateY(-8px);border-color:var(--card-color);box-shadow:0 20px 60px var(--card-glow)}
+.game-badge{
+  position:absolute;top:20px;right:20px;font-size:9px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;padding:5px 10px;border-radius:2px;
+}
+.badge-live{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.35)}
+.badge-dev{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.3)}
+.game-avatar{
+  width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+  font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;color:#03030a;
+  background:var(--card-color);margin-bottom:22px;
+  clip-path:polygon(15% 0,100% 0,100% 75%,85% 100%,0 100%,0 25%);
+}
+.game-tag{color:var(--card-color);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:10px}
+.game-title{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:14px}
+.game-desc{color:#9a9ab0;font-size:13px;line-height:1.85;margin-bottom:22px;flex:1}
+.game-tech{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.tech-chip{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#7a7a90;border:1px solid var(--border);padding:4px 9px}
+.game-link{
+  color:var(--card-color);text-decoration:none;font-size:11px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;transition:.3s;align-self:flex-start;
+}
+.game-link:hover{letter-spacing:3.5px}
 
 /* ── FOOTER ── */
-footer{border-top:1px solid var(--border);padding:32px 20px;padding-bottom:max(32px,calc(var(--safe-bot) + 16px));text-align:center;color:var(--muted);font-size:13px;position:relative;z-index:1}
-footer a{color:var(--gold);text-decoration:none}
-.footer-logo{font-size:16px;font-weight:900;letter-spacing:.1em;color:var(--gold);margin-bottom:8px}
+footer{
+  position:relative;z-index:20;border-top:1px solid var(--border);
+  padding:120px 40px;text-align:center;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
+}
+.footer-e{width:56px;height:56px;margin-bottom:36px}
+.footer-title{font-family:'Orbitron',sans-serif;font-size:clamp(26px,7vw,40px);font-weight:900;color:#fff;letter-spacing:.25em;margin-bottom:20px}
+.footer-by{font-size:12px;color:var(--orange);letter-spacing:5px;text-transform:uppercase;margin-bottom:36px}
+.footer-text{color:#9a9ab0;font-size:13px;line-height:2;margin-bottom:36px}
+.footer-links{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.footer-links a{color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:.3s}
+.footer-links a:hover{color:var(--cyan)}
+.copyright{color:#55556a;font-size:10px;letter-spacing:2.5px;text-transform:uppercase}
 
-/* ── FADE IN ── */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
-.fade-in.visible{opacity:1;transform:none}
-
-/* ════════════════════════════════════════
-   MOBILE — ≤ 768px (iPhone / Android)
-════════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  /* wordmark stays first so it holds the upper-left corner on narrow screens */
+  .hero-visual{justify-self:start;max-width:280px}
+}
 @media(max-width:768px){
-  /* Nav */
+  nav{padding:0 20px;height:76px}
   .nav-links{display:none}
-  .ham{display:flex}
-
-  /* Hero */
-  #hero{padding-top:72px;min-height:100svh}
-  .hero-stats{gap:20px}
-  .stat{flex:1 0 calc(50% - 20px)}
-
-  /* Arch: vertical stack on mobile */
-  .arch-flow{gap:0}
-  .arch-row{flex-direction:column;gap:8px}
-  .arch-arrow-h{display:none}
-  .arch-node{width:100%}
-
-  /* 2-col game grid on wide phones, 1-col on narrow */
+  .nav-logo img{width:36px;height:36px}
+  .nav-logo-text{font-size:17px}
+  .nav-cta{padding:10px 14px;letter-spacing:.2em}
   .games-grid{grid-template-columns:1fr}
-  .agents-grid{grid-template-columns:1fr 1fr}
-  .memory-grid{grid-template-columns:1fr 1fr}
-
-  /* Creator: hide visual on mobile */
-  .creator-inner{grid-template-columns:1fr}
-  .creator-visual{display:none}
-
-  /* Timeline */
-  .timeline{padding-left:28px}
-
-  /* Buttons */
-  .hero-btns{flex-direction:column;align-items:center}
-  .btn-primary,.btn-secondary{width:100%;max-width:320px;justify-content:center;font-size:16px}
-
-  section{padding:56px 16px}
-  section:first-of-type{padding-top:80px}
+  section{padding:90px 20px}
+  #hero{padding:110px 20px 70px}
+  .hero-visual{max-width:220px}
+  .btn-cyber,.btn-ghost{padding:16px 26px;font-size:13px}
 }
-
-/* ════════════════════════════════════════
-   SMALL — ≤ 390px (iPhone SE, mini)
-════════════════════════════════════════ */
-@media(max-width:390px){
-  .agents-grid{grid-template-columns:1fr}
-  .memory-grid{grid-template-columns:1fr}
-  .hero-stats{gap:14px}
-  .stat{flex:1 0 calc(50% - 10px)}
-}
-
-/* ════════════════════════════════════════
-   TABLET — 769px–1024px
-════════════════════════════════════════ */
-@media(min-width:769px) and (max-width:1024px){
-  .arch-row{flex-direction:row}
-  .creator-inner{grid-template-columns:1fr 1.2fr;gap:32px}
-  .games-grid{grid-template-columns:repeat(2,1fr)}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
-<body>
+<body class="scanlines">
 
 <canvas id="bg-canvas"></canvas>
+<div class="nebula"></div>
+<div class="vignette"></div>
+<div class="scanner"></div>
 
-<!-- NAV -->
-<nav id="main-nav">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-mark">F2</div>
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="assets/logo.png" alt="FEDGE 2.O">
     <span class="nav-logo-text">FEDGE 2.O</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#ecosystem">Games</a></li>
-    <li><a href="#agents">Agents</a></li>
-    <li><a href="#creator">Creator</a></li>
-    <li><a href="https://github.com/cryptofedge/FEDGE-2.O" target="_blank" rel="noreferrer" class="nav-cta">GitHub</a></li>
+    <li><a href="#about">What It Is</a></li>
+    <li><a href="#ecosystem">Ecosystem</a></li>
+    <li><a href="#command">Command Center</a></li>
   </ul>
-  <button class="ham" id="ham-btn" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="#ecosystem" class="nav-cta">Initialize</a>
 </nav>
 
-<!-- MOBILE DRAWER -->
-<div class="nav-drawer" id="nav-drawer">
-  <a href="#how" onclick="closeMenu()">How It Works</a>
-  <a href="#ecosystem" onclick="closeMenu()">Games</a>
-  <a href="#agents" onclick="closeMenu()">Agents</a>
-  <a href="#creator" onclick="closeMenu()">Creator</a>
-  <a href="https://github.com/cryptofedge/FEDGE-2.O" target="_blank" rel="noreferrer" onclick="closeMenu()">GitHub →</a>
-</div>
-
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-eyebrow"><span></span>Eclat Universe — Personal AI OS</div>
-  <h1 class="hero-title"><span class="f">FEDGE</span><br><span class="v">2.O</span></h1>
-  <p class="hero-sub">A personal AI command system built for Fellito R. Rodriguez. Six live games, autonomous agents, persistent memory — all powered by Claude Sonnet 4.6.</p>
-  <p class="hero-by">By <span>Fellito R. Rodriguez</span> · Founder, Eclat Universe · NYC / Nigerian</p>
-  <div class="hero-btns">
-    <a href="#ecosystem" class="btn-primary">Explore the Ecosystem →</a>
-    <a href="https://cryptofedge.github.io/fedge-hq-command-game/f2cc.html" target="_blank" rel="noreferrer" class="btn-secondary">Command Center</a>
-  </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num" data-count="6">0</div><div class="stat-lbl">Live Games</div></div>
-    <div class="stat"><div class="stat-num" data-count="11">0</div><div class="stat-lbl">Total Repos</div></div>
-    <div class="stat"><div class="stat-num" data-count="9">0</div><div class="stat-lbl">AI Agents</div></div>
-    <div class="stat"><div class="stat-num" data-count="13">0</div><div class="stat-lbl">Yrs Epic XP</div></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="powered-by-eclat">
+        <img src="assets/e-logo.png" alt="Eclat Universe">
+        <span>Eclat Universe System</span>
+      </div>
+
+      <h1 class="glitch" data-text="FEDGE 2.O">FEDGE 2.O</h1>
+      <div class="hero-by">Built by Rafael Fellito Rodriguez Jr.</div>
+
+      <p class="hero-sub">The definitive AI command ecosystem for the culture. We translate elite financial intelligence into hood-native toolkits. Building generational wealth where they never taught us how.</p>
+
+      <div class="cta-box">
+        <a href="#ecosystem" class="btn-cyber">Explore the Ecosystem</a>
+        <a href="#about" class="btn-ghost">What Is FEDGE 2.O?</a>
+      </div>
+
+      <div class="hero-domain">fedge2o.com</div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="orbit-ring ring-1"></div>
+      <div class="orbit-ring ring-2"></div>
+      <img src="assets/logo.png" class="main-f-logo" alt="FEDGE OS">
+    </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
+<section id="about">
   <div class="section-inner">
-    <p class="section-tag fade-in">Architecture</p>
-    <h2 class="section-title fade-in">How <em>FEDGE 2.O</em> Works</h2>
-    <p class="section-desc fade-in">Fellito sends a message → the brain agent routes it → specialized agents handle the task → memory persists forever.</p>
+    <span class="label-cyan">// The Thesis</span>
+    <h2 class="title-main">WHAT IS <em>FEDGE 2.O</em>?</h2>
 
-    <div class="arch-flow fade-in" style="margin-bottom:48px">
-      <div class="arch-row">
-        <div class="arch-node">
-          <div class="arch-node-icon">📱</div>
-          <div class="arch-node-title">Input Layer</div>
-          <div class="arch-node-desc">WhatsApp or web portal — natural language, any format</div>
-        </div>
-        <div class="arch-arrow-h">→</div>
-        <div class="arch-node center">
-          <div class="arch-node-icon">🧠</div>
-          <div class="arch-node-title">FEDGE Brain</div>
-          <div class="arch-node-desc">Routes to the right agent via skill registry + intent classification</div>
-        </div>
-        <div class="arch-arrow-h">→</div>
-        <div class="arch-node">
-          <div class="arch-node-icon">⚡</div>
-          <div class="arch-node-title">Skill Agents</div>
-          <div class="arch-node-desc">9 experts handle code, trading, health, music, legal, and more</div>
-        </div>
+    <p class="about-lead">FEDGE 2.O is an <strong>AI agent ecosystem built to put generational wealth in the hands of people who were never taught how to build it.</strong> Credit, investing, trusts, ownership — the rules exist, they were just never handed to us. FEDGE translates them into something you can actually play.</p>
+    <p class="about-note">It isn't a course and it isn't a finance app. It's a persistent AI brain running a suite of games, where every mechanic maps to a real financial or life skill. You learn the move by making it — with nothing on the line but XP.</p>
+
+    <div class="pillars">
+      <div class="pillar" style="--pillar-color:#e87012">
+        <span class="pillar-num">01 // The Brain</span>
+        <h3 class="pillar-title">A Persistent AI Agent</h3>
+        <p class="pillar-desc">Not a chatbot that forgets you. Every session loads identity, curated long-term memory, and operator context from <code>SOUL.md</code>, <code>MEMORY.md</code> and <code>USER.md</code>, plus 54 domain skills spanning finance, crypto, music, legal and social. A 9-agent architecture delegates to eight specialists — one per game — running in parallel on a shared filesystem.</p>
+      </div>
+
+      <div class="pillar" style="--pillar-color:#00fff9">
+        <span class="pillar-num">02 // The Games</span>
+        <h3 class="pillar-title">Six Live, Playable Builds</h3>
+        <p class="pillar-desc">Each game teaches exactly one thing and teaches it through consequence. Paper-trade a crash. Move a FICO score from 500 to 750. Sign a bad record deal and learn what termination rights are worth 35 years later. Built in Three.js and Phaser, running free on GitHub Pages — no install, no signup.</p>
+      </div>
+
+      <div class="pillar" style="--pillar-color:#a78bfa">
+        <span class="pillar-num">03 // The Layer</span>
+        <h3 class="pillar-title">$ECLT on Solana</h3>
+        <p class="pillar-desc">Eclatcrypto is the connective tissue — a token earned across every game in the ecosystem, with wallet connect, on-chain scores and staking. Crypto literacy taught the same way as everything else here: by owning something and finding out how it works. In development.</p>
       </div>
     </div>
 
-    <p class="section-tag fade-in">Memory System</p>
-    <h3 class="section-title fade-in" style="font-size:clamp(22px,5vw,34px)">The <em>Brain Files</em></h3>
-    <div class="memory-grid fade-in">
-      <div class="mem-card"><div class="mem-card-icon">🔮</div><div class="mem-card-title">SOUL.md</div><div class="mem-card-desc">Core identity and values. The essence of FEDGE 2.O — never changes.</div></div>
-      <div class="mem-card"><div class="mem-card-icon">🧠</div><div class="mem-card-title">MEMORY.md</div><div class="mem-card-desc">Accumulated knowledge and session recaps. Grows with every conversation.</div></div>
-      <div class="mem-card"><div class="mem-card-icon">👥</div><div class="mem-card-title">AGENTS.md</div><div class="mem-card-desc">Catalog of all 9 specialized agents with capabilities and triggers.</div></div>
-      <div class="mem-card"><div class="mem-card-icon">👤</div><div class="mem-card-title">USER.md</div><div class="mem-card-desc">Fellito's profile — preferences, goals, active projects, communication style.</div></div>
-      <div class="mem-card"><div class="mem-card-icon">📝</div><div class="mem-card-title">WAL Protocol</div><div class="mem-card-desc">Write-Ahead Log — every memory update recorded before applying. Zero data loss.</div></div>
-      <div class="mem-card"><div class="mem-card-icon">📅</div><div class="mem-card-title">Daily Logs</div><div class="mem-card-desc">memory/YYYY-MM-DD.md — granular per-session logs feeding long-term memory.</div></div>
+    <div class="domains-head">// What The Agent Actually Covers</div>
+    <div class="domains">
+      <div class="domain"><div class="domain-name">Financial Education</div><div class="domain-desc">Credit repair, investing, revocable living trusts, infinite banking, generational wealth transfer.</div></div>
+      <div class="domain"><div class="domain-name">Trading Advisor</div><div class="domain-desc">Portfolio coaching through TradeStreet. Spot manipulation, pump-and-dumps and hype cycles.</div></div>
+      <div class="domain"><div class="domain-name">Mental Health Support</div><div class="domain-desc">Safe, trauma-informed guidance through Lock In. Boundaries, focus, consistency.</div></div>
+      <div class="domain"><div class="domain-name">Music Industry</div><div class="domain-desc">Artist development through World Stage. Masters, publishing, PRO registration, termination rights.</div></div>
+      <div class="domain"><div class="domain-name">Power &amp; Influence</div><div class="domain-desc">Hustle Politics. Converting street entrepreneurship into legitimate economic and political leverage.</div></div>
+      <div class="domain"><div class="domain-name">Crypto Guidance</div><div class="domain-desc">Solana ecosystem support through Eclatcrypto. Wallets, custody, and owning your digital assets.</div></div>
+    </div>
+
+    <div class="access-strip">
+      <div class="access-item"><span class="access-label">Status</span><span class="access-value"><em>Open Beta</em></span></div>
+      <div class="access-item"><span class="access-label">Beta Access</span><span class="access-value">$0.99</span></div>
+      <div class="access-item"><span class="access-label">Full Release</span><span class="access-value">$5.00</span></div>
+      <div class="access-item"><span class="access-label">Platform</span><span class="access-value">Google Play — Soon</span></div>
+      <div class="access-item"><span class="access-label">The Games</span><span class="access-value"><em>Free to Play</em></span></div>
     </div>
   </div>
 </section>
 
-<!-- ECOSYSTEM -->
 <section id="ecosystem">
   <div class="section-inner">
-    <p class="section-tag fade-in">Eclat Universe</p>
-    <h2 class="section-title fade-in">The <em>Ecosystem</em></h2>
-    <p class="section-desc fade-in">Six live games on GitHub Pages. Every project teaches a real financial or life skill — wrapped in a game you can actually play.</p>
+    <span class="label-cyan">// Eclat Universe</span>
+    <h2 class="title-main">THE <em>ECOSYSTEM</em></h2>
+    <p class="section-desc">Six live games on the grid, two more in the lab. Every project teaches a real financial or life skill — wrapped in something you can actually play.</p>
+
     <div class="games-grid">
 
-      <div class="game-card fade-in" style="--card-color:#f5c842;--card-glow:rgba(245,200,66,.15)">
+      <div class="game-card" style="--card-color:#3b82f6;--card-glow:rgba(59,130,246,.15)">
         <div class="game-badge badge-live">Live</div>
-        <div class="game-avatar" style="background:#f5c842">TF</div>
-        <div class="game-title">Trust Fund Tycoon</div>
-        <div class="game-desc">Inherit $100K and navigate 10 market events with Marcus Wells as your NPC advisor. 4 investment styles, grade S+ to D.</div>
-        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/fedge2-trust-fund-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
-      </div>
-
-      <div class="game-card fade-in" style="--card-color:#a78bfa;--card-glow:rgba(167,139,250,.15)">
-        <div class="game-badge badge-live">Live</div>
-        <div class="game-avatar" style="background:#a78bfa">CG</div>
-        <div class="game-title">FEDGE Credit Game</div>
-        <div class="game-desc">FICO education across 3 credit tiers — personal, business, corporate. Three.js score visuals + Phaser payment mini-games.</div>
-        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/fedge-2-credit-game/demo.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
-      </div>
-
-      <div class="game-card fade-in" style="--card-color:#2dd4bf;--card-glow:rgba(45,212,191,.15)">
-        <div class="game-badge badge-live">Live</div>
-        <div class="game-avatar" style="background:#2dd4bf">LI</div>
-        <div class="game-title">Lock In</div>
-        <div class="game-desc">Mental health RPG. 8 real-life scenarios, OG Ray NPC advisor, vibe meter 0–100. Three.js neural mindscape.</div>
-        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/lock-in-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
-      </div>
-
-      <div class="game-card fade-in" style="--card-color:#4ade80;--card-glow:rgba(74,222,128,.15)">
-        <div class="game-badge badge-live">Live</div>
-        <div class="game-avatar" style="background:#4ade80">GW</div>
-        <div class="game-title">Generational Wealth</div>
-        <div class="game-desc">IBC Infinite Banking simulator. Ages 22–65. Build whole life policy, invest surplus, pass it down.</div>
-        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/generational-wealth-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
-      </div>
-
-      <div class="game-card fade-in" style="--card-color:#f472b6;--card-glow:rgba(244,114,182,.15)">
-        <div class="game-badge badge-live">Live</div>
-        <div class="game-avatar" style="background:#f472b6">WS</div>
-        <div class="game-title">World Stage</div>
-        <div class="game-desc">Music industry RPG. 4 NPCs, 10 industry events, album drops, PRO registration (ASCAP/BMI/SESAC). Zero to global.</div>
-        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/world-stage/world-stage-v2.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
-      </div>
-
-      <div class="game-card fade-in" style="--card-color:#3b82f6;--card-glow:rgba(59,130,246,.15)">
-        <div class="game-badge badge-live">Live</div>
-        <div class="game-avatar" style="background:#3b82f6">TS</div>
-        <div class="game-title">TradeStreet</div>
-        <div class="game-desc">$10K paper trading sim. AAPL/NVDA/BTC/ETH + more. Live price ticks every 4s, FEDGE advisor, daily missions, XP.</div>
+        <div class="game-avatar">TS</div>
+        <span class="game-tag">Market Literacy</span>
+        <h3 class="game-title">TradeStreet</h3>
+        <p class="game-desc">$10K paper trading sim. AAPL, NVDA, BTC, ETH and more. Live price ticks every 4s, FEDGE advisor, daily missions, XP. Learn to spot institutional manipulation before you risk a dime.</p>
         <div class="game-tech"><span class="tech-chip">Vanilla JS</span><span class="tech-chip">GitHub Pages</span></div>
         <a href="https://cryptofedge.github.io/tradestreet-fedge/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
       </div>
 
-      <div class="game-card fade-in" style="--card-color:#db2777;--card-glow:rgba(219,39,119,.1)">
-        <div class="game-badge badge-dev">70% — In Dev</div>
-        <div class="game-avatar" style="background:#db2777">FE</div>
-        <div class="game-title">FELLITO Agent</div>
-        <div class="game-desc">AI clone of Fellito R. Rodriguez. Epic EHR Go-Live support. React Native + Claude + ElevenLabs voice. PHI guardrail.</div>
-        <div class="game-tech"><span class="tech-chip">React Native</span><span class="tech-chip">Claude API</span></div>
-        <a href="https://cryptofedge.github.io/fellito-epic-ate-agent/" target="_blank" rel="noreferrer" class="game-link">Landing Page →</a>
+      <div class="game-card" style="--card-color:#a78bfa;--card-glow:rgba(167,139,250,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar">CG</div>
+        <span class="game-tag">Financial Defense</span>
+        <h3 class="game-title">Credit Warrior</h3>
+        <p class="game-desc">Weaponize your FICO. Education across three credit tiers — personal, business, corporate. Three.js score visuals plus Phaser payment mini-games. Beat predatory lending starting from nothing.</p>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/fedge-2-credit-game/demo.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
       </div>
 
-      <div class="game-card fade-in" style="--card-color:#059669;--card-glow:rgba(5,150,105,.1)">
+      <div class="game-card" style="--card-color:#f472b6;--card-glow:rgba(244,114,182,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar">WS</div>
+        <span class="game-tag">IP Ownership</span>
+        <h3 class="game-title">World Stage</h3>
+        <p class="game-desc">Music industry RPG. 4 NPCs, 10 industry events, album drops, PRO registration (ASCAP/BMI/SESAC). Learn termination rights and reclaim your masters after 35 years.</p>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/world-stage/world-stage-v2.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card" style="--card-color:#f5c842;--card-glow:rgba(245,200,66,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar">TF</div>
+        <span class="game-tag">Wealth Simulation</span>
+        <h3 class="game-title">Trust Fund Tycoon</h3>
+        <p class="game-desc">Inherit $100K and navigate 10 market events with Marcus Wells as your NPC advisor. Revocable living trusts, four investment styles, graded S+ down to D.</p>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/fedge2-trust-fund-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card" style="--card-color:#4ade80;--card-glow:rgba(74,222,128,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar">GW</div>
+        <span class="game-tag">Infinite Banking</span>
+        <h3 class="game-title">Generational Wealth</h3>
+        <p class="game-desc">IBC Infinite Banking simulator. Ages 22 through 65. Build the whole life policy, borrow against your own equity to buy real estate, pass it down.</p>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/generational-wealth-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card" style="--card-color:#2dd4bf;--card-glow:rgba(45,212,191,.15)">
+        <div class="game-badge badge-live">Live</div>
+        <div class="game-avatar">LI</div>
+        <span class="game-tag">Mental Health</span>
+        <h3 class="game-title">Lock In</h3>
+        <p class="game-desc">Mental health and discipline RPG. Eight real-life scenarios, OG Ray as your NPC advisor, vibe meter 0–100. Protect your head to protect your bread.</p>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://cryptofedge.github.io/lock-in-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+      </div>
+
+      <div class="game-card" style="--card-color:#db2777;--card-glow:rgba(219,39,119,.12)">
+        <div class="game-badge badge-dev">70% — In Dev</div>
+        <div class="game-avatar">HP</div>
+        <span class="game-tag">Power &amp; Influence</span>
+        <h3 class="game-title">Hustle Politics</h3>
+        <p class="game-desc">The intersection of street hustle, entrepreneurship and political power. Turn the corner operation into legitimate political and economic influence.</p>
+        <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
+        <a href="https://github.com/cryptofedge/Hustle-Politics-" target="_blank" rel="noreferrer" class="game-link">GitHub →</a>
+      </div>
+
+      <div class="game-card" style="--card-color:#059669;--card-glow:rgba(5,150,105,.12)">
         <div class="game-badge badge-dev">30% — In Dev</div>
-        <div class="game-avatar" style="background:#059669">EC</div>
-        <div class="game-title">Eclatcrypto</div>
-        <div class="game-desc">Solana DeFi layer. FDG token earned through all 6 games. Wallet connect, on-chain scores, staking.</div>
+        <div class="game-avatar">EC</div>
+        <span class="game-tag">Solana DeFi</span>
+        <h3 class="game-title">Eclatcrypto</h3>
+        <p class="game-desc">$ECLT on Solana. The DeFi layer earned across every game in the ecosystem. Wallet connect, on-chain scores, staking. Crypto literacy for the culture.</p>
         <div class="game-tech"><span class="tech-chip">Solana</span><span class="tech-chip">Web3.js</span></div>
         <a href="https://github.com/cryptofedge/Eclatcrypto" target="_blank" rel="noreferrer" class="game-link">GitHub →</a>
       </div>
@@ -399,261 +440,389 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </section>
 
-<!-- AGENTS -->
-<section id="agents" style="background:var(--bg1)">
+<section id="command">
   <div class="section-inner">
-    <p class="section-tag fade-in">Intelligence Layer</p>
-    <h2 class="section-title fade-in">The <em>9 Agents</em></h2>
-    <p class="section-desc fade-in">Each agent is a specialized expert loaded via the skill registry. FEDGE brain routes every request automatically.</p>
-    <div class="agents-grid">
-      <div class="agent-card fade-in"><div class="agent-icon">🧠</div><div class="agent-name">FEDGE Brain</div><div class="agent-desc">Core orchestrator. Routes all requests, manages memory, owns WAL protocol.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">📈</div><div class="agent-name">Trading Agent</div><div class="agent-desc">Stock analysis, market sentiment, Alpaca trading execution, portfolio tracking.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">💳</div><div class="agent-name">Credit Agent</div><div class="agent-desc">Credit score strategy, card optimization, debt payoff, FICO deep dives.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">🏥</div><div class="agent-name">FELLITO Agent</div><div class="agent-desc">Epic EHR Go-Live support. 13+ years of clinical IT compressed into AI.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">🎵</div><div class="agent-name">Melao Studio</div><div class="agent-desc">Music pipeline. Suno AI prompts, track catalog, EP release strategy.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">⚖️</div><div class="agent-name">Legal Agent</div><div class="agent-desc">IP strategy, LLC formation, FEDGE license, contract review.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">📱</div><div class="agent-name">Social Agent</div><div class="agent-desc">Content scheduling, viral post strategy, audience growth for all Eclat brands.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">🏠</div><div class="agent-name">Real Estate Agent</div><div class="agent-desc">Deal analysis, rental projections, generational wealth plays.</div></div>
-      <div class="agent-card fade-in"><div class="agent-icon">🛡️</div><div class="agent-name">Security Agent</div><div class="agent-desc">Threat analysis, API key hygiene, PHI compliance, secure build patterns.</div></div>
+    <span class="label-cyan">// Intelligence Layer</span>
+    <h2 class="title-main">THE <em>COMMAND CENTER</em></h2>
+    <p class="section-desc">The official HQ for the Eclat Universe — a prompt-generator dashboard covering all 11 repos. One-click context-loaded prompts, live URLs, tech stack and push patterns, all in one place.</p>
+
+    <div class="cta-box">
+      <a href="command-center/index.html" class="btn-cyber">Launch Command Center</a>
     </div>
   </div>
 </section>
 
-<!-- TIMELINE -->
-<section id="timeline">
-  <div class="section-inner">
-    <p class="section-tag fade-in">Build Log</p>
-    <h2 class="section-title fade-in"><em>How We Got Here</em></h2>
-    <div class="timeline">
-      <div class="tl-item fade-in">
-        <div class="tl-dot"></div>
-        <div class="tl-date">May 2026</div>
-        <div class="tl-title">FEDGE 2.O Goes Online</div>
-        <div class="tl-desc">First session. SOUL.md, MEMORY.md, AGENTS.md, USER.md established. Identity confirmed. OpenClaw runtime active.</div>
-      </div>
-      <div class="tl-item fade-in">
-        <div class="tl-dot"></div>
-        <div class="tl-date">May–Jun 2026</div>
-        <div class="tl-title">5 Games Ship to GitHub Pages</div>
-        <div class="tl-desc">Trust Fund Tycoon, FEDGE Credit Game, Lock In, Generational Wealth, and World Stage — all live. Three.js + Phaser architecture locked in.</div>
-      </div>
-      <div class="tl-item fade-in">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Jun 2026</div>
-        <div class="tl-title">FEDGE HQ Command Center</div>
-        <div class="tl-desc">Prompt-generator dashboard for all 11 repos. High-res logo. One-click context loading. 441K single-file HTML.</div>
-      </div>
-      <div class="tl-item fade-in">
-        <div class="tl-dot" style="background:var(--purple)"></div>
-        <div class="tl-date">Jun 24, 2026</div>
-        <div class="tl-title">TradeStreet — 6th Live Game</div>
-        <div class="tl-desc">Converted from React Native stub to fully playable trading sim. $10K paper portfolio, live ticks, FEDGE advisor, XP. Zero dependencies.</div>
-      </div>
-      <div class="tl-item fade-in">
-        <div class="tl-dot" style="background:var(--sub)"></div>
-        <div class="tl-date">Coming Next</div>
-        <div class="tl-title">FELLITO Agent + FDG Token</div>
-        <div class="tl-desc">FELLITO goes live as a web agent. Eclatcrypto connects all games to Solana. FDG token gives real utility to XP earned across the universe.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CREATOR -->
-<section id="creator">
-  <div class="creator-inner">
-    <div class="creator-left fade-in">
-      <div class="creator-visual">⚡</div>
-    </div>
-    <div class="creator-right fade-in">
-      <p class="section-tag">The Builder</p>
-      <h2 class="section-title">Fellito R. <em>Rodriguez</em></h2>
-      <p style="color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:24px">New York born. Nigerian roots. 13+ year Epic/Cerner ATE consultant who has trained 250+ physicians and 300+ nurses across 30+ health systems. Now building Eclat Universe — AI games, agents, and financial tools that teach real wealth-building skills.</p>
-      <div class="creator-badges">
-        <div class="cr-badge"><strong>Epic</strong> Credentialed Trainer</div>
-        <div class="cr-badge"><strong>Cerner</strong> Certified</div>
-        <div class="cr-badge">MSK Cancer Center</div>
-        <div class="cr-badge">Northwell Health</div>
-        <div class="cr-badge">NY Presbyterian</div>
-        <div class="cr-badge">Advent Health</div>
-        <div class="cr-badge">Eclat Universe — Founder</div>
-      </div>
-      <a href="mailto:cryptofedge@gmail.com" class="btn-primary" style="text-decoration:none">Get In Touch →</a>
-    </div>
-  </div>
-</section>
-
-<!-- TECH -->
-<section id="tech">
-  <div class="section-inner" style="text-align:center">
-    <p class="section-tag fade-in">Under the Hood</p>
-    <h2 class="section-title fade-in">Built With</h2>
-    <div class="tech-orbit fade-in">
-      <span class="orbit-chip">Claude Sonnet 4.6</span>
-      <span class="orbit-chip">Three.js r165</span>
-      <span class="orbit-chip">Phaser 3.80.1</span>
-      <span class="orbit-chip">Vanilla JS</span>
-      <span class="orbit-chip">React Native</span>
-      <span class="orbit-chip">GitHub Pages</span>
-      <span class="orbit-chip">ElevenLabs</span>
-      <span class="orbit-chip">Solana</span>
-      <span class="orbit-chip">Node.js</span>
-      <span class="orbit-chip">OpenClaw</span>
-      <span class="orbit-chip">WhatsApp API</span>
-      <span class="orbit-chip">Claude Code</span>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="cta">
-  <div class="section-inner">
-    <h2 class="cta-title fade-in">This is just <em style="color:var(--gold)">Version 2</em></h2>
-    <p class="cta-sub fade-in">FEDGE 3.0 is coming — autonomous agents that ship code, the FDG token giving real value to every game you play, and a unified API connecting the entire universe.</p>
-    <div class="hero-btns">
-      <a href="https://github.com/cryptofedge" target="_blank" rel="noreferrer" class="btn-primary">Follow on GitHub →</a>
-      <a href="https://cryptofedge.github.io/fedge-hq-command-game/f2cc.html" target="_blank" rel="noreferrer" class="btn-secondary">Open Command Center</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">FEDGE 2.O ⚡</div>
-  <p>Powered by <a href="#">Eclat Universe</a> · Built by <a href="mailto:cryptofedge@gmail.com">Fellito R. Rodriguez</a></p>
-  <p style="margin-top:8px;font-size:11px;color:var(--sub)">© 2026 Eclat Universe · FEDGE 2.O License · All Rights Reserved</p>
+  <img src="assets/e-logo.png" class="footer-e" alt="Eclat Universe">
+  <div class="footer-title">FEDGE 2.O</div>
+  <div class="footer-by">Built by Rafael Fellito Rodriguez Jr.</div>
+
+  <p class="footer-text">
+    An <strong>Eclat Universe</strong> Production.<br>
+    Engineered for the culture. NYC // WORLDWIDE.
+  </p>
+
+  <div class="footer-links">
+    <a href="https://fedge2o.com">fedge2o.com</a>
+    <a href="https://github.com/cryptofedge">Source</a>
+    <a href="mailto:cryptofedge@gmail.com">Inquiries</a>
+  </div>
+
+  <p class="copyright">© 2026 Eclat Universe · All Rights Reserved</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* ── HAMBURGER ── */
-const hamBtn=document.getElementById('ham-btn');
-const drawer=document.getElementById('nav-drawer');
-function closeMenu(){hamBtn.classList.remove('open');drawer.classList.remove('open')}
-hamBtn.addEventListener('click',()=>{hamBtn.classList.toggle('open');drawer.classList.toggle('open')});
-document.addEventListener('click',e=>{if(!e.target.closest('#main-nav')&&!e.target.closest('#nav-drawer'))closeMenu()});
-
-/* ── THREE.JS — adaptive particle count ── */
+/* ── LIVING UNIVERSE BACKDROP ──
+   Sharp starfields, a spiral galaxy, textured planets lit by a single sun,
+   and small tumbling space rocks. */
 (function(){
-  const mobile=window.innerWidth<=768;
-  const canvas=document.getElementById('bg-canvas');
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:!mobile,alpha:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,mobile?1.5:2));
-  renderer.setSize(window.innerWidth,window.innerHeight);
+  var canvas = document.getElementById('bg-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
 
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,.1,1000);
-  camera.position.z=80;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lowPower = window.innerWidth < 768;
 
-  const count=mobile?80:180;
-  const positions=new Float32Array(count*3);
-  const colors=new Float32Array(count*3);
-  const nodes=[];
+  var renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
 
-  for(let i=0;i<count;i++){
-    const x=(Math.random()-.5)*200,y=(Math.random()-.5)*200,z=(Math.random()-.5)*60;
-    positions[i*3]=x;positions[i*3+1]=y;positions[i*3+2]=z;
-    nodes.push({x,y,z,vx:(Math.random()-.5)*.06,vy:(Math.random()-.5)*.06});
-    if(Math.random()<.6){colors[i*3]=.96;colors[i*3+1]=.78;colors[i*3+2]=.26;}
-    else{colors[i*3]=.65;colors[i*3+1]=.55;colors[i*3+2]=.98;}
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, .1, 4000);
+  camera.position.set(0, 0, 140);
+
+  /* Tight sprite: bright pinpoint core, fast falloff. A wide soft gradient here
+     is what makes a starfield read as "blurry", so the stops stay aggressive. */
+  var starTex = (function(){
+    var c = document.createElement('canvas'); c.width = c.height = 64;
+    var x = c.getContext('2d');
+    var g = x.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0,   'rgba(255,255,255,1)');
+    g.addColorStop(.10, 'rgba(255,255,255,.95)');
+    g.addColorStop(.22, 'rgba(255,255,255,.42)');
+    g.addColorStop(.45, 'rgba(255,255,255,.08)');
+    g.addColorStop(1,   'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0,0,64,64);
+    var t = new THREE.CanvasTexture(c);
+    t.minFilter = THREE.LinearFilter;
+    return t;
+  })();
+
+  /* ── starfields (three parallax layers) ── */
+  function makeStars(count, spread, depth, size, opacity, tint){
+    var pos = new Float32Array(count*3);
+    var col = new Float32Array(count*3);
+    var base = new THREE.Color();
+    for (var i=0;i<count;i++){
+      pos[i*3]   = (Math.random()-.5)*spread;
+      pos[i*3+1] = (Math.random()-.5)*spread;
+      pos[i*3+2] = -Math.random()*depth;
+      base.setHSL(Math.random() < .8 ? 0.6 : tint, Math.random()*.4+.1, Math.random()*.3+.68);
+      col[i*3] = base.r; col[i*3+1] = base.g; col[i*3+2] = base.b;
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color',    new THREE.BufferAttribute(col,3));
+    var mat = new THREE.PointsMaterial({
+      size:size, map:starTex, vertexColors:true, transparent:true,
+      opacity:opacity, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true
+    });
+    var p = new THREE.Points(geo, mat);
+    scene.add(p);
+    return p;
   }
 
-  const geo=new THREE.BufferGeometry();
-  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
-  geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
-  const mat=new THREE.PointsMaterial({size:mobile?2.2:1.8,vertexColors:true,transparent:true,opacity:.65,sizeAttenuation:true});
-  const pts=new THREE.Points(geo,mat);
-  scene.add(pts);
+  var starsFar  = makeStars(lowPower?1400:3200, 1700, 950, 1.15, .95, .08);
+  var starsMid  = makeStars(lowPower?520:1000,  950,  440, 1.9,  .9,  .55);
+  var starsNear = makeStars(lowPower?150:300,   540,  210, 3.0,  .8,  .1);
 
-  const lineMat=new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.15});
-  let linesMesh=null;
-  const LINE_DIST=mobile?35:42;
+  /* ── spiral galaxy ── */
+  var galaxy = (function(){
+    var count = lowPower ? 4500 : 10000;
+    var branches = 4, radius = 260, spin = 1.15, randomness = .42;
+    var pos = new Float32Array(count*3);
+    var col = new Float32Array(count*3);
+    var inner = new THREE.Color('#ffd9a0');
+    var outer = new THREE.Color('#7b4bd8');
+    var c = new THREE.Color();
+    for (var i=0;i<count;i++){
+      var r = Math.pow(Math.random(), .55) * radius;
+      var branchAngle = ((i % branches) / branches) * Math.PI * 2;
+      var spinAngle = r * spin / radius * Math.PI;
+      var scatter = Math.pow(Math.random(), 3) * (Math.random()<.5?1:-1) * randomness * r * .35;
+      pos[i*3]   = Math.cos(branchAngle + spinAngle) * r + scatter;
+      pos[i*3+1] = (Math.pow(Math.random(),3) * (Math.random()<.5?1:-1)) * r * .05;
+      pos[i*3+2] = Math.sin(branchAngle + spinAngle) * r + scatter;
+      c.copy(inner).lerp(outer, Math.min(r/radius, 1));
+      col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color',    new THREE.BufferAttribute(col,3));
+    var mat = new THREE.PointsMaterial({
+      size:1.35, map:starTex, vertexColors:true, transparent:true,
+      opacity:.55, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true
+    });
+    var g = new THREE.Points(geo, mat);
+    g.position.set(-360, 185, -640);
+    g.rotation.set(-1.05, .35, .28);
+    scene.add(g);
+    return g;
+  })();
 
-  function buildLines(){
-    if(linesMesh)scene.remove(linesMesh);
-    const lp=[],lc=[];
-    for(let i=0;i<count;i++)for(let j=i+1;j<count;j++){
-      const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,dz=nodes[i].z-nodes[j].z;
-      if(dx*dx+dy*dy+dz*dz<LINE_DIST*LINE_DIST){
-        lp.push(nodes[i].x,nodes[i].y,nodes[i].z,nodes[j].x,nodes[j].y,nodes[j].z);
-        lc.push(.96,.78,.26,.65,.55,.98);
+  /* ── procedural planet surfaces ──
+     Each planet gets a real diffuse map plus the same canvas as a bump map, so
+     the terminator and surface detail hold up instead of reading as flat balls. */
+  function surface(kind){
+    var W = 1024, H = 512;
+    var c = document.createElement('canvas'); c.width = W; c.height = H;
+    var x = c.getContext('2d');
+
+    function blob(cx, cy, r, color, alpha){
+      // drawn three times so features wrap across the seam
+      for (var k=-1;k<=1;k++){
+        var g = x.createRadialGradient(cx+k*W, cy, 0, cx+k*W, cy, r);
+        g.addColorStop(0, color.replace('ALPHA', alpha));
+        g.addColorStop(1, color.replace('ALPHA', 0));
+        x.fillStyle = g;
+        x.fillRect(cx+k*W-r, cy-r, r*2, r*2);
       }
     }
-    const lg=new THREE.BufferGeometry();
-    lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
-    lg.setAttribute('color',new THREE.Float32BufferAttribute(lc,3));
-    linesMesh=new THREE.LineSegments(lg,lineMat);
-    scene.add(linesMesh);
-  }
 
-  let mx=0,my=0;
-  if(!mobile){
-    document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=-(e.clientY/window.innerHeight-.5)*2;});
-  } else {
-    document.addEventListener('touchmove',e=>{
-      const t=e.touches[0];
-      mx=(t.clientX/window.innerWidth-.5)*2;my=-(t.clientY/window.innerHeight-.5)*2;
-    },{passive:true});
-  }
-
-  let frame=0;
-  function animate(){
-    requestAnimationFrame(animate);
-    frame++;
-    for(let i=0;i<count;i++){
-      nodes[i].x+=nodes[i].vx;nodes[i].y+=nodes[i].vy;
-      if(Math.abs(nodes[i].x)>100)nodes[i].vx*=-1;
-      if(Math.abs(nodes[i].y)>100)nodes[i].vy*=-1;
-      positions[i*3]=nodes[i].x;positions[i*3+1]=nodes[i].y;
+    if (kind === 'gas'){
+      x.fillStyle = '#c9a06b'; x.fillRect(0,0,W,H);
+      // latitude bands
+      for (var y=0;y<H;y+=2){
+        var n = Math.sin(y*.055) * .5 + Math.sin(y*.017+1.3) * .35 + Math.sin(y*.13+2.1) * .15;
+        var l = 148 + n*62;
+        var sat = 30 + Math.abs(n)*26;
+        x.fillStyle = 'hsl(' + (32 + n*10) + ',' + sat + '%,' + (l/255*100) + '%)';
+        x.fillRect(0, y, W, 2);
+      }
+      // turbulence stretched along the bands
+      for (var i=0;i<260;i++){
+        var by = Math.random()*H;
+        var bh = 3 + Math.random()*9;
+        var bw = 40 + Math.random()*220;
+        x.save();
+        x.globalAlpha = .05 + Math.random()*.12;
+        x.fillStyle = Math.random() < .5 ? '#f0dcc0' : '#8a6034';
+        x.beginPath();
+        x.ellipse(Math.random()*W, by, bw, bh, 0, 0, 6.283);
+        x.fill();
+        x.restore();
+      }
+      // great spot
+      x.save(); x.globalAlpha = .5; x.fillStyle = '#b4462a';
+      x.beginPath(); x.ellipse(W*.68, H*.61, 82, 34, 0, 0, 6.283); x.fill();
+      x.globalAlpha = .3; x.fillStyle = '#e07a52';
+      x.beginPath(); x.ellipse(W*.68, H*.61, 52, 20, 0, 0, 6.283); x.fill();
+      x.restore();
     }
-    geo.attributes.position.needsUpdate=true;
-    if(frame%(mobile?8:4)===0)buildLines();
-    camera.position.x+=(mx*6-camera.position.x)*.025;
-    camera.position.y+=(my*6-camera.position.y)*.025;
-    camera.lookAt(scene.position);
-    renderer.render(scene,camera);
-  }
-  animate();
 
-  window.addEventListener('resize',()=>{
-    camera.aspect=window.innerWidth/window.innerHeight;
+    else if (kind === 'terran'){
+      x.fillStyle = '#12395f'; x.fillRect(0,0,W,H);
+      blob(W*.2, H*.5, 260, 'rgba(20,70,110,ALPHA)', .8);
+      // landmasses
+      for (var j=0;j<70;j++){
+        var lx = Math.random()*W, ly = 60 + Math.random()*(H-120);
+        var lr = 26 + Math.random()*95;
+        var green = Math.random() < .62;
+        blob(lx, ly, lr, green ? 'rgba(46,104,52,ALPHA)' : 'rgba(122,104,64,ALPHA)', .55 + Math.random()*.35);
+      }
+      // polar caps
+      var pg = x.createLinearGradient(0,0,0,H*.14);
+      pg.addColorStop(0,'rgba(255,255,255,.92)'); pg.addColorStop(1,'rgba(255,255,255,0)');
+      x.fillStyle = pg; x.fillRect(0,0,W,H*.14);
+      var pg2 = x.createLinearGradient(0,H,0,H*.86);
+      pg2.addColorStop(0,'rgba(255,255,255,.92)'); pg2.addColorStop(1,'rgba(255,255,255,0)');
+      x.fillStyle = pg2; x.fillRect(0,H*.86,W,H*.14);
+    }
+
+    else if (kind === 'clouds'){
+      x.clearRect(0,0,W,H);
+      for (var k2=0;k2<150;k2++){
+        blob(Math.random()*W, 30 + Math.random()*(H-60), 22 + Math.random()*70, 'rgba(255,255,255,ALPHA)', .18 + Math.random()*.3);
+      }
+    }
+
+    else { // rocky / moon
+      var baseCol = kind === 'mars' ? '#8d4522' : '#6e6a66';
+      x.fillStyle = baseCol; x.fillRect(0,0,W,H);
+      // regolith mottling
+      for (var m=0;m<420;m++){
+        blob(Math.random()*W, Math.random()*H, 14 + Math.random()*80,
+             Math.random() < .5 ? 'rgba(255,255,255,ALPHA)' : 'rgba(0,0,0,ALPHA)',
+             .04 + Math.random()*.09);
+      }
+      // craters: dark floor with a bright raised rim
+      var craters = kind === 'mars' ? 90 : 190;
+      for (var q=0;q<craters;q++){
+        var ccx = Math.random()*W, ccy = Math.random()*H, cr = 3 + Math.random()*22;
+        x.save();
+        x.globalAlpha = .3 + Math.random()*.35;
+        x.strokeStyle = 'rgba(255,255,255,.55)'; x.lineWidth = Math.max(1, cr*.16);
+        x.beginPath(); x.arc(ccx, ccy, cr, 0, 6.283); x.stroke();
+        x.globalAlpha = .28 + Math.random()*.3;
+        x.fillStyle = 'rgba(0,0,0,.8)';
+        x.beginPath(); x.arc(ccx, ccy - cr*.1, cr*.82, 0, 6.283); x.fill();
+        x.restore();
+      }
+      if (kind === 'mars'){
+        var mg = x.createLinearGradient(0,0,0,H*.1);
+        mg.addColorStop(0,'rgba(255,255,255,.75)'); mg.addColorStop(1,'rgba(255,255,255,0)');
+        x.fillStyle = mg; x.fillRect(0,0,W,H*.1);
+      }
+    }
+
+    var tex = new THREE.CanvasTexture(c);
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    return tex;
+  }
+
+  /* ── lighting: one sun, so planets get a real day/night terminator ── */
+  scene.add(new THREE.AmbientLight(0x2a2a44, .55));
+  var sun = new THREE.DirectionalLight(0xfff2e0, 2.5);
+  sun.position.set(340, 210, 260);
+  scene.add(sun);
+  var bounce = new THREE.DirectionalLight(0x3a5a8a, .35);   // faint fill from the galaxy side
+  bounce.position.set(-320, -160, 90);
+  scene.add(bounce);
+
+  /* ── planets ── */
+  var planets = [];
+  function addPlanet(o){
+    var seg = lowPower ? 32 : 64;
+    var map = surface(o.kind);
+    var mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(o.r, seg, seg),
+      new THREE.MeshStandardMaterial({
+        map:map, bumpMap:map, bumpScale:o.bump,
+        roughness:o.kind === 'gas' ? .95 : .88,
+        metalness:0
+      })
+    );
+    mesh.position.set(o.x, o.y, o.z);
+    mesh.rotation.z = o.tilt || 0;
+    scene.add(mesh);
+
+    // separate cloud shell for the terran world
+    var clouds = null;
+    if (o.clouds){
+      clouds = new THREE.Mesh(
+        new THREE.SphereGeometry(o.r*1.015, seg, seg),
+        new THREE.MeshStandardMaterial({map:surface('clouds'), transparent:true, opacity:.75, roughness:1, metalness:0, depthWrite:false})
+      );
+      mesh.add(clouds);
+    }
+
+    // thin atmosphere rim — backside shell lit only at the edge
+    if (o.atmo){
+      var atmo = new THREE.Mesh(
+        new THREE.SphereGeometry(o.r*1.09, seg, seg),
+        new THREE.MeshBasicMaterial({color:o.atmo, transparent:true, opacity:.11, side:THREE.BackSide, blending:THREE.AdditiveBlending, depthWrite:false})
+      );
+      mesh.add(atmo);
+    }
+
+    if (o.ring){
+      var ringGeo = new THREE.RingGeometry(o.r*1.42, o.r*2.2, 96);
+      var ring = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({
+        color:o.ring, side:THREE.DoubleSide, transparent:true, opacity:.3, depthWrite:false
+      }));
+      ring.rotation.x = Math.PI*0.46;
+      ring.rotation.y = .22;
+      mesh.add(ring);
+    }
+
+    planets.push({mesh:mesh, clouds:clouds, spin:o.spin, bob:o.bob, phase:Math.random()*Math.PI*2, baseY:o.y});
+  }
+
+  addPlanet({kind:'gas',    r:30, x:262,  y:-95,  z:-280, spin:.0013, bob:8,  bump:.5,  tilt:.06, ring:0xd9c39a, atmo:0xffcf9a});
+  addPlanet({kind:'terran', r:19, x:-300, y:118,  z:-345, spin:.0018, bob:6,  bump:.35, tilt:-.4, clouds:true, atmo:0x6fb8ff});
+  addPlanet({kind:'moon',   r:9,  x:176,  y:196,  z:-200, spin:.0024, bob:5,  bump:.6,  tilt:.15});
+  addPlanet({kind:'mars',   r:23, x:-150, y:-215, z:-460, spin:.0010, bob:9,  bump:.55, tilt:.3,  atmo:0xff9a6a});
+
+  /* ── space rocks: small, plentiful, tumbling ── */
+  var rockCount = lowPower ? 26 : 52;
+  var rocks = [];
+  var rockGeos = [
+    new THREE.IcosahedronGeometry(1, 0),
+    new THREE.DodecahedronGeometry(1, 0),
+    new THREE.TetrahedronGeometry(1, 0)
+  ];
+  var rockMat = new THREE.MeshStandardMaterial({color:0x8f857b, roughness:1, metalness:.04, flatShading:true});
+  for (var i=0;i<rockCount;i++){
+    var m = new THREE.Mesh(rockGeos[i % rockGeos.length], rockMat);
+    var s = 0.5 + Math.random()*1.5;                 // deliberately small
+    m.scale.set(s*(.7+Math.random()*.6), s*(.7+Math.random()*.6), s*(.7+Math.random()*.6));
+    m.position.set((Math.random()-.5)*620, (Math.random()-.5)*420, -40 - Math.random()*440);
+    m.rotation.set(Math.random()*6.28, Math.random()*6.28, Math.random()*6.28);
+    scene.add(m);
+    rocks.push({
+      mesh:m,
+      rx:(Math.random()-.5)*.006, ry:(Math.random()-.5)*.006, rz:(Math.random()-.5)*.006,
+      vx:(Math.random()-.5)*.10,  vy:(Math.random()-.5)*.07
+    });
+  }
+
+  /* ── parallax from pointer + scroll ── */
+  var targetX = 0, targetY = 0, curX = 0, curY = 0, scrollY = 0;
+  window.addEventListener('pointermove', function(e){
+    targetX = (e.clientX/window.innerWidth  - .5) * 26;
+    targetY = (e.clientY/window.innerHeight - .5) * 16;
+  }, {passive:true});
+  window.addEventListener('scroll', function(){ scrollY = window.scrollY || 0; }, {passive:true});
+
+  var t = 0;
+  function render(){
+    t += 1;
+
+    starsFar.rotation.z  += .00006;
+    starsMid.rotation.z  += .00014;
+    starsNear.rotation.z += .00026;
+
+    galaxy.rotation.y += .00045;
+    galaxy.rotation.z += .00012;
+
+    for (var i=0;i<planets.length;i++){
+      var p = planets[i];
+      p.mesh.rotation.y += p.spin;
+      if (p.clouds) p.clouds.rotation.y += p.spin*.35;   // clouds drift over the surface
+      p.mesh.position.y = p.baseY + Math.sin(t*.0035 + p.phase) * p.bob;
+    }
+
+    for (var j=0;j<rocks.length;j++){
+      var r = rocks[j];
+      r.mesh.rotation.x += r.rx; r.mesh.rotation.y += r.ry; r.mesh.rotation.z += r.rz;
+      r.mesh.position.x += r.vx; r.mesh.position.y += r.vy;
+      if (r.mesh.position.x >  330) r.mesh.position.x = -330;
+      if (r.mesh.position.x < -330) r.mesh.position.x =  330;
+      if (r.mesh.position.y >  230) r.mesh.position.y = -230;
+      if (r.mesh.position.y < -230) r.mesh.position.y =  230;
+    }
+
+    curX += (targetX - curX) * .04;
+    curY += (targetY - curY) * .04;
+    camera.position.x = curX;
+    camera.position.y = -curY - scrollY * .012;
+    camera.position.z = 140 - scrollY * .022;
+    camera.lookAt(0, camera.position.y * .35, -200);
+
+    renderer.render(scene, camera);
+  }
+
+  function loop(){ render(); requestAnimationFrame(loop); }
+  if (reduced) { render(); } else { loop(); }
+
+  window.addEventListener('resize', function(){
+    camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth,window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
   });
 })();
-
-/* ── COUNTERS ── */
-let counted=false;
-function animateCounters(){
-  if(counted)return;counted=true;
-  document.querySelectorAll('[data-count]').forEach(el=>{
-    const target=+el.dataset.count;let cur=0;
-    const step=()=>{cur=Math.min(cur+1,target);el.textContent=cur;if(cur<target)setTimeout(step,70);};
-    step();
-  });
-}
-
-/* ── INTERSECTION OBSERVER ── */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
-},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
-setTimeout(animateCounters,600);
-
-/* ── NAV SCROLL ── */
-const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{
-  nav.style.background=window.scrollY>20?'rgba(3,3,10,.97)':'rgba(3,3,10,.9)';
-},{passive:true});
-
-/* ── SMOOTH SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href').slice(1);
-    const el=document.getElementById(id);
-    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
-  });
-});
 </script>
 </body>
 </html>
