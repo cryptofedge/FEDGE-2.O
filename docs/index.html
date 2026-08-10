@@ -297,10 +297,16 @@ a.store-btn svg{fill:var(--orange)}
   letter-spacing:2px;text-transform:uppercase;transition:.3s;
   clip-path:polygon(10% 0,100% 0,100% 70%,90% 100%,0 100%,0 30%);
 }
-.btn-buy-eclt:hover{transform:scale(1.05);filter:brightness(1.1);box-shadow:0 0 15px rgba(20,241,149,.4)}
+a.btn-buy-eclt:hover{transform:scale(1.05);filter:brightness(1.1);box-shadow:0 0 15px rgba(20,241,149,.4)}
+/* pending state — not a link, so it cannot route anyone to a squatted ticker */
+.btn-buy-eclt.is-soon{
+  display:inline-block;background:transparent;color:#14F195;cursor:default;
+  border:1px dashed rgba(20,241,149,.45);clip-path:none;
+}
 
+/* padding matches .earn-body / .earn-note so the column edges line up */
 .donation-section{
-  margin-top:24px;border-top:1px solid var(--border);padding-top:24px;
+  border-top:1px solid var(--border);padding:24px 34px 32px;
 }
 .donation-title{
   color:var(--gold);font-family:'Orbitron',sans-serif;font-size:14px;
@@ -351,6 +357,7 @@ footer{
   .footer-links{gap:20px}
   .earn-body{padding:28px 22px 24px}
   .earn-note{padding:14px 22px 16px}
+  .donation-section{padding:22px 22px 26px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important}
@@ -577,8 +584,13 @@ footer{
           <span class="earn-tag">// Play to Earn</span>
           <h3 class="earn-title">Your Progress Pays in $ECLT</h3>
           <p class="earn-desc">Every game in the ecosystem rewards you in <strong>$ECLT</strong> — the Eclat Universe token on Solana. Clear missions, hold streaks, finish a run with a high grade, and the tokens land in your connected wallet. They stay yours. The plan is for them to be redeemable down the line, so the hours you put into learning aren't just XP on a screen.</p>
+          <!-- $ECLT is not minted yet. Do NOT link a swap by symbol — jup.ag/swap/SOL-ECLT
+               resolves by ticker, and an unclaimed symbol can be minted by anyone, which
+               would route buyers into someone else's token. Once minted, replace the div
+               below with the mint address, never the ticker:
+               <a href="https://jup.ag/swap/SOL-<MINT_ADDRESS>" target="_blank" rel="noreferrer" class="btn-buy-eclt">Buy $ECLT</a> -->
           <div class="earn-actions">
-            <a href="https://jup.ag/swap/SOL-ECLT" target="_blank" rel="noreferrer" class="btn-buy-eclt">Buy $ECLT</a>
+            <span class="btn-buy-eclt is-soon">$ECLT — Not Yet Minted</span>
           </div>
         </div>
         <div class="earn-steps">
@@ -589,7 +601,7 @@ footer{
       </div>
       <p class="earn-note">$ECLT is still in development and is <strong>not yet tradeable</strong>. It has no market value today, and no future value is promised or guaranteed. Rewards are earned through gameplay and would only be redeemable if and when the token launches and establishes a market. Nothing here is investment advice.</p>
 
-      <div class="donation-section" style="padding: 0 34px 38px;">
+      <div class="donation-section">
         <h4 class="donation-title">Support The Youth</h4>
         <p class="donation-desc">Help us reach the youth in areas where this information is hidden. Every donation powers our community outreach missions, continues our work in financial education for underserved neighborhoods, and helps us promote FEDGE 2.O to expand the word as much as we can.</p>
         <a href="https://www.gofundme.com/f/help-fellito-expand-fedge-2o" target="_blank" rel="noreferrer" class="btn-donate">GoFundMe Donation</a>
