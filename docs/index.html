@@ -260,6 +260,12 @@ a.store-btn svg{fill:var(--orange)}
   letter-spacing:2.5px;text-transform:uppercase;transition:.3s;align-self:flex-start;
 }
 .game-link:hover{letter-spacing:3.5px}
+/* games ship inside the app, so cards state availability rather than link out to play */
+.game-avail{
+  align-self:flex-start;font-size:10px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;color:#7a7a90;
+  border-left:2px solid var(--card-color);padding-left:11px;
+}
 
 /* ── FOOTER ── */
 footer{
@@ -380,7 +386,7 @@ footer{
       <div class="pillar" style="--pillar-color:#00fff9">
         <span class="pillar-num">02 // The Games</span>
         <h3 class="pillar-title">Six Live, Playable Builds</h3>
-        <p class="pillar-desc">Each game teaches exactly one thing and teaches it through consequence. Paper-trade a crash. Move a FICO score from 500 to 750. Sign a bad record deal and learn what termination rights are worth 35 years later. Built in Three.js and Phaser, running free on GitHub Pages — no install, no signup.</p>
+        <p class="pillar-desc">Each game teaches exactly one thing and teaches it through consequence. Paper-trade a crash. Move a FICO score from 500 to 750. Sign a bad record deal and learn what termination rights are worth 35 years later. Built in Three.js and Phaser, all six shipping together inside the FEDGE 2.O app.</p>
       </div>
 
       <div class="pillar" style="--pillar-color:#a78bfa">
@@ -404,7 +410,7 @@ footer{
       <div class="access-item"><span class="access-label">Status</span><span class="access-value"><em>Open Beta</em></span></div>
       <div class="access-item"><span class="access-label">Beta Access</span><span class="access-value">$0.99</span></div>
       <div class="access-item"><span class="access-label">Full Release</span><span class="access-value">$5.00</span></div>
-      <div class="access-item"><span class="access-label">The Games</span><span class="access-value"><em>Free to Play</em></span></div>
+      <div class="access-item"><span class="access-label">The Games</span><span class="access-value"><em>In the App</em></span></div>
     </div>
 
     <!-- Google Play: listing com.eclatuniverse.fedge2o is not published yet, so this
@@ -429,7 +435,7 @@ footer{
   <div class="section-inner">
     <span class="label-cyan">// Eclat Universe</span>
     <h2 class="title-main">THE <em>ECOSYSTEM</em></h2>
-    <p class="section-desc">Six live games on the grid, two more in the lab. Every project teaches a real financial or life skill — wrapped in something you can actually play.</p>
+    <p class="section-desc">Six live games on the grid, two more in the lab. Every project teaches a real financial or life skill — wrapped in something you can actually play. All of it ships inside the FEDGE 2.O app.</p>
 
     <div class="games-grid">
 
@@ -440,7 +446,7 @@ footer{
         <h3 class="game-title">TradeStreet</h3>
         <p class="game-desc">$10K paper trading sim. AAPL, NVDA, BTC, ETH and more. Live price ticks every 4s, FEDGE advisor, daily missions, XP. Learn to spot institutional manipulation before you risk a dime.</p>
         <div class="game-tech"><span class="tech-chip">Vanilla JS</span><span class="tech-chip">GitHub Pages</span></div>
-        <a href="https://cryptofedge.github.io/tradestreet-fedge/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+        <span class="game-avail">In the FEDGE 2.O app</span>
       </div>
 
       <div class="game-card" style="--card-color:#a78bfa;--card-glow:rgba(167,139,250,.15)">
@@ -450,7 +456,7 @@ footer{
         <h3 class="game-title">Credit Warrior</h3>
         <p class="game-desc">Weaponize your FICO. Education across three credit tiers — personal, business, corporate. Three.js score visuals plus Phaser payment mini-games. Beat predatory lending starting from nothing.</p>
         <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/fedge-2-credit-game/demo.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+        <span class="game-avail">In the FEDGE 2.O app</span>
       </div>
 
       <div class="game-card" style="--card-color:#f472b6;--card-glow:rgba(244,114,182,.15)">
@@ -460,7 +466,7 @@ footer{
         <h3 class="game-title">World Stage</h3>
         <p class="game-desc">Music industry RPG. 4 NPCs, 10 industry events, album drops, PRO registration (ASCAP/BMI/SESAC). Learn termination rights and reclaim your masters after 35 years.</p>
         <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/world-stage/world-stage-v2.html" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+        <span class="game-avail">In the FEDGE 2.O app</span>
       </div>
 
       <div class="game-card" style="--card-color:#f5c842;--card-glow:rgba(245,200,66,.15)">
@@ -470,7 +476,7 @@ footer{
         <h3 class="game-title">Trust Fund Tycoon</h3>
         <p class="game-desc">Inherit $100K and navigate 10 market events with Marcus Wells as your NPC advisor. Revocable living trusts, four investment styles, graded S+ down to D.</p>
         <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/fedge2-trust-fund-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+        <span class="game-avail">In the FEDGE 2.O app</span>
       </div>
 
       <div class="game-card" style="--card-color:#4ade80;--card-glow:rgba(74,222,128,.15)">
@@ -480,7 +486,7 @@ footer{
         <h3 class="game-title">Generational Wealth</h3>
         <p class="game-desc">IBC Infinite Banking simulator. Ages 22 through 65. Build the whole life policy, borrow against your own equity to buy real estate, pass it down.</p>
         <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/generational-wealth-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+        <span class="game-avail">In the FEDGE 2.O app</span>
       </div>
 
       <div class="game-card" style="--card-color:#2dd4bf;--card-glow:rgba(45,212,191,.15)">
@@ -490,7 +496,7 @@ footer{
         <h3 class="game-title">Lock In</h3>
         <p class="game-desc">Mental health and discipline RPG. Eight real-life scenarios, OG Ray as your NPC advisor, vibe meter 0–100. Protect your head to protect your bread.</p>
         <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Phaser</span></div>
-        <a href="https://cryptofedge.github.io/lock-in-game/" target="_blank" rel="noreferrer" class="game-link">Play Now →</a>
+        <span class="game-avail">In the FEDGE 2.O app</span>
       </div>
 
       <div class="game-card" style="--card-color:#db2777;--card-glow:rgba(219,39,119,.12)">
