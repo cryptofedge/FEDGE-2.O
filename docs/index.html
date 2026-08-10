@@ -88,7 +88,7 @@ nav{
 .nav-cta:hover{background:var(--orange);color:#000;box-shadow:0 0 20px var(--orange-glow)}
 
 /* ── HERO — wordmark anchored top-left ── */
-#hero{min-height:100svh;display:flex;align-items:center;position:relative;z-index:20;padding:140px 40px 90px}
+#hero{min-height:100svh;display:flex;align-items:center;position:relative;z-index:20;padding:130px 40px 64px}
 .hero-inner{
   width:100%;max-width:1400px;margin:0 auto;
   display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
@@ -144,17 +144,18 @@ nav{
 @keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
 /* ── SECTIONS ── */
-section{position:relative;z-index:20;padding:140px 40px}
+/* adjacent sections both contribute padding, so this doubles at every seam */
+section{position:relative;z-index:20;padding:64px 40px}
 .section-inner{max-width:1400px;margin:0 auto}
 .label-cyan{color:var(--cyan);font-size:11px;letter-spacing:5px;text-transform:uppercase;margin-bottom:20px;display:block}
 .title-main{font-family:'Orbitron',sans-serif;font-size:clamp(38px,8vw,80px);font-weight:900;line-height:.9;margin-bottom:24px}
 .title-main em{font-style:normal;color:var(--orange)}
-.section-desc{max-width:680px;color:#9a9ab0;font-size:15px;line-height:1.9;margin-bottom:60px}
+.section-desc{max-width:680px;color:#9a9ab0;font-size:15px;line-height:1.9;margin-bottom:40px}
 
 /* ── WHAT IT IS ── */
 .about-top{
   display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);
-  gap:56px;align-items:center;margin-bottom:64px;
+  gap:56px;align-items:center;margin-bottom:44px;
 }
 .about-portrait{position:relative;width:100%}
 .about-portrait img{
@@ -180,7 +181,7 @@ section{position:relative;z-index:20;padding:140px 40px}
 .about-lead strong{color:#fff}
 .about-note{color:#9a9ab0;font-size:14px;line-height:1.95;padding-left:28px}
 
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:70px}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:44px}
 .pillar{
   position:relative;background:var(--bg-card);border:1px solid var(--border);
   padding:36px 30px;backdrop-filter:blur(6px);transition:.35s;
@@ -195,7 +196,7 @@ section{position:relative;z-index:20;padding:140px 40px}
 .pillar-desc code{color:var(--cyan);font-size:12px}
 
 .domains-head{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#7a7a90;margin-bottom:22px}
-.domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:60px}
+.domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:40px}
 .domain{background:rgba(6,6,14,.8);padding:24px 22px}
 .domain-name{font-size:12px;font-weight:700;color:#e6e6f5;letter-spacing:1px;margin-bottom:8px}
 .domain-desc{font-size:12px;color:#7a7a90;line-height:1.8}
@@ -208,6 +209,24 @@ section{position:relative;z-index:20;padding:140px 40px}
 .access-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6a6a80}
 .access-value{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:900;color:#fff}
 .access-value em{font-style:normal;color:var(--orange)}
+
+/* ── STORE BUTTONS ── */
+.store-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:26px}
+.store-btn{
+  display:flex;align-items:center;gap:14px;text-decoration:none;
+  border:1px solid var(--border);background:rgba(6,6,14,.85);
+  padding:14px 26px 14px 22px;transition:.3s;min-width:230px;
+}
+.store-btn svg{width:24px;height:24px;flex:0 0 auto}
+.store-btn small{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#7a7a90;margin-bottom:3px}
+.store-btn b{display:block;font-family:'Orbitron',sans-serif;font-size:15px;font-weight:900;color:#fff;letter-spacing:.5px}
+/* live link state */
+a.store-btn:hover{border-color:var(--orange);background:rgba(232,112,18,.1);transform:translateY(-2px)}
+a.store-btn svg{fill:var(--orange)}
+/* pending state — not a link, so it cannot dead-end a visitor */
+.store-btn.is-soon{cursor:default;opacity:.65}
+.store-btn.is-soon svg{fill:#7a7a90}
+.store-btn.is-soon b{color:#c8c8dc}
 
 /* ── ECOSYSTEM / GAMES ── */
 .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px}
@@ -270,8 +289,8 @@ footer{
   .nav-logo-text{font-size:17px}
   .nav-cta{padding:10px 14px;letter-spacing:.2em}
   .games-grid{grid-template-columns:1fr}
-  section{padding:90px 20px}
-  #hero{padding:110px 20px 70px}
+  section{padding:48px 20px}
+  #hero{padding:100px 20px 56px}
   .hero-visual{max-width:220px}
   .btn-cyber,.btn-ghost{padding:16px 26px;font-size:13px}
   footer{padding:44px 20px 36px}
@@ -385,8 +404,23 @@ footer{
       <div class="access-item"><span class="access-label">Status</span><span class="access-value"><em>Open Beta</em></span></div>
       <div class="access-item"><span class="access-label">Beta Access</span><span class="access-value">$0.99</span></div>
       <div class="access-item"><span class="access-label">Full Release</span><span class="access-value">$5.00</span></div>
-      <div class="access-item"><span class="access-label">Platform</span><span class="access-value">Google Play — Soon</span></div>
       <div class="access-item"><span class="access-label">The Games</span><span class="access-value"><em>Free to Play</em></span></div>
+    </div>
+
+    <!-- Google Play: listing com.eclatuniverse.fedge2o is not published yet, so this
+         stays a non-linking div. To go live, swap the div for:
+         <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.eclatuniverse.fedge2o" target="_blank" rel="noreferrer">
+         and drop the is-soon class plus the "Coming soon to" small text. -->
+    <div class="store-row">
+      <div class="store-btn is-soon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3a1 1 0 0 0-.5.9v17.6a1 1 0 0 0 .5.9l9.3-9.7L3.6 2.3Zm10.7 8.3 2.7-2.8-9.5-5.4a1 1 0 0 0-.4-.1l7.2 8.3Zm0 2.8-7.2 8.3a1 1 0 0 0 .4-.1l9.5-5.4-2.7-2.8Zm3.9-1.4 2.6-1.5a1 1 0 0 0 0-1.8l-2.6-1.5-3 2.9 3 2.9Z"/></svg>
+        <span><small>Coming soon to</small><b>Google Play</b></span>
+      </div>
+
+      <div class="store-btn is-soon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm0 15H7V6h10v12Zm-5 3.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8Z"/></svg>
+        <span><small>Coming soon to the</small><b>App Store</b></span>
+      </div>
     </div>
   </div>
 </section>
