@@ -267,6 +267,28 @@ a.store-btn svg{fill:var(--orange)}
   border-left:2px solid var(--card-color);padding-left:11px;
 }
 
+/* ── PLAY TO EARN ── */
+.earn{
+  margin-top:34px;border:1px solid rgba(74,222,128,.28);
+  background:rgba(6,6,14,.82);backdrop-filter:blur(6px);position:relative;overflow:hidden;
+}
+.earn::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#4ade80,#059669,var(--purple))}
+.earn-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:40px;padding:38px 34px 30px}
+.earn-tag{color:#4ade80;font-size:10px;letter-spacing:4px;text-transform:uppercase;display:block;margin-bottom:14px}
+.earn-title{font-family:'Orbitron',sans-serif;font-size:clamp(22px,4vw,30px);font-weight:900;color:#fff;margin-bottom:16px;line-height:1.1}
+.earn-desc{color:#9a9ab0;font-size:14px;line-height:1.95}
+.earn-desc strong{color:#e6e6f5}
+.earn-steps{display:flex;flex-direction:column;gap:12px;align-self:center}
+.earn-step{display:flex;gap:13px;align-items:flex-start;font-size:12px;color:#9a9ab0;line-height:1.7}
+.earn-step b{
+  font-family:'Orbitron',sans-serif;color:#4ade80;font-size:11px;font-weight:900;
+  border:1px solid rgba(74,222,128,.35);padding:3px 8px;flex:0 0 auto;
+}
+.earn-note{
+  border-top:1px solid var(--border);padding:16px 34px 18px;
+  font-size:11px;line-height:1.8;color:#6a6a80;
+}
+
 /* ── FOOTER ── */
 footer{
   position:relative;z-index:20;border-top:1px solid var(--border);
@@ -287,6 +309,7 @@ footer{
   .hero-visual{justify-self:start;max-width:280px}
   .about-top{grid-template-columns:1fr;gap:38px}
   .about-portrait{max-width:300px}
+  .earn-body{grid-template-columns:1fr;gap:28px}
 }
 @media(max-width:768px){
   nav{padding:0 20px;height:76px}
@@ -301,6 +324,8 @@ footer{
   .btn-cyber,.btn-ghost{padding:16px 26px;font-size:13px}
   footer{padding:44px 20px 36px}
   .footer-links{gap:20px}
+  .earn-body{padding:28px 22px 24px}
+  .earn-note{padding:14px 22px 16px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important}
@@ -519,6 +544,22 @@ footer{
         <a href="https://github.com/cryptofedge/Eclatcrypto" target="_blank" rel="noreferrer" class="game-link">GitHub →</a>
       </div>
 
+    </div>
+
+    <div class="earn">
+      <div class="earn-body">
+        <div>
+          <span class="earn-tag">// Play to Earn</span>
+          <h3 class="earn-title">Your Progress Pays in $ECLT</h3>
+          <p class="earn-desc">Every game in the ecosystem rewards you in <strong>$ECLT</strong> — the Eclat Universe token on Solana. Clear missions, hold streaks, finish a run with a high grade, and the tokens land in your connected wallet. They stay yours. The plan is for them to be redeemable down the line, so the hours you put into learning aren't just XP on a screen.</p>
+        </div>
+        <div class="earn-steps">
+          <div class="earn-step"><b>01</b><span>Play any game in the app and complete missions</span></div>
+          <div class="earn-step"><b>02</b><span>Earn $ECLT, tracked on-chain to your wallet</span></div>
+          <div class="earn-step"><b>03</b><span>Hold it, stake it, or cash out once the token is live</span></div>
+        </div>
+      </div>
+      <p class="earn-note">$ECLT is still in development and is <strong>not yet tradeable</strong>. It has no market value today, and no future value is promised or guaranteed. Rewards are earned through gameplay and would only be redeemable if and when the token launches and establishes a market. Nothing here is investment advice.</p>
     </div>
   </div>
 </section>
