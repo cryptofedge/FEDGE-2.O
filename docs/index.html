@@ -145,12 +145,33 @@ section{position:relative;z-index:20;padding:140px 40px}
 .section-desc{max-width:680px;color:#9a9ab0;font-size:15px;line-height:1.9;margin-bottom:60px}
 
 /* ── WHAT IT IS ── */
+.about-top{
+  display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);
+  gap:56px;align-items:center;margin-bottom:64px;
+}
+.about-portrait{position:relative;width:100%}
+.about-portrait img{
+  width:100%;height:auto;display:block;position:relative;z-index:2;
+  filter:drop-shadow(0 0 40px rgba(167,139,250,.35));
+}
+/* faint magenta/cyan offsets echo the wordmark's glitch treatment */
+.about-portrait::before,.about-portrait::after{
+  content:'';position:absolute;inset:8% 6%;border:1px solid;z-index:1;
+}
+.about-portrait::before{border-color:rgba(255,0,193,.28);transform:translate(7px,-7px)}
+.about-portrait::after{border-color:rgba(0,255,249,.28);transform:translate(-7px,7px)}
+.about-caption{
+  position:relative;z-index:3;margin-top:18px;text-align:center;
+  font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:#6a6a80;
+}
+.about-caption b{color:var(--purple);font-weight:700}
+
 .about-lead{
-  max-width:860px;color:#c8c8dc;font-size:17px;line-height:2;margin-bottom:16px;
+  color:#c8c8dc;font-size:17px;line-height:2;margin-bottom:16px;
   border-left:2px solid var(--orange);padding-left:26px;
 }
 .about-lead strong{color:#fff}
-.about-note{max-width:860px;color:#9a9ab0;font-size:14px;line-height:1.95;margin-bottom:64px;padding-left:28px}
+.about-note{color:#9a9ab0;font-size:14px;line-height:1.95;padding-left:28px}
 
 .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:70px}
 .pillar{
@@ -232,6 +253,8 @@ footer{
   .hero-inner{grid-template-columns:1fr;gap:44px}
   /* wordmark stays first so it holds the upper-left corner on narrow screens */
   .hero-visual{justify-self:start;max-width:280px}
+  .about-top{grid-template-columns:1fr;gap:38px}
+  .about-portrait{max-width:300px}
 }
 @media(max-width:768px){
   nav{padding:0 20px;height:76px}
@@ -305,8 +328,17 @@ footer{
     <span class="label-cyan">// The Thesis</span>
     <h2 class="title-main">WHAT IS <em>FEDGE 2.O</em>?</h2>
 
-    <p class="about-lead">FEDGE 2.O is an <strong>AI agent ecosystem built to put generational wealth in the hands of people who were never taught how to build it.</strong> Credit, investing, trusts, ownership — the rules exist, they were just never handed to us. FEDGE translates them into something you can actually play.</p>
-    <p class="about-note">It isn't a course and it isn't a finance app. It's a persistent AI brain running a suite of games, where every mechanic maps to a real financial or life skill. You learn the move by making it — with nothing on the line but XP.</p>
+    <div class="about-top">
+      <figure class="about-portrait">
+        <img src="assets/fedge-character.png" alt="FEDGE 2.O — Glitch Edition">
+        <figcaption class="about-caption">FEDGE 2.O · <b>Glitch Edition</b></figcaption>
+      </figure>
+
+      <div>
+        <p class="about-lead">FEDGE 2.O is an <strong>AI agent ecosystem built to put generational wealth in the hands of people who were never taught how to build it.</strong> Credit, investing, trusts, ownership — the rules exist, they were just never handed to us. FEDGE translates them into something you can actually play.</p>
+        <p class="about-note">It isn't a course and it isn't a finance app. It's a persistent AI brain running a suite of games, where every mechanic maps to a real financial or life skill. You learn the move by making it — with nothing on the line but XP.</p>
+      </div>
+    </div>
 
     <div class="pillars">
       <div class="pillar" style="--pillar-color:#e87012">
