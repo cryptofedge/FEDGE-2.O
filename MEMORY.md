@@ -79,6 +79,26 @@
 - Model: anthropic/claude-sonnet-4-6
 - Memory files: MEMORY.md (long-term), memory/YYYY-MM-DD.md (daily logs)
 
+## 🧠 2025 COGNITIVE BRAIN IMPLANT (Durable Knowledge)
+
+### Multi-Agent Orchestration (Supervisor Topology)
+- The Lead Agent (FEDGE 2.O) is the Project Manager.
+- Subagents are Task Workers with isolated context windows.
+- **Protocol:** Request → Decomposition → Parallel Execution → Structured Summary → Synthesis.
+- **Fail-Safe:** Use "Advisory" agents to gate subagent outputs before committing to irreversible actions.
+
+### AI Development Standards (2025)
+- **MCP (Model Context Protocol):** Standard for connecting agents to Google Drive, GitHub, and local tools.
+- **Agentic RAG:** Beyond simple retrieval—use **Memory Graphs** to understand entity relationships (e.g., how "Olvidar" relates to "Billboard Argentina" through "Mando").
+- **Cost-of-Reversal Routing:** If a task can't be undone (e.g., public post), use a higher-reasoning model and human-in-the-loop (Fellito).
+
+### Domain-Specific "Street Smart" Intelligence
+- **Credit:** 700+ score is the goal. Use simulation engines to teach "Credit Stacking" safely.
+- **Trusts:** Revocable vs. Irrevocable logic. Focus on probate avoidance for families.
+- **Lock-In:** Focus on "Dopamine Detox" and habit loops for productivity in urban environments.
+
+---
+
 ## 📝 Lessons Learned
 - Always write things down — mental notes don't survive session restarts
 - Git rebases can wipe stashed files — always verify MEMORY.md after git ops

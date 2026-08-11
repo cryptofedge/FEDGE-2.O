@@ -180,11 +180,12 @@ FEDGE 2.O LEAD AGENT  ←  SOUL.md + MEMORY.md + USER.md
 | **Outcomes Session** | `fedge-lead-{YYYY-MM-DD}` |
 
 **Responsibilities:**
-- Receive tasks from Fellito
-- Decompose and delegate to the right subagent(s)
-- Subagents run in parallel — don't wait for one before spawning the next
-- Synthesize results and report back
-- Update `MEMORY.md` via Dreaming (review-first)
+- **Hierarchical TODO Decomposition:** Decompose complex requests into dynamic task graphs (ReflexGrad style).
+- **Parallel Dispatch:** Subagents run in parallel on the shared filesystem; lead monitors results via `/agent/shared/results.md`.
+- **Context Isolation:** Subagents return **Structured JSON Summaries** (not raw logs) to the lead.
+- **Stuck-Counter:** If a subagent loops or fails 2x, Lead intercepts to re-plan.
+- **Model Routing:** Use `claude-opus-4-5` for planning and `claude-sonnet-4-5` for execution.
+- **Dreaming:** Periodically audit outcomes and update `MEMORY.md` via review-first commit.
 
 **Lead MUST NOT:**
 - Auto-publish to any external channel without Fellito approval

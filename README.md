@@ -78,7 +78,7 @@ Each agent has its own model, system prompt, tools, and persistent memory. Nothi
 | AI Core | Eclat Universe - Rafael Fellito Rodriguez (FEDGE 2.O Lead Engine lead / FEDGE 2.O Intelligence Engine-5 subagents) |
 | Language | Node.js + Python + TypeScript |
 | Memory | MEMORY.md + Eclat Universe persistent memory |
-| Skills | 54 skills wired across finance, crypto, music, legal, social, and more |
+| Skills | 110 skills wired across finance, crypto, music, legal, social, and more |
 | Platform | WSL2 Ubuntu on Windows (FEDGE2O-EclatUniverse) |
 | Blockchain | Solana / Web3 (Eclatcrypto layer) |
 
@@ -135,7 +135,7 @@ FEDGE 2.O runs on Eclat Universe - Rafael Fellito Rodriguez. Every session loads
 2. **MEMORY.md** -” Long-term curated memory from past sessions
 3. **USER.md** -” Fellito's context, preferences, and goals
 4. **AGENTS.md** -” Orchestration manifest for all 8 subagents
-5. **Skills** -” 54 domain-specific skill modules loaded on demand
+5. **Skills** -” 110 domain-specific skill modules loaded on demand
 
 The agent powers:
 
@@ -151,7 +151,7 @@ The agent powers:
 ## Roadmap
 
 - [x] Core agent -” SOUL, MEMORY, USER, AGENTS wired
-- [x] 54 skills deployed
+- [x] 110 skills deployed
 - [x] WAL Protocol + heartbeat system active
 - [x] 9-agent multiagent architecture designed
 - [x] Shared filesystem scaffolded

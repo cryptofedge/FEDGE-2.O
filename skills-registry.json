@@ -2,8 +2,40 @@
   "version": "2.0.0",
   "agent": "FEDGE 2.O",
   "generated": "2026-05-12",
-  "totalSkills": 108,
+  "totalSkills": 110,
   "skills": [
+    {
+      "slug": "prompt-engineering",
+      "emoji": "🧪",
+      "source": "repo",
+      "description": "Advanced programmatic prompt engineering and reasoning architecture. Implement CoT, ToT, GoT, and automated prompt optimization via DSPy.",
+      "triggers": [
+        "prompt engineering",
+        "system prompt",
+        "chain of thought",
+        "tree of thought",
+        "graph of thought",
+        "skeleton of thought",
+        "dspy",
+        "prompt optimization"
+      ]
+    },
+    {
+      "slug": "cognitive-orchestration",
+      "emoji": "🧠",
+      "source": "repo",
+      "description": "Advanced multi-agent orchestration and cognitive architecture management. Decompose complex goals, delegate to subagents, and curate long-term memory via Dreaming.",
+      "triggers": [
+        "orchestration",
+        "multi-agent",
+        "supervisor agent",
+        "agent architecture",
+        "dreaming",
+        "memory curation",
+        "context isolation",
+        "mcp server"
+      ]
+    },
     {
       "slug": "ai-legal-standard-v2",
       "emoji": "⚖️",
