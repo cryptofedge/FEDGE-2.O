@@ -1,4 +1,5 @@
 const { textToSpeech, saveTempAudio, cleanupTempAudio } = require('./elevenlabs');
+const { askGemini } = require('./services/gemini');
 
 async function sendVoiceReply(sock, jid, text) {
   await sock.sendMessage(jid, { text });
@@ -156,8 +157,11 @@ async function startBot() {
         ? MASTER_PROMPT + '\n\n---\n## ACTIVE SKILL: ' + matched.name.toUpperCase() + '\n' + matched.content
         : MASTER_PROMPT;
     if (matched) console.log('🎯 Skill matched: ' + matched.name);
-      const reply = await askFEDGE(text, systemPrompt);
-      console.log(`FEDGE: ${reply}`);
+
+      // Use Gemini Pro for all reasoning (1.5 Pro)
+      const reply = await askGemini(text, systemPrompt);
+
+      console.log(`FEDGE (Gemini): ${reply}`);
       await sendVoiceReply(sock, from, reply);
     } catch (err) {
       console.log("Error:", err.message);
