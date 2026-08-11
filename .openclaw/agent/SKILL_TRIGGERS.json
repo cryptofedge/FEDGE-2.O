@@ -1,0 +1,2082 @@
+{
+  "legal standard": [
+    "ai-legal-standard-v2"
+  ],
+  "ai legal": [
+    "ai-legal-standard-v2"
+  ],
+  "compliance": [
+    "ai-legal-standard-v2"
+  ],
+  "legal review": [
+    "ai-legal-standard-v2"
+  ],
+  "contract review": [
+    "ai-legal-standard-v2"
+  ],
+  "podcast": [
+    "ai-podcast-creation"
+  ],
+  "create podcast": [
+    "ai-podcast-creation"
+  ],
+  "podcast script": [
+    "ai-podcast-creation"
+  ],
+  "episode": [
+    "ai-podcast-creation"
+  ],
+  "show notes": [
+    "ai-podcast-creation"
+  ],
+  "podcast strategy": [
+    "ai-podcast-creation"
+  ],
+  "api gateway": [
+    "api-gateway"
+  ],
+  "api route": [
+    "api-gateway"
+  ],
+  "endpoint": [
+    "api-gateway"
+  ],
+  "api integration": [
+    "api-gateway"
+  ],
+  "rest api": [
+    "api-gateway"
+  ],
+  "webhook": [
+    "api-gateway"
+  ],
+  "betting": [
+    "betting"
+  ],
+  "odds": [
+    "betting"
+  ],
+  "sports bet": [
+    "betting"
+  ],
+  "wager": [
+    "betting"
+  ],
+  "bankroll": [
+    "betting"
+  ],
+  "parlay": [
+    "betting"
+  ],
+  "moneyline": [
+    "betting"
+  ],
+  "business strategy": [
+    "business"
+  ],
+  "operations": [
+    "business"
+  ],
+  "KPI": [
+    "business"
+  ],
+  "business advice": [
+    "business"
+  ],
+  "company": [
+    "business"
+  ],
+  "startup": [
+    "business"
+  ],
+  "revenue": [
+    "business"
+  ],
+  "business model canvas": [
+    "business-model-canvas"
+  ],
+  "BMC": [
+    "business-model-canvas"
+  ],
+  "value proposition": [
+    "business-model-canvas"
+  ],
+  "customer segments": [
+    "business-model-canvas"
+  ],
+  "revenue streams": [
+    "business-model-canvas"
+  ],
+  "canvas": [
+    "business-model-canvas"
+  ],
+  "business plan": [
+    "business-plan"
+  ],
+  "executive summary": [
+    "business-plan"
+  ],
+  "financial projections": [
+    "business-plan"
+  ],
+  "go-to-market": [
+    "business-plan"
+  ],
+  "market analysis": [
+    "business-plan"
+  ],
+  "calendar": [
+    "calendar-manager"
+  ],
+  "schedule": [
+    "calendar-manager"
+  ],
+  "appointment": [
+    "calendar-manager"
+  ],
+  "reminder": [
+    "calendar-manager"
+  ],
+  "book meeting": [
+    "calendar-manager"
+  ],
+  "set event": [
+    "calendar-manager"
+  ],
+  "availability": [
+    "calendar-manager"
+  ],
+  "canva": [
+    "canva"
+  ],
+  "design graphic": [
+    "canva"
+  ],
+  "social media graphic": [
+    "canva"
+  ],
+  "flyer": [
+    "canva"
+  ],
+  "canva template": [
+    "canva"
+  ],
+  "canva ai": [
+    "canva"
+  ],
+  "capcut": [
+    "capcut"
+  ],
+  "video edit": [
+    "capcut"
+  ],
+  "reels": [
+    "capcut"
+  ],
+  "tiktok video": [
+    "capcut"
+  ],
+  "short video": [
+    "capcut"
+  ],
+  "caption video": [
+    "capcut"
+  ],
+  "capcut effect": [
+    "capcut"
+  ],
+  "credit card rewards": [
+    "card-optimizer"
+  ],
+  "card optimizer": [
+    "card-optimizer"
+  ],
+  "cashback": [
+    "card-optimizer"
+  ],
+  "travel points": [
+    "card-optimizer"
+  ],
+  "best credit card": [
+    "card-optimizer"
+  ],
+  "rewards points": [
+    "card-optimizer"
+  ],
+  "claude code": [
+    "claude-code"
+  ],
+  "agentic coding": [
+    "claude-code"
+  ],
+  "code agent": [
+    "claude-code"
+  ],
+  "ai coding": [
+    "claude-code"
+  ],
+  "claude terminal": [
+    "claude-code"
+  ],
+  "cowork": [
+    "claude-cowork"
+  ],
+  "claude cowork": [
+    "claude-cowork"
+  ],
+  "desktop automation": [
+    "claude-cowork"
+  ],
+  "file management": [
+    "claude-cowork"
+  ],
+  "workflow automation": [
+    "claude-cowork"
+  ],
+  "claude design": [
+    "claude-design"
+  ],
+  "ui design": [
+    "claude-design"
+  ],
+  "ux design": [
+    "claude-design"
+  ],
+  "wireframe": [
+    "claude-design"
+  ],
+  "design system": [
+    "claude-design"
+  ],
+  "ai design": [
+    "claude-design"
+  ],
+  "write code": [
+    "coding-agent"
+  ],
+  "debug": [
+    "coding-agent"
+  ],
+  "refactor": [
+    "coding-agent"
+  ],
+  "build feature": [
+    "coding-agent"
+  ],
+  "fix bug": [
+    "coding-agent"
+  ],
+  "code review": [
+    "coding-agent"
+  ],
+  "typescript": [
+    "coding-agent"
+  ],
+  "nodejs": [
+    "coding-agent"
+  ],
+  "python": [
+    "coding-agent"
+  ],
+  "creatify": [
+    "creatify-ai"
+  ],
+  "video ad": [
+    "creatify-ai"
+  ],
+  "product video": [
+    "creatify-ai"
+  ],
+  "ugc video": [
+    "creatify-ai"
+  ],
+  "ai video ad": [
+    "creatify-ai"
+  ],
+  "ad creative video": [
+    "creatify-ai"
+  ],
+  "credit score": [
+    "credit"
+  ],
+  "credit building": [
+    "credit"
+  ],
+  "improve credit": [
+    "credit"
+  ],
+  "credit education": [
+    "credit"
+  ],
+  "tradelines": [
+    "credit"
+  ],
+  "credit utilization": [
+    "credit"
+  ],
+  "credit repair": [
+    "credit-repair-skill"
+  ],
+  "dispute letter": [
+    "credit-repair-skill"
+  ],
+  "fix credit": [
+    "credit-repair-skill"
+  ],
+  "remove negative items": [
+    "credit-repair-skill"
+  ],
+  "credit bureau dispute": [
+    "credit-repair-skill"
+  ],
+  "cross session": [
+    "cross-session-tasks"
+  ],
+  "remember this": [
+    "cross-session-tasks"
+  ],
+  "persist task": [
+    "cross-session-tasks"
+  ],
+  "continue last session": [
+    "cross-session-tasks"
+  ],
+  "session memory": [
+    "cross-session-tasks"
+  ],
+  "ongoing task": [
+    "cross-session-tasks"
+  ],
+  "cybersecurity": [
+    "cybersecurity"
+  ],
+  "security": [
+    "cybersecurity"
+  ],
+  "api key exposed": [
+    "cybersecurity"
+  ],
+  "password": [
+    "cybersecurity"
+  ],
+  "threat": [
+    "cybersecurity"
+  ],
+  "secure code": [
+    "cybersecurity"
+  ],
+  "vulnerability": [
+    "cybersecurity"
+  ],
+  "2fa": [
+    "cybersecurity"
+  ],
+  "discord": [
+    "discord"
+  ],
+  "discord server": [
+    "discord"
+  ],
+  "discord bot": [
+    "discord"
+  ],
+  "discord community": [
+    "discord"
+  ],
+  "discord roles": [
+    "discord"
+  ],
+  "distrokid": [
+    "distrokid"
+  ],
+  "music distribution": [
+    "distrokid"
+  ],
+  "upload music": [
+    "distrokid"
+  ],
+  "streaming platforms": [
+    "distrokid"
+  ],
+  "royalty splits": [
+    "distrokid"
+  ],
+  "release music": [
+    "distrokid"
+  ],
+  "read document": [
+    "document-reader"
+  ],
+  "extract from pdf": [
+    "document-reader"
+  ],
+  "summarize document": [
+    "document-reader"
+  ],
+  "document reader": [
+    "document-reader"
+  ],
+  "analyze document": [
+    "document-reader"
+  ],
+  "elevenlabs": [
+    "elevenlabs"
+  ],
+  "voice generation": [
+    "elevenlabs"
+  ],
+  "ai voiceover": [
+    "elevenlabs"
+  ],
+  "voice clone": [
+    "elevenlabs"
+  ],
+  "text to speech elevenlabs": [
+    "elevenlabs"
+  ],
+  "ai voice": [
+    "elevenlabs"
+  ],
+  "event": [
+    "event-management"
+  ],
+  "concert": [
+    "event-management"
+  ],
+  "show": [
+    "event-management"
+  ],
+  "event planning": [
+    "event-management"
+  ],
+  "venue": [
+    "event-management"
+  ],
+  "popup": [
+    "event-management"
+  ],
+  "launch event": [
+    "event-management"
+  ],
+  "ticket sales": [
+    "event-management"
+  ],
+  "fiverr": [
+    "fiverr"
+  ],
+  "gig": [
+    "fiverr"
+  ],
+  "freelance": [
+    "fiverr"
+  ],
+  "fiverr listing": [
+    "fiverr"
+  ],
+  "fiverr gig": [
+    "fiverr"
+  ],
+  "fiverr profile": [
+    "fiverr"
+  ],
+  "gamma": [
+    "gamma-ai"
+  ],
+  "gamma ai": [
+    "gamma-ai"
+  ],
+  "gamma presentation": [
+    "gamma-ai"
+  ],
+  "ai presentation": [
+    "gamma-ai"
+  ],
+  "gamma deck": [
+    "gamma-ai"
+  ],
+  "gamma website": [
+    "gamma-ai"
+  ],
+  "genviral": [
+    "genviral-social-media"
+  ],
+  "viral content": [
+    "genviral-social-media"
+  ],
+  "viral hook": [
+    "genviral-social-media"
+  ],
+  "viral post": [
+    "genviral-social-media"
+  ],
+  "go viral": [
+    "genviral-social-media"
+  ],
+  "viral caption": [
+    "genviral-social-media"
+  ],
+  "github issue": [
+    "gh-issues"
+  ],
+  "create issue": [
+    "gh-issues"
+  ],
+  "bug report": [
+    "gh-issues"
+  ],
+  "gh issue": [
+    "gh-issues"
+  ],
+  "triage": [
+    "gh-issues"
+  ],
+  "open issue": [
+    "gh-issues"
+  ],
+  "issue label": [
+    "gh-issues"
+  ],
+  "github": [
+    "github"
+  ],
+  "git": [
+    "github"
+  ],
+  "commit": [
+    "github"
+  ],
+  "push": [
+    "github"
+  ],
+  "pull request": [
+    "github"
+  ],
+  "branch": [
+    "github"
+  ],
+  "merge": [
+    "github"
+  ],
+  "repo": [
+    "github"
+  ],
+  "git status": [
+    "github"
+  ],
+  "google ads": [
+    "google-ads"
+  ],
+  "search ads": [
+    "google-ads"
+  ],
+  "keyword research": [
+    "google-ads"
+  ],
+  "google campaign": [
+    "google-ads"
+  ],
+  "ppc": [
+    "google-ads"
+  ],
+  "adwords": [
+    "google-ads"
+  ],
+  "ad copy": [
+    "google-ads"
+  ],
+  "google analytics": [
+    "google-analytics"
+  ],
+  "GA4": [
+    "google-analytics"
+  ],
+  "analytics": [
+    "google-analytics"
+  ],
+  "traffic report": [
+    "google-analytics"
+  ],
+  "conversion tracking": [
+    "google-analytics"
+  ],
+  "website analytics": [
+    "google-analytics"
+  ],
+  "grant": [
+    "grant"
+  ],
+  "find grants": [
+    "grant"
+  ],
+  "grant research": [
+    "grant"
+  ],
+  "funding": [
+    "grant"
+  ],
+  "grant opportunity": [
+    "grant"
+  ],
+  "apply for grant": [
+    "grant"
+  ],
+  "grant writing": [
+    "grant-writing-framework"
+  ],
+  "grant proposal": [
+    "grant-writing-framework"
+  ],
+  "grant application": [
+    "grant-writing-framework"
+  ],
+  "grant narrative": [
+    "grant-writing-framework"
+  ],
+  "write grant": [
+    "grant-writing-framework"
+  ],
+  "grant budget": [
+    "grant-writing-framework"
+  ],
+  "graphic design": [
+    "graphic-design-mastery"
+  ],
+  "typography": [
+    "graphic-design-mastery"
+  ],
+  "color palette": [
+    "graphic-design-mastery"
+  ],
+  "brand identity": [
+    "graphic-design-mastery",
+    "brand-guidelines"
+  ],
+  "logo design": [
+    "graphic-design-mastery"
+  ],
+  "layout": [
+    "graphic-design-mastery"
+  ],
+  "visual design": [
+    "graphic-design-mastery",
+    "canvas-design"
+  ],
+  "healthcheck": [
+    "healthcheck"
+  ],
+  "system status": [
+    "healthcheck"
+  ],
+  "bot health": [
+    "healthcheck"
+  ],
+  "check status": [
+    "healthcheck"
+  ],
+  "is bot running": [
+    "healthcheck"
+  ],
+  "ping": [
+    "healthcheck"
+  ],
+  "uptime": [
+    "healthcheck"
+  ],
+  "heygen": [
+    "heygen-ai"
+  ],
+  "ai avatar": [
+    "heygen-ai"
+  ],
+  "talking head video": [
+    "heygen-ai"
+  ],
+  "heygen video": [
+    "heygen-ai"
+  ],
+  "ai spokesperson": [
+    "heygen-ai"
+  ],
+  "lip sync video": [
+    "heygen-ai"
+  ],
+  "higgsfield": [
+    "higgsfield-ai"
+  ],
+  "higgsfield ai": [
+    "higgsfield-ai"
+  ],
+  "cinematic video": [
+    "higgsfield-ai"
+  ],
+  "ai film": [
+    "higgsfield-ai"
+  ],
+  "cinematic ai": [
+    "higgsfield-ai"
+  ],
+  "video generation": [
+    "higgsfield-ai"
+  ],
+  "hyperframes": [
+    "hyperframes"
+  ],
+  "content frame": [
+    "hyperframes"
+  ],
+  "story arc": [
+    "hyperframes"
+  ],
+  "content structure": [
+    "hyperframes"
+  ],
+  "narrative framework": [
+    "hyperframes"
+  ],
+  "generate image": [
+    "image-generation"
+  ],
+  "create image": [
+    "image-generation"
+  ],
+  "ai image": [
+    "image-generation"
+  ],
+  "dall-e": [
+    "image-generation"
+  ],
+  "midjourney": [
+    "image-generation"
+  ],
+  "image prompt": [
+    "image-generation"
+  ],
+  "flux": [
+    "image-generation"
+  ],
+  "make a picture": [
+    "image-generation"
+  ],
+  "influencer": [
+    "influencer-marketing"
+  ],
+  "creator marketing": [
+    "influencer-marketing"
+  ],
+  "influencer outreach": [
+    "influencer-marketing"
+  ],
+  "brand deal": [
+    "influencer-marketing"
+  ],
+  "collab": [
+    "influencer-marketing"
+  ],
+  "ugc creator": [
+    "influencer-marketing"
+  ],
+  "investing": [
+    "investing-analyst"
+  ],
+  "investment analysis": [
+    "investing-analyst"
+  ],
+  "portfolio": [
+    "investing-analyst"
+  ],
+  "asset allocation": [
+    "investing-analyst"
+  ],
+  "wealth building": [
+    "investing-analyst"
+  ],
+  "investment strategy": [
+    "investing-analyst"
+  ],
+  "ROI": [
+    "investing-analyst"
+  ],
+  "klaviyo": [
+    "klaviyo"
+  ],
+  "email marketing": [
+    "klaviyo"
+  ],
+  "email flow": [
+    "klaviyo"
+  ],
+  "email automation": [
+    "klaviyo"
+  ],
+  "email campaign": [
+    "klaviyo"
+  ],
+  "abandoned cart email": [
+    "klaviyo"
+  ],
+  "legal counsel": [
+    "legal-ai-counsel"
+  ],
+  "contract": [
+    "legal-ai-counsel"
+  ],
+  "terms of service": [
+    "legal-ai-counsel"
+  ],
+  "privacy policy": [
+    "legal-ai-counsel"
+  ],
+  "llc": [
+    "legal-ai-counsel"
+  ],
+  "legal advice": [
+    "legal-ai-counsel"
+  ],
+  "legal document": [
+    "legal-ai-counsel"
+  ],
+  "NDA": [
+    "legal-ai-counsel"
+  ],
+  "linktree": [
+    "linktree"
+  ],
+  "link in bio": [
+    "linktree"
+  ],
+  "bio link": [
+    "linktree"
+  ],
+  "link page": [
+    "linktree"
+  ],
+  "bio page": [
+    "linktree"
+  ],
+  "link hub": [
+    "linktree"
+  ],
+  "market sentiment": [
+    "market-sentiment-pulse"
+  ],
+  "fear greed": [
+    "market-sentiment-pulse"
+  ],
+  "market mood": [
+    "market-sentiment-pulse"
+  ],
+  "crypto sentiment": [
+    "market-sentiment-pulse"
+  ],
+  "bullish": [
+    "market-sentiment-pulse"
+  ],
+  "bearish": [
+    "market-sentiment-pulse"
+  ],
+  "market pulse": [
+    "market-sentiment-pulse"
+  ],
+  "men's mental health": [
+    "mens-mental-health"
+  ],
+  "stress": [
+    "mens-mental-health"
+  ],
+  "mindset": [
+    "mens-mental-health"
+  ],
+  "emotional health": [
+    "mens-mental-health"
+  ],
+  "men's wellness": [
+    "mens-mental-health"
+  ],
+  "anxiety men": [
+    "mens-mental-health"
+  ],
+  "meta ads": [
+    "meta-ads"
+  ],
+  "facebook ads": [
+    "meta-ads"
+  ],
+  "instagram ads": [
+    "meta-ads"
+  ],
+  "meta campaign": [
+    "meta-ads"
+  ],
+  "ad targeting": [
+    "meta-ads"
+  ],
+  "facebook pixel": [
+    "meta-ads"
+  ],
+  "ad creative": [
+    "meta-ads"
+  ],
+  "music industry": [
+    "music-industry-manager"
+  ],
+  "artist manager": [
+    "music-industry-manager"
+  ],
+  "release strategy": [
+    "music-industry-manager"
+  ],
+  "music business": [
+    "music-industry-manager"
+  ],
+  "label": [
+    "music-industry-manager"
+  ],
+  "sync license": [
+    "music-industry-manager"
+  ],
+  "artist development": [
+    "music-industry-manager"
+  ],
+  "music manager": [
+    "music-manager-pro"
+  ],
+  "booking": [
+    "music-manager-pro"
+  ],
+  "tour": [
+    "music-manager-pro"
+  ],
+  "press kit": [
+    "music-manager-pro"
+  ],
+  "media outreach": [
+    "music-manager-pro",
+    "pr-press-outreach"
+  ],
+  "artist brand": [
+    "music-manager-pro"
+  ],
+  "music career": [
+    "music-manager-pro"
+  ],
+  "node connect": [
+    "node-connect"
+  ],
+  "database connection": [
+    "node-connect"
+  ],
+  "websocket": [
+    "node-connect"
+  ],
+  "api client": [
+    "node-connect"
+  ],
+  "node integration": [
+    "node-connect"
+  ],
+  "legal doc": [
+    "normieclaw-legal-docs-pro"
+  ],
+  "contract template": [
+    "normieclaw-legal-docs-pro"
+  ],
+  "agreement": [
+    "normieclaw-legal-docs-pro"
+  ],
+  "waiver": [
+    "normieclaw-legal-docs-pro"
+  ],
+  "normieclaw": [
+    "normieclaw-legal-docs-pro"
+  ],
+  "simple contract": [
+    "normieclaw-legal-docs-pro"
+  ],
+  "notion": [
+    "notion"
+  ],
+  "notion page": [
+    "notion"
+  ],
+  "notion database": [
+    "notion"
+  ],
+  "notion template": [
+    "notion"
+  ],
+  "knowledge base": [
+    "notion"
+  ],
+  "notion workspace": [
+    "notion"
+  ],
+  "nutritionist": [
+    "nutritionist"
+  ],
+  "meal plan": [
+    "nutritionist",
+    "training-and-nutrition-coach"
+  ],
+  "nutrition advice": [
+    "nutritionist"
+  ],
+  "macros": [
+    "nutritionist",
+    "training-and-nutrition-coach"
+  ],
+  "diet": [
+    "nutritionist"
+  ],
+  "supplements": [
+    "nutritionist"
+  ],
+  "healthy eating": [
+    "nutritionist"
+  ],
+  "calories": [
+    "nutritionist",
+    "training-and-nutrition-coach"
+  ],
+  "nyc funds": [
+    "nyc-funds-finder"
+  ],
+  "new york grant": [
+    "nyc-funds-finder"
+  ],
+  "nyc funding": [
+    "nyc-funds-finder"
+  ],
+  "nyc small business": [
+    "nyc-funds-finder"
+  ],
+  "MWBE": [
+    "nyc-funds-finder"
+  ],
+  "nyc loan": [
+    "nyc-funds-finder"
+  ],
+  "new york funding": [
+    "nyc-funds-finder"
+  ],
+  "openai": [
+    "openai-api"
+  ],
+  "gpt": [
+    "openai-api"
+  ],
+  "chatgpt api": [
+    "openai-api"
+  ],
+  "openai api": [
+    "openai-api"
+  ],
+  "dall-e api": [
+    "openai-api"
+  ],
+  "whisper": [
+    "openai-api"
+  ],
+  "embeddings": [
+    "openai-api"
+  ],
+  "openai integration": [
+    "openai-api"
+  ],
+  "press release": [
+    "pr-press-outreach"
+  ],
+  "PR": [
+    "pr-press-outreach"
+  ],
+  "journalist pitch": [
+    "pr-press-outreach"
+  ],
+  "media coverage": [
+    "pr-press-outreach"
+  ],
+  "press campaign": [
+    "pr-press-outreach"
+  ],
+  "publicity": [
+    "pr-press-outreach"
+  ],
+  "proactive agent": [
+    "proactive-agent"
+  ],
+  "WAL protocol": [
+    "proactive-agent"
+  ],
+  "agent runtime": [
+    "proactive-agent"
+  ],
+  "skill load": [
+    "proactive-agent"
+  ],
+  "fedge agent": [
+    "proactive-agent"
+  ],
+  "openclaw": [
+    "proactive-agent"
+  ],
+  "proposal": [
+    "proposal-writer"
+  ],
+  "write proposal": [
+    "proposal-writer"
+  ],
+  "business proposal": [
+    "proposal-writer"
+  ],
+  "partnership proposal": [
+    "proposal-writer"
+  ],
+  "sponsorship proposal": [
+    "proposal-writer"
+  ],
+  "client proposal": [
+    "proposal-writer"
+  ],
+  "real estate investing": [
+    "real-estate-investing"
+  ],
+  "rental property": [
+    "real-estate-investing"
+  ],
+  "deal analysis": [
+    "real-estate-investing"
+  ],
+  "cap rate": [
+    "real-estate-investing"
+  ],
+  "real estate ROI": [
+    "real-estate-investing"
+  ],
+  "investment property": [
+    "real-estate-investing"
+  ],
+  "real estate": [
+    "real-estate-skill"
+  ],
+  "property": [
+    "real-estate-skill"
+  ],
+  "home buying": [
+    "real-estate-skill"
+  ],
+  "listing": [
+    "real-estate-skill"
+  ],
+  "mortgage": [
+    "real-estate-skill"
+  ],
+  "real estate market": [
+    "real-estate-skill"
+  ],
+  "comps": [
+    "real-estate-skill"
+  ],
+  "property value": [
+    "real-estate-skill"
+  ],
+  "rocket lawyer": [
+    "rocket-lawyer"
+  ],
+  "legal template": [
+    "rocket-lawyer"
+  ],
+  "attorney": [
+    "rocket-lawyer"
+  ],
+  "legal service": [
+    "rocket-lawyer"
+  ],
+  "business legal": [
+    "rocket-lawyer"
+  ],
+  "rollhub": [
+    "rollhub-analyst"
+  ],
+  "rollhub analyst": [
+    "rollhub-analyst"
+  ],
+  "performance analytics": [
+    "rollhub-analyst"
+  ],
+  "data modeling": [
+    "rollhub-analyst"
+  ],
+  "business analytics": [
+    "rollhub-analyst"
+  ],
+  "self improving": [
+    "self-improving-agent"
+  ],
+  "agent upgrade": [
+    "self-improving-agent"
+  ],
+  "improve skills": [
+    "self-improving-agent"
+  ],
+  "skill gap": [
+    "self-improving-agent"
+  ],
+  "agent performance": [
+    "self-improving-agent"
+  ],
+  "self optimize": [
+    "self-improving-agent"
+  ],
+  "sensual makeup": [
+    "sensual-makeup"
+  ],
+  "sensual make up": [
+    "sensual-makeup"
+  ],
+  "makeup brand": [
+    "sensual-makeup"
+  ],
+  "beauty brand": [
+    "sensual-makeup"
+  ],
+  "makeup product": [
+    "sensual-makeup"
+  ],
+  "cosmetics": [
+    "sensual-makeup"
+  ],
+  "beauty content": [
+    "sensual-makeup"
+  ],
+  "session log": [
+    "session-logs"
+  ],
+  "log session": [
+    "session-logs"
+  ],
+  "activity log": [
+    "session-logs"
+  ],
+  "conversation history": [
+    "session-logs"
+  ],
+  "session history": [
+    "session-logs"
+  ],
+  "log this": [
+    "session-logs"
+  ],
+  "shopify": [
+    "shopify"
+  ],
+  "online store": [
+    "shopify"
+  ],
+  "product listing": [
+    "shopify"
+  ],
+  "inventory": [
+    "shopify"
+  ],
+  "shopify order": [
+    "shopify"
+  ],
+  "shopify collection": [
+    "shopify"
+  ],
+  "ecommerce": [
+    "shopify"
+  ],
+  "shopify ads": [
+    "shopify-ad-apps"
+  ],
+  "shopify marketing": [
+    "shopify-ad-apps"
+  ],
+  "shopify app": [
+    "shopify-ad-apps"
+  ],
+  "google shopping": [
+    "shopify-ad-apps"
+  ],
+  "shopify facebook": [
+    "shopify-ad-apps"
+  ],
+  "shopify pixel": [
+    "shopify-ad-apps"
+  ],
+  "social media": [
+    "simplified-social-media"
+  ],
+  "content creation": [
+    "simplified-social-media"
+  ],
+  "caption": [
+    "simplified-social-media"
+  ],
+  "instagram": [
+    "simplified-social-media"
+  ],
+  "tiktok post": [
+    "simplified-social-media"
+  ],
+  "twitter": [
+    "simplified-social-media"
+  ],
+  "social post": [
+    "simplified-social-media"
+  ],
+  "content calendar": [
+    "simplified-social-media"
+  ],
+  "create skill": [
+    "skill-creator"
+  ],
+  "new skill": [
+    "skill-creator"
+  ],
+  "skill creator": [
+    "skill-creator"
+  ],
+  "skill builder": [
+    "skill-creator"
+  ],
+  "modify skill": [
+    "skill-creator"
+  ],
+  "openclaw skill": [
+    "skill-creator"
+  ],
+  "SKILL.md": [
+    "skill-creator"
+  ],
+  "slack": [
+    "slack"
+  ],
+  "slack message": [
+    "slack"
+  ],
+  "slack channel": [
+    "slack"
+  ],
+  "slack notification": [
+    "slack"
+  ],
+  "slack workflow": [
+    "slack"
+  ],
+  "send slack": [
+    "slack"
+  ],
+  "schedule post": [
+    "social-media-scheduler"
+  ],
+  "social scheduler": [
+    "social-media-scheduler"
+  ],
+  "content queue": [
+    "social-media-scheduler"
+  ],
+  "schedule content": [
+    "social-media-scheduler"
+  ],
+  "auto post": [
+    "social-media-scheduler"
+  ],
+  "social media schedule": [
+    "social-media-scheduler"
+  ],
+  "spotify": [
+    "spotify-for-artists"
+  ],
+  "spotify for artists": [
+    "spotify-for-artists"
+  ],
+  "playlist pitch": [
+    "spotify-for-artists"
+  ],
+  "spotify streams": [
+    "spotify-for-artists"
+  ],
+  "spotify profile": [
+    "spotify-for-artists"
+  ],
+  "spotify marketing": [
+    "spotify-for-artists"
+  ],
+  "backtest": [
+    "stock-strategy-backtester"
+  ],
+  "stock backtest": [
+    "stock-strategy-backtester"
+  ],
+  "strategy backtest": [
+    "stock-strategy-backtester"
+  ],
+  "historical data": [
+    "stock-strategy-backtester"
+  ],
+  "trading strategy test": [
+    "stock-strategy-backtester"
+  ],
+  "stock study": [
+    "stock-study"
+  ],
+  "learn stocks": [
+    "stock-study"
+  ],
+  "stock education": [
+    "stock-study"
+  ],
+  "stock market basics": [
+    "stock-study"
+  ],
+  "investing education": [
+    "stock-study"
+  ],
+  "financial literacy": [
+    "stock-study"
+  ],
+  "alpaca": [
+    "storyclaw-alpaca-trading"
+  ],
+  "trade stock": [
+    "storyclaw-alpaca-trading"
+  ],
+  "buy stock": [
+    "storyclaw-alpaca-trading"
+  ],
+  "paper trading": [
+    "storyclaw-alpaca-trading"
+  ],
+  "portfolio positions": [
+    "storyclaw-alpaca-trading"
+  ],
+  "RSI trade": [
+    "storyclaw-alpaca-trading"
+  ],
+  "stock order": [
+    "storyclaw-alpaca-trading"
+  ],
+  "stripe": [
+    "stripe-payments"
+  ],
+  "payment link": [
+    "stripe-payments"
+  ],
+  "invoice": [
+    "stripe-payments"
+  ],
+  "charge client": [
+    "stripe-payments"
+  ],
+  "subscription billing": [
+    "stripe-payments"
+  ],
+  "get paid": [
+    "stripe-payments"
+  ],
+  "payment processing": [
+    "stripe-payments"
+  ],
+  "summarize": [
+    "summarize"
+  ],
+  "what's this link": [
+    "summarize"
+  ],
+  "summarize video": [
+    "summarize"
+  ],
+  "transcribe youtube": [
+    "summarize"
+  ],
+  "summarize article": [
+    "summarize"
+  ],
+  "suno": [
+    "suno-ai"
+  ],
+  "generate music": [
+    "suno-ai"
+  ],
+  "create song": [
+    "suno-ai"
+  ],
+  "make beat": [
+    "suno-ai"
+  ],
+  "ai music": [
+    "suno-ai"
+  ],
+  "jingle": [
+    "suno-ai"
+  ],
+  "demo track": [
+    "suno-ai"
+  ],
+  "task": [
+    "task-manager"
+  ],
+  "add task": [
+    "task-manager"
+  ],
+  "list tasks": [
+    "task-manager"
+  ],
+  "create task": [
+    "task-manager"
+  ],
+  "task priority": [
+    "task-manager"
+  ],
+  "complete task": [
+    "task-manager"
+  ],
+  "todo": [
+    "task-manager"
+  ],
+  "therapy": [
+    "therapy"
+  ],
+  "mental health": [
+    "therapy"
+  ],
+  "emotions": [
+    "therapy"
+  ],
+  "mood": [
+    "therapy"
+  ],
+  "coping strategies": [
+    "therapy"
+  ],
+  "therapy prep": [
+    "therapy"
+  ],
+  "anxiety": [
+    "therapy"
+  ],
+  "stress relief": [
+    "therapy"
+  ],
+  "tiktok ads": [
+    "tiktok-ads"
+  ],
+  "tiktok campaign": [
+    "tiktok-ads"
+  ],
+  "spark ads": [
+    "tiktok-ads"
+  ],
+  "tiktok promo": [
+    "tiktok-ads"
+  ],
+  "boost tiktok": [
+    "tiktok-ads"
+  ],
+  "tiktok marketing": [
+    "tiktok-ads"
+  ],
+  "trading devbox": [
+    "trading-devbox"
+  ],
+  "backtest idea": [
+    "trading-devbox"
+  ],
+  "strategy sandbox": [
+    "trading-devbox"
+  ],
+  "backtrader": [
+    "trading-devbox"
+  ],
+  "entry condition": [
+    "trading-devbox"
+  ],
+  "take profit stop loss": [
+    "trading-devbox"
+  ],
+  "workout": [
+    "training-and-nutrition-coach"
+  ],
+  "fitness plan": [
+    "training-and-nutrition-coach"
+  ],
+  "fat loss": [
+    "training-and-nutrition-coach"
+  ],
+  "muscle gain": [
+    "training-and-nutrition-coach"
+  ],
+  "nutrition coach": [
+    "training-and-nutrition-coach"
+  ],
+  "analyze stock": [
+    "us-stock-analysis"
+  ],
+  "stock report": [
+    "us-stock-analysis"
+  ],
+  "AAPL analysis": [
+    "us-stock-analysis"
+  ],
+  "compare stocks": [
+    "us-stock-analysis"
+  ],
+  "is overvalued": [
+    "us-stock-analysis"
+  ],
+  "stock recommendation": [
+    "us-stock-analysis"
+  ],
+  "voice message": [
+    "voice-message"
+  ],
+  "send voice": [
+    "voice-message"
+  ],
+  "text to speech": [
+    "voice-message"
+  ],
+  "voice note": [
+    "voice-message"
+  ],
+  "read aloud": [
+    "voice-message"
+  ],
+  "audio message": [
+    "voice-message"
+  ],
+  "weather": [
+    "weather"
+  ],
+  "temperature": [
+    "weather"
+  ],
+  "forecast": [
+    "weather"
+  ],
+  "rain today": [
+    "weather"
+  ],
+  "weather in": [
+    "weather"
+  ],
+  "will it rain": [
+    "weather"
+  ],
+  "wix": [
+    "wix"
+  ],
+  "build website": [
+    "wix"
+  ],
+  "wix site": [
+    "wix"
+  ],
+  "artist website": [
+    "wix"
+  ],
+  "landing page": [
+    "wix",
+    "frontend-design"
+  ],
+  "wix store": [
+    "wix"
+  ],
+  "wix booking": [
+    "wix"
+  ],
+  "word doc": [
+    "docx"
+  ],
+  "docx": [
+    "docx"
+  ],
+  "word document": [
+    "docx"
+  ],
+  "create report": [
+    "docx"
+  ],
+  "write memo": [
+    "docx"
+  ],
+  "letter template": [
+    "docx"
+  ],
+  "word file": [
+    "docx"
+  ],
+  "pdf": [
+    "pdf"
+  ],
+  "merge pdf": [
+    "pdf"
+  ],
+  "split pdf": [
+    "pdf"
+  ],
+  "fill pdf form": [
+    "pdf"
+  ],
+  "pdf extract": [
+    "pdf"
+  ],
+  "create pdf": [
+    "pdf"
+  ],
+  "watermark pdf": [
+    "pdf"
+  ],
+  "ocr pdf": [
+    "pdf"
+  ],
+  "powerpoint": [
+    "pptx"
+  ],
+  "pptx": [
+    "pptx"
+  ],
+  "slide deck": [
+    "pptx"
+  ],
+  "presentation": [
+    "pptx"
+  ],
+  "pitch deck": [
+    "pptx"
+  ],
+  "slides": [
+    "pptx"
+  ],
+  "make a deck": [
+    "pptx"
+  ],
+  "excel": [
+    "xlsx"
+  ],
+  "xlsx": [
+    "xlsx"
+  ],
+  "spreadsheet": [
+    "xlsx"
+  ],
+  "financial model": [
+    "xlsx"
+  ],
+  "csv": [
+    "xlsx"
+  ],
+  "tabular data": [
+    "xlsx"
+  ],
+  "build UI": [
+    "frontend-design"
+  ],
+  "react component": [
+    "frontend-design"
+  ],
+  "frontend": [
+    "frontend-design"
+  ],
+  "dashboard UI": [
+    "frontend-design"
+  ],
+  "web component": [
+    "frontend-design"
+  ],
+  "html layout": [
+    "frontend-design"
+  ],
+  "gamified learning": [
+    "gamified-learning"
+  ],
+  "xp system": [
+    "gamified-learning"
+  ],
+  "quest": [
+    "gamified-learning"
+  ],
+  "leaderboard": [
+    "gamified-learning"
+  ],
+  "badge": [
+    "gamified-learning"
+  ],
+  "trust fund game": [
+    "gamified-learning"
+  ],
+  "credit game": [
+    "gamified-learning"
+  ],
+  "mental health game": [
+    "gamified-learning"
+  ],
+  "command center": [
+    "fedge-command-center"
+  ],
+  "HQ dashboard": [
+    "fedge-command-center"
+  ],
+  "fedge HQ": [
+    "fedge-command-center"
+  ],
+  "command wheel": [
+    "fedge-command-center"
+  ],
+  "mission control": [
+    "fedge-command-center"
+  ],
+  "intel feed": [
+    "fedge-command-center"
+  ],
+  "fedge dashboard": [
+    "fedge-command-center"
+  ],
+  "humanize": [
+    "humanizer"
+  ],
+  "remove ai writing": [
+    "humanizer"
+  ],
+  "make it sound human": [
+    "humanizer"
+  ],
+  "ai detection": [
+    "humanizer"
+  ],
+  "rewrite naturally": [
+    "humanizer"
+  ],
+  "fix ai text": [
+    "humanizer"
+  ],
+  "mcp server": [
+    "mcp-builder"
+  ],
+  "mcp builder": [
+    "mcp-builder"
+  ],
+  "model context protocol": [
+    "mcp-builder"
+  ],
+  "build mcp": [
+    "mcp-builder"
+  ],
+  "mcp tool": [
+    "mcp-builder"
+  ],
+  "mcp integration": [
+    "mcp-builder"
+  ],
+  "create poster": [
+    "canvas-design"
+  ],
+  "design art": [
+    "canvas-design"
+  ],
+  "make flyer": [
+    "canvas-design"
+  ],
+  "brand asset": [
+    "canvas-design"
+  ],
+  "create graphic": [
+    "canvas-design"
+  ],
+  "design poster": [
+    "canvas-design"
+  ],
+  "generative art": [
+    "algorithmic-art"
+  ],
+  "algorithmic art": [
+    "algorithmic-art"
+  ],
+  "p5js": [
+    "algorithmic-art"
+  ],
+  "flow field": [
+    "algorithmic-art"
+  ],
+  "particle system": [
+    "algorithmic-art"
+  ],
+  "fractal": [
+    "algorithmic-art"
+  ],
+  "creative coding": [
+    "algorithmic-art"
+  ],
+  "theme": [
+    "theme-factory"
+  ],
+  "apply theme": [
+    "theme-factory"
+  ],
+  "color theme": [
+    "theme-factory"
+  ],
+  "style artifact": [
+    "theme-factory"
+  ],
+  "theme factory": [
+    "theme-factory"
+  ],
+  "design theme": [
+    "theme-factory"
+  ],
+  "brand theme": [
+    "theme-factory"
+  ],
+  "complex artifact": [
+    "web-artifacts-builder"
+  ],
+  "multi-component": [
+    "web-artifacts-builder"
+  ],
+  "react app": [
+    "web-artifacts-builder"
+  ],
+  "tailwind": [
+    "web-artifacts-builder"
+  ],
+  "shadcn": [
+    "web-artifacts-builder"
+  ],
+  "web artifact": [
+    "web-artifacts-builder"
+  ],
+  "build app artifact": [
+    "web-artifacts-builder"
+  ],
+  "internal comms": [
+    "internal-comms"
+  ],
+  "status report": [
+    "internal-comms"
+  ],
+  "leadership update": [
+    "internal-comms"
+  ],
+  "company newsletter": [
+    "internal-comms"
+  ],
+  "incident report": [
+    "internal-comms"
+  ],
+  "project update": [
+    "internal-comms"
+  ],
+  "brand guidelines": [
+    "brand-guidelines"
+  ],
+  "brand colors": [
+    "brand-guidelines"
+  ],
+  "brand standards": [
+    "brand-guidelines"
+  ],
+  "apply branding": [
+    "brand-guidelines"
+  ],
+  "brand style": [
+    "brand-guidelines"
+  ],
+  "slack gif": [
+    "slack-gif-creator"
+  ],
+  "animated gif": [
+    "slack-gif-creator"
+  ],
+  "create gif": [
+    "slack-gif-creator"
+  ],
+  "gif for slack": [
+    "slack-gif-creator"
+  ],
+  "make gif": [
+    "slack-gif-creator"
+  ],
+  "gif animation": [
+    "slack-gif-creator"
+  ],
+  "coauthor": [
+    "doc-coauthoring"
+  ],
+  "write docs": [
+    "doc-coauthoring"
+  ],
+  "documentation": [
+    "doc-coauthoring"
+  ],
+  "technical spec": [
+    "doc-coauthoring"
+  ],
+  "proposal doc": [
+    "doc-coauthoring"
+  ],
+  "decision doc": [
+    "doc-coauthoring"
+  ],
+  "collaborative writing": [
+    "doc-coauthoring"
+  ],
+  "read file": [
+    "file-reading"
+  ],
+  "open file": [
+    "file-reading"
+  ],
+  "uploaded file": [
+    "file-reading"
+  ],
+  "file contents": [
+    "file-reading"
+  ],
+  "read this file": [
+    "file-reading"
+  ],
+  "extract from file": [
+    "file-reading"
+  ],
+  "read pdf": [
+    "pdf-reading"
+  ],
+  "extract pdf": [
+    "pdf-reading"
+  ],
+  "pdf contents": [
+    "pdf-reading"
+  ],
+  "what does pdf say": [
+    "pdf-reading"
+  ],
+  "pdf text extraction": [
+    "pdf-reading"
+  ],
+  "inspect pdf": [
+    "pdf-reading"
+  ],
+  "claude pricing": [
+    "product-self-knowledge"
+  ],
+  "anthropic api": [
+    "product-self-knowledge"
+  ],
+  "claude model": [
+    "product-self-knowledge"
+  ],
+  "claude api": [
+    "product-self-knowledge"
+  ],
+  "rate limit": [
+    "product-self-knowledge"
+  ],
+  "claude plans": [
+    "product-self-knowledge"
+  ],
+  "claude code install": [
+    "product-self-knowledge"
+  ]
+}
