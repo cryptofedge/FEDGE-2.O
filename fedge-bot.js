@@ -63,6 +63,20 @@ function matchSkill(text) {
 
 
 const FEDGE_SOUL = fs.readFileSync('./SOUL.md', 'utf8');
+const FEDGE_MEMORY = fs.existsSync('./MEMORY.md') ? fs.readFileSync('./MEMORY.md', 'utf8') : '';
+const FEDGE_USER = fs.existsSync('./USER.md') ? fs.readFileSync('./USER.md', 'utf8') : '';
+
+const MASTER_PROMPT = `${FEDGE_SOUL}
+
+---
+## LONG-TERM MEMORY
+${FEDGE_MEMORY}
+
+---
+## USER CONTEXT (FELLITO)
+${FEDGE_USER}
+`;
+
 const MELAO_SOUL = fs.existsSync('./skills/suno-ai/skill.md') ? fs.readFileSync('./skills/suno-ai/skill.md', 'utf8') : 'You are FEDGE 2.O in Melao Studio mode.';
 
 async function generateVoice(text) {
@@ -139,8 +153,8 @@ async function startBot() {
     const systemPrompt = isStudioTrigger 
       ? MELAO_SOUL 
       : matched 
-        ? FEDGE_SOUL + '\n\n---\n## ACTIVE SKILL: ' + matched.name.toUpperCase() + '\n' + matched.content
-        : FEDGE_SOUL;
+        ? MASTER_PROMPT + '\n\n---\n## ACTIVE SKILL: ' + matched.name.toUpperCase() + '\n' + matched.content
+        : MASTER_PROMPT;
     if (matched) console.log('🎯 Skill matched: ' + matched.name);
       const reply = await askFEDGE(text, systemPrompt);
       console.log(`FEDGE: ${reply}`);
