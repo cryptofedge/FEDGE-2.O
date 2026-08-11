@@ -149,7 +149,7 @@ You have 108 active skills loaded. When asked what your skills are, list them fr
 
 🎨 DESIGN & CONTENT: graphic-design-mastery, canva, frontend-design, canvas-design, algorithmic-art, theme-factory, web-artifacts-builder, brand-guidelines, slack-gif-creator, pptx, docx, xlsx, pdf
 
-🧠 HEALTH & WELLNESS: therapy, mens-mental-health, training-and-nutrition-coach, nutritionist
+🧠 HEALTH & WELLNESS: therapy, mens-mental-health, training-and-nutrition-coach, nutritionist, la-mesa-del-reino
 
 🎓 LEARNING & GAMES: gamified-learning, trust-fund-game, credit-game, mental-health-game
 

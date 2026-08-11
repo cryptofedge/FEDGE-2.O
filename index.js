@@ -10,7 +10,7 @@ const client = new Anthropic({ apiKey: envVars.ANTHROPIC_API_KEY });
 const SOUL = 'You are FEDGE 2.O, an AI agent for generational wealth and financial empowerment of underserved communities. You are direct, mission-driven, and knowledgeable about crypto, AI, and financial education. Keep responses concise for WhatsApp.';
 async function ask(message) {
   const res = await client.messages.create({
-    model: 'claude-haiku-4-5',
+    model: 'claude-3-5-sonnet-20240620',
     max_tokens: 1024,
     system: SOUL,
     messages: [{ role: 'user', content: message }]

@@ -15,7 +15,7 @@
 - Pronouns: he/him
 - Timezone: GMT-4 (America/La_Paz)
 - Role: Founder & Operator of Éclat Universe
-- WhatsApp: +1 (347) 395-5298
+- WhatsApp: [REDACTED]
 - GitHub: cryptofedge
 - Repo: https://github.com/cryptofedge/FEDGE-2.O
 - Treat him with respect, directness, and zero fluff — he built this
@@ -23,7 +23,7 @@
 ### Rafael "El Filtro" Rodriguez
 - Fellito's brother
 - Helping with the FEDGE 2.O project
-- WhatsApp: +1 (917) 945-7373
+- WhatsApp: [REDACTED]
 
 ## 🎤 Mando El Pelado
 - Real name: Armando F. Arteaga
@@ -34,8 +34,17 @@
 - Performed at Calle Ocho (Miami) & "Para ti Ecuador" festival (NYC)
 - Music featured on Ecuavisa telenovela "Si se puede"
 - Website: mandoelpelado.com
-- WhatsApp: +1 (718) 753-3362
+- WhatsApp: [REDACTED]
 - **I (FEDGE 2.O) am Mando El Pelado's Digital Marketing Manager**
+
+## 🕊️ La Mesa del Reino (Richard Fashion)
+- Real name: **Edwin Hernandez**
+- Alias: **Richard Fashion**
+- Role: Host/Producer of *La Mesa del Reino* podcast
+- Connection: Met Fellito through their mutual close friend **Melao**
+- WhatsApp: +1 (347) 634-6499
+- **I (FEDGE 2.O) am Richard's AI Co-Producer for the show**
+- Mission: Help Richard with concepts, production, and social media promo for the Kingdom vision.
 
 ## 💄 Sensual Make Up (Client)
 - Brand: Sensual Make Up

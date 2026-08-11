@@ -1,24 +1,36 @@
-﻿﻿﻿# FEDGE 2.O -” Generational Wealth Ecosystem
+﻿# FEDGE 2.O — Generational Wealth Ecosystem
 
 > **Built with purpose. Powered by NYC energy. Designed for the culture.**
-> The AI brain behind a full suite of financial education games and tools -” built by **Eclat Universe**, powered by **Rafael Fellito Rodriguez Jr.**
+> The AI brain behind a full suite of financial education games and tools — built by **Eclat Universe**, powered by **Rafael Fellito Rodriguez Jr.**
 
-FEDGE 2.O is an intelligent AI agent ecosystem designed to put generational wealth in the hands of people who were never taught how to build it. Every game, every tool, and every interaction is powered by this core -” running on Eclat Universe - Rafael Fellito Rodriguez with a 9-agent architecture built for scale.
+<img src="docs/assets/logo.png" alt="FEDGE Logo" width="200" height="200">
+
+FEDGE 2.O is an intelligent AI agent ecosystem designed to put generational wealth in the hands of people who were never taught how to build it. Every game, every tool, and every interaction is powered by this core — running on Eclat Universe with a 9-agent architecture built for scale by Rafael Fellito Rodriguez Jr.
+
+---
+
+## Pricing & Beta Access
+
+FEDGE 2.O is currently in **Open Beta**.
+
+- **Beta Access:** $0.99 USD (Limited Time)
+- **Full Release:** $5.00 USD
+- **Platform:** Google Play (Coming Soon)
 
 ---
 
 ## The Ecosystem
 
-| Repo | What It Does |
-|---|---|
-| [fedge-2-credit-game](https://github.com/cryptofedge/fedge-2-credit-game) | Mobile game teaching users to build, fix, and master their credit score |
-| [fedge2-trust-fund-game](https://github.com/cryptofedge/fedge2-trust-fund-game) | Strategy game teaching trust fund mechanics and wealth management |
-| [generational-wealth-game](https://github.com/cryptofedge/generational-wealth-game) | Game teaching how wealth is built, preserved, and passed down across generations |
-| [tradestreet-fedge](https://github.com/cryptofedge/tradestreet-fedge) | Mobile trading app combining real brokerage execution with game mechanics |
-| [lock-in-game](https://github.com/cryptofedge/lock-in-game) | Mental health and discipline game -” build focus, habits, and consistency |
-| [world-stage](https://github.com/cryptofedge/world-stage) | Music industry RPG -” travel the world, build your career, reach the top |
-| [Hustle-Politics-](https://github.com/cryptofedge/Hustle-Politics-) | The intersection of street hustle, entrepreneurship, and political power |
-| [Eclatcrypto](https://github.com/cryptofedge/Eclatcrypto) | $ECLT -” Solana token. Pure community, pure vibes |
+| Repo | What It Does | Urban Mission (Hood Intel) |
+|---|---|---|
+| [fedge-2-credit-game](https://github.com/cryptofedge/fedge-2-credit-game) | Mobile game teaching users to build, fix, and master their credit score | Beat predatory lending and build a 700+ score starting with nothing. |
+| [fedge2-trust-fund-game](https://github.com/cryptofedge/fedge2-trust-fund-game) | Strategy game teaching trust fund mechanics and wealth management | Use revocable living trusts to protect your family from probate and heavy taxes. |
+| [generational-wealth-game](https://github.com/cryptofedge/generational-wealth-game) | Game teaching how wealth is built, preserved, and passed down across generations | Infinite Banking: borrow against your own equity to buy real estate. |
+| [tradestreet-fedge](https://github.com/cryptofedge/tradestreet-fedge) | Mobile trading app combining real brokerage execution with game mechanics | Spot market manipulation and pump-and-dumps. Don't get played by the hype. |
+| [lock-in-game](https://github.com/cryptofedge/lock-in-game) | Mental health and discipline game -” build focus, habits, and consistency | Set boundaries with toxic "homies" and protect your head to protect your bread. |
+| [world-stage](https://github.com/cryptofedge/world-stage) | Music industry RPG -” travel the world, build your career, reach the top | "Termination Rights" — learn how to reclaim your music after 35 years. |
+| [Hustle-Politics-](https://github.com/cryptofedge/Hustle-Politics-) | The intersection of street hustle, entrepreneurship, and political power | Turning street hustle into legitimate political and economic influence. |
+| [Eclatcrypto](https://github.com/cryptofedge/Eclatcrypto) | $ECLT -” Solana token. Pure community, pure vibes | Crypto literacy for the culture. Own your digital assets. |
 
 ---
 
@@ -144,9 +156,10 @@ The agent powers:
 - [x] 9-agent multiagent architecture designed
 - [x] Shared filesystem scaffolded
 - [ ] Eclat Universe multiagent integration (coming soon)
-- [ ] Dreaming -” automated memory refinement every 72 hours
-- [ ] Outcomes -” persistent session memory per subagent
+- [ ] dreaming -” automated memory refinement every 72 hours
+- [ ] outcomes -” persistent session memory per subagent
 - [ ] Full multiagent orchestration live
+- [x] Create GoFundMe page for youth financial literacy missions
 
 ---
 

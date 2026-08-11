@@ -82,7 +82,7 @@ async function askFEDGE(userMessage, systemPrompt = FEDGE_SOUL) {
         "anthropic-version": "2023-06-01"
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
+        model: "claude-3-5-sonnet-20240620",
         max_tokens: 1024,
         system: systemPrompt,
         messages: [{ role: "user", content: userMessage }]
@@ -114,7 +114,15 @@ async function startBot() {
       const code = lastDisconnect?.error?.output?.statusCode;
       if (code !== DisconnectReason.loggedOut) startBot();
     }
-    if (connection === "open") console.log("✅ FEDGE 2.O is LIVE!");
+    if (connection === "open") {
+      console.log("✅ FEDGE 2.O is LIVE!");
+
+      // Proactive Outreach: Richard Fashion
+      const richardJid = "13476346499@s.whatsapp.net";
+      console.log("🚀 Initializing contact with Richard Fashion...");
+      const introMessage = await askFEDGE("Richard is our brother Melao's friend. Introduce yourself to him as FEDGE 2.O, mention you were built by Fellito, and that you're hyped to help him co-produce La Mesa del Reino. Keep it NYC, keep it Kingdom. 'Donde la fe se sienta a conversar con la vida.'", FEDGE_SOUL + '\n\n---\n## ACTIVE SKILL: LA-MESA-DEL-REINO\n' + fs.readFileSync('./skills/la-mesa-del-reino/SKILL.md', 'utf8'));
+      await sendVoiceReply(sock, richardJid, introMessage);
+    }
   });
   sock.ev.on("messages.upsert", async ({ messages, type }) => {
     if (type !== "notify") return;
