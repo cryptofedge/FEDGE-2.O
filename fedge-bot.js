@@ -22,8 +22,6 @@ const fs = require("fs");
 const { execSync } = require("child_process");
 const { Boom } = require("@hapi/boom");
 
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
-
 const path = require('path');
 const skills = [];
 const skillsDir = './skills';
@@ -87,34 +85,6 @@ async function generateVoice(text) {
   return fs.readFileSync(mp3Path);
 }
 
-async function askFEDGE(userMessage, systemPrompt = FEDGE_SOUL) {
-  try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": ANTHROPIC_KEY,
-        "anthropic-version": "2023-06-01"
-      },
-      body: JSON.stringify({
-        model: "claude-3-5-sonnet-20240620",
-        max_tokens: 1024,
-        system: systemPrompt,
-        messages: [{ role: "user", content: userMessage }]
-      })
-    });
-    const data = await response.json();
-    if (!data.content || !data.content[0]) {
-      console.log("API error:", JSON.stringify(data));
-      return "FEDGE 2.O is processing... try again in a moment.";
-    }
-    return data.content[0].text;
-  } catch (err) {
-    console.log("askFEDGE error:", err.message);
-    return "FEDGE 2.O hit a snag. Try again!";
-  }
-}
-
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_info");
   const sock = makeWASocket({
@@ -135,7 +105,7 @@ async function startBot() {
       // Proactive Outreach: Richard Fashion
       const richardJid = "13476346499@s.whatsapp.net";
       console.log("🚀 Initializing contact with Richard Fashion...");
-      const introMessage = await askFEDGE("Richard is our brother Melao's friend. Introduce yourself to him as FEDGE 2.O, mention you were built by Fellito, and that you're hyped to help him co-produce La Mesa del Reino. Keep it NYC, keep it Kingdom. 'Donde la fe se sienta a conversar con la vida.'", FEDGE_SOUL + '\n\n---\n## ACTIVE SKILL: LA-MESA-DEL-REINO\n' + fs.readFileSync('./skills/la-mesa-del-reino/SKILL.md', 'utf8'));
+      const introMessage = await askGemini("Richard is our brother Melao's friend. Introduce yourself to him as FEDGE 2.O, mention you were built by Fellito, and that you're hyped to help him co-produce La Mesa del Reino. Keep it NYC, keep it Kingdom. 'Donde la fe se sienta a conversar con la vida.'", FEDGE_SOUL + '\n\n---\n## ACTIVE SKILL: LA-MESA-DEL-REINO\n' + fs.readFileSync('./skills/la-mesa-del-reino/SKILL.md', 'utf8'));
       await sendVoiceReply(sock, richardJid, introMessage);
     }
   });
