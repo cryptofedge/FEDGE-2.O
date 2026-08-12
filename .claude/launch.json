@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fedge-games-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:\\Users\\Fellito Rodriguez\\Downloads\\fedge-2o-app\\scripts\\serve-games.mjs",
+        "4173"
+      ],
+      "port": 4173
+    }
+  ]
+}
