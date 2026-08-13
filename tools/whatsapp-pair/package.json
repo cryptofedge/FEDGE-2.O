@@ -1,0 +1,13 @@
+{
+  "name": "fedge-whatsapp-pair",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Link WhatsApp to OpenClaw with a phone-number pairing code instead of a QR",
+  "main": "pair-whatsapp.js",
+  "scripts": {
+    "pair": "node pair-whatsapp.js"
+  },
+  "dependencies": {
+    "baileys": "7.0.0-rc13"
+  }
+}
