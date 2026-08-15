@@ -1,5 +1,6 @@
 const { textToSpeech, saveTempAudio, cleanupTempAudio } = require('./elevenlabs');
 const { askGemini } = require('./services/gemini');
+const { generateSong } = require('./services/lyria');
 
 async function sendVoiceReply(sock, jid, text) {
   await sock.sendMessage(jid, { text });
@@ -50,12 +51,52 @@ for (const folder of fs.readdirSync(skillsDir)) {
 }
 console.log('✅ Loaded ' + skills.length + ' skills into FEDGE 2.O brain');
 
+// ── Executable skills: folders whose index.js exports a run() function ────────
+// These run real code instead of just being pasted into Gemini's system prompt.
+const execSkills = [];
+for (const folder of fs.readdirSync(skillsDir)) {
+  const entry = path.join(skillsDir, folder, 'index.js');
+  if (!fs.existsSync(entry)) continue;
+  try {
+    const mod = require(path.resolve(entry));
+    if (typeof mod.run !== 'function') continue;
+    const manifest = mod.manifest || {};
+    execSkills.push({
+      id: manifest.id || folder,
+      name: manifest.name || folder,
+      triggers: manifest.triggers || [],
+      run: mod.run
+    });
+  } catch (e) {
+    console.error('⚠️  Executable skill "' + folder + '" failed to load: ' + e.message);
+  }
+}
+console.log('⚡ Loaded ' + execSkills.length + ' executable skill(s): ' + execSkills.map(s => s.id).join(', '));
+
 function matchSkill(text) {
   const lower = text.toLowerCase();
   for (const skill of skills) {
     if (skill.triggers.some(t => lower.includes(t.toLowerCase()))) {
       return skill;
     }
+  }
+  return null;
+}
+
+// ALL-CAPS triggers (LINK, UNLINK, SONGS) are commands and must start the message,
+// otherwise "check this link" or "I love those songs" would fire the skill.
+function triggerHits(trigger, lowerText) {
+  const t = trigger.trim();
+  if (t === t.toUpperCase() && /^[A-Z ]+$/.test(t)) {
+    return lowerText.startsWith(t.toLowerCase());
+  }
+  return lowerText.includes(t.toLowerCase());
+}
+
+function matchExecutableSkill(text) {
+  const lower = text.toLowerCase().trim();
+  for (const skill of execSkills) {
+    if (skill.triggers.some(t => triggerHits(t, lower))) return skill;
   }
   return null;
 }
@@ -101,12 +142,8 @@ async function startBot() {
     }
     if (connection === "open") {
       console.log("✅ FEDGE 2.O is LIVE!");
-
-      // Proactive Outreach: Richard Fashion
-      const richardJid = "13476346499@s.whatsapp.net";
-      console.log("🚀 Initializing contact with Richard Fashion...");
-      const introMessage = await askGemini("Richard is our brother Melao's friend. Introduce yourself to him as FEDGE 2.O, mention you were built by Fellito, and that you're hyped to help him co-produce La Mesa del Reino. Keep it NYC, keep it Kingdom. 'Donde la fe se sienta a conversar con la vida.'", FEDGE_SOUL + '\n\n---\n## ACTIVE SKILL: LA-MESA-DEL-REINO\n' + fs.readFileSync('./skills/la-mesa-del-reino/SKILL.md', 'utf8'));
-      await sendVoiceReply(sock, richardJid, introMessage);
+      // No proactive outreach on connect. This previously messaged a hardcoded
+      // number on every connection — including each auto-reconnect above.
     }
   });
   sock.ev.on("messages.upsert", async ({ messages, type }) => {
@@ -117,6 +154,34 @@ async function startBot() {
     const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
     if (!text) return;
     console.log(`[${from}]: ${text}`);
+
+    // Executable skills run real code and own the whole reply — check before Gemini.
+    const execSkill = matchExecutableSkill(text);
+    if (execSkill) {
+      console.log('⚡ Executing skill: ' + execSkill.id);
+      try {
+        await execSkill.run({
+          waId: from,
+          message: text,
+          ai: askGemini,
+          music: generateSong,
+          reply: async (t) => { await sock.sendMessage(from, { text: t }); },
+          sendAudio: async (buffer, meta = {}) => {
+            await sock.sendMessage(from, {
+              audio: buffer,
+              mimetype: meta.mimetype || 'audio/mpeg',
+              fileName: (meta.title || 'track').replace(/[^\w\s-]/g, '').trim() + '.mp3',
+              ptt: false
+            });
+          }
+        });
+      } catch (err) {
+        console.error(`[SKILL ${execSkill.id}] ${err.message}`);
+        await sock.sendMessage(from, { text: `⚠️ ${execSkill.name} hit an error: ${err.message}` });
+      }
+      return;
+    }
+
     try {
       const lowerText = text.toLowerCase();
     const isStudioTrigger = lowerText.includes("melao") || lowerText.includes("studio") || lowerText.includes("!studio") || lowerText.includes("suno");

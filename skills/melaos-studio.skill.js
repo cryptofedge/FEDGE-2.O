@@ -5,12 +5,14 @@
  * Artist: Milciades Holguin (Melao) | Melao'S Studios / Song-Writer & Music-Producer
  * Repo: https://github.com/cryptofedge/melaos-studio
  *
- * Flow: WhatsApp msg → parse intent → Claude generates Suno prompt → reply with link
+ * Flow: WhatsApp msg → parse intent → Gemini writes the music prompt
+ *       → Lyria generates real MP3 audio → sent back as a WhatsApp track
+ *       (falls back to a pre-filled Suno link if Lyria is unavailable)
  */
 
 'use strict';
 
-const https = require('https');
+const { cleanLyrics } = require('../services/lyria');
 
 // ─── Genre Intelligence ────────────────────────────────────────────────────────
 const GENRE_MAP = {
@@ -36,19 +38,17 @@ const GENRE_MAP = {
   'latin':       'Latin urban, bilingual, Spanish and English',
 };
 
-// ─── Claude Prompt Generator ──────────────────────────────────────────────────
-async function generateSunoPrompt(userMessage) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) return buildFallbackPrompt(userMessage);
+// ─── Gemini Prompt Generator ──────────────────────────────────────────────────
+// `ai` is injected by the bot (services/gemini.js askGemini). No Anthropic path.
+async function generateSunoPrompt(userMessage, ai) {
+  if (typeof ai !== 'function') return buildFallbackPrompt(userMessage);
 
-  return new Promise((resolve) => {
-    const body = JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 400,
-      system: 'You are Melao Studio AI — a music production assistant for FEDGE 2.O. You generate precise Suno AI prompts. Respond ONLY with raw JSON, no markdown, no backticks.',
-      messages: [{
-        role: 'user',
-        content: `Generate a Suno AI music prompt from this request: "${userMessage}"
+  const system =
+    'You are Melao Studio AI — a music production assistant for FEDGE 2.O. ' +
+    'You generate precise Suno AI prompts. Respond ONLY with raw JSON. ' +
+    'No markdown, no backticks, no commentary, no lyrics.';
+
+  const ask = `Generate a Suno AI music prompt from this request: "${userMessage}"
 
 Return only this JSON:
 {
@@ -56,40 +56,35 @@ Return only this JSON:
   "title": "catchy song title (3-5 words)",
   "genre": "primary genre (1-2 words)",
   "language": "English | Spanish | Bilingual"
-}`
-      }]
-    });
+}`;
 
-    const options = {
-      hostname: 'api.anthropic.com',
-      path: '/v1/messages',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'Content-Length': Buffer.byteLength(body)
-      }
+  try {
+    const raw = await ai(ask, system);
+    return parseJsonReply(raw) || buildFallbackPrompt(userMessage);
+  } catch {
+    return buildFallbackPrompt(userMessage);
+  }
+}
+
+// Gemini often wraps JSON in ```json fences despite being told not to.
+function parseJsonReply(raw) {
+  if (!raw) return null;
+  const cleaned = String(raw).replace(/```(?:json)?/gi, '').trim();
+  const start = cleaned.indexOf('{');
+  const end = cleaned.lastIndexOf('}');
+  if (start === -1 || end <= start) return null;
+  try {
+    const o = JSON.parse(cleaned.slice(start, end + 1));
+    if (!o.prompt) return null;
+    return {
+      prompt: String(o.prompt),
+      title: o.title || 'FEDGE Track',
+      genre: o.genre || 'urban',
+      language: o.language || 'English'
     };
-
-    const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        try {
-          const response = JSON.parse(data);
-          const text = (response.content?.[0]?.text || '').trim();
-          const parsed = JSON.parse(text);
-          resolve(parsed);
-        } catch {
-          resolve(buildFallbackPrompt(userMessage));
-        }
-      });
-    });
-    req.on('error', () => resolve(buildFallbackPrompt(userMessage)));
-    req.write(body);
-    req.end();
-  });
+  } catch {
+    return null;
+  }
 }
 
 // ─── Fallback Prompt Builder ──────────────────────────────────────────────────
@@ -133,7 +128,7 @@ function parseCommand(msg) {
 // ─── Main Run ─────────────────────────────────────────────────────────────────
 module.exports = {
   run: async (ctx) => {
-    const { message, reply } = ctx;
+    const { message, reply, ai, music, sendAudio } = ctx;
 
     const cmd = parseCommand(message);
 
@@ -154,7 +149,7 @@ module.exports = {
         "🎵 *Melao'S Studios*\n" +
         "━━━━━━━━━━━━━━━━━━━━\n" +
         "✅ Status: Online & Ready\n" +
-        "🤖 Powered by: FEDGE 2.O + Claude AI + Suno\n" +
+        "🤖 Powered by: FEDGE 2.O + Gemini Pro + Suno\n" +
         "🎤 Artist: Milciades Holguin (Melao)\n" +
         "🎸 Role: Song-Writer & Music-Producer\n" +
         "📦 Repo: github.com/cryptofedge/melaos-studio\n" +
@@ -181,34 +176,58 @@ module.exports = {
     }
 
     // ── Music Generation ──
-    await reply("🎵 *Melao'S Studios* is cooking...\n\n_Claude is crafting your Suno prompt..._ ⏳");
+    // "clip"/"short"/"30 sec" asks for the fast 30s version instead of a full track.
+    const wantsClip = /\b(clip|short|30 ?sec|corto)\b/i.test(message);
 
-    try {
-      const result = await generateSunoPrompt(message);
-      const sunoUrl = buildSunoUrl(result.prompt);
+    await reply("🎵 *Melao'S Studios* is cooking...\n\n_Writing the track..._ ⏳");
 
-      await reply(
-        "🎵 *Melao'S Studios*\n" +
-        "━━━━━━━━━━━━━━━━━━━━\n" +
-        `🎤 *"${result.title}"*\n` +
-        `🎸 Genre: ${result.genre}\n` +
-        `🌐 Language: ${result.language}\n\n` +
-        "📝 *Suno Prompt:*\n" +
-        `_${result.prompt}_\n\n` +
-        "🔗 *Create your song now:*\n" +
-        `${sunoUrl}\n\n` +
-        "━━━━━━━━━━━━━━━━━━━━\n" +
-        "_Tap the link → your prompt is pre-filled → hit Generate_ 🚀\n" +
-        "_Powered by FEDGE 2.O × Suno AI_\n" +
-        "_By Milciades Holguin (Melao) 🎤_"
-      );
-    } catch (err) {
-      await reply(
-        "🎵 *Melao'S Studios*\n\n" +
-        "⚠️ Couldn't generate your track right now.\n" +
-        "Try again or visit: https://suno.com\n\n" +
-        `_Error: ${err.message}_`
-      );
+    const result = await generateSunoPrompt(message, ai);
+
+    // Try to produce real audio first.
+    if (typeof music === 'function') {
+      try {
+        await reply(
+          `🎼 *"${result.title}"* — ${result.genre}\n` +
+          `_Recording${wantsClip ? ' a 30s clip' : ' the full track'}, give me a minute..._ 🎧`
+        );
+
+        const song = await music(result.prompt, { full: !wantsClip });
+
+        await sendAudio(song.audio, { title: result.title, mimetype: song.mimetype });
+
+        const lyrics = cleanLyrics(song.lyrics);
+        await reply(
+          "🎵 *Melao'S Studios*\n" +
+          "━━━━━━━━━━━━━━━━━━━━\n" +
+          `🎤 *"${result.title}"*\n` +
+          `🎸 Genre: ${result.genre}\n` +
+          `🌐 Language: ${result.language}\n` +
+          (lyrics ? `\n📝 *Lyrics:*\n${lyrics}\n` : '') +
+          "━━━━━━━━━━━━━━━━━━━━\n" +
+          "_Powered by FEDGE 2.O × Lyria_\n" +
+          "_By Milciades Holguin (Melao) 🎤_"
+        );
+        return;
+      } catch (err) {
+        console.error('[melaos-studio] Lyria failed: ' + err.message);
+        // fall through to the Suno link below
+      }
     }
+
+    // Fallback: hand back a pre-filled Suno link.
+    await reply(
+      "🎵 *Melao'S Studios*\n" +
+      "━━━━━━━━━━━━━━━━━━━━\n" +
+      `🎤 *"${result.title}"*\n` +
+      `🎸 Genre: ${result.genre}\n` +
+      `🌐 Language: ${result.language}\n\n` +
+      "📝 *Suno Prompt:*\n" +
+      `_${result.prompt}_\n\n` +
+      "🔗 *Create your song now:*\n" +
+      `${buildSunoUrl(result.prompt)}\n\n` +
+      "━━━━━━━━━━━━━━━━━━━━\n" +
+      "_Tap the link → your prompt is pre-filled → hit Generate_ 🚀\n" +
+      "_By Milciades Holguin (Melao) 🎤_"
+    );
   }
 };
