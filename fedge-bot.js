@@ -17,7 +17,7 @@ async function sendVoiceReply(sock, jid, text) {
 }
 
 require('dotenv').config();
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } = require("baileys");
+const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } = require("baileys");
 const qrcode = require("qrcode-terminal");
 const fs = require("fs");
 const { execSync } = require("child_process");
@@ -140,7 +140,11 @@ async function generateVoice(text) {
 
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_info");
+  // WhatsApp rejects old client versions with "Connection Failure" — always use the current one.
+  const { version } = await fetchLatestBaileysVersion();
+  console.log(`📶 WhatsApp version ${version.join('.')} · logged in: ${!!state.creds.registered}`);
   const sock = makeWASocket({
+    version,
     auth: state,
     printQRInTerminal: false,
     browser: Browsers.windows("Chrome"),
@@ -150,7 +154,12 @@ async function startBot() {
     if (qr) { console.log("Scan QR:"); qrcode.generate(qr, { small: true }); }
     if (connection === "close") {
       const code = lastDisconnect?.error?.output?.statusCode;
-      if (code !== DisconnectReason.loggedOut) startBot();
+      if (code === DisconnectReason.loggedOut) {
+        console.log("❌ Logged out of WhatsApp. Delete the auth_info folder and run npm start to scan a new QR.");
+      } else {
+        console.log(`🔁 Connection closed (${code}). Reconnecting in 5s...`);
+        setTimeout(startBot, 5000);
+      }
     }
     if (connection === "open") {
       console.log("✅ FEDGE 2.O is LIVE!");
