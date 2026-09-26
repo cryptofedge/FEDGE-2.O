@@ -5,7 +5,8 @@
   "status": "live",
   "progress": 100,
   "live_url": "https://cryptofedge.github.io/tradestreet-fedge/",
-  "file": "tradestreet-demo.html",
+  "file": "index.html",
   "tech": "Vanilla JS, single-file HTML, GitHub Pages",
-  "notes": "Converted from React Native stub to full trading sim. 8 assets, live prices, buy/sell, portfolio P&L, daily missions, XP, FEDGE advisor chat."
+  "notes": "Converted from React Native stub to full trading sim. 8 assets, live prices, buy/sell, portfolio P&L, daily missions, XP, FEDGE advisor chat.",
+  "game": "TradeStreet"
 }

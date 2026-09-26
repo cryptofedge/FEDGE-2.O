@@ -106,7 +106,19 @@ const FEDGE_SOUL = fs.readFileSync('./SOUL.md', 'utf8');
 const FEDGE_MEMORY = fs.existsSync('./MEMORY.md') ? fs.readFileSync('./MEMORY.md', 'utf8') : '';
 const FEDGE_USER = fs.existsSync('./USER.md') ? fs.readFileSync('./USER.md', 'utf8') : '';
 
+// ── Game lineup: games.json is the single source of truth for all live games ──
+let FEDGE_GAMES = { live: [], in_development: [] };
+try { FEDGE_GAMES = JSON.parse(fs.readFileSync('./games.json', 'utf8').replace(/^\uFEFF/, '')); }
+catch (e) { console.error('⚠️  games.json failed to load: ' + e.message); }
+const GAMES_BLOCK = FEDGE_GAMES.live.map((g, i) =>
+  `${i + 1}. ${g.name} (${g.skill}) — ${g.pitch}\n   Play: ${g.play}`).join('\n');
+console.log('🎮 Loaded ' + FEDGE_GAMES.live.length + ' live games: ' + FEDGE_GAMES.live.map(g => g.name).join(', '));
+
 const MASTER_PROMPT = `${FEDGE_SOUL}
+
+---
+## LIVE GAMES (${FEDGE_GAMES.live.length}) — always share the exact Play link when a game comes up
+${GAMES_BLOCK}
 
 ---
 ## LONG-TERM MEMORY
@@ -154,6 +166,13 @@ async function startBot() {
     const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
     if (!text) return;
     console.log(`[${from}]: ${text}`);
+
+    // GAMES command: instant list of every live game with its play link.
+    if (/^(games|!games|play)$/i.test(text.trim())) {
+      await sock.sendMessage(from, { text: '🎮 *FEDGE 2.O — Live Games*\n\n' +
+        FEDGE_GAMES.live.map((g, i) => `${i + 1}. *${g.name}* — ${g.skill}\n${g.play}`).join('\n\n') });
+      return;
+    }
 
     // Executable skills run real code and own the whole reply — check before Gemini.
     const execSkill = matchExecutableSkill(text);

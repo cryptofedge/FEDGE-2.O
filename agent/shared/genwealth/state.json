@@ -1,1 +1,10 @@
-﻿{"agent":"genwealth-agent","repo":"cryptofedge/generational-wealth-game","last_active":null,"notes":""}
+{
+  "agent": "genwealth-agent",
+  "repo": "cryptofedge/generational-wealth-game",
+  "last_active": null,
+  "notes": "",
+  "status": "live",
+  "live_url": "https://cryptofedge.github.io/generational-wealth-game/",
+  "file": "docs/index.html",
+  "game": "Generational Wealth"
+}

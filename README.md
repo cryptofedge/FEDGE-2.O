@@ -19,6 +19,21 @@ FEDGE 2.O is currently in **Open Beta**.
 
 ---
 
+## Play the 6 Live Games
+
+| Game | Teaches | Play | Repo |
+|---|---|---|---|
+| TradeStreet | Market literacy | [Play Now](https://cryptofedge.github.io/tradestreet-fedge/) | [tradestreet-fedge](https://github.com/cryptofedge/tradestreet-fedge) |
+| Credit Warrior | Credit and FICO | [Play Now](https://cryptofedge.github.io/fedge-2-credit-game/) | [fedge-2-credit-game](https://github.com/cryptofedge/fedge-2-credit-game) |
+| World Stage | Music IP ownership | [Play Now](https://cryptofedge.github.io/world-stage/world-stage-v2.html) | [world-stage](https://github.com/cryptofedge/world-stage) |
+| Trust Fund Tycoon | Trusts and wealth management | [Play Now](https://cryptofedge.github.io/fedge2-trust-fund-game/) | [fedge2-trust-fund-game](https://github.com/cryptofedge/fedge2-trust-fund-game) |
+| Generational Wealth | Infinite Banking | [Play Now](https://cryptofedge.github.io/generational-wealth-game/) | [generational-wealth-game](https://github.com/cryptofedge/generational-wealth-game) |
+| Lock In | Mental health and discipline | [Play Now](https://cryptofedge.github.io/lock-in-game/) | [lock-in-game](https://github.com/cryptofedge/lock-in-game) |
+
+The full lineup lives in [`games.json`](games.json). The WhatsApp bot loads it on startup, and texting **games** to FEDGE returns every link.
+
+---
+
 ## The Ecosystem
 
 | Repo | What It Does | Urban Mission (Hood Intel) |
@@ -27,19 +42,19 @@ FEDGE 2.O is currently in **Open Beta**.
 | [fedge2-trust-fund-game](https://github.com/cryptofedge/fedge2-trust-fund-game) | Strategy game teaching trust fund mechanics and wealth management | Use revocable living trusts to protect your family from probate and heavy taxes. |
 | [generational-wealth-game](https://github.com/cryptofedge/generational-wealth-game) | Game teaching how wealth is built, preserved, and passed down across generations | Infinite Banking: borrow against your own equity to buy real estate. |
 | [tradestreet-fedge](https://github.com/cryptofedge/tradestreet-fedge) | Mobile trading app combining real brokerage execution with game mechanics | Spot market manipulation and pump-and-dumps. Don't get played by the hype. |
-| [lock-in-game](https://github.com/cryptofedge/lock-in-game) | Mental health and discipline game -” build focus, habits, and consistency | Set boundaries with toxic "homies" and protect your head to protect your bread. |
-| [world-stage](https://github.com/cryptofedge/world-stage) | Music industry RPG -” travel the world, build your career, reach the top | "Termination Rights" — learn how to reclaim your music after 35 years. |
+| [lock-in-game](https://github.com/cryptofedge/lock-in-game) | Mental health and discipline game — build focus, habits, and consistency | Set boundaries with toxic "homies" and protect your head to protect your bread. |
+| [world-stage](https://github.com/cryptofedge/world-stage) | Music industry RPG — travel the world, build your career, reach the top | "Termination Rights" — learn how to reclaim your music after 35 years. |
 | [Hustle-Politics-](https://github.com/cryptofedge/Hustle-Politics-) | The intersection of street hustle, entrepreneurship, and political power | Turning street hustle into legitimate political and economic influence. |
-| [Eclatcrypto](https://github.com/cryptofedge/Eclatcrypto) | $ECLT -” Solana token. Pure community, pure vibes | Crypto literacy for the culture. Own your digital assets. |
+| [Eclatcrypto](https://github.com/cryptofedge/Eclatcrypto) | $ECLT — Solana token. Pure community, pure vibes | Crypto literacy for the culture. Own your digital assets. |
 
 ---
 
 ## Agent Architecture
 
-FEDGE 2.O runs on a **9-agent AI system** powered by Eclat Universe - Rafael Fellito Rodriguez. The lead agent delegates tasks to 8 specialist subagents -” one per game -” running in parallel on a shared filesystem.
+FEDGE 2.O runs on a **9-agent AI system** powered by Eclat Universe - Rafael Fellito Rodriguez. The lead agent delegates tasks to 8 specialist subagents — one per game — running in parallel on a shared filesystem.
 
 ```
-FEDGE 2.O LEAD AGENT  -”  SOUL.md · MEMORY.md · USER.md
+FEDGE 2.O LEAD AGENT  —  SOUL.md · MEMORY.md · USER.md
 |
 |-- credit-agent          ->  fedge-2-credit-game
 |-- trustfund-agent       ->  fedge2-trust-fund-game
@@ -60,7 +75,7 @@ Each agent has its own model, system prompt, tools, and persistent memory. Nothi
 | File | Purpose |
 |---|---|
 | `SOUL.md` | Identity, values, and personality of FEDGE 2.O |
-| `MEMORY.md` | Long-term memory -” curated across all sessions |
+| `MEMORY.md` | Long-term memory — curated across all sessions |
 | `USER.md` | Context about Fellito and how FEDGE 2.O works with him |
 | `AGENTS.md` | Full multiagent orchestration manifest |
 | `IDENTITY.md` | Brand and character definition |
@@ -131,33 +146,33 @@ node index.js
 
 FEDGE 2.O runs on Eclat Universe - Rafael Fellito Rodriguez. Every session loads:
 
-1. **SOUL.md** -” Identity, values, NYC personality, hard limits
-2. **MEMORY.md** -” Long-term curated memory from past sessions
-3. **USER.md** -” Fellito's context, preferences, and goals
-4. **AGENTS.md** -” Orchestration manifest for all 8 subagents
-5. **Skills** -” 110 domain-specific skill modules loaded on demand
+1. **SOUL.md** — Identity, values, NYC personality, hard limits
+2. **MEMORY.md** — Long-term curated memory from past sessions
+3. **USER.md** — Fellito's context, preferences, and goals
+4. **AGENTS.md** — Orchestration manifest for all 8 subagents
+5. **Skills** — 110 domain-specific skill modules loaded on demand
 
 The agent powers:
 
-- **Financial Education** -” Credit, investing, trust funds, generational wealth
-- **Game Intelligence** -” AI brain for all 8 FEDGE 2.O games
-- **Trading Advisor** -” Portfolio coaching via TradeStreet
-- **Mental Health Support** -” Safe, trauma-informed guidance via Lock-In
-- **Music Industry** -” Artist development coaching via World Stage
-- **Crypto Guidance** -” Solana ecosystem support via Eclatcrypto
+- **Financial Education** — Credit, investing, trust funds, generational wealth
+- **Game Intelligence** — AI brain for all 8 FEDGE 2.O games
+- **Trading Advisor** — Portfolio coaching via TradeStreet
+- **Mental Health Support** — Safe, trauma-informed guidance via Lock-In
+- **Music Industry** — Artist development coaching via World Stage
+- **Crypto Guidance** — Solana ecosystem support via Eclatcrypto
 
 ---
 
 ## Roadmap
 
-- [x] Core agent -” SOUL, MEMORY, USER, AGENTS wired
+- [x] Core agent — SOUL, MEMORY, USER, AGENTS wired
 - [x] 110 skills deployed
 - [x] WAL Protocol + heartbeat system active
 - [x] 9-agent multiagent architecture designed
 - [x] Shared filesystem scaffolded
 - [ ] Eclat Universe multiagent integration (coming soon)
-- [ ] dreaming -” automated memory refinement every 72 hours
-- [ ] outcomes -” persistent session memory per subagent
+- [ ] dreaming — automated memory refinement every 72 hours
+- [ ] outcomes — persistent session memory per subagent
 - [ ] Full multiagent orchestration live
 - [x] Create GoFundMe page for youth financial literacy missions
 

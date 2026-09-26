@@ -1,1 +1,10 @@
-﻿{"agent":"lockin-agent","repo":"cryptofedge/lock-in-game","last_active":null,"notes":""}
+{
+  "agent": "lockin-agent",
+  "repo": "cryptofedge/lock-in-game",
+  "last_active": null,
+  "notes": "",
+  "status": "live",
+  "live_url": "https://cryptofedge.github.io/lock-in-game/",
+  "file": "index.html",
+  "game": "Lock In"
+}

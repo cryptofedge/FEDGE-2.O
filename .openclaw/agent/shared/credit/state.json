@@ -1,1 +1,10 @@
-﻿{"agent":"credit-agent","repo":"cryptofedge/fedge-2-credit-game","last_active":null,"notes":""}
+{
+  "agent": "credit-agent",
+  "repo": "cryptofedge/fedge-2-credit-game",
+  "last_active": null,
+  "notes": "",
+  "status": "live",
+  "live_url": "https://cryptofedge.github.io/fedge-2-credit-game/",
+  "file": "Expo web build (src/) published from dist/ by deploy.yml",
+  "game": "Credit Warrior"
+}

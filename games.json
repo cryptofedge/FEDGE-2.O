@@ -1,0 +1,16 @@
+{
+  "_about": "Single source of truth for the FEDGE 2.O game lineup. fedge-bot.js loads this file into the agent's prompt. Update links here first.",
+  "updated": "2026-09-26",
+  "live": [
+    { "id": "tradestreet", "name": "TradeStreet", "skill": "Market literacy", "repo": "cryptofedge/tradestreet-fedge", "agent": "tradestreet-agent", "play": "https://cryptofedge.github.io/tradestreet-fedge/", "file": "index.html", "pitch": "$10K paper trading sim. Spot manipulation and pump-and-dumps before you risk a dime." },
+    { "id": "credit", "name": "Credit Warrior", "skill": "Credit and FICO", "repo": "cryptofedge/fedge-2-credit-game", "agent": "credit-agent", "play": "https://cryptofedge.github.io/fedge-2-credit-game/", "file": "Expo web build (src/) published from dist/ by deploy.yml", "pitch": "Build a 700+ credit score from nothing and beat predatory lending." },
+    { "id": "worldstage", "name": "World Stage", "skill": "Music IP ownership", "repo": "cryptofedge/world-stage", "agent": "worldstage-agent", "play": "https://cryptofedge.github.io/world-stage/world-stage-v2.html", "file": "world-stage-v2.html", "pitch": "Music industry RPG. PRO registration, masters, and termination rights after 35 years." },
+    { "id": "trustfund", "name": "Trust Fund Tycoon", "skill": "Trusts and wealth management", "repo": "cryptofedge/fedge2-trust-fund-game", "agent": "trustfund-agent", "play": "https://cryptofedge.github.io/fedge2-trust-fund-game/", "file": "docs/index.html", "pitch": "Inherit $100K, survive 10 market events, protect it with a revocable living trust." },
+    { "id": "genwealth", "name": "Generational Wealth", "skill": "Infinite Banking", "repo": "cryptofedge/generational-wealth-game", "agent": "genwealth-agent", "play": "https://cryptofedge.github.io/generational-wealth-game/", "file": "docs/index.html", "pitch": "Ages 22 to 65. Build a whole life policy, borrow against it, buy real estate, pass it down." },
+    { "id": "lockin", "name": "Lock In", "skill": "Mental health and discipline", "repo": "cryptofedge/lock-in-game", "agent": "lockin-agent", "play": "https://cryptofedge.github.io/lock-in-game/", "file": "index.html", "pitch": "8 real-life scenarios with OG Ray. Protect your head to protect your bread." }
+  ],
+  "in_development": [
+    { "id": "hustle", "name": "Hustle Politics", "repo": "cryptofedge/Hustle-Politics-", "agent": "hustle-agent", "status": "README only, no game code yet" },
+    { "id": "eclatcrypto", "name": "Eclatcrypto ($ECLT)", "repo": "cryptofedge/Eclatcrypto", "status": "Token docs only, not minted" }
+  ]
+}

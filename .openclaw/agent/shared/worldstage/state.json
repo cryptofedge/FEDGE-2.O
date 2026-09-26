@@ -1,1 +1,10 @@
-﻿{"agent":"worldstage-agent","repo":"cryptofedge/world-stage","last_active":null,"notes":""}
+{
+  "agent": "worldstage-agent",
+  "repo": "cryptofedge/world-stage",
+  "last_active": null,
+  "notes": "",
+  "status": "live",
+  "live_url": "https://cryptofedge.github.io/world-stage/world-stage-v2.html",
+  "file": "world-stage-v2.html",
+  "game": "World Stage"
+}
