@@ -423,7 +423,7 @@ def main() -> int:
         failed = []
         for gid in ids:
             done = RENDERS / f"{gid}.mp4"
-            src = [PROMOS / f"{gid}.json", STUDIO / "brand.json", STUDIO / "footage" / gid / "gameplay.mp4"]
+            src = [PROMOS / f"{gid}.json", STUDIO / "footage" / gid / "gameplay.mp4"]  # re-render when the script or clip changes
             newest = max((p.stat().st_mtime for p in src if p.exists()), default=0)
             if len(ids) > 1 and not args.force and not args.preview and done.exists() and done.stat().st_mtime > newest:
                 log(f"skip {gid}: already rendered (use --force to redo)")
