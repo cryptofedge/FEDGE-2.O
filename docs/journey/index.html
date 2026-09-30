@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#03030a"/>
+<title>The Journey — FEDGE 2.O</title>
+<meta name="description" content="One city, six games, one journey to generational wealth. FEDGE guides you the whole way."/>
+<link rel="icon" href="../assets/logo.png"/>
+<meta property="og:title" content="FEDGE 2.O — The Journey"/>
+<meta property="og:description" content="One city. Six games. FEDGE guides you the whole way to generational wealth."/>
+<meta property="og:image" content="https://fedge2o.com/assets/fedge-og-2026.jpg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<script>
+  // ── Config ──────────────────────────────────────────────────────────────
+  // Paste the Supabase function URL here after deploying supabase/functions/fedge-guide.
+  // Leave it empty and FEDGE still guides with scripted tips (no live chat).
+  window.FEDGE_GUIDE_URL = "";
+</script>
+<style>
+:root{
+  --bg:#03030a; --surface:#0b0b16; --surface2:#12121f; --line:#23233a;
+  --text:#f2f2f8; --muted:#9a9ab0; --orange:#e87012; --orange2:#ff8a2a;
+  --cyan:#00fff9; --purple:#a78bfa; --green:#4ade80; --red:#ff5a5a;
+  --head:'Orbitron',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--mono)}
+body{overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:var(--cyan)}
+.hidden{display:none!important}
+
+/* ── top bar ── */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:12px 16px;
+  background:rgba(3,3,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top img{width:30px;height:30px}
+.brand{font:900 14px var(--head);letter-spacing:2px}
+.brand small{display:block;font:600 9px var(--mono);letter-spacing:3px;color:var(--orange)}
+.prog{margin-left:auto;text-align:right;min-width:120px}
+.prog b{font:700 12px var(--head);letter-spacing:1px}
+.prog .bar{height:5px;background:var(--line);margin-top:5px;overflow:hidden}
+.prog .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--cyan));width:0;transition:width .6s}
+.prog small{font-size:10px;color:var(--muted)}
+
+/* ── layout ── */
+.wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;padding:16px}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;padding:12px 16px 110px}}
+.map-card{position:relative;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 20%,#140c05 0%,var(--bg) 60%);overflow:hidden}
+.map-card svg{display:block;width:100%;height:auto;max-height:calc(100vh - 110px)}
+@media (max-width:900px){.map-card svg{max-height:none}}
+.map-title{position:absolute;left:16px;top:14px;pointer-events:none}
+.map-title .k{font-size:10px;letter-spacing:4px;color:var(--orange)}
+.map-title h1{font:900 22px var(--head);letter-spacing:2px;margin-top:4px}
+
+/* map svg bits */
+.station{cursor:pointer}
+.station:focus{outline:none}
+.station:focus-visible .ring{stroke:var(--cyan);stroke-width:4}
+.station .dot{transition:transform .2s}
+.station:hover .dot{transform:scale(1.08)}
+.lbl{font:700 13px var(--head);letter-spacing:1px;fill:var(--text)}
+.sub{font:600 9px var(--mono);letter-spacing:2px;fill:var(--muted)}
+.pulse{animation:pulse 1.8s ease-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+.bob{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){.pulse,.bob{animation:none}}
+
+/* ── side panel (desktop) / bottom sheet (phone) ── */
+.panel{border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;min-height:0;max-height:calc(100vh - 110px);position:sticky;top:74px}
+@media (max-width:900px){
+  .panel{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:78vh;z-index:30;border-left:0;border-right:0;
+    transform:translateY(calc(100% - 96px));transition:transform .35s;box-shadow:0 -10px 40px rgba(0,0,0,.6)}
+  .panel.open{transform:none}
+}
+.grab{display:none}
+@media (max-width:900px){.grab{display:block;width:44px;height:4px;background:var(--line);margin:8px auto 0}}
+.p-head{padding:16px 18px 12px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center}
+.p-head .ico{width:46px;height:46px;flex:none;display:grid;place-items:center;font-size:24px;border:1px solid var(--line);background:var(--surface2)}
+.p-head .k{font-size:9px;letter-spacing:3px;color:var(--orange)}
+.p-head h2{font:900 17px var(--head);letter-spacing:1px;margin-top:3px}
+.p-head .g{font-size:11px;color:var(--muted);margin-top:2px}
+.p-body{padding:14px 18px;overflow:auto;flex:1;min-height:0}
+.learn{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:12px}
+.learn b{color:var(--text)}
+.status{display:inline-block;font:700 9px var(--mono);letter-spacing:2px;padding:4px 8px;border:1px solid;margin-bottom:12px}
+.st-locked{color:var(--muted);border-color:var(--line)} .st-open{color:var(--orange);border-color:var(--orange)} .st-done{color:var(--green);border-color:var(--green)}
+.btn{display:block;width:100%;padding:14px;font:700 12px var(--mono);letter-spacing:3px;text-transform:uppercase;text-align:center;margin-top:8px;transition:.15s}
+.btn-o{background:var(--orange);color:#03030a} .btn-o:hover{background:var(--orange2)}
+.btn-g{border:1px solid var(--line);color:var(--text)} .btn-g:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* chat */
+.chat{border-top:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.msgs{padding:12px 18px;display:flex;flex-direction:column;gap:10px;overflow:auto;max-height:36vh;min-height:90px}
+.m{max-width:88%;padding:10px 12px;font-size:12.5px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+.m.f{background:var(--surface2);border-left:2px solid var(--orange);align-self:flex-start}
+.m.u{background:#10222a;border-right:2px solid var(--cyan);align-self:flex-end}
+.m.f .who{display:block;font:700 9px var(--mono);letter-spacing:2px;color:var(--orange);margin-bottom:4px}
+.typing{opacity:.7}
+.ask{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid var(--line)}
+.ask input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--text);padding:12px;font:14px var(--mono);outline:none}
+.ask input:focus{border-color:var(--cyan)}
+.ask button{background:var(--cyan);color:#03030a;font:700 11px var(--mono);letter-spacing:2px;padding:0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 10px}
+.chip{font-size:11px;border:1px solid var(--line);padding:6px 9px;color:var(--muted)}
+.chip:hover{border-color:var(--orange);color:var(--text)}
+
+/* ── game overlay ── */
+.game{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column}
+.g-bar{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--surface)}
+.g-bar .t{font:700 11px var(--head);letter-spacing:1px;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-bar button{font:700 10px var(--mono);letter-spacing:2px;padding:9px 11px;border:1px solid var(--line)}
+.g-bar .done{background:var(--orange);color:#03030a;border-color:var(--orange)}
+.game iframe{flex:1;width:100%;border:0;background:#000}
+.g-chat{position:absolute;right:0;top:48px;bottom:0;width:min(400px,100%);background:var(--surface);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s;z-index:2}
+.g-chat.open{transform:none}
+.g-chat .msgs{max-height:none;flex:1}
+
+/* ── modals ── */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:16px}
+.card{width:100%;max-width:440px;max-height:90vh;overflow:auto;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--orange);padding:24px 20px}
+.card .k{font-size:10px;letter-spacing:4px;color:var(--orange)}
+.card h3{font:900 20px var(--head);letter-spacing:1px;margin:8px 0 10px}
+.card p{font-size:13px;line-height:1.65;color:var(--muted)}
+.card input[type=text]{width:100%;margin-top:14px;background:var(--bg);border:1px solid var(--line);color:var(--text);padding:13px;font:16px var(--mono);outline:none}
+.card input[type=text]:focus{border-color:var(--orange)}
+.fedge-say{display:flex;gap:10px;align-items:flex-start;margin:12px 0}
+.fedge-say img{width:44px;height:44px;border-radius:50%;border:2px solid var(--orange);flex:none;object-fit:cover}
+.fedge-say div{background:var(--surface2);padding:10px 12px;font-size:12.5px;line-height:1.6;border-left:2px solid var(--orange)}
+.q{font:700 14px/1.5 var(--mono);color:var(--text);margin:14px 0 10px}
+.opt{display:block;width:100%;text-align:left;padding:12px;margin-top:8px;border:1px solid var(--line);font-size:13px;line-height:1.45;color:var(--text)}
+.opt:hover{border-color:var(--cyan)}
+.opt.right{border-color:var(--green);background:rgba(74,222,128,.08)}
+.opt.wrong{border-color:var(--red);background:rgba(255,90,90,.08)}
+.why{font-size:12px;line-height:1.6;color:var(--muted);margin-top:10px;padding:10px;border-left:2px solid var(--cyan);background:var(--bg)}
+.dots{display:flex;gap:6px;margin-top:6px}.dots i{width:22px;height:4px;background:var(--line)}.dots i.on{background:var(--orange)}
+.cert{text-align:center}
+.cert .big{font:900 28px var(--head);letter-spacing:2px;background:linear-gradient(90deg,var(--orange),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;margin:10px 0}
+.foot{max-width:1100px;margin:0 auto;padding:0 16px 30px;font-size:10px;color:var(--muted);letter-spacing:1px}
+@media (max-width:900px){.foot{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="../"><img src="../assets/logo.png" alt="FEDGE 2.O home"></a>
+  <div class="brand">FEDGE 2.O<small>THE JOURNEY</small></div>
+  <div class="prog" aria-live="polite">
+    <b id="progTxt">0 / 6 STOPS</b>
+    <div class="bar"><i id="progBar"></i></div>
+    <small id="xpTxt">0 XP</small>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="map-card" aria-label="Journey map">
+    <div class="map-title"><div class="k">// EXPLORE THE CITY</div><h1>THE FEDGE LINE</h1></div>
+    <svg id="map" viewBox="0 0 400 940" role="img" aria-label="City map with six stops on the FEDGE line"></svg>
+  </section>
+
+  <aside class="panel" id="panel" aria-live="polite">
+    <div class="grab" id="grab"></div>
+    <div class="p-head">
+      <div class="ico" id="pIco">🏙️</div>
+      <div><div class="k" id="pK">STOP</div><h2 id="pName">The Block</h2><div class="g" id="pGame"></div></div>
+    </div>
+    <div class="p-body">
+      <span class="status" id="pStatus"></span>
+      <p class="learn" id="pLearn"></p>
+      <button class="btn btn-o" id="playBtn">Enter</button>
+      <button class="btn btn-g" id="checkBtn">Check in with FEDGE</button>
+    </div>
+    <div class="chat" id="sideChat"></div>
+  </aside>
+</main>
+<p class="foot">Educational games. Not financial, legal or tax advice. FEDGE is an AI guide and can make mistakes. Your progress is saved on this device only.</p>
+
+<!-- game overlay -->
+<div class="game hidden" id="game" role="dialog" aria-label="Game">
+  <div class="g-bar">
+    <button id="gBack">← MAP</button>
+    <span class="t" id="gTitle"></span>
+    <button id="gAsk">ASK FEDGE</button>
+    <button class="done" id="gDone">I'M DONE</button>
+  </div>
+  <iframe id="gFrame" title="Game" allow="autoplay; fullscreen; clipboard-write" referrerpolicy="no-referrer"></iframe>
+  <div class="g-chat" id="gChat"></div>
+</div>
+
+<!-- modal -->
+<div class="modal hidden" id="modal"><div class="card" id="mCard" role="dialog" aria-modal="true"></div></div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════════════
+   The six stops, in journey order. Links match games.json in the repo.
+   ════════════════════════════════════════════════════════════════════════ */
+const STOPS = [
+  { id:'lockin', name:'The Block', game:'Lock In', icon:'🧠', color:'#2dd4bf', x:205, y:835,
+    play:'https://cryptofedge.github.io/lock-in-game/',
+    learn:'Every journey starts with your head right. <b>Boundaries, discipline and consistency</b>, the habits that protect everything you build next.',
+    intro:"Welcome to the Block. Before we talk money, we talk mindset. Lock In throws real situations at you: fake friends, pressure, drama. Every choice moves your vibe meter. Play a few scenarios, then come check in with me.",
+    tips:['What does it mean to set a boundary?','How do I stay consistent when I lose motivation?','Why does mindset matter for money?'],
+    quiz:[
+      {q:"A friend keeps pulling you into drama right before your shift. What protects your bread?", a:["Go handle it, loyalty first","Set a boundary and stick to your plan","Skip work just this once"], c:1, why:"Real ones respect your boundaries. Protecting your time and income isn't being fake, it's being focused."},
+      {q:"Why does discipline matter so much for money?", a:["Small habits repeated every day compound over time","It doesn't, only big wins matter","Because rich people never have fun"], c:0, why:"Saving, paying on time and showing up are small moves that compound, just like interest."},
+      {q:"You've felt overwhelmed for weeks. What's the strongest move?", a:["Keep it to yourself","Talk to someone you trust or a professional","Push through and ignore it"], c:1, why:"Reaching out is strength. A trusted person or a counselor can help you carry it. In a crisis in the US, call or text 988."}
+    ]},
+  { id:'credit', name:'Credit Ave', game:'Credit Warrior', icon:'💳', color:'#a78bfa', x:95, y:700,
+    play:'https://cryptofedge.github.io/fedge-2-credit-game/',
+    learn:'Your credit score opens doors or locks them. Learn <b>what actually moves your FICO</b>, build from zero, and beat predatory lending.',
+    intro:"Credit Ave. This is where the game gets real. Your score decides your rent, your car note, even some jobs. Credit Warrior teaches you what moves it, from personal credit all the way to business credit. Play it, then I'll quiz you.",
+    tips:['What is a good credit score?','How do I build credit from nothing?','What is credit utilization?'],
+    quiz:[
+      {q:"What's the biggest single factor in your FICO score?", a:["How much money you make","Your payment history","How many cards you have"], c:1, why:"Payment history is about 35% of a FICO score. Paying on time, every time, is the foundation."},
+      {q:"FICO scores run between…", a:["0 and 1000","100 and 700","300 and 850"], c:2, why:"FICO scores range from 300 to 850. The higher you go, the better the rates you get."},
+      {q:"You have a $1,000 limit. Which balance helps your score most?", a:["About $100","About $900","It doesn't matter"], c:0, why:"Keeping balances low compared to your limits (low utilization) helps. How much you owe is about 30% of FICO."}
+    ]},
+  { id:'tradestreet', name:'Wall Street', game:'TradeStreet', icon:'📈', color:'#3b82f6', x:300, y:565,
+    play:'https://cryptofedge.github.io/tradestreet-fedge/',
+    learn:'Practice trading with <b>$10K in paper money</b>. Learn risk, diversification, and how to spot the hype before it costs you.',
+    intro:"Wall Street. They make it look complicated so you stay out. TradeStreet gives you ten thousand in paper money, so you can learn without risking a dime. Watch for the hype and the pump-and-dump. Trade a bit, then check in with me.",
+    tips:['What is a pump-and-dump?','What does diversification mean?','Is paper trading the same as real trading?'],
+    quiz:[
+      {q:"What is a pump-and-dump?", a:["A long-term investing strategy","Hyping a price up so insiders can sell to latecomers","When a stock splits in two"], c:1, why:"Promoters pump the price with hype, then dump their shares on the people who bought late. The price crashes."},
+      {q:"What is paper trading?", a:["Practicing with pretend money","Trading paper companies","Buying stocks with cash only"], c:0, why:"Paper trading lets you practice real market moves with fake money, so mistakes only cost you lessons."},
+      {q:"Why do investors diversify?", a:["To guarantee profits","To spread risk so one loss doesn't sink everything","Because it's required by law"], c:1, why:"Spreading money across different assets lowers the damage if one of them drops. Nothing guarantees profits."}
+    ]},
+  { id:'worldstage', name:'The Stage', game:'World Stage', icon:'🎤', color:'#f472b6', x:110, y:430,
+    play:'https://cryptofedge.github.io/world-stage/world-stage-v2.html',
+    learn:'The music industry, from the inside. <b>Masters, publishing, PROs and royalties</b>: who owns the song, and how to get paid right.',
+    intro:"The Stage. Talent gets you in the room, but ownership gets you paid. In World Stage you build an artist from day one: deals, PRO registration, album drops, world tours. Read every contract. Then come see me.",
+    tips:['What are masters?','What does a PRO do?','What are termination rights?'],
+    quiz:[
+      {q:"What does a PRO like ASCAP, BMI or SESAC do?", a:["Books your shows","Collects performance royalties for songwriters","Owns your masters"], c:1, why:"PROs collect performance royalties when your songs are played on radio, TV, in venues and online, and pay songwriters and publishers."},
+      {q:"What are your 'masters'?", a:["The original sound recordings","Your lyrics notebook","Your manager's contract"], c:0, why:"Masters are the original recordings. Whoever owns them controls how the recording is used and earns from it."},
+      {q:"U.S. termination rights can let artists…", a:["Cancel any deal at any time","Reclaim rights they signed away after about 35 years","Get paid twice for one song"], c:1, why:"Under U.S. copyright law, creators can often reclaim rights they transferred after about 35 years, if they file the right notices in time."}
+    ]},
+  { id:'trustfund', name:'The Vault', game:'Trust Fund Tycoon', icon:'🏦', color:'#f5c842', x:295, y:295,
+    play:'https://cryptofedge.github.io/fedge2-trust-fund-game/',
+    learn:'You just inherited $100K. <b>Protect it, grow it, pass it on.</b> Trusts, probate and surviving market swings.',
+    intro:"The Vault. Most family money is gone within a couple of generations, and not because of bad luck. No plan. In Trust Fund Tycoon you inherit a hundred thousand and survive ten market events with Marcus Wells. Protect the bag, then check in.",
+    tips:['What is a revocable living trust?','What is probate?','How should someone handle an inheritance?'],
+    quiz:[
+      {q:"A big reason families use a revocable living trust is to…", a:["Avoid probate court","Pay zero taxes forever","Hide money from family"], c:0, why:"Assets in a living trust can pass to your family without going through probate, which can be slow, costly and public."},
+      {q:"What is probate?", a:["A type of savings account","The court process that settles someone's estate","A stock market event"], c:1, why:"Probate is the court process that validates a will and distributes assets. It can take months or longer."},
+      {q:"You inherit $100K. Which move is usually smartest?", a:["Put it all in one hot stock","Make a plan and spread it across different assets","Spend it before taxes hit"], c:1, why:"A plan plus diversification protects the bag. Going all-in on one bet is how inheritances disappear."}
+    ]},
+  { id:'genwealth', name:'Legacy Heights', game:'Generational Wealth', icon:'👑', color:'#4ade80', x:150, y:150,
+    play:'https://cryptofedge.github.io/generational-wealth-game/',
+    learn:'The final stop. Play your whole financial life from 22 to 65 with the <b>Infinite Banking</b> strategy, and build something that outlives you.',
+    intro:"Legacy Heights. Everything you learned comes together here. Generational Wealth runs your whole life, from twenty-two to sixty-five, using the Infinite Banking idea: build cash value, borrow against it, buy real estate, pass it down. Finish the run, then we close this out.",
+    tips:['What is Infinite Banking?','What happens if I don\'t repay a policy loan?','Why does starting early matter?'],
+    quiz:[
+      {q:"The Infinite Banking Concept is built on…", a:["A regular checking account","The cash value of a whole life insurance policy","Credit card rewards"], c:1, why:"IBC uses the cash value inside a whole life policy, which you can borrow against. It has costs and trade-offs, so learn it fully first."},
+      {q:"If you never repay a loan against your policy…", a:["Nothing happens","The unpaid loan is subtracted from the death benefit","The bank forgives it after a year"], c:1, why:"Unpaid policy loans plus interest reduce what your family receives. If the loan grows too large, the policy can lapse."},
+      {q:"Why does starting early matter for building wealth?", a:["Compounding gets more time to work","Prices are always lower when you're young","It doesn't matter when you start"], c:0, why:"The earlier you start, the more years your money has to compound. Time is the biggest advantage you have."}
+    ]}
+];
+
+/* ── saved progress (this device only) ─────────────────────────────────── */
+const KEY = 'fedge_journey_v1';
+let S = { name:'', started:false, done:[], xp:0, chats:{} };
+try { S = Object.assign(S, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+const idx = id => STOPS.findIndex(s => s.id === id);
+const isDone = id => S.done.includes(id);
+const unlockedUpTo = () => Math.min(S.done.length, STOPS.length - 1);  // in-order unlocking
+const isOpen = i => i <= unlockedUpTo() || isDone(STOPS[i].id);
+let sel = STOPS[unlockedUpTo()].id;
+
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const FACE = '../assets/fedge-character.png';
+
+/* ── map ───────────────────────────────────────────────────────────────── */
+function rng(seed){ return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+function drawMap(){
+  const svg = $('#map'), r = rng(42), ns = 'http://www.w3.org/2000/svg';
+  let h = `<defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#12121f" stroke-width="1"/></pattern>
+    <linearGradient id="river" x1="0" x2="1"><stop offset="0" stop-color="#00fff9" stop-opacity=".05"/><stop offset="1" stop-color="#00fff9" stop-opacity=".16"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="face"><circle r="15"/></clipPath>
+  </defs>
+  <rect width="400" height="940" fill="url(#grid)"/>
+  <path d="M372 0 C 340 220, 395 420, 352 620 S 380 860, 360 940 L400 940 L400 0Z" fill="url(#river)"/>
+  <path d="M0 520 C 90 505, 150 540, 210 500" stroke="#12121f" stroke-width="10" fill="none"/>`;
+  // skyline blocks around each stop
+  STOPS.forEach((s, i) => {
+    for (let k = 0; k < 9; k++) {
+      const w = 10 + r() * 20, hh = 16 + r() * 50, x = s.x - 80 + r() * 160, y = s.y - 40 - hh + r() * 30;
+      if (Math.abs(x + w / 2 - s.x) < 34 && y + hh > s.y - 36) continue; // keep the station clear
+      const lit = isOpen(i) ? s.color : '#2a2a3d';
+      h += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${hh.toFixed(1)}" fill="#0c0c18" stroke="${lit}" stroke-opacity="${isOpen(i) ? .35 : .5}"/>`;
+      for (let wy = y + 5; wy < y + hh - 4; wy += 8) if (r() > .55)
+        h += `<rect x="${(x + 3 + r() * (w - 7)).toFixed(1)}" y="${wy.toFixed(1)}" width="3" height="3" fill="${lit}" opacity="${isOpen(i) ? .8 : .35}"/>`;
+    }
+  });
+  // FEDGE line between stops
+  for (let i = 0; i < STOPS.length - 1; i++) {
+    const a = STOPS[i], b = STOPS[i + 1], my = (a.y + b.y) / 2;
+    const d = `M${a.x} ${a.y} C ${a.x} ${my}, ${b.x} ${my}, ${b.x} ${b.y}`;
+    const on = isDone(a.id);
+    h += `<path d="${d}" stroke="${on ? '#e87012' : '#2a2a3d'}" stroke-width="${on ? 7 : 5}" fill="none" stroke-linecap="round" ${on ? 'filter="url(#glow)"' : 'stroke-dasharray="2 10"'}/>`;
+  }
+  // stations
+  STOPS.forEach((s, i) => {
+    const open = isOpen(i), done = isDone(s.id), cur = open && !done && i === unlockedUpTo();
+    const fill = done ? '#0f2a1a' : open ? '#1a1206' : '#101019';
+    const ring = done ? '#4ade80' : open ? '#e87012' : '#35354d';
+    const labelLeft = s.x > 200;
+    h += `<g class="station" tabindex="0" role="button" data-id="${s.id}" aria-label="${esc(s.name)}, ${esc(s.game)}, ${done ? 'completed' : open ? 'open' : 'locked'}" transform="translate(${s.x} ${s.y})">
+      ${cur ? `<circle r="26" fill="none" stroke="#e87012" stroke-width="3" class="pulse"/>` : ''}
+      <g class="dot"><circle class="ring" r="26" fill="${fill}" stroke="${ring}" stroke-width="3"/>
+      <text y="9" text-anchor="middle" font-size="24" ${open ? '' : 'opacity=".35"'}>${open ? s.icon : '🔒'}</text></g>
+      ${done ? `<circle cx="19" cy="-19" r="9" fill="#4ade80"/><path d="M14.5 -19 l3 3 l6 -6" stroke="#03030a" stroke-width="2.4" fill="none"/>` : ''}
+      <text class="lbl" x="${labelLeft ? -38 : 38}" y="-2" text-anchor="${labelLeft ? 'end' : 'start'}" ${open ? '' : 'fill="#6a6a80"'}>${esc(s.name.toUpperCase())}</text>
+      <text class="sub" x="${labelLeft ? -38 : 38}" y="14" text-anchor="${labelLeft ? 'end' : 'start'}">${String(i + 1).padStart(2, '0')} · ${esc(s.game.toUpperCase())}</text>
+    </g>`;
+  });
+  // player marker (FEDGE) at the current stop
+  const at = STOPS[S.done.length >= STOPS.length ? STOPS.length - 1 : unlockedUpTo()];
+  // (position on the outer group; the bob animation on the inner one, so CSS doesn't wipe the position)
+  h += `<g transform="translate(${at.x} ${at.y - 58})" aria-hidden="true"><g class="bob">
+    <circle r="17" fill="#03030a" stroke="#00fff9" stroke-width="2"/>
+    <image href="${FACE}" x="-15" y="-15" width="30" height="30" clip-path="url(#face)"/>
+    <path d="M-6 16 L0 26 L6 16Z" fill="#00fff9"/></g></g>`;
+  svg.innerHTML = h;
+  svg.querySelectorAll('.station').forEach(g => {
+    const go = () => { select(g.dataset.id); $('#panel').classList.add('open'); };
+    g.addEventListener('click', go);
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
+}
+
+/* ── panel ─────────────────────────────────────────────────────────────── */
+function select(id){
+  sel = id; const i = idx(id), s = STOPS[i], open = isOpen(i), done = isDone(id);
+  $('#pIco').textContent = open ? s.icon : '🔒';
+  $('#pK').textContent = `STOP ${String(i + 1).padStart(2, '0')} / 06`;
+  $('#pName').textContent = s.name;
+  $('#pGame').textContent = s.game;
+  const st = $('#pStatus');
+  st.className = 'status ' + (done ? 'st-done' : open ? 'st-open' : 'st-locked');
+  st.textContent = done ? '✓ COMPLETED' : open ? '● YOUR STOP' : `🔒 FINISH ${STOPS[i - 1].name.toUpperCase()} FIRST`;
+  $('#pLearn').innerHTML = s.learn;
+  $('#playBtn').textContent = `Enter ${s.game}`;
+  $('#playBtn').disabled = !open;
+  $('#checkBtn').disabled = !open;
+  $('#checkBtn').textContent = done ? 'Retake the check-in' : 'Check in with FEDGE';
+  renderChat($('#sideChat'), id);
+}
+function updateProgress(){
+  const n = S.done.length;
+  $('#progTxt').textContent = `${n} / 6 STOPS`;
+  $('#progBar').style.width = (n / 6 * 100) + '%';
+  $('#xpTxt').textContent = `${S.xp} XP`;
+}
+
+/* ── chat with FEDGE ───────────────────────────────────────────────────── */
+function thread(id){
+  if (!S.chats[id]) {
+    const s = STOPS[idx(id)];
+    S.chats[id] = [{ role:'fedge', text: (S.name ? S.name + ', ' : '') + s.intro }];
+  }
+  return S.chats[id];
+}
+function renderChat(box, id){
+  const s = STOPS[idx(id)], t = thread(id);
+  box.innerHTML = `<div class="msgs" aria-live="polite">${t.map(m => `<div class="m ${m.role === 'fedge' ? 'f' : 'u'}">${m.role === 'fedge' ? '<span class="who">FEDGE</span>' : ''}${esc(m.text)}</div>`).join('')}</div>
+    <div class="chips">${s.tips.map(q => `<button class="chip">${esc(q)}</button>`).join('')}</div>
+    <form class="ask"><input maxlength="400" placeholder="Ask FEDGE anything…" aria-label="Ask FEDGE"><button type="submit">ASK</button></form>`;
+  const msgs = box.querySelector('.msgs'); msgs.scrollTop = msgs.scrollHeight;
+  box.querySelectorAll('.chip').forEach(c => c.onclick = () => ask(box, id, c.textContent));
+  box.querySelector('form').onsubmit = e => { e.preventDefault(); const inp = e.target.querySelector('input'); ask(box, id, inp.value); };
+}
+async function ask(box, id, text){
+  text = (text || '').trim(); if (!text) return;
+  const t = thread(id); t.push({ role:'user', text }); save(); renderChat(box, id);
+  const msgs = box.querySelector('.msgs');
+  const typing = document.createElement('div'); typing.className = 'm f typing'; typing.innerHTML = '<span class="who">FEDGE</span>…'; msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight;
+  let reply;
+  if (window.FEDGE_GUIDE_URL) {
+    try {
+      const r = await fetch(window.FEDGE_GUIDE_URL, { method:'POST', headers:{ 'content-type':'application/json' },
+        body: JSON.stringify({ stop:id, player:S.name, messages:t.slice(-10) }) });
+      const d = await r.json(); reply = d.reply || null;
+    } catch (e) { reply = null; }
+  }
+  if (!reply) reply = offlineAnswer(id, text);
+  t.push({ role:'fedge', text: reply }); if (t.length > 40) t.splice(1, t.length - 40); save(); renderChat(box, id);
+}
+// Scripted fallback when live chat is off or unreachable: answer from the stop's quiz explanations.
+function offlineAnswer(id, text){
+  const s = STOPS[idx(id)], words = text.toLowerCase().split(/\W+/).filter(w => w.length > 3);
+  let best = null, score = 0;
+  s.quiz.forEach(q => { const hay = (q.q + ' ' + q.a[q.c] + ' ' + q.why).toLowerCase(); const n = words.filter(w => hay.includes(w)).length; if (n > score) { score = n; best = q; } });
+  const live = window.FEDGE_GUIDE_URL ? "My live signal is weak right now, so here's the short version. " : '';
+  if (best) return live + best.why + ` Play ${s.game} to see it in action.`;
+  return live + `Good question. This stop is about ${s.learn.replace(/<[^>]+>/g, '').replace(/\.$/, '').toLowerCase()}. Jump into ${s.game}, and when you're done, check in with me.`;
+}
+
+/* ── game overlay ──────────────────────────────────────────────────────── */
+function openGame(id){
+  const s = STOPS[idx(id)];
+  $('#gTitle').textContent = `${s.name.toUpperCase()} · ${s.game}`;
+  $('#gFrame').src = s.play;
+  $('#game').classList.remove('hidden'); document.body.style.overflow = 'hidden';
+  renderChat($('#gChat'), id); $('#gChat').classList.remove('open');
+}
+function closeGame(){
+  $('#game').classList.add('hidden'); $('#gFrame').src = 'about:blank'; document.body.style.overflow = '';
+  select(sel);
+}
+
+/* ── check-in quiz ─────────────────────────────────────────────────────── */
+function modal(html){ $('#mCard').innerHTML = html; $('#modal').classList.remove('hidden'); const f = $('#mCard').querySelector('input,button'); if (f) f.focus(); }
+function closeModal(){ $('#modal').classList.add('hidden'); }
+function quiz(id){
+  const s = STOPS[idx(id)]; let n = 0, right = 0;
+  const step = () => {
+    if (n >= s.quiz.length) return result();
+    const q = s.quiz[n];
+    modal(`<div class="k">CHECK-IN · ${esc(s.name.toUpperCase())}</div>
+      <div class="dots">${s.quiz.map((_, i) => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</div>
+      <div class="q">${esc(q.q)}</div>
+      ${q.a.map((a, i) => `<button class="opt" data-i="${i}">${esc(a)}</button>`).join('')}
+      <div id="why"></div>`);
+    $('#mCard').querySelectorAll('.opt').forEach(b => b.onclick = () => {
+      const i = +b.dataset.i, ok = i === q.c; if (ok) right++;
+      $('#mCard').querySelectorAll('.opt').forEach(x => { x.disabled = true; if (+x.dataset.i === q.c) x.classList.add('right'); });
+      if (!ok) b.classList.add('wrong');
+      $('#why').innerHTML = `<div class="why"><b>${ok ? 'Facts.' : 'Not quite.'}</b> ${esc(q.why)}</div><button class="btn btn-o" id="next">${n + 1 < s.quiz.length ? 'Next' : 'See result'}</button>`;
+      $('#next').onclick = () => { n++; step(); }; $('#next').focus();
+    });
+  };
+  const result = () => {
+    const pass = right >= 2, first = !isDone(id), i = idx(id);
+    if (pass && first) { S.done.push(id); S.xp += 100 + right * 50; save(); }
+    const last = S.done.length >= STOPS.length;
+    const nextStop = STOPS[i + 1];
+    modal(`<div class="k">${pass ? 'STOP CLEARED' : 'ALMOST'}</div><h3>${right} / ${s.quiz.length} ${pass ? '🔥' : ''}</h3>
+      <div class="fedge-say"><img src="${FACE}" alt=""><div>${pass
+        ? (last ? `That's the whole city, ${esc(S.name || 'legend')}. You walked the full FEDGE line.` : `That's what I'm talking about${S.name ? ', ' + esc(S.name) : ''}. ${first ? `+${100 + right * 50} XP. ` : ''}${nextStop ? `${esc(nextStop.name)} is open. Let's ride.` : ''}`)
+        : `You got ${right}. Go back into ${esc(s.game)} for a minute, or ask me about anything that tripped you up, then run it back. You need 2 of 3.`}</div></div>
+      ${pass && last ? `<button class="btn btn-o" id="cert">Claim your legacy</button>` : pass && nextStop ? `<button class="btn btn-o" id="go">Go to ${esc(nextStop.name)}</button>` : `<button class="btn btn-o" id="retry">Try again</button>`}
+      <button class="btn btn-g" id="stay">Back to map</button>`);
+    const g = $('#go'), rt = $('#retry'), c = $('#cert');
+    if (g) g.onclick = () => { closeModal(); refresh(nextStop.id); };
+    if (rt) rt.onclick = () => quiz(id);
+    if (c) c.onclick = certificate;
+    $('#stay').onclick = () => { closeModal(); refresh(pass && nextStop ? nextStop.id : id); };
+  };
+  step();
+}
+function certificate(){
+  modal(`<div class="cert"><div class="k">FEDGE 2.O · ECLAT UNIVERSE</div>
+    <div class="big">LEGACY UNLOCKED</div>
+    <p>This certifies that</p><h3>${esc(S.name || 'Player')}</h3>
+    <p>completed all six stops on the FEDGE line: mindset, credit, markets, music ownership, trusts and generational wealth.</p>
+    <p style="margin-top:10px;color:var(--orange)">${S.xp} XP · ${new Date().toLocaleDateString()}</p>
+    <div class="fedge-say" style="justify-content:center"><img src="${FACE}" alt=""><div>They never taught us the rules. Now you know them. Go build.</div></div>
+    <button class="btn btn-o" id="share">Share the journey</button><button class="btn btn-g" id="stay">Back to map</button></div>`);
+  $('#share').onclick = async () => {
+    const data = { title:'FEDGE 2.O', text:`I just finished the FEDGE 2.O journey with ${S.xp} XP. Six games, one city. Your turn:`, url:'https://fedge2o.com/journey/' };
+    try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(`${data.text} ${data.url}`); $('#share').textContent = 'Link copied'; } } catch (e) {}
+  };
+  $('#stay').onclick = () => { closeModal(); refresh(sel); };
+}
+
+/* ── welcome ───────────────────────────────────────────────────────────── */
+function welcome(){
+  modal(`<div class="k">// WELCOME TO THE CITY</div><h3>THE FEDGE LINE</h3>
+    <div class="fedge-say"><img src="${FACE}" alt=""><div>I'm FEDGE. Six neighborhoods, six games, one journey to generational wealth. Play each stop, check in with me, and the next one opens. I'm with you the whole way. Ask me anything.</div></div>
+    <p>What should I call you?</p>
+    <input type="text" id="nm" maxlength="24" placeholder="Your name" autocomplete="given-name">
+    <button class="btn btn-o" id="start">Start the journey</button>
+    <p style="font-size:10px;margin-top:12px">Educational games, not financial advice. Progress stays on this device.</p>`);
+  const go = () => { S.name = ($('#nm').value || '').trim().slice(0, 24); S.started = true; save(); closeModal(); refresh(STOPS[0].id); };
+  $('#start').onclick = go; $('#nm').onkeydown = e => { if (e.key === 'Enter') go(); };
+}
+
+/* ── wiring ────────────────────────────────────────────────────────────── */
+function refresh(id){ drawMap(); updateProgress(); select(id || sel); }
+$('#playBtn').onclick = () => openGame(sel);
+$('#checkBtn').onclick = () => quiz(sel);
+$('#gBack').onclick = closeGame;
+$('#gAsk').onclick = () => $('#gChat').classList.toggle('open');
+$('#gDone').onclick = () => { const id = sel; closeGame(); quiz(id); };
+$('#grab').onclick = () => $('#panel').classList.toggle('open');
+$('#modal').onclick = e => { if (e.target.id === 'modal' && !$('#nm')) closeModal(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (!$('#modal').classList.contains('hidden') && !$('#nm')) closeModal(); else if (!$('#game').classList.contains('hidden')) closeGame(); } });
+refresh(sel);
+if (!S.started) welcome();
+</script>
+</body>
+</html>

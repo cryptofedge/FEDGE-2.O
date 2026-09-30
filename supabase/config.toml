@@ -1,0 +1,6 @@
+# Minimal Supabase config for FEDGE 2.O's edge functions.
+project_id = "FEDGE-2.O"
+
+[functions.fedge-guide]
+# The journey page calls this without a Supabase login; it's protected by an origin check and a rate limit instead.
+verify_jwt = false
