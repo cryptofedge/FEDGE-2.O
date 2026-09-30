@@ -44,7 +44,10 @@
     "min_scene_seconds": 2.2,
     "scene_padding_seconds": 0.35,
     "reading_words_per_second": 2.6,
-    "music_volume_no_voice": 0.45
+    "music_volume_no_voice": 0.45,
+    "concurrency": 1,
+    "video_cache_mb": 512,
+    "timeout_ms": 120000
   },
   "caption_replacements": {
     "FEDGE two O dot com": "fedge2o.com",

@@ -370,10 +370,17 @@ def build(game_id: str, voice_mode: str, om: Path, brand: dict, games: dict, pre
                 run([npx, "remotion", "still", "src/index.tsx", "Explainer", str(pdir / f"scene{n}.png"),
                      "--props", str(props_file), "--frame", fr] + size + browser, cwd=composer, capture_output=True)
             return pdir
-        cmd = [npx, "remotion", "render", "src/index.tsx", "Explainer", str(out), "--props", str(props_file),
-               "--codec", "h264", "--crf", str(rcfg["crf"])] + size + browser
+        tmp_out = RENDERS / f"{game_id}.rendering.mp4"  # renamed to <game>.mp4 only once it's complete
+        tmp_out.unlink(missing_ok=True)
+        cmd = [npx, "remotion", "render", "src/index.tsx", "Explainer", str(tmp_out), "--props", str(props_file),
+               "--codec", "h264", "--crf", str(rcfg["crf"])] + size + browser + [
+            # Gentler on home PCs: fewer frames at once, capped video memory, more patience.
+            "--concurrency", str(rcfg.get("concurrency", 1)),
+            "--offthreadvideo-cache-size-in-bytes", str(rcfg.get("video_cache_mb", 512) * 1024 * 1024),
+            "--timeout", str(rcfg.get("timeout_ms", 120000))]
         log(f"rendering {total:.1f}s video with OpenMontage...")
         run(cmd, cwd=composer)
+        os.replace(tmp_out, out)
         return out
     finally:
         shutil.rmtree(work, ignore_errors=True)
@@ -387,6 +394,7 @@ def main() -> int:
     ap.add_argument("--voice", choices=["auto", "elevenlabs", "piper", "none"], default="auto")
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--preview", action="store_true", help="one still image per scene instead of the video (fast)")
+    ap.add_argument("--force", action="store_true", help="with 'all': re-render games that are already done")
     args = ap.parse_args()
 
     load_env()
@@ -412,8 +420,25 @@ def main() -> int:
     try:
         ids = [p.stem for p in sorted(PROMOS.glob("*.json"))] if args.game == "all" else [args.game.lower()]
         outs = []
+        failed = []
         for gid in ids:
-            out = build(gid, args.voice, om, brand, games, preview=args.preview)
+            done = RENDERS / f"{gid}.mp4"
+            src = [PROMOS / f"{gid}.json", STUDIO / "brand.json", STUDIO / "footage" / gid / "gameplay.mp4"]
+            newest = max((p.stat().st_mtime for p in src if p.exists()), default=0)
+            if len(ids) > 1 and not args.force and not args.preview and done.exists() and done.stat().st_mtime > newest:
+                log(f"skip {gid}: already rendered (use --force to redo)")
+                outs.append({"game": gid, "file": str(done), "mb": round(done.stat().st_size / 1_048_576, 1)})
+                continue
+            for attempt in (1, 2):  # one automatic retry if the render browser crashes
+                try:
+                    out = build(gid, args.voice, om, brand, games, preview=args.preview)
+                    break
+                except subprocess.CalledProcessError as exc:
+                    log(f"{gid}: render failed (attempt {attempt}/2, exit {exc.returncode})")
+                    out = None
+            if out is None:
+                failed.append(gid)
+                continue
             if args.preview:
                 log(f"preview stills: {out}")
                 outs.append({"game": gid, "preview": str(out)})
@@ -421,7 +446,11 @@ def main() -> int:
             mb = out.stat().st_size / 1_048_576
             log(f"done: {out} ({mb:.1f} MB)")
             outs.append({"game": gid, "file": str(out), "mb": round(mb, 1)})
-        result({"ok": True, "videos": outs})
+        if failed:
+            log(f"finished {len(outs)}, failed: {', '.join(failed)} — run those again on their own")
+            if not outs:
+                fail(f"Render failed for {', '.join(failed)}. Close other apps and try again.")
+        result({"ok": True, "videos": outs, **({"failed": failed} if failed else {})})
         return 0
     except subprocess.CalledProcessError as exc:
         fail(f"Render step failed: {' '.join(map(str, exc.cmd[:3]))}... (exit {exc.returncode})")
