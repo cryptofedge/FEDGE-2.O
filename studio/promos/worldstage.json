@@ -1,0 +1,46 @@
+{
+  "id": "worldstage",
+  "title": "World Stage",
+  "scenes": [
+    {
+      "type": "text_card",
+      "text": "You signed the deal. Who owns the song?",
+      "say": "You signed the deal. So who actually owns the song?"
+    },
+    {
+      "type": "callout",
+      "callout_type": "info",
+      "title": "Get paid right",
+      "text": "Register with a PRO: ASCAP, BMI or SESAC.",
+      "say": "Register with a P R O like ASCAP, BMI, or SESAC, or leave money on the table."
+    },
+    {
+      "type": "gameplay",
+      "say": "This is World Stage. Build your artist from day one."
+    },
+    {
+      "type": "stat_card",
+      "stat": "35 YRS",
+      "subtitle": "U.S. termination rights can bring your rights back",
+      "say": "In the U.S., termination rights can let you take your rights back after thirty five years."
+    },
+    {
+      "type": "callout",
+      "callout_type": "info",
+      "title": "Your career",
+      "text": "4 industry players. 10 career events. Album drops and tours.",
+      "say": "Four industry players, ten career events, album drops, and world tours."
+    },
+    {
+      "type": "text_card",
+      "text": "Own your masters. Own your future.",
+      "say": "Own your masters. Own your future."
+    },
+    {
+      "type": "hero_title",
+      "text": "PLAY FREE",
+      "heroSubtitle": "{cta_url}",
+      "say": "Play World Stage at FEDGE two O dot com."
+    }
+  ]
+}

@@ -138,6 +138,55 @@ async function generateVoice(text) {
   return fs.readFileSync(mp3Path);
 }
 
+// ── FEDGE Studio (OpenMontage) — "VIDEO <game>" renders a vertical promo and sends it ──
+const { spawn } = require('child_process');
+let videoBusy = false;
+function isStudioAdmin(jid) {
+  const admins = (process.env.FEDGE_ADMINS || '').split(',').map(s => s.replace(/\D/g, '')).filter(Boolean);
+  const id = String(jid).split('@')[0].split(':')[0].replace(/\D/g, '');
+  return admins.includes(id);
+}
+async function handleVideoCommand(sock, from, text) {
+  const arg = text.replace(/^video\s*/i, '').trim().toLowerCase();
+  const ids = FEDGE_GAMES.live.map(g => g.id);
+  if (!arg || arg === 'list') {
+    await sock.sendMessage(from, { text: '🎬 *FEDGE Studio*\nSend *VIDEO <game>* for a 30s promo:\n' + ids.map(i => '• ' + i).join('\n') });
+    return;
+  }
+  if (!isStudioAdmin(from)) {
+    console.log(`[STUDIO] VIDEO denied for ${from} — add this number to FEDGE_ADMINS in .env`);
+    await sock.sendMessage(from, { text: '🔒 Video studio is for the FEDGE team only.' });
+    return;
+  }
+  const game = FEDGE_GAMES.live.find(g => g.id === arg || g.name.toLowerCase().replace(/\s+/g, '') === arg.replace(/\s+/g, ''));
+  if (!game) { await sock.sendMessage(from, { text: `Unknown game "${arg}". Try: ${ids.join(', ')}` }); return; }
+  if (videoBusy) { await sock.sendMessage(from, { text: '⏳ A video is already rendering. Try again in a few minutes.' }); return; }
+  videoBusy = true;
+  await sock.sendMessage(from, { text: `🎬 Rendering the *${game.name}* promo… about 2–5 minutes.` });
+  const py = process.env.PYTHON || (process.platform === 'win32' ? 'python' : 'python3');
+  let out = '';
+  const child = spawn(py, [path.join(__dirname, 'studio', 'render_promo.py'), game.id], { cwd: __dirname, windowsHide: true });
+  child.stdout.on('data', d => { out += d; process.stdout.write('[STUDIO] ' + d); });
+  child.stderr.on('data', d => { out += d; });
+  let startFailed = false;
+  child.on('error', async (e) => {
+    startFailed = true;
+    videoBusy = false;
+    await sock.sendMessage(from, { text: `⚠️ Couldn't start the studio (${e.message}). Is Python installed?` });
+  });
+  child.on('close', async () => {
+    videoBusy = false;
+    if (startFailed) return;
+    const line = out.split(/\r?\n/).reverse().find(l => l.startsWith('FEDGE_RESULT '));
+    let res = { ok: false, error: 'No result from the studio. Check the bot window for errors.' };
+    try { if (line) res = JSON.parse(line.slice('FEDGE_RESULT '.length)); } catch (_) {}
+    if (!res.ok) { await sock.sendMessage(from, { text: '⚠️ Video failed: ' + res.error }); return; }
+    const v = res.videos[0];
+    await sock.sendMessage(from, { video: { url: v.file }, mimetype: 'video/mp4',
+      caption: `🎬 ${game.name} promo (${v.mb} MB)\nPlay: ${game.play}` });
+  });
+}
+
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_info");
   // WhatsApp rejects old client versions with "Connection Failure" — always use the current one.
@@ -175,6 +224,9 @@ async function startBot() {
     const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
     if (!text) return;
     console.log(`[${from}]: ${text}`);
+
+    // VIDEO command: render a game promo with the OpenMontage studio and send it back.
+    if (/^video\b/i.test(text.trim())) { await handleVideoCommand(sock, from, text.trim()); return; }
 
     // GAMES command: instant list of every live game with its play link.
     if (/^(games|!games|play)$/i.test(text.trim())) {

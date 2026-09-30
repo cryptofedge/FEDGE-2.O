@@ -1,0 +1,46 @@
+{
+  "id": "trustfund",
+  "title": "Trust Fund Tycoon",
+  "scenes": [
+    {
+      "type": "stat_card",
+      "stat": "$100K",
+      "subtitle": "You just inherited it. Now what?",
+      "say": "You just inherited a hundred thousand dollars. Now what?"
+    },
+    {
+      "type": "text_card",
+      "text": "Most family money is gone in two generations.",
+      "say": "One widely cited study says most family wealth is gone by the second generation."
+    },
+    {
+      "type": "gameplay",
+      "say": "This is Trust Fund Tycoon. Your money, your call."
+    },
+    {
+      "type": "callout",
+      "callout_type": "warning",
+      "title": "No plan?",
+      "text": "Probate court decides. A living trust keeps it in the family.",
+      "say": "No plan can mean probate court. A living trust keeps it moving to your family."
+    },
+    {
+      "type": "callout",
+      "callout_type": "tip",
+      "title": "Survive the market",
+      "text": "10 market events. 4 investment styles. Graded S+ to D.",
+      "say": "Survive ten market events with Marcus Wells in your corner. Get graded S plus to D."
+    },
+    {
+      "type": "text_card",
+      "text": "Protect the bag. Pass it on.",
+      "say": "Protect the bag. Pass it on."
+    },
+    {
+      "type": "hero_title",
+      "text": "PLAY FREE",
+      "heroSubtitle": "{cta_url}",
+      "say": "Play Trust Fund Tycoon at FEDGE two O dot com."
+    }
+  ]
+}

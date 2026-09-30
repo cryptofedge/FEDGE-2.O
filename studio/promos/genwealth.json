@@ -1,0 +1,44 @@
+{
+  "id": "genwealth",
+  "title": "Generational Wealth",
+  "scenes": [
+    {
+      "type": "text_card",
+      "text": "What if you could be your own bank?",
+      "say": "What if you could be your own bank?"
+    },
+    {
+      "type": "callout",
+      "callout_type": "info",
+      "title": "Infinite Banking",
+      "text": "Build cash value. Borrow against it. Keep it growing.",
+      "say": "Infinite Banking. Build cash value, borrow against your own policy, and keep it working."
+    },
+    {
+      "type": "gameplay",
+      "say": "This is Generational Wealth. Your whole life, one policy."
+    },
+    {
+      "type": "stat_card",
+      "stat": "43 YRS",
+      "subtitle": "Age 22 to 65. Every choice compounds.",
+      "say": "Play your whole life from twenty two to sixty five. Every choice compounds."
+    },
+    {
+      "type": "text_card",
+      "text": "Buy the building. Pass it down.",
+      "say": "Use your own equity to buy real estate, then pass it down."
+    },
+    {
+      "type": "text_card",
+      "text": "Learn the strategy. Make your own call.",
+      "say": "Learn how the strategy works, then make your own call."
+    },
+    {
+      "type": "hero_title",
+      "text": "PLAY FREE",
+      "heroSubtitle": "{cta_url}",
+      "say": "Play Generational Wealth at FEDGE two O dot com."
+    }
+  ]
+}

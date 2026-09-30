@@ -1,0 +1,46 @@
+{
+  "id": "tradestreet",
+  "title": "TradeStreet",
+  "scenes": [
+    {
+      "type": "text_card",
+      "text": "They pump it. You buy it. They dump it.",
+      "say": "They pump it. You buy it. They dump it on you."
+    },
+    {
+      "type": "stat_card",
+      "stat": "$10K",
+      "subtitle": "Paper money. Real market moves.",
+      "say": "TradeStreet hands you ten thousand in paper money to trade real market moves."
+    },
+    {
+      "type": "gameplay",
+      "say": "This is TradeStreet. Real signals, real practice."
+    },
+    {
+      "type": "callout",
+      "callout_type": "warning",
+      "title": "Spot the setup",
+      "text": "Hype spikes. Volume games. Fake breakouts.",
+      "say": "Learn to spot the hype spike and the fake breakout before it costs you."
+    },
+    {
+      "type": "callout",
+      "callout_type": "tip",
+      "title": "Every session",
+      "text": "Stocks and crypto. Daily missions. FEDGE as your advisor.",
+      "say": "Stocks and crypto, daily missions, and FEDGE in your ear as your advisor."
+    },
+    {
+      "type": "text_card",
+      "text": "Don't get played by the hype.",
+      "say": "Don't get played by the hype."
+    },
+    {
+      "type": "hero_title",
+      "text": "PLAY FREE",
+      "heroSubtitle": "{cta_url}",
+      "say": "Play TradeStreet now at FEDGE two O dot com."
+    }
+  ]
+}

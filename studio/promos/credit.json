@@ -1,0 +1,49 @@
+{
+  "id": "credit",
+  "title": "Credit Warrior",
+  "scenes": [
+    {
+      "type": "text_card",
+      "text": "Starting from zero? Good.",
+      "say": "Starting your credit from zero? Good. That's where warriors start."
+    },
+    {
+      "type": "stat_card",
+      "stat": "35%",
+      "subtitle": "of your FICO score is payment history",
+      "say": "Thirty five percent of your FICO score is one thing. Paying on time."
+    },
+    {
+      "type": "gameplay",
+      "say": "This is Credit Warrior. Every move shows up in your score."
+    },
+    {
+      "type": "stat_card",
+      "stat": "30%",
+      "subtitle": "of your FICO score is how much you owe",
+      "say": "Thirty percent is how much you owe. Keep those card balances low."
+    },
+    {
+      "type": "comparison",
+      "title": "Your score",
+      "leftLabel": "Start",
+      "leftValue": "500",
+      "rightLabel": "Goal",
+      "rightValue": "750",
+      "say": "Credit Warrior takes you from five hundred to seven fifty, one move at a time."
+    },
+    {
+      "type": "callout",
+      "callout_type": "tip",
+      "title": "Three tiers",
+      "text": "Personal. Business. Corporate.",
+      "say": "Personal credit, business credit, then corporate. Beat predatory lending for good."
+    },
+    {
+      "type": "hero_title",
+      "text": "PLAY FREE",
+      "heroSubtitle": "{cta_url}",
+      "say": "Play Credit Warrior at FEDGE two O dot com."
+    }
+  ]
+}

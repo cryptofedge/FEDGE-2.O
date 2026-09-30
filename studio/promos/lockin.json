@@ -1,0 +1,46 @@
+{
+  "id": "lockin",
+  "title": "Lock In",
+  "scenes": [
+    {
+      "type": "text_card",
+      "text": "Protect your head. Protect your bread.",
+      "say": "Protect your head to protect your bread."
+    },
+    {
+      "type": "callout",
+      "callout_type": "quote",
+      "title": "OG Ray",
+      "text": "Not every homie is for your future.",
+      "say": "OG Ray walks you through eight real life situations. Fake friends. Pressure. Drama."
+    },
+    {
+      "type": "gameplay",
+      "say": "This is Lock In. Real situations. Your choice."
+    },
+    {
+      "type": "callout",
+      "callout_type": "tip",
+      "title": "Vibe meter",
+      "text": "Every choice moves it. Lock in and watch it climb.",
+      "say": "Every choice moves your vibe meter. Lock in and watch it climb."
+    },
+    {
+      "type": "stat_card",
+      "stat": "8",
+      "subtitle": "real-life scenarios",
+      "say": "Build streaks, set boundaries, stay consistent."
+    },
+    {
+      "type": "text_card",
+      "text": "Discipline is the real flex.",
+      "say": "Discipline is the real flex."
+    },
+    {
+      "type": "hero_title",
+      "text": "LOCK IN",
+      "heroSubtitle": "{cta_url}",
+      "say": "Play Lock In at FEDGE two O dot com."
+    }
+  ]
+}
