@@ -39,7 +39,7 @@ const GENERIC_TRIGGERS = new Set(['show', 'event', 'task', 'company', 'operation
 const ADMIN_ONLY_SKILLS = new Set(['proactive-agent', 'self-improving-agent', 'skill-creator',
   'session-logs', 'cross-session-tasks', 'healthcheck', 'cognitive-orchestration', 'coding-agent',
   'claude-code', 'claude-cowork', 'gh-issues', 'github', 'node-connect', 'api-gateway',
-  'prompt-engineering', 'openai-api']);
+  'prompt-engineering', 'openai-api', 'wealthverse-studio']);
 
 // Whole words only, so "git" doesn't fire inside "digital".
 function triggerPattern(trigger) {
