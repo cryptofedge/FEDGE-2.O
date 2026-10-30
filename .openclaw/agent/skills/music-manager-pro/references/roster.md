@@ -3,7 +3,7 @@
 ## Mando El Pelado
 
 - **Real name:** Armando F. Arteaga
-- **WhatsApp:** +17187533362
+- **WhatsApp:** kept private (not stored in this public repo)
 - **Base:** Queens/NYC
 - **Origin:** Born in NYC to Ecuadorian parents. Raised in Guayaquil ages 6-13, returned to NYC.
 - **Languages:** Spanish, English
