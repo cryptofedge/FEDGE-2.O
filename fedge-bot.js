@@ -26,6 +26,32 @@ const { Boom } = require("@hapi/boom");
 const path = require('path');
 const skills = [];
 const skillsDir = './skills';
+
+// skills-registry.json holds the trigger words for most skills; a skill's own
+// skill.json/_meta.json triggers are added on top.
+const REGISTRY_TRIGGERS = {};
+try {
+  const registry = JSON.parse(fs.readFileSync('./skills-registry.json', 'utf8').replace(/^﻿/, ''));
+  for (const s of registry.skills) REGISTRY_TRIGGERS[s.slug] = s.triggers || [];
+} catch (e) { console.error('⚠️  skills-registry.json failed to load: ' + e.message); }
+
+// Everyday words that would pull a skill into unrelated chats ("show me…", "what are the odds").
+const GENERIC_TRIGGERS = new Set(['show', 'event', 'task', 'company', 'operations', 'canvas', 'label',
+  'tour', 'gig', 'security', 'password', 'threat', 'push', 'branch', 'merge', 'ping', 'odds',
+  'availability', 'forecast', 'schedule', 'episode', 'mood', 'layout']);
+
+// Skills for running the agent and its code. Only FEDGE_ADMINS get these.
+const ADMIN_ONLY_SKILLS = new Set(['proactive-agent', 'self-improving-agent', 'skill-creator',
+  'session-logs', 'cross-session-tasks', 'healthcheck', 'cognitive-orchestration', 'coding-agent',
+  'claude-code', 'claude-cowork', 'gh-issues', 'github', 'node-connect', 'api-gateway',
+  'prompt-engineering', 'openai-api']);
+
+// Whole words only, so "git" doesn't fire inside "digital".
+function triggerPattern(trigger) {
+  const escaped = trigger.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, 'iu');
+}
+
 for (const folder of fs.readdirSync(skillsDir)) {
   try {
     const metaPath = fs.existsSync(path.join(skillsDir, folder, 'skill.json'))
@@ -45,11 +71,15 @@ for (const folder of fs.readdirSync(skillsDir)) {
           triggers = meta.triggers || [];
         } catch(e) {}
       }
-      skills.push({ name, triggers, content });
+      triggers = [...new Set([...(REGISTRY_TRIGGERS[folder] || []), ...triggers].map(t => t.trim()))]
+        .filter(t => t && !GENERIC_TRIGGERS.has(t.toLowerCase()))
+        .map(t => ({ text: t, pattern: triggerPattern(t) }));
+      skills.push({ name, triggers, content, adminOnly: ADMIN_ONLY_SKILLS.has(folder) });
     }
   } catch (e) {}
 }
-console.log('✅ Loaded ' + skills.length + ' skills into FEDGE 2.O brain');
+console.log('✅ Loaded ' + skills.length + ' skills into FEDGE 2.O brain (' +
+  skills.filter(s => s.triggers.length).length + ' with triggers)');
 
 // ── Executable skills: folders whose index.js exports a run() function ────────
 // These run real code instead of just being pasted into Gemini's system prompt.
@@ -73,14 +103,16 @@ for (const folder of fs.readdirSync(skillsDir)) {
 }
 console.log('⚡ Loaded ' + execSkills.length + ' executable skill(s): ' + execSkills.map(s => s.id).join(', '));
 
-function matchSkill(text) {
-  const lower = text.toLowerCase();
+// The most specific hit wins: the skill whose matched trigger is longest.
+function matchSkill(text, admin) {
+  let best = null, bestLength = 0;
   for (const skill of skills) {
-    if (skill.triggers.some(t => lower.includes(t.toLowerCase()))) {
-      return skill;
+    if (skill.adminOnly && !admin) continue;
+    for (const t of skill.triggers) {
+      if (t.text.length > bestLength && t.pattern.test(text)) { best = skill; bestLength = t.text.length; }
     }
   }
-  return null;
+  return best;
 }
 
 // ALL-CAPS triggers (LINK, UNLINK, SONGS) are commands and must start the message,
@@ -272,8 +304,9 @@ async function startBot() {
     try {
       const lowerText = text.toLowerCase();
     const isStudioTrigger = lowerText.includes("melao") || lowerText.includes("studio") || lowerText.includes("!studio") || lowerText.includes("suno");
-    const matched = matchSkill(text);
-    const basePrompt = isAdmin(from) ? ADMIN_PROMPT : PUBLIC_PROMPT;
+    const admin = isAdmin(from);
+    const matched = matchSkill(text, admin);
+    const basePrompt = admin ? ADMIN_PROMPT : PUBLIC_PROMPT;
     const systemPrompt = isStudioTrigger
       ? MELAO_SOUL
       : matched

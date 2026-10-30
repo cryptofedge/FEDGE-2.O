@@ -1,6 +1,6 @@
 ---
 name: music-manager-pro
-description: Virtual music manager for independent artists. Use when managing artist careers, writing bios, planning releases, drafting booking/promo emails, building social media content, ghostwriting lyrics, developing strategy, or when a known managed artist messages (identified by phone number). Handles Mando El Pelado (+17187533362) and any future artists added to the roster. Triggers on artist names, management tasks, release planning, booking requests, promo strategy, and music career questions.
+description: Virtual music manager for independent artists. Use when managing artist careers, writing bios, planning releases, drafting booking/promo emails, building social media content, ghostwriting lyrics, developing strategy, or when a known managed artist messages (identified by phone number). Handles Mando El Pelado and any future artists added to the roster. Triggers on artist names, management tasks, release planning, booking requests, promo strategy, and music career questions.
 ---
 
 # Music Manager Pro
@@ -13,7 +13,7 @@ Always check the roster before responding to ensure you're in the right context.
 See [references/roster.md](references/roster.md) for full artist profiles.
 
 **Quick lookup by WhatsApp number:**
-- `+17187533362` → Mando El Pelado
+- Mando El Pelado (WhatsApp number kept private, not stored in this public repo)
 
 ## Core Responsibilities
 
