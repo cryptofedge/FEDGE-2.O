@@ -114,12 +114,16 @@ const GAMES_BLOCK = FEDGE_GAMES.live.map((g, i) =>
   `${i + 1}. ${g.name} (${g.skill}) — ${g.pitch}\n   Play: ${g.play}`).join('\n');
 console.log('🎮 Loaded ' + FEDGE_GAMES.live.length + ' live games: ' + FEDGE_GAMES.live.map(g => g.name).join(', '));
 
-const MASTER_PROMPT = `${FEDGE_SOUL}
+// Everyone gets SOUL + the game lineup. MEMORY.md and USER.md hold personal context
+// (contacts, clients, Fellito's details), so only FEDGE_ADMINS senders get those.
+const PUBLIC_PROMPT = `${FEDGE_SOUL}
 
 ---
 ## LIVE GAMES (${FEDGE_GAMES.live.length}) — always share the exact Play link when a game comes up
 ${GAMES_BLOCK}
+`;
 
+const ADMIN_PROMPT = `${PUBLIC_PROMPT}
 ---
 ## LONG-TERM MEMORY
 ${FEDGE_MEMORY}
@@ -128,6 +132,7 @@ ${FEDGE_MEMORY}
 ## USER CONTEXT (FELLITO)
 ${FEDGE_USER}
 `;
+if (!process.env.FEDGE_ADMINS) console.log('🔒 FEDGE_ADMINS is empty — MEMORY.md and USER.md stay out of every reply.');
 
 const MELAO_SOUL = fs.existsSync('./skills/suno-ai/skill.md') ? fs.readFileSync('./skills/suno-ai/skill.md', 'utf8') : 'You are FEDGE 2.O in Melao Studio mode.';
 
@@ -141,7 +146,7 @@ async function generateVoice(text) {
 // ── FEDGE Studio (OpenMontage) — "VIDEO <game>" renders a vertical promo and sends it ──
 const { spawn } = require('child_process');
 let videoBusy = false;
-function isStudioAdmin(jid) {
+function isAdmin(jid) {
   const admins = (process.env.FEDGE_ADMINS || '').split(',').map(s => s.replace(/\D/g, '')).filter(Boolean);
   const id = String(jid).split('@')[0].split(':')[0].replace(/\D/g, '');
   return admins.includes(id);
@@ -153,7 +158,7 @@ async function handleVideoCommand(sock, from, text) {
     await sock.sendMessage(from, { text: '🎬 *FEDGE Studio*\nSend *VIDEO <game>* for a 30s promo:\n' + ids.map(i => '• ' + i).join('\n') });
     return;
   }
-  if (!isStudioAdmin(from)) {
+  if (!isAdmin(from)) {
     console.log(`[STUDIO] VIDEO denied for ${from} — add this number to FEDGE_ADMINS in .env`);
     await sock.sendMessage(from, { text: '🔒 Video studio is for the FEDGE team only.' });
     return;
@@ -221,6 +226,8 @@ async function startBot() {
     const msg = messages[0];
     if (!msg.message || msg.key.fromMe) return;
     const from = msg.key.remoteJid;
+    // Direct chats only — groups, status updates and channels are shared contexts.
+    if (/@(g\.us|broadcast|newsletter)$/.test(from)) return;
     const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
     if (!text) return;
     console.log(`[${from}]: ${text}`);
@@ -266,11 +273,12 @@ async function startBot() {
       const lowerText = text.toLowerCase();
     const isStudioTrigger = lowerText.includes("melao") || lowerText.includes("studio") || lowerText.includes("!studio") || lowerText.includes("suno");
     const matched = matchSkill(text);
-    const systemPrompt = isStudioTrigger 
-      ? MELAO_SOUL 
-      : matched 
-        ? MASTER_PROMPT + '\n\n---\n## ACTIVE SKILL: ' + matched.name.toUpperCase() + '\n' + matched.content
-        : MASTER_PROMPT;
+    const basePrompt = isAdmin(from) ? ADMIN_PROMPT : PUBLIC_PROMPT;
+    const systemPrompt = isStudioTrigger
+      ? MELAO_SOUL
+      : matched
+        ? basePrompt + '\n\n---\n## ACTIVE SKILL: ' + matched.name.toUpperCase() + '\n' + matched.content
+        : basePrompt;
     if (matched) console.log('🎯 Skill matched: ' + matched.name);
 
       // Use Gemini Pro for all reasoning (1.5 Pro)

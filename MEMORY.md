@@ -42,7 +42,7 @@
 - Alias: **Richard Fashion**
 - Role: Host/Producer of *La Mesa del Reino* podcast
 - Connection: Met Fellito through their mutual close friend **Melao**
-- WhatsApp: +1 (347) 634-6499
+- WhatsApp: kept private (not stored in this public repo)
 - **I (FEDGE 2.O) am Richard's AI Co-Producer for the show**
 - Mission: Help Richard with concepts, production, and social media promo for the Kingdom vision.
 
@@ -191,6 +191,6 @@ COMMAND CENTER:
 
 
 ## 2026-07-01 — Security & Memory Correction (Claude Code audit)
-- REMOVED from repo: skills/storyclaw-alpaca-trading/credentials/13473955298.json (live Alpaca paper keys were public). Keys remain in git history — Fellito must rotate them in the Alpaca dashboard.
+- REMOVED from repo: skills/storyclaw-alpaca-trading/credentials/<phone-number>.json (live Alpaca paper keys were public). Keys remain in git history — Fellito must rotate them in the Alpaca dashboard.
 - CORRECTED: credit game live URL is the root URL (Expo app), NOT demo.html. demo.html never deploys — GitHub Pages publishes dist/ built from src/ only. Stop pointing sessions at demo.html.
-- WARNING: this repo is PUBLIC and MEMORY.md contains personal phone numbers (Fellito, Rafael, Mando). Either make repo private or scrub contact info.
+- 2026-10-30: contact numbers scrubbed from MEMORY.md and the la-mesa-del-reino skill. fedge-bot.js now sends MEMORY.md and USER.md to Gemini only for FEDGE_ADMINS senders and ignores group chats. Old numbers stay in git history. Keep personal data out of this file while the repo is public.
