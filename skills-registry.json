@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "agent": "FEDGE 2.O",
   "generated": "2026-05-12",
-  "totalSkills": 110,
+  "totalSkills": 111,
   "skills": [
     {
       "slug": "prompt-engineering",
@@ -1596,6 +1596,24 @@
         "rate limit",
         "claude plans",
         "claude code install"
+      ]
+    },
+    {
+      "slug": "wealthverse-studio",
+      "emoji": "🎮",
+      "source": "local",
+      "description": "FEDGE 2.O's playbook for building The Wealthverse first-person game: districts, Tesana prompts and credit rules, modern graphics, Gemini reference images, lesson rules.",
+      "triggers": [
+        "wealthverse",
+        "tesana",
+        "three.js",
+        "threejs",
+        "first-person game",
+        "3d game",
+        "game graphics",
+        "3d graphics",
+        "game prompt",
+        "gemini image prompt"
       ]
     }
   ]
