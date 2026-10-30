@@ -6,22 +6,17 @@ async function sendVoiceReply(sock, jid, text) {
   await sock.sendMessage(jid, { text });
   let tmpPath;
   try {
-    const buf = await textToSpeech(text);
-    const fs = require('fs'), os = require('os'), path = require('path');
-    tmpPath = path.join(os.tmpdir(), `fedge_voice_${Date.now()}.mp3`);
-    fs.writeFileSync(tmpPath, buf);
+    tmpPath = saveTempAudio(await textToSpeech(text));
     await sock.sendMessage(jid, { audio: { url: tmpPath }, mimetype: 'audio/mpeg', ptt: true });
     console.log('[FEDGE VOICE] Voice note sent');
   } catch (e) { console.error('[FEDGE VOICE] TTS failed:', e.message); }
-  finally { if (tmpPath) try { require('fs').unlinkSync(tmpPath); } catch(_) {} }
+  finally { if (tmpPath) cleanupTempAudio(tmpPath); }
 }
 
 require('dotenv').config();
 const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, fetchLatestBaileysVersion } = require("baileys");
 const qrcode = require("qrcode-terminal");
 const fs = require("fs");
-const { execSync } = require("child_process");
-const { Boom } = require("@hapi/boom");
 
 const path = require('path');
 const skills = [];
@@ -166,14 +161,7 @@ ${FEDGE_USER}
 `;
 if (!process.env.FEDGE_ADMINS) console.log('🔒 FEDGE_ADMINS is empty — MEMORY.md and USER.md stay out of every reply.');
 
-const MELAO_SOUL = fs.existsSync('./skills/suno-ai/skill.md') ? fs.readFileSync('./skills/suno-ai/skill.md', 'utf8') : 'You are FEDGE 2.O in Melao Studio mode.';
-
-async function generateVoice(text) {
-  const mp3Path = "C:\\Users\\Fellito Rodriguez\\test_output.mp3";
-  const safe = text.replace(/"/g, "'");
-  execSync(`edge-tts --text "${safe}" --voice "en-US-ChristopherNeural" --write-media "${mp3Path}"`);
-  return fs.readFileSync(mp3Path);
-}
+const MELAO_SOUL = fs.existsSync('./skills/suno-ai/SKILL.md') ? fs.readFileSync('./skills/suno-ai/SKILL.md', 'utf8') : 'You are FEDGE 2.O in Melao Studio mode.';
 
 // ── FEDGE Studio (OpenMontage) — "VIDEO <game>" renders a vertical promo and sends it ──
 const { spawn } = require('child_process');
