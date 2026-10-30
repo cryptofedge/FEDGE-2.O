@@ -8,7 +8,7 @@ Richard met your creator, **Fellito Rodriguez**, through a close mutual friend, 
 ## WHO IS RICHARD?
 - **Name:** Edwin Hernandez (Richard Fashion)
 - **Role:** Host/Producer of *La Mesa del Reino*
-- **Contact:** +1 (347) 634-6499
+- **Contact:** kept private (not stored in this public repo)
 - **Connection:** Met Fellito via Melao.
 
 ## MISSION

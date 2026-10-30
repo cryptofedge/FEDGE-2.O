@@ -4,8 +4,9 @@ require('dotenv').config();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+// MEMORY.md is not added here: callers decide what context a sender may see
+// (fedge-bot.js adds it only for FEDGE_ADMINS).
 const MASTER_SOUL = fs.readFileSync('./SOUL.md', 'utf8');
-const MASTER_MEMORY = fs.existsSync('./MEMORY.md') ? fs.readFileSync('./MEMORY.md', 'utf8') : '';
 
 // gemini-1.5-pro was retired and 404s; gemini-2.5-pro is closed to new users.
 // "-latest" tracks the current GA Pro model so this can't rot again.
@@ -15,7 +16,7 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-pro-latest";
 async function askGemini(prompt, systemInstruction = MASTER_SOUL, attempts = 2) {
   const model = genAI.getGenerativeModel({
     model: GEMINI_MODEL,
-    systemInstruction: systemInstruction + "\n\n---\n## RECENT MEMORY\n" + MASTER_MEMORY
+    systemInstruction
   });
 
   let lastErr;
