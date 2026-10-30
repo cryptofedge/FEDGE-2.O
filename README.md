@@ -111,13 +111,14 @@ Each agent has its own model, system prompt, tools, and persistent memory. Nothi
 
 ## Quick Start
 
+This runs the FEDGE 2.O WhatsApp bot (`fedge-bot.js`).
+
 ### Prerequisites
 
-- Node.js 18+
-- Python 3.10+
-- OpenClaw runtime
-- Anthropic API key
-- WSL2 Ubuntu (recommended)
+- Node.js 22.12 or newer
+- A Gemini API key ([get one here](https://aistudio.google.com/apikey))
+- A WhatsApp account to link the bot to
+- Optional: an ElevenLabs key for voice notes, and Python 3.10+ with OpenMontage for `VIDEO` promos (see [`studio/README.md`](studio/README.md))
 
 ### Install
 
@@ -130,14 +131,23 @@ npm install
 ### Environment Setup
 
 ```bash
-cp .env .env.local
-# Add your Anthropic API key and any other credentials
+cp .env.example .env
 ```
+
+Open `.env` and set `GEMINI_API_KEY` and `FEDGE_ADMINS` (your WhatsApp number, digits only). Every setting is explained in [`.env.example`](.env.example).
 
 ### Run
 
 ```bash
-node index.js
+npm start
+```
+
+The first time, a QR code appears. In WhatsApp, go to **Settings → Linked devices → Link a device** and scan it. The login is saved in `auth_info/`, so later starts connect straight away. From another phone, text **games** to the linked number to check it's answering.
+
+To check your setup without starting the bot:
+
+```bash
+powershell -ExecutionPolicy Bypass -File check-bot-health.ps1
 ```
 
 ---
