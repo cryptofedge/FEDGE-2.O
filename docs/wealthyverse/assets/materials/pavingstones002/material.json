@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "id": "pavingstones002",
+  "sourceId": "ambientcg:PavingStones002",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "aoMap": "assets/materials/pavingstones002/ao.jpg",
+    "map": "assets/materials/pavingstones002/color.jpg",
+    "displacementMap": "assets/materials/pavingstones002/height.jpg",
+    "normalMap": "assets/materials/pavingstones002/normal_gl.jpg",
+    "roughnessMap": "assets/materials/pavingstones002/roughness.jpg"
+  },
+  "tileSizeM": [
+    2,
+    2
+  ],
+  "repeatsPerMetre": 0.5,
+  "displacementAmpM": 0.055,
+  "carveMode": "carve",
+  "surfaceRole": [
+    "floor",
+    "ground"
+  ],
+  "normalConvention": "opengl"
+}

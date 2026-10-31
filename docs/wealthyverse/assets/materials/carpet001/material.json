@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "id": "carpet001",
+  "sourceId": "ambientcg:Carpet001",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "map": "assets/materials/carpet001/color.jpg",
+    "displacementMap": "assets/materials/carpet001/height.jpg",
+    "normalMap": "assets/materials/carpet001/normal_gl.jpg",
+    "roughnessMap": "assets/materials/carpet001/roughness.jpg"
+  },
+  "tileSizeM": [
+    2,
+    2
+  ],
+  "repeatsPerMetre": 0.5,
+  "displacementAmpM": 0.005,
+  "carveMode": "flat",
+  "surfaceRole": [
+    "floor"
+  ],
+  "normalConvention": "opengl"
+}

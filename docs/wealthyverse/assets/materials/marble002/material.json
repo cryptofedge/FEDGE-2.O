@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "id": "marble002",
+  "sourceId": "ambientcg:Marble002",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "map": "assets/materials/marble002/color.jpg",
+    "displacementMap": "assets/materials/marble002/height.jpg",
+    "normalMap": "assets/materials/marble002/normal_gl.jpg",
+    "roughnessMap": "assets/materials/marble002/roughness.jpg"
+  },
+  "tileSizeM": [
+    2,
+    2
+  ],
+  "repeatsPerMetre": 0.5,
+  "displacementAmpM": 0.003,
+  "carveMode": "flat",
+  "surfaceRole": [
+    "floor",
+    "wall"
+  ],
+  "normalConvention": "opengl"
+}

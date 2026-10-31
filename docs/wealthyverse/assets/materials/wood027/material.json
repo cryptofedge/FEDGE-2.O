@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "id": "wood027",
+  "sourceId": "ambientcg:Wood027",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "map": "assets/materials/wood027/color.jpg",
+    "displacementMap": "assets/materials/wood027/height.jpg",
+    "normalMap": "assets/materials/wood027/normal_gl.jpg",
+    "roughnessMap": "assets/materials/wood027/roughness.jpg"
+  },
+  "tileSizeM": [
+    2,
+    2
+  ],
+  "repeatsPerMetre": 0.5,
+  "displacementAmpM": 0.02,
+  "carveMode": "carve",
+  "surfaceRole": [
+    "wall",
+    "floor"
+  ],
+  "normalConvention": "opengl"
+}

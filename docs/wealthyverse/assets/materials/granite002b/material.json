@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "id": "granite002b",
+  "sourceId": "ambientcg:Granite002B",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "map": "assets/materials/granite002b/color.jpg",
+    "displacementMap": "assets/materials/granite002b/height.jpg",
+    "normalMap": "assets/materials/granite002b/normal_gl.jpg",
+    "roughnessMap": "assets/materials/granite002b/roughness.jpg"
+  },
+  "tileSizeM": [
+    2,
+    2
+  ],
+  "repeatsPerMetre": 0.5,
+  "displacementAmpM": 0.005,
+  "carveMode": "flat",
+  "surfaceRole": [
+    "floor",
+    "wall"
+  ],
+  "normalConvention": "opengl"
+}

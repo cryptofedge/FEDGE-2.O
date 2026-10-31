@@ -1,0 +1,454 @@
+{
+  "characters": {
+    "diana_wells": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/diana_wells/diana_wells.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "player": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/player/player.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "fedge": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/fedge/fedge.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "nia_castellanos": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/nia_castellanos/nia_castellanos.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    }
+  },
+  "props": {
+    "score_terminal": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/score_terminal.glb",
+      "taskId": "d84f0fc1-6d5f-4e99-97df-04aae4859f9a"
+    },
+    "plaza_planter": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/plaza_planter.glb",
+      "taskId": "vision-check:3176"
+    },
+    "street_lamp": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/street_lamp.glb",
+      "taskId": "vision-check:2868"
+    },
+    "reception_desk": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/reception_desk.glb",
+      "taskId": "library:32c8536a3602bc5aaaad7a431f68ba0c20138fdbbd96795d9d03881084844d02"
+    },
+    "plaza_bench": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/plaza_bench.glb",
+      "taskId": "1bcf536f-2c8c-4fe9-a6aa-ae589ca032a6"
+    },
+    "coffee_table": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/coffee_table.glb",
+      "taskId": "vision-check:6308"
+    },
+    "tower_glass_b": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/misc/tower_glass_b.glb",
+      "taskId": "1da5a745-9aa4-4763-8546-9ba2d529cf05"
+    },
+    "lounge_chair": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lounge_chair.glb",
+      "taskId": "9e04ce00-853e-41b2-8d74-9a6e38686280"
+    },
+    "tower_glass_a": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/misc/tower_glass_a.glb",
+      "taskId": "757f790b-74d0-4720-baf9-3d0ba6cab105"
+    },
+    "car_hatch": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/vehicles/car_hatch.glb",
+      "taskId": "283de90d-d438-4acb-9069-8d3043fef808"
+    },
+    "car_sedan": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/vehicles/car_sedan.glb",
+      "taskId": "9b6aa0b4-9f5a-4977-b153-b2c1974b2f6b"
+    },
+    "car_suv": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/vehicles/car_suv.glb",
+      "taskId": "3dd7eec4-3274-47e2-84b2-d3f8795e1936"
+    },
+    "street_tree_b": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/street_tree_b.glb",
+      "taskId": "2cb4141c-e692-4a8d-a67f-1ca964c1b1e2"
+    },
+    "street_tree_a": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/street_tree_a.glb",
+      "taskId": "97e67525-05ce-4abc-948e-4e99a8e7a1a1"
+    },
+    "modern_reception_desk": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/modern_reception_desk.glb",
+      "taskId": "library:d9a88f5d6d9f90e79e2bf9e257c2e7ee608ecb953e006ae87d92e2dc0c8781fa"
+    },
+    "stone_side_table": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/stone_side_table.glb",
+      "taskId": "vision-check:3914"
+    },
+    "ottoman": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/ottoman.glb",
+      "taskId": "vision-check:1452"
+    },
+    "stone_centerpiece": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/stone_centerpiece.glb",
+      "taskId": "vision-check:2327"
+    },
+    "lounge_swivel_chair": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lounge_swivel_chair.glb",
+      "taskId": "1acb9c83-886e-4829-880d-6e50252efe46"
+    },
+    "lobby_reception_counter": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lobby_reception_counter.glb",
+      "taskId": "library:3bae41aa43160e020e8bf58a1c67eb223d988221a0fa7cf77d2102635053ee4a"
+    },
+    "lobby_side_table": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lobby_side_table.glb",
+      "taskId": "vision-check:3914"
+    },
+    "lobby_ottoman": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lobby_ottoman.glb",
+      "taskId": "a9793228-6c33-4670-af11-9c7a31c8f725"
+    },
+    "trading_desk": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/trading_desk.glb",
+      "taskId": "vision-check:8043"
+    }
+  },
+  "environment": {},
+  "weapons": {},
+  "oriented": {
+    "score_terminal": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/score_terminal.glb",
+      "sha256": "2a0e71e69e4699a72dd61c3ef98ebcc772d44ec79da01b0d9c2fdd9853f97c38",
+      "driver_image_sha256": "b1f8d180777b7a37d4729a09faa493c12da3690801c30efb36bdd84b1e360619",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P1-20260311",
+      "model_task_id": "8a6d8ba3-6557-4666-9eb3-e4ba94dd7589",
+      "convert_task_id": "d84f0fc1-6d5f-4e99-97df-04aae4859f9a",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "plaza_planter": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/plaza_planter.glb",
+      "sha256": "5a63c060f4dfd859fae91afdf00b0d4a9c5ea92c84c7dd0adf3f84415a7d540d",
+      "driver_image_sha256": "2303d84eea4051087074ca38585cab0cae8e406aaa78d230b6c0500ccacc85a2",
+      "kind": "prop",
+      "category": "decorations",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:3176",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "street_lamp": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/street_lamp.glb",
+      "sha256": "5143ccb7b930711ab8750a50e525ce89516a3dc05e4ec979804f2d9435a0ff8a",
+      "driver_image_sha256": "5a7fa0d1c3db926017bf8c8aaca74d3aeadaa5ab0763827c129969aec5137320",
+      "kind": "prop",
+      "category": "decorations",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:2868",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "plaza_bench": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/plaza_bench.glb",
+      "sha256": "7116e60b093d6a15d57175dccb513bb03788e178f8519886c85aab5d56663e33",
+      "driver_image_sha256": "09bc2049074e7f9288d7776df4da119d5be43252ebe1ce00cff48ce9809e8a99",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P1-20260311",
+      "model_task_id": "d37af670-36dc-4bce-8498-c0116730b260",
+      "convert_task_id": "1bcf536f-2c8c-4fe9-a6aa-ae589ca032a6",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "coffee_table": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/coffee_table.glb",
+      "sha256": "b7be002b078aec8b961ea7b3e027b28490cf0210c5fa6397391eedaddddb8da2",
+      "driver_image_sha256": "270b03ae029d9ffd8958eb9aeb04cf7e9c5f64374544d1a580d8c8d6383c627b",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:6308",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "tower_glass_b": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/misc/tower_glass_b.glb",
+      "sha256": "4cdf6d38869858ee35dfa5afcd5976fbe4b8b057ded4b5302854225508457600",
+      "driver_image_sha256": "38dbdc5f7cfb095ae4af6a5ebbc9a577caf1200052942399dacf0d943ccacc5d",
+      "kind": "prop",
+      "category": "misc",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "c5de0099-4348-40bf-9a01-8cbcc82cab39",
+      "convert_task_id": "1da5a745-9aa4-4763-8546-9ba2d529cf05",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "lounge_chair": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lounge_chair.glb",
+      "sha256": "d7ae06845df82e0d766c96f413829360b348f094de0bfa9e1e2b48ecbb10460a",
+      "driver_image_sha256": "02147bb8747bb2569e24fad4e8ffe2d794ef71dc4b545456523543532b40dab0",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "902e1d4f-1d9e-422d-aa35-57a600b59fef",
+      "convert_task_id": "9e04ce00-853e-41b2-8d74-9a6e38686280",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "tower_glass_a": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/misc/tower_glass_a.glb",
+      "sha256": "1613224c98ee8fd51052c6b58d563376f03a7211ffb67e25b5f4cb1c279f834e",
+      "driver_image_sha256": "59257cfdb651cf0bd8ecb5f40c6d9576ff639a2441d7fbb3b14cc35436c78639",
+      "kind": "prop",
+      "category": "misc",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "4b4cdd2b-3c48-4726-8e24-5e6a254ad401",
+      "convert_task_id": "757f790b-74d0-4720-baf9-3d0ba6cab105",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "car_hatch": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/vehicles/car_hatch.glb",
+      "sha256": "b9dc03551c060f7f6114cf15a6854519c4c6b57ce04b96fd27f09b29fe873f1d",
+      "driver_image_sha256": "a0aea310357d71e9d213425b296a6e9b794b45f132a58db72530884eb773433f",
+      "kind": "prop",
+      "category": "vehicles",
+      "orient_class": "profile",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "aa283170-3e35-40ea-b20a-6a46ddac1f73",
+      "convert_task_id": "283de90d-d438-4acb-9069-8d3043fef808",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": -90,
+      "forward": "+z"
+    },
+    "car_sedan": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/vehicles/car_sedan.glb",
+      "sha256": "fb06788cbc2dc9493a09426d3f5419a00cad36e45b11f5075802663fc65fc90f",
+      "driver_image_sha256": "0ba0217c3ab94260a17d7d751e5d68d8cacc14a93647f49b94d4f73b8d213a61",
+      "kind": "prop",
+      "category": "vehicles",
+      "orient_class": "profile",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "b6acbf97-a25d-4b14-b769-4a0ebee3cf1d",
+      "convert_task_id": "9b6aa0b4-9f5a-4977-b153-b2c1974b2f6b",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": -90,
+      "forward": "+z"
+    },
+    "car_suv": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/vehicles/car_suv.glb",
+      "sha256": "cc96e8cad427c73529aa1f0cc5d751861efb000fa2cb001b7b12a978c2e180ec",
+      "driver_image_sha256": "49aa8afc2437a2c81c6114a4525394ed40eed3b3bb4f61a7fb8b3eab9db2744e",
+      "kind": "prop",
+      "category": "vehicles",
+      "orient_class": "profile",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "416d99f6-b124-4489-b4ae-a69b09d8e862",
+      "convert_task_id": "3dd7eec4-3274-47e2-84b2-d3f8795e1936",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": -90,
+      "forward": "+z"
+    },
+    "street_tree_b": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/street_tree_b.glb",
+      "sha256": "f499ea69226105ab5eb5463b47d77e9f3b3bc3d9b7f7efab29c7a8bb583be622",
+      "driver_image_sha256": "11fb99fb0a3a228be28cd2dd7767462afa2e10510cfa99b159173002bce59c22",
+      "kind": "prop",
+      "category": "decorations",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "a7a137ee-4246-40a2-bf7a-3a0bf9014d60",
+      "convert_task_id": "2cb4141c-e692-4a8d-a67f-1ca964c1b1e2",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "street_tree_a": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/street_tree_a.glb",
+      "sha256": "cb9fd1e70555a4d19ed7be79f3213f2dc5bfeab5795b66bd1ceac35d6f35a4d2",
+      "driver_image_sha256": "091278521e7161b42337b464e4df620e2a29678cc1451066239837268708fc2b",
+      "kind": "prop",
+      "category": "decorations",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "039283c2-500c-4971-89ac-fe31ce80f816",
+      "convert_task_id": "97e67525-05ce-4abc-948e-4e99a8e7a1a1",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "stone_side_table": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/stone_side_table.glb",
+      "sha256": "70d1933ec292d30a2d47a645f398a549a9b5e04c1a34990724073fc0df9f7025",
+      "driver_image_sha256": "6b69d02d0098e1c8e96bbf9482b73517316733c8e07c0b3b32a05c9d0dd33bc5",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:3914",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "ottoman": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/ottoman.glb",
+      "sha256": "274de28020964a3dcda7ae18fe64d1261d10cf1d28c77ab1fd06cd5618de3516",
+      "driver_image_sha256": "73e26261cb6c7476cba69e06e9bdb4391bc0a4d4c82d16c9a828f3bb82582307",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:1452",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "stone_centerpiece": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/decorations/stone_centerpiece.glb",
+      "sha256": "42163f0f2a31dcaea01181c9fa517ead02e1145a93dd5d73548d8f5aa2b0bda9",
+      "driver_image_sha256": "2cd2aa10d3f05e9d13e5dffe9ee9e7e1e69a4b4be5314943cb72e6c0f362cb3a",
+      "kind": "prop",
+      "category": "decorations",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:2327",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "lounge_swivel_chair": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lounge_swivel_chair.glb",
+      "sha256": "dbedda637eb0d15d790a4dc90489c9e8e148c36c098b73a7e73eb44950131d3e",
+      "driver_image_sha256": "eb122641f22dca69ad3f592bc807137df403403e4e730b7092360e825185e69f",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "8ef7c9a5-a09a-40f2-bb22-8e20ee0bb91b",
+      "convert_task_id": "1acb9c83-886e-4829-880d-6e50252efe46",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "lobby_side_table": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lobby_side_table.glb",
+      "sha256": "70d1933ec292d30a2d47a645f398a549a9b5e04c1a34990724073fc0df9f7025",
+      "driver_image_sha256": "6b69d02d0098e1c8e96bbf9482b73517316733c8e07c0b3b32a05c9d0dd33bc5",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:3914",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "lobby_ottoman": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/lobby_ottoman.glb",
+      "sha256": "8cd38908ed1997a5b988167c6705c8b74a3ee53fecacc0d0c15bbe4ef65453bc",
+      "driver_image_sha256": "703c0e88b1c3c6d6603127e938f5558f0159fb26a833ca82bcfb5205c1db0d00",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 2,
+      "pipeline_contract": "tesana-oriented-prop-canonical-v1",
+      "tripo_model_version": "P2-20260801",
+      "model_task_id": "29243174-1ae7-4cc2-a87f-f0f558886204",
+      "convert_task_id": "a9793228-6c33-4670-af11-9c7a31c8f725",
+      "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "trading_desk": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/furniture/trading_desk.glb",
+      "sha256": "ebc6ef7686e1077bb9e0ddcc535d1ca16f07856dc13ce9a4d76a8b56c6db51b1",
+      "driver_image_sha256": "f7366f4af3c32717bb383700f9f9bff05df54997fde4e760b4cb3a75d9bce386",
+      "kind": "prop",
+      "category": "furniture",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:8043",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    }
+  }
+}

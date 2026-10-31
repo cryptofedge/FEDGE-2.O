@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#06060F" />
+  <meta name="apple-mobile-web-app-title" content="Wealthyverse" />
+  <meta name="description" content="It's a Mindset, Not a Goal. FEDGE 2.O: The Wealthyverse, a first-person walk through the city of generational wealth." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png" />
+  <title>FEDGE 2.O: The Wealthyverse — Credit Ave</title>
+  <script type="module" crossorigin src="./assets/index-C6lSJiqa.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DCgjvQpD.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script data-tesana-bootstrap type="application/json" id="tesana-bootstrap-data">{"gameId": "616104ce-4e9c-406f-bf13-5136f541afdc", "endpoint": "https://d3cbjx3gy93tul.cloudfront.net"}</script>
+  <script data-tesana-bootstrap>
+    // Set the bootstrap BEFORE the SDK loads: its init() reads this
+    // synchronously. Reversing these two tags silently forces the SDK
+    // into its offline path.
+    (function () {
+      try {
+        var d = document.getElementById('tesana-bootstrap-data');
+        var cfg = d ? JSON.parse(d.textContent || '{}') : {};
+        window.__TESANA__ = Object.assign({}, window.__TESANA__ || {}, cfg);
+      } catch (e) { /* malformed bootstrap: the SDK's own offline path takes over */ }
+    })();
+  </script>
+  <script data-tesana-bootstrap src="https://unpkg.com/@tesana/sdk@1.2.0/dist/tesana.iife.js"></script>
+</body>
+</html>

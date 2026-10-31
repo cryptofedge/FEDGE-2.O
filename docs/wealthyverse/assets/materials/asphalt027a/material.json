@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "id": "asphalt027a",
+  "sourceId": "ambientcg:Asphalt027A",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "aoMap": "assets/materials/asphalt027a/ao.jpg",
+    "map": "assets/materials/asphalt027a/color.jpg",
+    "displacementMap": "assets/materials/asphalt027a/height.jpg",
+    "normalMap": "assets/materials/asphalt027a/normal_gl.jpg",
+    "roughnessMap": "assets/materials/asphalt027a/roughness.jpg"
+  },
+  "tileSizeM": [
+    3,
+    3
+  ],
+  "repeatsPerMetre": 0.3333,
+  "displacementAmpM": 0.012,
+  "carveMode": "raise",
+  "surfaceRole": [
+    "ground",
+    "floor"
+  ],
+  "normalConvention": "opengl"
+}
