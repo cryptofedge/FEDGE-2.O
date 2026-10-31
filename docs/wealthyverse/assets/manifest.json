@@ -40,6 +40,14 @@
       "facingCertified": true,
       "facingBakeYDeg": 6.282,
       "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "marcus_wells": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/marcus_wells/marcus_wells.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
     }
   },
   "props": {
@@ -158,6 +166,10 @@
     "keyboard_controller": {
       "model": "/var/games/game-20261030-ceaa166e/assets/props/items/keyboard_controller.glb",
       "taskId": "cefb737b-9f2a-45b1-bf0c-5708505a7d89"
+    },
+    "vault_door": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/misc/vault_door.glb",
+      "taskId": "vision-check:2099"
     }
   },
   "environment": {},
@@ -576,6 +588,22 @@
       "model_task_id": "160959e6-3b0e-447b-b0fb-bcc0e2c3b671",
       "convert_task_id": "cefb737b-9f2a-45b1-bf0c-5708505a7d89",
       "orientation_contract": "tripo-p1-align-image-prop-front-v2",
+      "bake_y_deg": 0,
+      "forward": "+z"
+    },
+    "vault_door": {
+      "model": "/var/games/game-20261030-ceaa166e/assets/props/misc/vault_door.glb",
+      "sha256": "3b122747ba81c60f6148a3fa153f98417258a340f4b69ce69af4a08c763b60cf",
+      "driver_image_sha256": "60dad8dc6fcf35db43fc1259a065072c9619dbe999e3c29eb18b1b04a87cc2b3",
+      "kind": "prop",
+      "category": "misc",
+      "orient_class": "fronted",
+      "pipeline_version": 1,
+      "pipeline_contract": "tesana-vision-orientation-v1",
+      "tripo_model_version": "unknown",
+      "model_task_id": "vision:orient-v2-full",
+      "convert_task_id": "vision-check:2099",
+      "orientation_contract": "tesana-vision-front-minus-z-v1",
       "bake_y_deg": 0,
       "forward": "+z"
     }
