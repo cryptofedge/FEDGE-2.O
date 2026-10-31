@@ -445,6 +445,105 @@
       },
       "tool_use_id": "toolu_01J7vbFEVhow6MQDrbgPEZUA",
       "updated_at": "2026-10-31T04:31:11.515709"
+    },
+    "assets/characters/jade_okafor/jade_okafor.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Jade Okafor, a confident Black woman in her early 30s, music producer and recording studio owner. Natural shoulder-length locs tied half up, small gold hoop earrings. Oversized cropped charcoal bomber jacket over a fitted plum-purple top, high-waisted black tailored trousers, clean white leather sneakers. Thin gold chain necklace. Realistic proportions, cinematic realism, PBR materials.",
+      "raw_input": {
+        "name": "jade_okafor",
+        "body": "humanoid",
+        "objectName": "music producer",
+        "style": "realistic",
+        "playerAsked": [
+          "Jade Okafor, producer and studio owner"
+        ],
+        "prompt": "Jade Okafor, a confident Black woman in her early 30s, music producer and recording studio owner. Natural shoulder-length locs tied half up, small gold hoop earrings. Oversized cropped charcoal bomber jacket over a fitted plum-purple top, high-waisted black tailored trousers, clean white leather sneakers. Thin gold chain necklace. Realistic proportions, cinematic realism, PBR materials."
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/props/furniture/mixing_console.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Long professional recording studio mixing console, dark charcoal metal, rows of faders and knobs with small colored LED buttons, angled control surface, about 2.4 m wide, standing on its own frame",
+      "raw_input": {
+        "name": "mixing_console",
+        "category": "furniture",
+        "objectName": "mixing console",
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-3.png",
+        "prompt": "Long professional recording studio mixing console, dark charcoal metal, rows of faders and knobs with small colored LED buttons, angled control surface, about 2.4 m wide, standing on its own frame"
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/props/decorations/studio_speaker.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Professional studio monitor speaker, black matte cabinet, large woofer cone and a tweeter above it, front-facing, realistic",
+      "raw_input": {
+        "name": "studio_speaker",
+        "category": "decorations",
+        "objectName": "studio monitor speaker",
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-3.png",
+        "prompt": "Professional studio monitor speaker, black matte cabinet, large woofer cone and a tweeter above it, front-facing, realistic"
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/props/items/keyboard_controller.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "61-key MIDI keyboard controller, black body with white and black keys, a few knobs and pads on the left, realistic",
+      "raw_input": {
+        "name": "keyboard_controller",
+        "category": "items",
+        "objectName": "MIDI keyboard",
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-3.png",
+        "prompt": "61-key MIDI keyboard controller, black body with white and black keys, a few knobs and pads on the left, realistic"
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/props/furniture/lounge_sofa.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Modern low three-seat lounge sofa, deep plum velvet upholstery, dark wood base, realistic",
+      "raw_input": {
+        "name": "lounge_sofa",
+        "category": "furniture",
+        "objectName": "lounge sofa",
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-3.png",
+        "prompt": "Modern low three-seat lounge sofa, deep plum velvet upholstery, dark wood base, realistic"
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/props/decorations/potted_plant.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Tall indoor potted plant with broad leaves (bird of paradise), matte black cylindrical planter, realistic",
+      "raw_input": {
+        "name": "potted_plant",
+        "category": "decorations",
+        "objectName": "potted plant",
+        "style": "realistic",
+        "prompt": "Tall indoor potted plant with broad leaves (bird of paradise), matte black cylindrical planter, realistic"
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/props/furniture/studio_chair.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Black ergonomic mesh studio chair with armrests and five-star wheeled base, realistic",
+      "raw_input": {
+        "name": "studio_chair",
+        "category": "furniture",
+        "objectName": "mesh office chair",
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-3.png",
+        "prompt": "Black ergonomic mesh studio chair with armrests and five-star wheeled base, realistic"
+      },
+      "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
+      "updated_at": "2026-10-31T06:00:47.957900"
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-31T06:28:18Z",
+  "tagline": "Step onto Credit Ave in District 01, a sunlit city of glass towers where wealth is a mindset, not a goal.",
+  "description": "**FEDGE 2.O: The Wealthyverse - Credit Ave** opens in District 01, a modern downtown of towering glass skyscrapers, rooftop gardens, and tree-lined sidewalks under a bright, glaring sun.\n\nStart at street level outside the **Credit Bureau**, where planters, streetlights, and passing cars set the scene along Credit Ave. The Wealthyverse is built around one idea: *It's a Mindset, Not a Goal.*\n\nPress Enter on the title screen to begin and step into the city.",
+  "theme": {
+    "color_theme": "midnight",
+    "font_family": "modern",
+    "border_radius": "none"
+  },
+  "category_slug": "exploration",
+  "tag_slugs": [
+    "3d",
+    "city",
+    "finance",
+    "credit",
+    "exploration"
+  ]
+}
