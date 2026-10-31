@@ -1,0 +1,450 @@
+{
+  "version": 1,
+  "assets": {
+    "assets/characters/diana_wells/diana_wells.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Diana Wells, a confident Black woman in her early 40s, professional credit counselor. Tailored charcoal navy blazer over a cream silk blouse, slim dark trousers, low black heels, small gold earrings, natural hair in a neat shoulder-length style. Realistic proportions and skin, photoreal PBR materials.",
+      "raw_input": {
+        "name": "diana_wells",
+        "body": "humanoid",
+        "objectName": "credit counselor woman",
+        "playerAsked": [
+          "Diana Wells, credit counselor",
+          "style: cinematic realism"
+        ],
+        "style": "realistic",
+        "prompt": "Diana Wells, a confident Black woman in her early 40s, professional credit counselor. Tailored charcoal navy blazer over a cream silk blouse, slim dark trousers, low black heels, small gold earrings, natural hair in a neat shoulder-length style. Realistic proportions and skin, photoreal PBR materials."
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/furniture/lounge_chair.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Modern luxury lounge armchair upholstered in cream leather with soft tufting, slim brushed bronze metal legs, hotel lobby furniture, realistic PBR",
+      "raw_input": {
+        "name": "lounge_chair",
+        "category": "furniture",
+        "objectName": "lounge chair",
+        "playerAsked": [
+          "cream leather lounge chairs"
+        ],
+        "style": "realistic",
+        "prompt": "Modern luxury lounge armchair upholstered in cream leather with soft tufting, slim brushed bronze metal legs, hotel lobby furniture, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/furniture/coffee_table.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Low round lounge coffee table with a white veined marble top and a dark bronze metal base, luxury hotel lobby, realistic PBR",
+      "raw_input": {
+        "name": "coffee_table",
+        "category": "furniture",
+        "objectName": "coffee table",
+        "playerAsked": [],
+        "style": "realistic",
+        "prompt": "Low round lounge coffee table with a white veined marble top and a dark bronze metal base, luxury hotel lobby, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/furniture/reception_desk.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Long modern bank lobby reception desk, warm walnut wood front panels with a dark stone countertop and thin brass trim line, straight design about 4 metres wide, realistic PBR",
+      "raw_input": {
+        "name": "reception_desk",
+        "category": "furniture",
+        "objectName": "reception desk",
+        "playerAsked": [
+          "reception desk"
+        ],
+        "style": "realistic",
+        "prompt": "Long modern bank lobby reception desk, warm walnut wood front panels with a dark stone countertop and thin brass trim line, straight design about 4 metres wide, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/furniture/score_terminal.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Sleek freestanding interactive touchscreen kiosk terminal on a slim brushed steel pedestal stand with a heavy round base, angled large black glass display, modern bank lobby, realistic PBR",
+      "raw_input": {
+        "name": "score_terminal",
+        "category": "furniture",
+        "objectName": "terminal kiosk on stand",
+        "playerAsked": [
+          "interactive terminal on a stand"
+        ],
+        "style": "realistic",
+        "prompt": "Sleek freestanding interactive touchscreen kiosk terminal on a slim brushed steel pedestal stand with a heavy round base, angled large black glass display, modern bank lobby, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/decorations/plaza_planter.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Square granite stone city plaza planter box with a small leafy green ornamental tree and low shrubs, modern financial district, realistic PBR",
+      "raw_input": {
+        "name": "plaza_planter",
+        "category": "decorations",
+        "objectName": "planter with tree",
+        "playerAsked": [
+          "plaza with planters"
+        ],
+        "style": "realistic",
+        "prompt": "Square granite stone city plaza planter box with a small leafy green ornamental tree and low shrubs, modern financial district, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/furniture/plaza_bench.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Modern urban plaza bench with a solid grey granite base and warm hardwood slat seat, no backrest, financial district street furniture, realistic PBR",
+      "raw_input": {
+        "name": "plaza_bench",
+        "category": "furniture",
+        "objectName": "plaza bench",
+        "playerAsked": [
+          "benches"
+        ],
+        "style": "realistic",
+        "prompt": "Modern urban plaza bench with a solid grey granite base and warm hardwood slat seat, no backrest, financial district street furniture, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/decorations/street_lamp.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Tall modern minimalist city street lamp post, slim dark graphite steel pole with a flat rectangular LED head, financial district, realistic PBR",
+      "raw_input": {
+        "name": "street_lamp",
+        "category": "decorations",
+        "objectName": "street lamp",
+        "playerAsked": [],
+        "style": "realistic",
+        "prompt": "Tall modern minimalist city street lamp post, slim dark graphite steel pole with a flat rectangular LED head, financial district, realistic PBR"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/misc/tower_glass_a.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Tall slender modern glass skyscraper with blue reflective curtain wall, vertical silver metal fins, rounded corners and a finned crown at the top, setback podium with green roof terrace, full building",
+      "raw_input": {
+        "name": "tower_glass_a",
+        "category": "misc",
+        "objectName": "glass skyscraper",
+        "playerAsked": [
+          "glass skyscrapers with reflective curtain walls"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-1.png",
+        "prompt": "Tall slender modern glass skyscraper with blue reflective curtain wall, vertical silver metal fins, rounded corners and a finned crown at the top, setback podium with green roof terrace, full building"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/misc/tower_glass_b.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Tall cylindrical modern glass skyscraper with horizontal metal bands every few floors, reflective blue glass, slightly tapered rounded top, full building",
+      "raw_input": {
+        "name": "tower_glass_b",
+        "category": "misc",
+        "objectName": "glass skyscraper",
+        "playerAsked": [
+          "glass skyscrapers with reflective curtain walls"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-1.png",
+        "prompt": "Tall cylindrical modern glass skyscraper with horizontal metal bands every few floors, reflective blue glass, slightly tapered rounded top, full building"
+      },
+      "tool_use_id": "toolu_01J72P9u3e3pYqrM5npTXV82",
+      "updated_at": "2026-10-30T20:51:50.386220"
+    },
+    "assets/props/decorations/street_tree_a.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Mature urban street tree, honey locust with a full rounded canopy of small bright green leaves, slender straight grey trunk branching above head height, realistic, no planter, no ground",
+      "raw_input": {
+        "name": "street_tree_a",
+        "category": "decorations",
+        "objectName": "street tree",
+        "playerAsked": [
+          "trees with gently moving leaves",
+          "style: cinematic realism"
+        ],
+        "style": "realistic",
+        "prompt": "Mature urban street tree, honey locust with a full rounded canopy of small bright green leaves, slender straight grey trunk branching above head height, realistic, no planter, no ground"
+      },
+      "tool_use_id": "toolu_01RJ9ivVbc5XTUPRu1LDLQim",
+      "updated_at": "2026-10-30T21:48:21.378545"
+    },
+    "assets/props/decorations/street_tree_b.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Young London plane tree for a city plaza, tall oval canopy of lush green leaves, straight mottled trunk, realistic, no planter, no ground",
+      "raw_input": {
+        "name": "street_tree_b",
+        "category": "decorations",
+        "objectName": "street tree",
+        "playerAsked": [
+          "trees with gently moving leaves",
+          "style: cinematic realism"
+        ],
+        "style": "realistic",
+        "prompt": "Young London plane tree for a city plaza, tall oval canopy of lush green leaves, straight mottled trunk, realistic, no planter, no ground"
+      },
+      "tool_use_id": "toolu_01RJ9ivVbc5XTUPRu1LDLQim",
+      "updated_at": "2026-10-30T21:48:21.378545"
+    },
+    "assets/props/vehicles/car_sedan.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Modern premium four-door sedan, metallic dark graphite paint, chrome trim, tinted windows, realistic",
+      "raw_input": {
+        "name": "car_sedan",
+        "category": "vehicles",
+        "objectName": "sedan",
+        "playerAsked": [
+          "a few parked cars"
+        ],
+        "style": "realistic",
+        "prompt": "Modern premium four-door sedan, metallic dark graphite paint, chrome trim, tinted windows, realistic"
+      },
+      "tool_use_id": "toolu_01RJ9ivVbc5XTUPRu1LDLQim",
+      "updated_at": "2026-10-30T21:48:21.378545"
+    },
+    "assets/props/vehicles/car_suv.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Modern luxury mid-size SUV, pearl white paint, black roof rails, tinted windows, realistic",
+      "raw_input": {
+        "name": "car_suv",
+        "category": "vehicles",
+        "objectName": "SUV",
+        "playerAsked": [
+          "a few parked cars"
+        ],
+        "style": "realistic",
+        "prompt": "Modern luxury mid-size SUV, pearl white paint, black roof rails, tinted windows, realistic"
+      },
+      "tool_use_id": "toolu_01RJ9ivVbc5XTUPRu1LDLQim",
+      "updated_at": "2026-10-30T21:48:21.378545"
+    },
+    "assets/props/vehicles/car_hatch.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Modern compact electric hatchback, deep blue metallic paint, sleek headlights, realistic",
+      "raw_input": {
+        "name": "car_hatch",
+        "category": "vehicles",
+        "objectName": "hatchback",
+        "playerAsked": [
+          "a few parked cars"
+        ],
+        "style": "realistic",
+        "prompt": "Modern compact electric hatchback, deep blue metallic paint, sleek headlights, realistic"
+      },
+      "tool_use_id": "toolu_01RJ9ivVbc5XTUPRu1LDLQim",
+      "updated_at": "2026-10-30T21:48:21.378545"
+    },
+    "assets/props/furniture/lounge_swivel_chair.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Modern high-back swivel lounge armchair: sculpted glossy black outer shell, cream white leather upholstered seat and backrest cushion with headrest, slim black disc base on a single pedestal, luxury hotel lobby, realistic PBR",
+      "raw_input": {
+        "name": "lounge_swivel_chair",
+        "category": "furniture",
+        "objectName": "lounge chair",
+        "playerAsked": [
+          "cream leather lounge chairs with dark shells"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-2.png",
+        "prompt": "Modern high-back swivel lounge armchair: sculpted glossy black outer shell, cream white leather upholstered seat and backrest cushion with headrest, slim black disc base on a single pedestal, luxury hotel lobby, realistic PBR"
+      },
+      "tool_use_id": "toolu_01X3U5xkZXsperrnby8bPD5E",
+      "updated_at": "2026-10-30T23:06:28.547498"
+    },
+    "assets/props/furniture/ottoman.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Round upholstered pouf ottoman in cream boucle fabric, soft rounded edges, low, luxury lobby, realistic PBR",
+      "raw_input": {
+        "name": "ottoman",
+        "category": "furniture",
+        "objectName": "ottoman",
+        "playerAsked": [
+          "ottomans"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-2.png",
+        "prompt": "Round upholstered pouf ottoman in cream boucle fabric, soft rounded edges, low, luxury lobby, realistic PBR"
+      },
+      "tool_use_id": "toolu_01X3U5xkZXsperrnby8bPD5E",
+      "updated_at": "2026-10-30T23:06:28.547498"
+    },
+    "assets/props/furniture/stone_side_table.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Low rectangular lounge side table block: thick white veined marble top slab on a dark smoked oak base with a recessed plinth, luxury lobby, realistic PBR",
+      "raw_input": {
+        "name": "stone_side_table",
+        "category": "furniture",
+        "objectName": "side table",
+        "playerAsked": [
+          "low stone-topped side tables"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-2.png",
+        "prompt": "Low rectangular lounge side table block: thick white veined marble top slab on a dark smoked oak base with a recessed plinth, luxury lobby, realistic PBR"
+      },
+      "tool_use_id": "toolu_01X3U5xkZXsperrnby8bPD5E",
+      "updated_at": "2026-10-30T23:06:28.547498"
+    },
+    "assets/props/decorations/stone_centerpiece.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Large natural boulder sculpture, rounded faceted rock with dark grey and cream swirling mineral veins, polished in places, decorative lobby centerpiece, realistic PBR",
+      "raw_input": {
+        "name": "stone_centerpiece",
+        "category": "decorations",
+        "objectName": "stone boulder",
+        "playerAsked": [
+          "a large natural stone centerpiece"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-2.png",
+        "prompt": "Large natural boulder sculpture, rounded faceted rock with dark grey and cream swirling mineral veins, polished in places, decorative lobby centerpiece, realistic PBR"
+      },
+      "tool_use_id": "toolu_01X3U5xkZXsperrnby8bPD5E",
+      "updated_at": "2026-10-30T23:06:28.547498"
+    },
+    "assets/props/furniture/modern_reception_desk.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Modern minimalist hotel reception desk, long straight counter about 4.5 metres wide: front clad in rough light travertine stone with a horizontal warm walnut wood band, thick dark marble top, hidden warm LED glow at the plinth, no rails, realistic PBR",
+      "raw_input": {
+        "name": "modern_reception_desk",
+        "category": "furniture",
+        "objectName": "reception desk",
+        "playerAsked": [
+          "a modern stone-and-wood desk"
+        ],
+        "style": "realistic",
+        "referenceImage": "/var/games/game-20261030-ceaa166e/.dream-loop/reference-2.png",
+        "prompt": "Modern minimalist hotel reception desk, long straight counter about 4.5 metres wide: front clad in rough light travertine stone with a horizontal warm walnut wood band, thick dark marble top, hidden warm LED glow at the plinth, no rails, realistic PBR"
+      },
+      "tool_use_id": "toolu_01X3U5xkZXsperrnby8bPD5E",
+      "updated_at": "2026-10-30T23:06:28.547498"
+    },
+    "assets/props/furniture/lobby_ottoman.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Cylindrical round pouf footstool, 55 cm diameter, 40 cm tall, soft cream white boucle wool upholstery with rounded puffy top edge, no legs, sits flat on floor",
+      "raw_input": {
+        "name": "lobby_ottoman",
+        "category": "furniture",
+        "objectName": "round pouf",
+        "playerAsked": [
+          "cream round ottomans"
+        ],
+        "style": "realistic",
+        "prompt": "Cylindrical round pouf footstool, 55 cm diameter, 40 cm tall, soft cream white boucle wool upholstery with rounded puffy top edge, no legs, sits flat on floor"
+      },
+      "tool_use_id": "toolu_01BiWvdSNcxxh26EQKbJ8onu",
+      "updated_at": "2026-10-30T23:10:49.039539"
+    },
+    "assets/props/furniture/lobby_side_table.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Low modern square block side table 45 cm tall: thick polished white marble slab top with grey veins resting on a solid smoked black oak cube base, minimalist, no legs",
+      "raw_input": {
+        "name": "lobby_side_table",
+        "category": "furniture",
+        "objectName": "low block side table",
+        "playerAsked": [
+          "low stone-topped side tables"
+        ],
+        "style": "realistic",
+        "prompt": "Low modern square block side table 45 cm tall: thick polished white marble slab top with grey veins resting on a solid smoked black oak cube base, minimalist, no legs"
+      },
+      "tool_use_id": "toolu_01BiWvdSNcxxh26EQKbJ8onu",
+      "updated_at": "2026-10-30T23:10:49.039539"
+    },
+    "assets/props/furniture/lobby_reception_counter.glb": {
+      "tool": "mcp__game-3d-models__generate_props_batch",
+      "primary_prompt": "Long straight monolithic reception counter 4.5 m wide, 1.1 m tall, 0.9 m deep: front face clad in beige travertine stone slabs, a horizontal band of warm walnut wood across the front, thick cantilevered dark marble top, recessed dark plinth, solid block shape, nothing on top",
+      "raw_input": {
+        "name": "lobby_reception_counter",
+        "category": "furniture",
+        "objectName": "reception counter",
+        "playerAsked": [
+          "a modern stone-and-wood reception desk"
+        ],
+        "style": "realistic",
+        "prompt": "Long straight monolithic reception counter 4.5 m wide, 1.1 m tall, 0.9 m deep: front face clad in beige travertine stone slabs, a horizontal band of warm walnut wood across the front, thick cantilevered dark marble top, recessed dark plinth, solid block shape, nothing on top"
+      },
+      "tool_use_id": "toolu_01BiWvdSNcxxh26EQKbJ8onu",
+      "updated_at": "2026-10-30T23:10:49.039539"
+    },
+    "assets/characters/fedge/fedge.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "",
+      "raw_input": {
+        "name": "fedge",
+        "body": "humanoid",
+        "imagePath": "/var/games/game-20261030-ceaa166e/.dream-loop/omni.png",
+        "objectName": "tech guide man",
+        "playerAsked": [
+          "purple swept-up hair",
+          "black rectangular glasses",
+          "short dark beard",
+          "teal-and-orange tech jacket with the pixel-glitch print on the chest",
+          "dark teal cargo pants",
+          "teal-and-orange high-top sneakers",
+          "no floating pixel squares on the model"
+        ]
+      },
+      "tool_use_id": "toolu_01Y9EZ4sbVhZmyZPRDtozS1b",
+      "updated_at": "2026-10-31T01:28:09.236859"
+    },
+    "assets/characters/player/player.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Realistic young adult man, early twenties, short dark brown hair, clean-shaven, medium skin tone, wearing a plain charcoal-black pullover hoodie with a small orange chest logo patch and thin orange drawstring tips, dark indigo slim jeans, clean white low-top sneakers with a small orange heel tab, no glasses, no beard, modern streetwear",
+      "raw_input": {
+        "name": "player",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "young adult",
+        "playerAsked": [
+          "young adult in clean modern streetwear",
+          "dark hoodie",
+          "dark jeans",
+          "clean sneakers",
+          "small FEDGE-orange accents",
+          "realistic style"
+        ],
+        "prompt": "Realistic young adult man, early twenties, short dark brown hair, clean-shaven, medium skin tone, wearing a plain charcoal-black pullover hoodie with a small orange chest logo patch and thin orange drawstring tips, dark indigo slim jeans, clean white low-top sneakers with a small orange heel tab, no glasses, no beard, modern streetwear"
+      },
+      "tool_use_id": "toolu_01Y9EZ4sbVhZmyZPRDtozS1b",
+      "updated_at": "2026-10-31T01:28:09.236859"
+    },
+    "assets/characters/nia_castellanos/nia_castellanos.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Realistic woman in her early thirties, Latina, dark brown hair in a neat low bun, warm medium skin, small gold stud earrings, wearing a tailored light grey blazer over a black fitted top, slim charcoal trousers, black low block-heel shoes, a slim blue lanyard badge, professional trading floor analyst",
+      "raw_input": {
+        "name": "nia_castellanos",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "floor analyst woman",
+        "playerAsked": [
+          "Nia Castellanos, floor analyst"
+        ],
+        "prompt": "Realistic woman in her early thirties, Latina, dark brown hair in a neat low bun, warm medium skin, small gold stud earrings, wearing a tailored light grey blazer over a black fitted top, slim charcoal trousers, black low block-heel shoes, a slim blue lanyard badge, professional trading floor analyst"
+      },
+      "tool_use_id": "toolu_01J7vbFEVhow6MQDrbgPEZUA",
+      "updated_at": "2026-10-31T04:31:11.515709"
+    },
+    "assets/props/furniture/trading_desk.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Modern stock trading floor workstation: long dark matte desk with four slim black computer monitors in a row on stands, monitors showing blue and white charts, black mesh office chair tucked in, keyboard, sleek realistic",
+      "raw_input": {
+        "name": "trading_desk",
+        "category": "furniture",
+        "objectName": "trading desk",
+        "style": "realistic",
+        "prompt": "Modern stock trading floor workstation: long dark matte desk with four slim black computer monitors in a row on stands, monitors showing blue and white charts, black mesh office chair tucked in, keyboard, sleek realistic"
+      },
+      "tool_use_id": "toolu_01J7vbFEVhow6MQDrbgPEZUA",
+      "updated_at": "2026-10-31T04:31:11.515709"
+    }
+  }
+}

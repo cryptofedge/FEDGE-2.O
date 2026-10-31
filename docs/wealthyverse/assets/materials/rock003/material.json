@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "id": "rock003",
+  "sourceId": "ambientcg:Rock003",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "aoMap": "assets/materials/rock003/ao.jpg",
+    "map": "assets/materials/rock003/color.jpg",
+    "displacementMap": "assets/materials/rock003/height.jpg",
+    "normalMap": "assets/materials/rock003/normal_gl.jpg",
+    "roughnessMap": "assets/materials/rock003/roughness.jpg"
+  },
+  "tileSizeM": [
+    2.5,
+    2.5
+  ],
+  "repeatsPerMetre": 0.4,
+  "displacementAmpM": 0.11,
+  "carveMode": "carve",
+  "surfaceRole": [
+    "rock",
+    "wall",
+    "ground"
+  ],
+  "normalConvention": "opengl"
+}

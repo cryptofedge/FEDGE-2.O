@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "id": "concrete034",
+  "sourceId": "ambientcg:Concrete034",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "map": "assets/materials/concrete034/color.jpg",
+    "displacementMap": "assets/materials/concrete034/height.jpg",
+    "normalMap": "assets/materials/concrete034/normal_gl.jpg",
+    "roughnessMap": "assets/materials/concrete034/roughness.jpg"
+  },
+  "tileSizeM": [
+    1.1,
+    0.55
+  ],
+  "repeatsPerMetre": 0.9091,
+  "displacementAmpM": 0.006,
+  "carveMode": "flat",
+  "surfaceRole": [
+    "wall",
+    "floor"
+  ],
+  "normalConvention": "opengl"
+}

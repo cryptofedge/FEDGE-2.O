@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "id": "travertine009",
+  "sourceId": "ambientcg:Travertine009",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "aoMap": "assets/materials/travertine009/ao.jpg",
+    "map": "assets/materials/travertine009/color.jpg",
+    "displacementMap": "assets/materials/travertine009/height.jpg",
+    "normalMap": "assets/materials/travertine009/normal_gl.jpg",
+    "roughnessMap": "assets/materials/travertine009/roughness.jpg"
+  },
+  "tileSizeM": [
+    1.2,
+    1.2
+  ],
+  "repeatsPerMetre": 0.8333,
+  "displacementAmpM": 0.01,
+  "carveMode": "flat",
+  "surfaceRole": [
+    "floor",
+    "wall"
+  ],
+  "normalConvention": "opengl"
+}

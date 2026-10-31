@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "id": "metal009",
+  "sourceId": "ambientcg:Metal009",
+  "license": "CC0 (AmbientCG)",
+  "maps": {
+    "map": "assets/materials/metal009/color.jpg",
+    "displacementMap": "assets/materials/metal009/height.jpg",
+    "metalnessMap": "assets/materials/metal009/metalness.jpg",
+    "normalMap": "assets/materials/metal009/normal_gl.jpg",
+    "roughnessMap": "assets/materials/metal009/roughness.jpg"
+  },
+  "tileSizeM": [
+    2,
+    2
+  ],
+  "repeatsPerMetre": 0.5,
+  "displacementAmpM": 0,
+  "carveMode": "flat",
+  "surfaceRole": [
+    "wall",
+    "trim"
+  ],
+  "normalConvention": "opengl"
+}
