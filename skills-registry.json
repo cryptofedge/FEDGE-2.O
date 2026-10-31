@@ -1599,11 +1599,12 @@
       ]
     },
     {
-      "slug": "wealthverse-studio",
+      "slug": "wealthyverse-studio",
       "emoji": "🎮",
       "source": "local",
-      "description": "FEDGE 2.O's playbook for building The Wealthverse first-person game: districts, Tesana prompts and credit rules, modern graphics, Gemini reference images, lesson rules.",
+      "description": "FEDGE 2.O's playbook for building The WEALTHYVERSE first-person game: districts, Tesana prompts and credit rules, modern graphics, Gemini reference images, lesson rules.",
       "triggers": [
+        "wealthyverse",
         "wealthverse",
         "tesana",
         "three.js",
