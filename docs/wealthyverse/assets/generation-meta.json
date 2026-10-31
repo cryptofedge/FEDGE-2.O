@@ -544,6 +544,35 @@
       },
       "tool_use_id": "toolu_01UCG3JLmZH4QndDpYpBZgy4",
       "updated_at": "2026-10-31T06:00:47.957900"
+    },
+    "assets/characters/marcus_wells/marcus_wells.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Marcus Wells, a distinguished Black man in his mid 50s, estate planner at a private bank. Short neat grey-flecked hair and trimmed grey beard. Tailored charcoal three-piece suit, crisp white shirt, deep burgundy silk tie, gold tie bar, polished dark brown oxford shoes. Calm, trustworthy. Realistic proportions, cinematic realism, PBR materials.",
+      "raw_input": {
+        "name": "marcus_wells",
+        "body": "humanoid",
+        "objectName": "estate planner",
+        "style": "realistic",
+        "playerAsked": [
+          "Marcus Wells, estate planner"
+        ],
+        "prompt": "Marcus Wells, a distinguished Black man in his mid 50s, estate planner at a private bank. Short neat grey-flecked hair and trimmed grey beard. Tailored charcoal three-piece suit, crisp white shirt, deep burgundy silk tie, gold tie bar, polished dark brown oxford shoes. Calm, trustworthy. Realistic proportions, cinematic realism, PBR materials."
+      },
+      "tool_use_id": "toolu_01QbvzjvezZGmHqWewFjT8nV",
+      "updated_at": "2026-10-31T12:36:59.389436"
+    },
+    "assets/props/misc/vault_door.glb": {
+      "tool": "mcp__game-3d-models__generate_3d_batch",
+      "primary_prompt": "Giant round circular steel bank vault door, thick polished brushed steel disc about 3 m across with a ring of heavy locking bolts around its edge, a large spoked wheel handle in the centre, brass details, viewed from the front, standalone door only",
+      "raw_input": {
+        "name": "vault_door",
+        "category": "misc",
+        "objectName": "round bank vault door",
+        "style": "realistic",
+        "prompt": "Giant round circular steel bank vault door, thick polished brushed steel disc about 3 m across with a ring of heavy locking bolts around its edge, a large spoked wheel handle in the centre, brass details, viewed from the front, standalone door only"
+      },
+      "tool_use_id": "toolu_01QbvzjvezZGmHqWewFjT8nV",
+      "updated_at": "2026-10-31T12:36:59.389436"
     }
   }
 }
