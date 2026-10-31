@@ -25,19 +25,28 @@ Clear a district by checking in with FEDGE (2 of 3 questions); the next one ligh
 
 ## Spending rules (protect the credits)
 - Nobody sends a Tesana message that spends credits without the owner's OK.
+- **Credit limits in a prompt are NOT enforced.** Tesana can't see its own running cost: a fix with "hard limit 300" cost 522. Cost is controlled by how small the request is and how much re-checking it does. Always tell the team a limit is a hint, not a cap.
+- **What things really cost** on a project this size: plan-only first message ~25; an estimate-only reply 150–350 (it reads the code first); a small fix 500–1,100; a big graphics pass ~1,700–1,800; a first playable district ~2,100; two characters plus a camera ~1,100. **A bare "continue" costs 1,700–5,000. "Make it work on phones" cost 4,700** on another project.
 - **Never use Loop mode or start from Explore**: both burn thousands of credits on their own.
-- Keep the project **unpublished** until the owner says publish. Public games show the prompts that built them.
-- **One theme per message:** outside look, a fix, an interior, a character. Big passes ask Tesana for the estimate first; small fixes say "if this would cost more than about 800 credits, stop and tell me first".
-- Tesana's estimates have run about **double** the real cost so far. Still plan on its number.
-- After a plan, say **"go"**, not "build": Tesana treats "build" as publish.
+- **Keep the game Private.** New Tesana games default to "Who can play: Public" and go public after their first good build, with the store description auto-filled from the first prompt. The WEALTHYVERSE is set to Private (link only); keep it that way until the owner says launch.
+- **One theme per message:** outside look, a fix, an interior, a character. Only ask for an estimate first when the owner would really say no to a ~2,000-credit answer.
+- After a plan, say **"go"**, never "build": Tesana treats "build" as publish, then wastes a turn explaining why it won't.
+- **Pure interface code** (menus, buttons, touch controls, HUD) is cheaper done by Claude Code in the repo than by Tesana.
 - Never put keys, phone numbers or account details in a Tesana prompt.
 
 ## How to write a Tesana prompt
 - **First message for a new district:** a full brief (what the player sees, does and learns; the art style; the exact lines; the mission steps; what NOT to build), with one style reference image attached, ending: "DO NOT BUILD YET. Reply with your plan, the assets you'll generate, and the credit estimate."
-- **Every later message** starts with what must NOT change ("Do not change gameplay, layout, text, UI or the mission") and then lists the changes as numbered items.
+- **Every later message:** "Keep [X] exactly as it is. Only change:" then numbered items with real numbers (sizes, distances, seconds). Tesana fills in anything you leave vague.
+- **Name every attachment:** "The attached character reference is FEDGE, not the player." Unclear labels make it stop and ask (that stop costs credits).
+- **Name what to update after:** "then re-render his portrait from the fixed model." Otherwise it leaves related things stale.
+- **Say "no extras beyond this list."** It likes adding small unrequested touches.
+- **Limit the checking:** "Check only from the starting spot on the platform. No full mission replays." Its re-play loops are a big part of every bill.
+- **For a hard bug:** "Look into why X happens before changing anything." Undoing one version and re-prompting is often cheaper than stacking fixes.
 - **Look first:** put "bright, airy and sunlit, not dark" at the top of any graphics request. The owner wants modern, bright, cinematic graphics, not gloomy ones.
-- **For fixes,** say where the player stands and looks ("from the starting spot on the platform, the canopy still reads as a black ceiling"). Tesana checks its work from fixed camera spots.
+- **For fixes,** say where the player stands and what they see ("from the starting spot on the platform, the canopy still reads as a black ceiling"). Tesana checks its work from fixed camera spots, and its self-tests can only press keys and click: they can't move the mouse to look around.
 - **Characters** go in Tesana's Character reference slot: one front-facing, full-body image on a plain background.
+- **Mid-run corrections:** a message sent while Tesana is working gets picked up after its current step. Steer it rather than stopping and resending. **Wrap up** ends a run cleanly; stopping still charges for the work done.
+- **Questions without changes:** Tesana's **Talk** mode answers questions about the game without editing it, cheaper than a change.
 
 ## What makes it look modern (say it this way to Tesana)
 - Glass that **mirrors the city**: the towers should reflect the sky, the clouds and each other, not look like flat blue panels.
