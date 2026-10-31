@@ -48,6 +48,57 @@
       "forward": "+z",
       "facingCertified": true,
       "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "ped_coat": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/ped_coat/ped_coat.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingBakeYDeg": -178.81,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "ped_student": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/ped_student/ped_student.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "ped_elder": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/ped_elder/ped_elder.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "ped_fitness": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/ped_fitness/ped_fitness.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingBakeYDeg": 5.935,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "ped_hoodie": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/ped_hoodie/ped_hoodie.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingBakeYDeg": 179.624,
+      "facingContract": "tesana-character-facing-canonical-v1"
+    },
+    "ped_office": {
+      "baseModel": "/var/games/game-20261030-ceaa166e/assets/characters/ped_office/ped_office.glb",
+      "rigTaskId": "",
+      "animations": {},
+      "forward": "+z",
+      "facingCertified": true,
+      "facingContract": "tesana-character-facing-canonical-v1"
     }
   },
   "props": {

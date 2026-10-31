@@ -1,0 +1,15 @@
+{
+  "forward": "+z",
+  "up": "y",
+  "rootRotationY": 0,
+  "height": 1.75,
+  "humanoid": true,
+  "facingConvention": "web:+z",
+  "facingCertified": true,
+  "facingContract": "tesana-character-facing-canonical-v1",
+  "facingBakeYDeg": 5.935,
+  "fileBytes": 437496,
+  "textureMaxPx": 1024,
+  "textureFormat": "image/webp",
+  "webReady": true
+}
