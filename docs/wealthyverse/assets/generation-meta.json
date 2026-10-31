@@ -573,6 +573,102 @@
       },
       "tool_use_id": "toolu_01QbvzjvezZGmHqWewFjT8nV",
       "updated_at": "2026-10-31T12:36:59.389436"
+    },
+    "assets/characters/ped_office/ped_office.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Woman in her early 30s, office worker, shoulder-length dark brown hair, navy blazer over a cream blouse, grey tailored slacks, black flat shoes, a plain beige canvas tote bag on her shoulder. No logos. Realistic proportions, cinematic realism, PBR.",
+      "raw_input": {
+        "name": "ped_office",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "office worker",
+        "playerAsked": [
+          "office worker with a tote"
+        ],
+        "prompt": "Woman in her early 30s, office worker, shoulder-length dark brown hair, navy blazer over a cream blouse, grey tailored slacks, black flat shoes, a plain beige canvas tote bag on her shoulder. No logos. Realistic proportions, cinematic realism, PBR."
+      },
+      "tool_use_id": "toolu_01JsKWH4Vj6mCzMVu2Vzk1Vo",
+      "updated_at": "2026-10-31T14:38:36.619901"
+    },
+    "assets/characters/ped_student/ped_student.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Young man about 20, university student, short curly black hair, olive green bomber jacket over a grey t-shirt, blue jeans, white canvas sneakers, plain dark backpack on both shoulders. No logos. Realistic proportions, cinematic realism, PBR.",
+      "raw_input": {
+        "name": "ped_student",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "student",
+        "playerAsked": [
+          "student with a backpack"
+        ],
+        "prompt": "Young man about 20, university student, short curly black hair, olive green bomber jacket over a grey t-shirt, blue jeans, white canvas sneakers, plain dark backpack on both shoulders. No logos. Realistic proportions, cinematic realism, PBR."
+      },
+      "tool_use_id": "toolu_01JsKWH4Vj6mCzMVu2Vzk1Vo",
+      "updated_at": "2026-10-31T14:38:36.619901"
+    },
+    "assets/characters/ped_elder/ped_elder.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Older man in his late 60s, grey stubble, brown tweed flat cap, oatmeal knit cardigan over a light blue collared shirt, dark brown trousers, brown leather shoes. No logos. Realistic proportions, cinematic realism, PBR.",
+      "raw_input": {
+        "name": "ped_elder",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "older man",
+        "playerAsked": [
+          "older man in a flat cap"
+        ],
+        "prompt": "Older man in his late 60s, grey stubble, brown tweed flat cap, oatmeal knit cardigan over a light blue collared shirt, dark brown trousers, brown leather shoes. No logos. Realistic proportions, cinematic realism, PBR."
+      },
+      "tool_use_id": "toolu_01JsKWH4Vj6mCzMVu2Vzk1Vo",
+      "updated_at": "2026-10-31T14:38:36.619901"
+    },
+    "assets/characters/ped_coat/ped_coat.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Woman in her 40s, auburn hair in a low bun, long camel wool coat to the knees, black turtleneck, black trousers, dark ankle boots. No logos. Realistic proportions, cinematic realism, PBR.",
+      "raw_input": {
+        "name": "ped_coat",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "woman in a long coat",
+        "playerAsked": [
+          "woman in a long coat"
+        ],
+        "prompt": "Woman in her 40s, auburn hair in a low bun, long camel wool coat to the knees, black turtleneck, black trousers, dark ankle boots. No logos. Realistic proportions, cinematic realism, PBR."
+      },
+      "tool_use_id": "toolu_01JsKWH4Vj6mCzMVu2Vzk1Vo",
+      "updated_at": "2026-10-31T14:38:36.619901"
+    },
+    "assets/characters/ped_hoodie/ped_hoodie.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Man in his mid 20s, short fade haircut, plain heather grey pullover hoodie, black jogger pants, plain white and grey sneakers. No logos or text. Realistic proportions, cinematic realism, PBR.",
+      "raw_input": {
+        "name": "ped_hoodie",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "guy in a hoodie",
+        "playerAsked": [
+          "guy in a hoodie and sneakers"
+        ],
+        "prompt": "Man in his mid 20s, short fade haircut, plain heather grey pullover hoodie, black jogger pants, plain white and grey sneakers. No logos or text. Realistic proportions, cinematic realism, PBR."
+      },
+      "tool_use_id": "toolu_01JsKWH4Vj6mCzMVu2Vzk1Vo",
+      "updated_at": "2026-10-31T14:38:36.619901"
+    },
+    "assets/characters/ped_fitness/ped_fitness.glb": {
+      "tool": "mcp__game-3d-models__generate_characters_batch",
+      "primary_prompt": "Woman in her late 20s, black hair in a high ponytail, plain teal zip-up athletic top, black full-length leggings, plain light grey running shoes. No logos. Realistic proportions, cinematic realism, PBR.",
+      "raw_input": {
+        "name": "ped_fitness",
+        "body": "humanoid",
+        "style": "realistic",
+        "objectName": "woman in workout clothes",
+        "playerAsked": [
+          "woman in workout clothes"
+        ],
+        "prompt": "Woman in her late 20s, black hair in a high ponytail, plain teal zip-up athletic top, black full-length leggings, plain light grey running shoes. No logos. Realistic proportions, cinematic realism, PBR."
+      },
+      "tool_use_id": "toolu_01JsKWH4Vj6mCzMVu2Vzk1Vo",
+      "updated_at": "2026-10-31T14:38:36.619901"
     }
   }
 }
