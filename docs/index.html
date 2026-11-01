@@ -374,11 +374,33 @@ footer{
   .earn-note{padding:14px 22px 16px}
   .donation-section{padding:22px 22px 26px}
 }
+/* ── MOTION (assets/motion.js: Lenis smooth scroll + GSAP) ── */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:clip}
+/* the hero waits for its intro; the inline script in <head> drops this class if motion.js never starts */
+.motion #hero .hero-copy>*,.motion #hero .hero-visual{visibility:hidden}
+.glitch.fx-intro::before,.glitch.fx-intro::after{opacity:0}
+.fx-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:600;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--orange),var(--cyan));box-shadow:0 0 10px var(--orange-glow);pointer-events:none}
+/* shiny slogan: a light sweep across the orange text */
+.hero-slogan{background:linear-gradient(110deg,var(--orange) 38%,#ffe2c4 50%,var(--orange) 62%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 0 10px var(--orange-glow));animation:shine 5s linear infinite}
+@keyframes shine{from{background-position:100% 0}to{background-position:-150% 0}}
+/* GSAP drives these transforms, so CSS only transitions colours on them */
+.fx .pillar,.fx .game-card{transition-property:border-color,box-shadow,background-color}
+.fx .btn-cyber,.fx .btn-ghost,.fx .nav-cta,.fx .btn-donate{transition-property:background,color,border-color,box-shadow,filter,letter-spacing}
+.fx-card:hover,.fx-magnet:hover{transform:none}
+/* spotlight that follows the pointer across a game card */
+.fx-spot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;mix-blend-mode:screen;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),var(--card-glow),transparent 65%);background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--card-color) 28%,transparent),transparent 65%)}
+.game-card:hover .fx-spot{opacity:1}
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important}
   html{scroll-behavior:auto}
 }
 </style>
+<script>
+/* motion.js reveals the hero; if it hasn't started within 4 s (blocked or failed), everything shows as normal */
+(function(d){if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');setTimeout(function(){if(!window.__fx)d.classList.remove('motion')},4000)})(document.documentElement);
+</script>
 </head>
 <body class="scanlines">
 
@@ -731,5 +753,11 @@ footer{
   });
 })();
 </script>
+<!-- Motion: GSAP (standard no-charge license) and Lenis (MIT), self-hosted so no third party loads -->
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/SplitText.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/motion.js"></script>
 </body>
 </html>
