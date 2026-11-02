@@ -14,10 +14,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png" />
   <title>FEDGE 2.O: The Wealthyverse — Credit Ave</title>
   <style>
-    /* Boot screen: the "Digital Commute" art from the first paint, before the game script arrives. Styled inline so it
-       shows before the stylesheet; TitleScreen.setReady() fades it out onto the live city. Same layout as the train ride. */
+    /* The start page: the "Digital Commute" art from the first paint, before the game script arrives. Styled inline so
+       it shows before the stylesheet. TitleScreen moves it under the UI so the title shows on top of it, and it stays
+       until the player begins, then fades onto the live city. Same layout as the train ride. */
     #boot { position: fixed; inset: 0; z-index: 100; overflow: hidden; background: #06060F; transition: opacity 0.9s ease; }
+    #boot.under { z-index: 0; }
     #boot.gone { opacity: 0; pointer-events: none; }
+    #boot.ready .boot-bar { display: none; }
     #boot img { position: absolute; }
     /* the 1376x768 picture fills the whole screen, pinned to the top so the title always shows; the sheen runs along
        the loading bar painted into it, or along the bottom edge on screens wider than the picture (its bar is cropped) */
@@ -28,21 +31,13 @@
     #boot .boot-bar i { display: block; width: 18%; height: 100%; background: linear-gradient(90deg, transparent, #b8ffd6, transparent); box-shadow: 0 0 12px #4ade80; animation: bootBar 1.8s ease-in-out infinite; }
     @keyframes bootBar { 0% { transform: translateX(-110%); } 100% { transform: translateX(560%); } }
   </style>
-  <script type="module" crossorigin src="./assets/index-DRZ9yVzk.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DBcTCTmO.css">
+  <script type="module" crossorigin src="./assets/index-BPdKivr3.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-B_2mMhy_.css">
 </head>
 <body>
   <div id="boot" role="progressbar" aria-label="Loading The Wealthyverse">
-    <div class="boot-frame"><img class="boot-art" id="boot-art" alt=""><div class="boot-bar"><i></i></div></div>
+    <div class="boot-frame"><img class="boot-art" src="loading/digital-commute.jpg" alt=""><div class="boot-bar"><i></i></div></div>
   </div>
-  <script>
-    // a different loading picture each time, in turn (src/core/game.ts keeps the same list for the train rides)
-    (function () {
-      var art = ['digital-commute.jpg', 'commute-skyway.jpg', 'commute-neural.jpg', 'commute-train.jpg'], i = 0;
-      try { i = (Number(localStorage.getItem('fedge2.loadingArt')) || 0) % art.length; localStorage.setItem('fedge2.loadingArt', String((i + 1) % art.length)); } catch (e) {}
-      document.getElementById('boot-art').src = 'loading/' + art[i];
-    })();
-  </script>
   <div id="app"></div>
   <!-- No Tesana SDK here: src/core/tesanaStub.ts stands in for it, so nothing loads from a CDN or reports play stats. -->
 </body>
