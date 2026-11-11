@@ -98,13 +98,16 @@ for (const folder of fs.readdirSync(skillsDir)) {
 }
 console.log('⚡ Loaded ' + execSkills.length + ' executable skill(s): ' + execSkills.map(s => s.id).join(', '));
 
-// The most specific hit wins: the skill whose matched trigger is longest.
+// The most specific hit wins: the skill whose matched trigger is longest. On a tie, an admin gets the
+// admin-only skill (the team playbook) over the public one that shares its trigger.
 function matchSkill(text, admin) {
   let best = null, bestLength = 0;
   for (const skill of skills) {
     if (skill.adminOnly && !admin) continue;
     for (const t of skill.triggers) {
-      if (t.text.length > bestLength && t.pattern.test(text)) { best = skill; bestLength = t.text.length; }
+      const longer = t.text.length > bestLength;
+      const teamTie = t.text.length === bestLength && admin && skill.adminOnly && best && !best.adminOnly;
+      if ((longer || teamTie) && t.pattern.test(text)) { best = skill; bestLength = t.text.length; }
     }
   }
   return best;
