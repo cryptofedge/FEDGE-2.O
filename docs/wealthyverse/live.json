@@ -1,7 +1,7 @@
 {
-  "bundleId": "web-202611180354",
-  "url": "https://github.com/cryptofedge/FEDGE-2.O/releases/download/live-web-202611180354/web-202611180354.zip",
-  "checksum": "c2299949a61901c02fca6862f0180afd48acfe64919a147a3702989b6d475854",
-  "sizeInBytes": 28817073,
+  "bundleId": "web-202611190220",
+  "url": "https://github.com/cryptofedge/FEDGE-2.O/releases/download/live-web-202611190220/web-202611190220.zip",
+  "checksum": "2008c3bab55cd3c781c89e27a9c797f22e7f646a7cd1d7de68c969d55eb8e998",
+  "sizeInBytes": 28816287,
   "minVersionCode": 13
 }
