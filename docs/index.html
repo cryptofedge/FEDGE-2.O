@@ -252,6 +252,17 @@ a.store-btn svg{fill:var(--orange)}
 }
 .badge-live{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.35)}
 .badge-dev{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.3)}
+/* The Wealthyverse: the flagship card, full width at the top of the games grid */
+.game-card.flagship{scroll-margin-top:110px;grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:center;padding:32px}
+.game-card.flagship .game-badge{z-index:2}
+.flagship-art{display:block;position:relative;overflow:hidden;border:1px solid var(--border);aspect-ratio:1280/650}
+.flagship-art img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s}
+.game-card.flagship:hover .flagship-art img{transform:scale(1.03)}
+.flagship-body{display:flex;flex-direction:column;min-width:0}
+.flagship-body .game-desc{flex:none}
+.flagship-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+@media(max-width:1024px){.game-card.flagship{grid-template-columns:1fr;gap:26px}}
+@media(max-width:768px){.game-card.flagship{padding:24px 20px}.flagship-actions .store-btn{min-width:0}}
 .game-avatar{
   width:56px;height:56px;display:flex;align-items:center;justify-content:center;
   font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;color:#03030a;
@@ -419,6 +430,7 @@ html.lenis,html.lenis body{height:auto}
     <span class="nav-logo-text">FEDGE 2.O</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#wealthyverse">Wealthyverse</a></li>
     <li><a href="journey/">The Journey</a></li>
     <li><a href="#about">What It Is</a></li>
     <li><a href="#ecosystem">Ecosystem</a></li>
@@ -552,6 +564,30 @@ html.lenis,html.lenis body{height:auto}
     <p class="section-desc">Six live games on the grid, two more in the lab. Every project teaches a real financial or life skill — wrapped in something you can actually play. Play all six free in your browser now, or ride the <a href="journey/" style="color:var(--orange,#e87012)">FEDGE line</a>: one city, every game in order, with FEDGE guiding you the whole way. Or step into <a href="wealthyverse/" style="color:var(--orange,#e87012)">The Wealthyverse</a>: the same city in first-person 3D, with FEDGE walking beside you. All six stops are open now, from The Block to Legacy Heights, in your browser or <a href="https://play.google.com/store/apps/details?id=com.eclatuniverse.fedge2o" target="_blank" rel="noopener noreferrer" style="color:var(--orange,#e87012)">on Google Play</a>.</p>
 
     <div class="games-grid">
+
+      <div class="game-card flagship" id="wealthyverse" style="--card-color:#e87012;--card-glow:rgba(232,112,18,.18)">
+        <div class="game-badge badge-live">Live &middot; Flagship</div>
+        <a class="flagship-art" href="wealthyverse/" aria-label="Play The Wealthyverse in your browser">
+          <img src="assets/wealthyverse-card.jpg" width="1280" height="714" loading="lazy" alt="FEDGE riding the FEDGE Line train above the city in The Wealthyverse">
+        </a>
+        <div class="flagship-body">
+          <div class="game-avatar">WV</div>
+          <span class="game-tag">Flagship &middot; First-Person 3D</span>
+          <h3 class="game-title">The Wealthyverse</h3>
+          <p class="game-desc">All six games in one city you can walk through. Ride the FEDGE Line through six stops (The Block, The Stage, Credit Ave, Wall Street, The Vault and Legacy Heights) with FEDGE as your guide. Solve real-life money situations, make music in the Melaos Studio, and work your way to Legacy Heights. Free, with no account and no ads.</p>
+          <div class="game-tech"><span class="tech-chip">Three.js</span><span class="tech-chip">Browser</span><span class="tech-chip">Android</span></div>
+          <div class="flagship-actions">
+            <a href="wealthyverse/" class="btn-cyber">Play in Browser</a>
+            <a href="https://play.google.com/store/apps/details?id=com.eclatuniverse.fedge2o" target="_blank" rel="noopener noreferrer" aria-label="Get FEDGE 2.O: The Wealthyverse on Google Play" class="store-btn" style="border-color: #3bccff; background: linear-gradient(90deg, rgba(59,204,255,0.2) 0%, transparent 100%);">
+              <svg viewBox="0 0 24 24" fill="#3bccff"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L18.66,14.05C20.44,12.97 20.44,11.03 18.66,9.95L16.81,8.88L14.89,12L16.81,15.12M4.69,1.31C4.79,1.27 4.9,1.25 5,1.25C5.38,1.25 5.71,1.45 5.89,1.75L15.13,6.85L14.12,8.12L4.69,1.31M14.12,15.88L15.13,17.15L5.89,22.25C5.71,22.55 5.38,22.75 5,22.25C4.9,22.75 4.79,22.73 4.69,22.69L14.12,15.88Z"/></svg>
+              <div>
+                <small style="color: #3bccff; opacity: 0.8">Get it on</small>
+                <b style="color: #fff; text-shadow: 0 0 10px rgba(59,204,255,0.5)">Google Play</b>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div class="game-card" style="--card-color:#3b82f6;--card-glow:rgba(59,130,246,.15)">
         <div class="game-badge badge-live">Live</div>
